@@ -23,7 +23,7 @@ Write an `R-` entry in `RESEARCH.md` next to the skill (date, question, sources 
 
 ## C. Note or correct an existing chart
 
-- Preference or lesson about one chart: `CW note <slug> "<text>"` appends a dated line under `## Notes`. If it changes the guidance (a cap, a "when not"), edit that section too and log a `C-` entry. A preference that applies to every chart ("never pies") goes to `LEARNINGS.md` next to the skill; the chartwright skill reads it in its Step 6.
+- Preference or lesson about one chart: first `grep -n "<key words>" kb/charts/<slug>.md`; if an equivalent note already exists, say so and stop (no duplicate line). Otherwise `CW note <slug> "<text>"` appends a dated line under `## Notes`. If it changes the guidance (a cap, a "when not"), edit that section too and log a `C-` entry. A preference that applies to every chart ("never pies") goes to `LEARNINGS.md` next to the skill; the chartwright skill reads it in its Step 6.
 - Factual correction with a source: edit the section, update `last_verified` and `sources`, log the `C-` entry citing the source. If it contradicts `kb/rules/`, fix the rule and set `contradiction` in `evergreen.json` so the next refresh re-checks the area.
 
 ## D. Add or update a render target

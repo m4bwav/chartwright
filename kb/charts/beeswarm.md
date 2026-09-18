@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://seaborn.pydata.org/generated/seaborn.swarmplot.html, https://observablehq.com/plot/transforms/dodge, https://plotly.com/python/strip-charts/, https://vega.github.io/vega/docs/transforms/force/]
@@ -93,6 +98,10 @@ No layout transform; a jittered scatter is possible but a swarm is not worth han
 ### echarts
 
 Hand-written: `scatter` with the 6.0 `jitter` option on a category axis. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`cw.py build --chart beeswarm --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

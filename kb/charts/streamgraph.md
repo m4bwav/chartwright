@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/streamgraph.html, https://vega.github.io/vega-lite/docs/stack.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.stackplot.html]
@@ -94,6 +99,10 @@ Markdown and Chart.js hosts: render the matplotlib or vega-lite version to SVG o
 ### echarts
 
 Hand-written: stacked `line` with `areaStyle` and `stack`; no wiggle offset, so `approx`. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.areaY(data, Plot.stackY({offset: "wiggle", order: "inside-out"}, {x, y, fill: "series", curve: "basis"}))`.
 
 ## Notes
 

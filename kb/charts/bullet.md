@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: approx
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/layer_bar_bullet.html, https://plotly.com/javascript/bullet-charts/, https://datavizcatalogue.com/methods/bullet_graph.html]
@@ -115,6 +120,10 @@ Approximate: QuickChart `progressBar` or a stacked horizontal bar; write the Cha
 ### xlsx
 
 Approximate: stacked BarChart bands plus a thin bar series.
+
+### observable-plot
+
+`Plot.barX` for the target range bands under a thin `Plot.barX` measure and a `Plot.tickX` target.
 
 ## Notes
 

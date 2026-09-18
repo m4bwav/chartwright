@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: none
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://plotly.com/javascript/gauge-charts/, https://datavizcatalogue.com/methods/gauge.html, https://www.chartjs.org/docs/latest/charts/doughnut.html, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]

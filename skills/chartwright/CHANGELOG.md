@@ -4,6 +4,17 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260918-8 · 2026-09-18 · Fixes from the README and Word fresh-session runs
+- because: T-20260918-3 (two evergreen-tester runs from a neutral directory), L-20260918-3
+- files: scripts/cw.py (_hoist_globals, build_mermaid y-axis range, build_vega_lite bar sort, GENERIC words and magnitude synonyms in pick, mermaid render cleanup), references/build-and-verify.md (Word row now points at the `docx` target), tests/test_cw.py
+- `cw.py pick ... --json` now works with the flag in either position; Mermaid bars carry `0 --> max`; the Vega-Lite bar is sorted by value; "how long does each take" picks bar, not beeswarm; the Word destination has a route instead of a bare "PNG path for documents".
+- Also: Vega-Lite temporal axes with first-of-month dates get `tickCount: month` and `%b %Y` labels (T-20260918-4 outcome-1 had to hand-edit fortnightly ticks).
+
+### C-20260918-7 · 2026-09-18 · Targets plantuml, d2, observable-plot, gsheets, docx
+- because: HANDOFF next step 2 (remaining targets); research R-20260917-2 plus primary-source checks on 2026-09-18 (plantuml.com/chart-diagram, d2lang.com shapes, npm registry for Plot 0.6.17, Sheets API charts reference)
+- files: scripts/cw.py (build_plantuml, build_d2, build_observable_plot, build_gsheets, build_docx, HTML_PLOT, render branches), kb/targets/{plantuml,d2,observable-plot,gsheets,docx}.md, every kb/charts file (five support lines; 14 plantuml, 4 d2, 51 observable-plot, 21 gsheets recipes), kb/rules/choosing-a-target.md, references/build-and-verify.md, tests/test_cw.py
+- Sixteen targets. D2 is recorded honestly as a diagram language with `none` for every data chart so the chooser can refuse it. The docx render was proven end to end (word/media/image1.png in the zip).
+
 ### C-20260918-6 · 2026-09-18 · Targets xlsx and gdocs
 - because: HANDOFF next step 2 (remaining office targets) and the user's Google Docs test request
 - files: scripts/cw.py (build_xlsx, render xlsx), kb/targets/{xlsx,gdocs}.md, every kb/charts file (support lines; 21 xlsx recipes), kb/rules/choosing-a-target.md, references/build-and-verify.md, tests/test_cw.py

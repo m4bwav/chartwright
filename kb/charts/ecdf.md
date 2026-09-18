@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://seaborn.pydata.org/generated/seaborn.ecdfplot.html, https://plotly.com/python/ecdf-plots/, https://vega.github.io/vega-lite/examples/area_cumulative_freq.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.ecdf.html, https://www.data-to-viz.com/]
@@ -102,6 +107,10 @@ Sort values in code, compute `i / n` for each, then a `line` type with `stepped:
 ### echarts
 
 Hand-written: `line` with `step: "end"` over sorted cumulative values. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.lineY(data, Plot.mapY("cumsum", Plot.binX({y: "proportion"}, {x: "value", thresholds: 100})))`; approximate step through bins.
 
 ## Notes
 

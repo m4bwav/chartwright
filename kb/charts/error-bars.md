@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega-lite/docs/errorbar.html, https://plotly.com/python/error-bars/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.errorbar.html, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]
@@ -106,6 +111,10 @@ Hand-written: custom series `renderItem` (the ECharts error-bar example). See `k
 ### pptx
 
 Approximate: LINE_MARKERS plus manual error bars (python-pptx has no API); simpler as a PNG.
+
+### observable-plot
+
+`Plot.ruleX(data, {x1: "low", x2: "high", y})` (or `ruleY`) under a `Plot.dot` of the estimate.
 
 ## Notes
 

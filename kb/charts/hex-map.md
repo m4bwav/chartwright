@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/hexbinmap.html, https://vega.github.io/vega-lite/docs/geoshape.html, https://plotly.com/python/hexbin-mapbox/, https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hexbin.html, https://github.com/odileeds/hexmaps]
@@ -86,6 +91,10 @@ Hex tile: `gdf = geopandas.read_file("hexes.geojson").merge(df, on="code"); gdf.
 ### echarts
 
 Hand-written: custom series over a hex grid. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.dot(tiles, {x, y, symbol: "hexagon", r: 18, fill: "value"})` on a hand-made hex layout; approximate.
 
 ## Notes
 

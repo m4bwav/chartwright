@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://datavizcatalogue.com/methods/pictogram_chart.html, https://github.com/gyli/PyWaffle, https://vega.github.io/vega-lite/examples/isotype_bar_chart.html]
@@ -90,6 +95,10 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 ### echarts
 
 Hand-written: `pictorialBar` series. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.waffleY` with `unit` per icon and a `symbol` is the nearest mark; true icons need SVG.
 
 ## Notes
 

@@ -24,6 +24,11 @@ support:
   quickchart: native
   xlsx: native
   gdocs: image
+  docx: image
+  gsheets: native
+  observable-plot: none
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://eagereyes.org/pie-charts, https://media.eagereyes.org/papers/2016/Skau-EuroVis-2016.pdf, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/syntax/pie.html, https://www.data-to-viz.com/caveat/pie.html]
@@ -122,6 +127,10 @@ pie showData
 ### xlsx
 
 `cw.py build --chart pie --target xlsx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.xlsx` then `cw.py render --target xlsx --in chart.py --out chart.xlsx` (data sheet plus editable chart).
+
+### gsheets
+
+`cw.py build --chart pie --target gsheets --data file.csv --x <x> --y <y> [--series <s>] --out chart.json` writes `values` for `spreadsheets.values.update` at A1 and an `addChart` request for `spreadsheets.batchUpdate` (sheetId 0).
 
 ## Notes
 

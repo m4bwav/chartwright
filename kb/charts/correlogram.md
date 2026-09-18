@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-18
 last_verified: 2026-09-18
 sources: [https://www.data-to-viz.com/graph/correlogram.html, https://seaborn.pydata.org/examples/many_pairwise_correlations.html, https://plotly.com/python/heatmaps/, https://vega.github.io/vega-lite/examples/rect_heatmap.html, https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html]
@@ -85,6 +90,10 @@ Approximate: the `chartjs-chart-matrix` plugin draws coloured cells; compute the
 ### echarts
 
 Hand-written: `heatmap` on category axes with `visualMap` from -1 to 1. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`cw.py build --chart correlogram --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

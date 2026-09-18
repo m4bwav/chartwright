@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://mermaid.js.org/syntax/gantt.html, https://plotly.com/python/gantt/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.broken_barh.html, https://datavizcatalogue.com/methods/gantt_chart.html]
@@ -113,6 +118,14 @@ Python: `px.timeline(df, x_start="start", x_end="end", y="task", color="phase")`
 ### echarts
 
 Hand-written: custom series `renderItem` drawing bars from start to end (the ECharts gantt example). See `kb/targets/echarts.md`.
+
+### plantuml
+
+`@startgantt` with `[Task] lasts 5 days` and `[B] starts at [A]'s end`; PlantUML's own Gantt, not `@startchart`.
+
+### observable-plot
+
+`Plot.barX(tasks, {y: "task", x1: "start", x2: "end", fill: "phase"})`; no dependency arrows.
 
 ## Notes
 

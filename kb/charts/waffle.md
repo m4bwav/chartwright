@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com, https://datavizcatalogue.com, https://github.com/gyli/PyWaffle]
@@ -105,6 +110,10 @@ Hand-written: `pip install pywaffle` then `plt.figure(FigureClass=Waffle, rows=1
 ### echarts
 
 Hand-written: `scatter` on a 10x10 category grid. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`cw.py build --chart waffle --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: none
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/edge_bundling.html, https://vega.github.io/vega/examples/edge-bundling/, https://observablehq.com/@d3/hierarchical-edge-bundling, https://doi.org/10.1109/TVCG.2006.147]

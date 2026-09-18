@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-18
 last_verified: 2026-09-18
 sources: [https://mermaid.js.org/syntax/quadrantChart.html, https://datavizcatalogue.com/methods/scatterplot.html, https://www.datawrapper.de/blog/chart-types-guide]
@@ -100,6 +105,10 @@ Approximate: `ax.scatter`, `ax.axvline` and `ax.axhline` at the thresholds, `ax.
 ### echarts
 
 Hand-written: `scatter` with `markLine` at the thresholds and `markArea` tints. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.dot` plus `Plot.ruleX([mx])` and `Plot.ruleY([my])` at the medians with `Plot.text` labels.
 
 ## Notes
 

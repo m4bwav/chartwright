@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.data-to-viz.com/graph/density.html, https://vega.github.io/vega-lite/docs/density.html, https://seaborn.pydata.org/generated/seaborn.kdeplot.html, https://plotly.com/python/distplot/, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]
@@ -102,6 +107,10 @@ Compute the density curve in code, then `{"type": "line", "data": {"datasets": [
 ### echarts
 
 Hand-written: `line` with `areaStyle` over pre-computed density points. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+no 1D density mark: compute the KDE in JS (d3) or use `Plot.rectY(data, Plot.binX({y: "proportion"}))` as a histogram stand-in.
 
 ## Notes
 

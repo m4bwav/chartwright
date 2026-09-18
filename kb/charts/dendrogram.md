@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: approx
+  plantuml: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.dendrogram.html, https://plotly.com/python/dendrogram/, https://seaborn.pydata.org/generated/seaborn.clustermap.html, https://vega.github.io/vega/examples/tree-layout/, https://www.data-to-viz.com/graph/dendrogram.html]
@@ -92,6 +97,18 @@ Hand-written: `from scipy.cluster.hierarchy import linkage, dendrogram; Z = link
 ### echarts
 
 Hand-written: series type `tree` with `layout: "orthogonal"` and computed depths. See `kb/targets/echarts.md`.
+
+### plantuml
+
+`@startmindmap` carries the hierarchy but not the merge heights; use an image target for a true dendrogram.
+
+### d2
+
+`cw.py build --chart dendrogram --target d2 ...` draws the hierarchy with merge heights as edge labels; the y-axis meaning is lost, so an image target is truer.
+
+### observable-plot
+
+`Plot.cluster(paths)` (the cluster layout of `Plot.tree`) places leaves at equal depth; merge heights need a hand-built layout.
 
 ## Notes
 

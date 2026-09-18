@@ -44,7 +44,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "matrix diagram",
@@ -100,7 +105,12 @@
     "pptx": "image",
     "quickchart": "approx",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "parallel sets",
@@ -154,7 +164,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "arc plot",
@@ -203,7 +218,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "filled line chart",
@@ -256,7 +276,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "horizontal bar chart",
@@ -309,7 +334,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "swarm plot",
@@ -361,7 +391,12 @@
     "pptx": "image",
     "quickchart": "approx",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "box-and-whisker plot",
@@ -413,7 +448,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "proportional symbol map",
@@ -465,7 +505,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "approx"
    },
    "aliases": [
     "bubble plot",
@@ -520,7 +565,12 @@
     "pptx": "approx",
     "quickchart": "approx",
     "xlsx": "approx",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "bullet graph",
@@ -572,7 +622,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "rank chart",
@@ -623,7 +678,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "calendar chart",
@@ -674,7 +734,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "approx",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "OHLC chart",
@@ -727,7 +792,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "scaled cartogram",
@@ -780,7 +850,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "chord chart",
@@ -834,7 +909,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "filled map",
@@ -888,7 +968,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "circular treemap",
@@ -942,7 +1027,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "vertical bar chart",
@@ -990,7 +1080,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "approx"
    },
    "aliases": [
     "connected scatter",
@@ -1039,13 +1134,76 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "correlation matrix",
     "correlation heatmap",
     "corrplot",
     "correlation plot"
+   ],
+   "last_verified": "2026-09-18"
+  },
+  {
+   "slug": "cycle-plot",
+   "name": "Cycle plot",
+   "family": "change-over-time",
+   "also": [
+    "deviation"
+   ],
+   "question": "Is there a seasonal pattern, and is each season's level rising or falling across the years (or weeks)?",
+   "shapes": [
+    "time,q",
+    "o,o,q"
+   ],
+   "goals": [
+    "seasonality",
+    "seasonal",
+    "cycle",
+    "month of year",
+    "day of week",
+    "quarter",
+    "subseries",
+    "within-season trend",
+    "change-over-time",
+    "monthly pattern",
+    "weekly pattern",
+    "seasonal component"
+   ],
+   "max_series": 1,
+   "max_categories": 12,
+   "evidence": "medium",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "native",
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "none",
+    "xlsx": "approx",
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "approx",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
+   },
+   "aliases": [
+    "seasonal subseries plot",
+    "month plot",
+    "subseries plot",
+    "cycle-subseries plot",
+    "seasonal cycle chart"
    ],
    "last_verified": "2026-09-18"
   },
@@ -1091,7 +1249,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "approx",
+    "plantuml": "approx"
    },
    "aliases": [
     "cluster tree",
@@ -1140,7 +1303,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "contour plot",
@@ -1191,7 +1359,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "KDE plot",
@@ -1244,7 +1417,12 @@
     "pptx": "approx",
     "quickchart": "approx",
     "xlsx": "approx",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "positive negative bar chart",
@@ -1298,7 +1476,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "Likert chart",
@@ -1349,7 +1532,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "doughnut chart",
@@ -1401,7 +1589,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "dot map",
@@ -1456,7 +1649,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "approx"
    },
    "aliases": [
     "Cleveland dot plot",
@@ -1511,7 +1709,12 @@
     "pptx": "approx",
     "quickchart": "approx",
     "xlsx": "approx",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "range plot",
@@ -1563,7 +1766,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "empirical cumulative distribution function",
@@ -1616,7 +1824,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "edge bundling",
@@ -1669,7 +1882,12 @@
     "pptx": "approx",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "confidence interval plot",
@@ -1723,7 +1941,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "connection map",
@@ -1778,7 +2001,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "conversion funnel",
@@ -1830,7 +2058,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "project schedule",
@@ -1883,7 +2116,12 @@
     "pptx": "image",
     "quickchart": "approx",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "meter",
@@ -1938,7 +2176,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "clustered bar chart",
@@ -1993,7 +2236,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "heat map",
@@ -2048,7 +2296,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "hexagon map",
@@ -2098,7 +2351,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "hexagonal binning",
@@ -2149,7 +2407,12 @@
     "pptx": "image",
     "quickchart": "approx",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "frequency distribution",
@@ -2197,7 +2460,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "horizon graph",
@@ -2248,7 +2516,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "partition chart",
@@ -2305,7 +2578,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "line graph",
@@ -2357,7 +2635,12 @@
     "pptx": "approx",
     "quickchart": "approx",
     "xlsx": "approx",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "approx"
    },
    "aliases": [
     "lollipop plot",
@@ -2407,7 +2690,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "mosaic plot",
@@ -2461,7 +2749,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "native",
+    "plantuml": "approx"
    },
    "aliases": [
     "node-link diagram",
@@ -2515,7 +2808,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "parallel coordinates plot",
@@ -2567,7 +2865,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "isotype chart",
@@ -2615,7 +2918,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "pie graph",
@@ -2665,7 +2973,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "age-sex pyramid",
@@ -2715,7 +3028,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "quantile-quantile plot",
@@ -2766,7 +3084,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "2x2 matrix",
@@ -2818,7 +3141,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "spider chart",
@@ -2872,7 +3200,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "circular bar chart",
@@ -2922,7 +3255,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "rain cloud plot",
@@ -2974,7 +3312,12 @@
     "pptx": "approx",
     "quickchart": "none",
     "xlsx": "approx",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "approx"
    },
    "aliases": [
     "band chart",
@@ -3027,7 +3370,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "joyplot",
@@ -3080,7 +3428,12 @@
     "pptx": "image",
     "quickchart": "approx",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "sankey chart",
@@ -3135,7 +3488,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "scatterplot",
@@ -3187,7 +3545,12 @@
     "pptx": "approx",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "slopegraph",
@@ -3243,7 +3606,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "trellis chart",
@@ -3297,7 +3665,12 @@
     "pptx": "approx",
     "quickchart": "approx",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "approx",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "inline chart",
@@ -3346,7 +3719,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "SPLOM",
@@ -3395,7 +3773,12 @@
     "pptx": "native",
     "quickchart": "none",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "stacked area graph",
@@ -3448,7 +3831,12 @@
     "pptx": "native",
     "quickchart": "approx",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "percent stacked bar",
@@ -3501,7 +3889,12 @@
     "pptx": "native",
     "quickchart": "native",
     "xlsx": "native",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "native"
    },
    "aliases": [
     "stacked column chart",
@@ -3556,7 +3949,12 @@
     "pptx": "approx",
     "quickchart": "approx",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "KPI tile",
@@ -3609,7 +4007,12 @@
     "pptx": "approx",
     "quickchart": "native",
     "xlsx": "approx",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "approx"
    },
    "aliases": [
     "step line",
@@ -3658,7 +4061,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "stream graph",
@@ -3709,7 +4117,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "dot strip plot",
@@ -3761,7 +4174,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "radial treemap",
@@ -3817,7 +4235,12 @@
     "pptx": "approx",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "approx",
+    "plantuml": "none"
    },
    "aliases": [
     "data table",
@@ -3871,7 +4294,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "tile map",
@@ -3925,7 +4353,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "approx"
    },
    "aliases": [
     "event timeline",
@@ -3978,7 +4411,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "approx",
+    "observable-plot": "native",
+    "d2": "native",
+    "plantuml": "native"
    },
    "aliases": [
     "tree chart",
@@ -4034,7 +4472,12 @@
     "pptx": "image",
     "quickchart": "approx",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "tree map",
@@ -4085,7 +4528,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "Euler diagram",
@@ -4133,7 +4581,12 @@
     "pptx": "image",
     "quickchart": "approx",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "violin chart",
@@ -4181,7 +4634,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "native",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "gridplot",
@@ -4237,7 +4695,12 @@
     "pptx": "approx",
     "quickchart": "approx",
     "xlsx": "approx",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "native",
+    "observable-plot": "approx",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "bridge chart",
@@ -4288,7 +4751,12 @@
     "pptx": "image",
     "quickchart": "none",
     "xlsx": "image",
-    "gdocs": "image"
+    "gdocs": "image",
+    "docx": "image",
+    "gsheets": "image",
+    "observable-plot": "none",
+    "d2": "none",
+    "plantuml": "none"
    },
    "aliases": [
     "tag cloud",
@@ -4315,6 +4783,35 @@
    "last_verified": "2026-09-17"
   },
   {
+   "slug": "d2",
+   "name": "D2 diagram (node-and-edge only)",
+   "kind": "markdown",
+   "renders_in": [
+    "d2 CLI",
+    "play.d2lang.com",
+    "Kroki",
+    "Obsidian (D2 plugin)",
+    "VS Code (D2 extension)"
+   ],
+   "version_checked": "D2 shape list read 2026-09-18 (rectangle, cylinder, sql_table, class, cloud... no chart shape)",
+   "renderer": "d2",
+   "last_verified": "2026-09-18"
+  },
+  {
+   "slug": "docx",
+   "name": "Word document (PNG via python-docx)",
+   "kind": "office",
+   "renders_in": [
+    "Microsoft Word",
+    "LibreOffice Writer",
+    "Google Docs (imported .docx)",
+    "Pages"
+   ],
+   "version_checked": "python-docx 1.2.0; no native chart API (issue 179 open since 2015); vl-convert-python 1.9 for the PNG",
+   "renderer": "python",
+   "last_verified": "2026-09-18"
+  },
+  {
    "slug": "echarts",
    "name": "Web, interactive (Apache ECharts)",
    "kind": "web",
@@ -4336,6 +4833,18 @@
     "Google Docs"
    ],
    "version_checked": "Google Drive API v3 HTML-to-Doc conversion; Docs API has no chart resource (checked 2026-09-18)",
+   "renderer": "none",
+   "last_verified": "2026-09-18"
+  },
+  {
+   "slug": "gsheets",
+   "name": "Google Sheets native chart (Sheets API EmbeddedChart)",
+   "kind": "office",
+   "renders_in": [
+    "Google Sheets",
+    "Google Docs and Slides (linked Sheets chart)"
+   ],
+   "version_checked": "Sheets API v4 ChartSpec: basicChart, pieChart, bubbleChart, candlestickChart, orgChart, histogramChart, waterfallChart, treemapChart, scorecardChart (checked 2026-09-18)",
    "renderer": "none",
    "last_verified": "2026-09-18"
   },
@@ -4373,6 +4882,35 @@
    "version_checked": "12.0.0 (2026-09-10); portable floor 11.13 (Obsidian 1.13)",
    "renderer": "mmdc",
    "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "observable-plot",
+   "name": "Observable Plot (web, SVG marks)",
+   "kind": "web",
+   "renders_in": [
+    "any web page",
+    "Observable notebooks and Framework",
+    "React and Svelte apps",
+    "Node with jsdom"
+   ],
+   "version_checked": "@observablehq/plot 0.6.17 (npm latest, checked 2026-09-18); UMD build needs d3 v7 as a global",
+   "renderer": "browser",
+   "last_verified": "2026-09-18"
+  },
+  {
+   "slug": "plantuml",
+   "name": "PlantUML chart (@startchart)",
+   "kind": "markdown",
+   "renders_in": [
+    "PlantUML 1.2026.0+",
+    "Kroki",
+    "IntelliJ and VS Code PlantUML plugins",
+    "Confluence (PlantUML app)",
+    "Asciidoctor Diagram"
+   ],
+   "version_checked": "PlantUML 1.2026.0 (chart diagram introduced), checked 2026-09-18",
+   "renderer": "plantuml",
+   "last_verified": "2026-09-18"
   },
   {
    "slug": "plotly",

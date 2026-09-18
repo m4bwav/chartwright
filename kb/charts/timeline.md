@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/syntax/timeline.html, https://plotly.com/python/gantt/, https://datavizcatalogue.com/methods/timeline.html]
@@ -109,6 +114,14 @@ Durations: `ax.barh(names, [e - s for s, e in spans], left=[s for s, e in spans]
 ### echarts
 
 Hand-written: `scatter` on a `time` axis with labels. See `kb/targets/echarts.md`.
+
+### plantuml
+
+`@startgantt` with zero-length milestones (`[Launch] happens at 2026-03-01`), or a `@startuml` timing diagram.
+
+### observable-plot
+
+`Plot.barX(data, {y: "event", x1: "start", x2: "end"})` or `Plot.dot` on a time x for point events.
 
 ## Notes
 

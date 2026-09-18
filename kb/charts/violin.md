@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/violin.html, https://vega.github.io/vega-lite/examples/layer_violin_density.html, https://plotly.com/python/violin/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.violinplot.html]
@@ -109,6 +114,10 @@ Hand-written: custom series (the ECharts 6 reusable violin example). See `kb/tar
 ### quickchart
 
 Approximate: QuickChart `violin` plugin type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### observable-plot
+
+no violin mark: precompute the KDE and mirror it with `Plot.areaX`; approximate.
 
 ## Notes
 

@@ -319,6 +319,7 @@ def cmd_show(a):
 STOP = set("a an the of for to in on by with and or as at is are be show me make plot chart graph draw please want need i we it this that".split())
 SYN = {  # request words -> goal vocabulary used in chart frontmatter `goals`
     "trend": ["trend", "over time"], "trends": ["trend", "over time"], "timeline": ["over time", "sequence", "events"], "history": ["over time"],
+    "long": ["magnitude", "duration"], "much": ["magnitude"], "big": ["magnitude"], "duration": ["magnitude", "duration"], "minutes": ["magnitude"], "hours": ["magnitude"],
     "compare": ["comparison", "magnitude"], "comparison": ["comparison"], "rank": ["ranking"], "ranking": ["ranking"], "top": ["ranking"], "largest": ["ranking"],
     "share": ["part-to-whole", "proportion"], "shares": ["part-to-whole"], "proportion": ["part-to-whole"], "percent": ["part-to-whole"], "percentage": ["part-to-whole"],
     "breakdown": ["part-to-whole", "composition"], "composition": ["part-to-whole", "composition"], "makeup": ["part-to-whole"],
@@ -340,6 +341,9 @@ SYN = {  # request words -> goal vocabulary used in chart frontmatter `goals`
     "rating": ["ordinal"], "score": ["magnitude"], "scores": ["magnitude", "distribution"],
     "matrix": ["matrix"], "grid": ["matrix"], "table": ["table"],
 }
+
+
+GENERIC = {"each", "every", "one", "does", "take", "takes", "long", "much", "many", "what", "which", "show", "chart", "graph", "plot", "per", "value", "values"}
 
 
 def _tokens(s: str) -> list[str]:
@@ -366,7 +370,7 @@ def cmd_pick(a):
         if any(n and re.search(r"\b" + re.escape(n) + (r"s?\b" if " " in n or len(n) > 6 else r"\b"), q.lower()) for n in names):
             score += 6
             why.append("named in request")
-        hits = [g for g in goals if any(g == x or (len(g) > 3 and g in x) for x in cg)]
+        hits = [g for g in goals if any(g == x or (len(g) > 3 and g not in GENERIC and g in x) for x in cg)]
         if hits:
             score += 1.5 * len(set(hits))
             why.append("goals: " + ", ".join(sorted(set(hits))))
@@ -507,6 +511,9 @@ def build_mermaid(chart, rows, x, y, series, title):
         named = a_flag("namedSeries")  # Mermaid 11.16+: named series get a legend; default stays on the 11.13 floor
         lines = ["xychart" if named else "xychart-beta", f"    title {_mq(t)}",
                  "    x-axis [" + ", ".join(_mq(v) for v in xs) + "]", f"    y-axis {_mq(y)}"]
+        vals = [v for pts in groups.values() for _, v in pts if v is not None]
+        if kind == "bar" and vals and min(vals) >= 0:
+            lines[-1] += f" 0 --> {_g(_nice_max(vals))}"  # xychart autoscale truncates the baseline; bars need zero
         for name, pts in groups.items():
             d = dict(pts)
             label = f" {_mq(name or y)}" if named else ""
@@ -631,8 +638,12 @@ def build_vega_lite(chart, rows, x, y, series, title, data_path):
     else:
         horizontal = chart in ("bar", "lollipop", "dot") and xk == "nominal" and len(rows) > 6
         xe = {"field": x, "type": xk}
+        if chart == "bar" and xk == "nominal" and not series:
+            xe["sort"] = "-x" if horizontal else "-y"  # the bar is the ranking chart (kb/charts/bar.md): sort by value
         if xk == "temporal":
             xe["scale"] = {"type": "utc"}  # ISO dates parse as UTC; a local scale shifts them by a day
+            if all(re.fullmatch(r"\d{4}-\d{2}-01", str(r[x])) for r in rows):
+                xe["axis"] = {"tickCount": "month", "format": "%b %Y"}  # monthly data: one tick per month, not fortnightly defaults
         elif xk == "nominal" and len(rows) <= 12:
             xe["axis"] = {"labelAngle": 0}  # short category lists read better unrotated
         ye = {"field": y, "type": "quantitative"}
@@ -942,6 +953,186 @@ def build_quickchart(chart, rows, x, y, series, title):
     return f"![{title or f'{y} by {x}'}]({url})\n"
 
 
+def _nice_max(vals):
+    """A round axis ceiling at or above the largest value (10, 50, 120, 1100...)."""
+    hi = max(vals) if vals else 1
+    if hi <= 0:
+        return 1
+    import math
+    mag = 10 ** math.floor(math.log10(hi))
+    for f in (1, 1.2, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10):
+        if f * mag >= hi:
+            return int(f * mag) if f * mag >= 10 else f * mag
+    return hi
+
+
+def build_plantuml(chart, rows, x, y, series, title):
+    """PlantUML @startchart (1.2026.0+): bar, line, area, scatter series on shared axes; no pie."""
+    kind = {"bar": "bar", "column": "bar", "grouped-bar": "bar", "stacked-bar": "bar", "line": "line", "multi-line": "line",
+            "sparkline": "line", "area": "area", "stacked-area": "area", "scatter": "scatter"}.get(chart)
+    if not kind:
+        raise ValueError(f"plantuml has no chart recipe for '{chart}' (bar, column, grouped-bar, stacked-bar, line, multi-line, area, stacked-area, scatter)")
+    groups = _series_split(rows, x, y, series)
+    t = title or f"{y} by {x}"
+    lines = ["@startchart", f"title {_mq(t)}"]
+    if chart in ("stacked-bar", "stacked-area"):
+        lines.append("stackMode stacked")
+    vals = [v for pts in groups.values() for _, v in pts if v is not None]
+    if kind == "scatter":
+        xs = [_num(px) for pts in groups.values() for px, _ in pts]
+        if any(v is None for v in xs):
+            raise ValueError("plantuml scatter needs a numeric x column")
+        lines += [f"h-axis {_mq(x)} 0 --> {_g(_nice_max(xs))}", f"v-axis {_mq(y)} 0 --> {_g(_nice_max(vals))}"]
+        for name, pts in groups.items():
+            lines.append(f"scatter {_mq(name or y)} [" + ", ".join(f"({_g(_num(px))}, {_g(py)})" for px, py in pts) + "]")
+    else:
+        xs = list(dict.fromkeys(r[x] for r in rows))
+        top = _nice_max([sum(dict(p).get(v) or 0 for p in groups.values()) for v in xs]) if chart in ("stacked-bar", "stacked-area") else _nice_max(vals)
+        lines += ["h-axis [" + ", ".join(str(v) for v in xs) + "]", f"v-axis {_mq(y)} 0 --> {_g(top)}"]
+        for name, pts in groups.items():
+            d = dict(pts)
+            lines.append(f"{kind} {_mq(name or y)} [" + ", ".join(_g(d.get(v)) for v in xs) + "]")
+    if len(groups) > 1:
+        lines.append("legend right")
+    lines.append("@endchart")
+    return "\n".join(lines) + "\n"
+
+
+def build_d2(chart, rows, x, y, series, title):
+    """D2 has no data charts; it draws node-and-edge diagrams, so only network and tree shapes are built here.
+    network: --x source, --series target, --y weight (edge label). tree/dendrogram: --x child, --series parent."""
+    if chart not in ("network", "tree", "dendrogram"):
+        raise ValueError(f"d2 draws diagrams, not data charts: no recipe for '{chart}' (network, tree, dendrogram)")
+    if not series:
+        raise ValueError(f"{chart} needs --series (target or parent column)")
+    t = title or f"{x} to {series}"
+    lines = [f"# {t}", "direction: " + ("down" if chart != "network" else "right")]
+    for r in rows:
+        a, b = str(r[x]).strip(), str(r[series]).strip()
+        if not a or not b:
+            continue
+        w = _num(r[y]) if y else None
+        if chart == "network":
+            lines.append(f"{_d2id(a)} -> {_d2id(b)}" + (f": {_g(w)}" if w is not None else ""))
+        else:
+            lines.append(f"{_d2id(b)} -> {_d2id(a)}" + (f": {_g(w)}" if w is not None and chart == "dendrogram" else ""))
+    return "\n".join(lines) + "\n"
+
+
+def _d2id(s):
+    return s if re.fullmatch(r"[A-Za-z0-9_]+", s) else '"' + s.replace('"', "'") + '"'
+
+
+def build_observable_plot(chart, rows, x, y, series, title):
+    """Observable Plot 0.6 marks as a JS snippet (data inline); --html wraps it in a page with the UMD build."""
+    groups = _series_split(rows, x, y, series)
+    data = [{"x": px, "y": py, **({"s": name} if series else {})} for name, pts in groups.items() for px, py in pts]
+    for d in data:
+        if _num(d["x"]) is not None and not _is_time(d["x"]):
+            d["x"] = _num(d["x"])
+    if series and all(_num(d["s"]) is not None for d in data):
+        for d in data:
+            d["s"] = _num(d["s"])  # a numeric series column (bubble size) stays a number
+    xt = all(_is_time(d["x"]) for d in data)
+    if xt:
+        for d in data:
+            d["x"] = f"__DATE__{d['x']}"
+    s = ', stroke: "s"' if series else ""
+    f = ', fill: "s"' if series else ""
+    t = title or f"{y} by {x}"
+    opts = {"line": f'Plot.lineY(data, {{x: "x", y: "y"{s}}})', "multi-line": f'Plot.lineY(data, {{x: "x", y: "y"{s}}})',
+            "sparkline": f'Plot.lineY(data, {{x: "x", y: "y"{s}}})', "step": f'Plot.lineY(data, {{x: "x", y: "y", curve: "step-after"{s}}})',
+            "connected-scatter": f'Plot.lineY(data, {{x: "x", y: "y", marker: true{s}}})',
+            "area": f'Plot.areaY(data, {{x: "x", y: "y"{f}}})', "stacked-area": f'Plot.areaY(data, {{x: "x", y: "y"{f}}})',
+            "column": f'Plot.barY(data, {{x: "x", y: "y"{f}}})', "stacked-bar": f'Plot.barY(data, {{x: "x", y: "y"{f}}})',
+            "bar": f'Plot.barX(data, {{y: "x", x: "y", sort: {{y: "-x"}}{f}}})',
+            "grouped-bar": 'Plot.barY(data, {x: "s", y: "y", fill: "s", fx: "x"})',
+            "stacked-bar-100": 'Plot.barY(data, Plot.stackY({offset: "normalize"}, {x: "x", y: "y", fill: "s"}))',
+            "diverging-bar": 'Plot.barX(data, {y: "x", x: "y", fill: d => d.y < 0 ? "#c0392b" : "#2a78d6", sort: {y: "x"}})',
+            "lollipop": f'Plot.ruleX(data, {{x: "x", y: "y"}}), Plot.dot(data, {{x: "x", y: "y", fill: "currentColor"}})',
+            "dot-plot": f'Plot.dot(data, {{x: "y", y: "x", fill: "currentColor", sort: {{y: "-x"}}}})',
+            "scatter": f'Plot.dot(data, {{x: "x", y: "y"{s}}})', "bubble": 'Plot.dot(data, {x: "x", y: "y", r: "s"})',
+            "strip": f'Plot.tickX(data, {{x: "y", y: "x"}})', "beeswarm": 'Plot.dot(data, Plot.dodgeY({x: "y", fill: "currentColor"}))',
+            "boxplot": 'Plot.boxY(data, {x: "x", y: "y"})', "histogram": 'Plot.rectY(data, Plot.binX({y: "count"}, {x: "y"}))',
+            "heatmap": 'Plot.cell(data, {x: "x", y: "s", fill: "y"}), Plot.text(data, {x: "x", y: "s", text: "y", fill: "white"})',
+            "correlogram": 'Plot.cell(data, {x: "x", y: "s", fill: "y"})', "adjacency-matrix": 'Plot.cell(data, {x: "x", y: "s", fill: "y"})',
+            "calendar-heatmap": 'Plot.cell(data, {x: d => d3.utcWeek.count(d3.utcYear(d.x), d.x), y: d => d.x.getUTCDay(), fill: "y"})',
+            "waffle": f'Plot.waffleY(data, {{x: "x", y: "y"{f}}})', "small-multiples": 'Plot.barY(data, {x: "x", y: "y", fx: "s"})',
+            "density-2d": 'Plot.density(data, {x: "x", y: "y"}), Plot.dot(data, {x: "x", y: "y", r: 1})',
+            "hexbin": 'Plot.dot(data, Plot.hexbin({r: "count"}, {x: "x", y: "y"}))',
+            "slope": 'Plot.lineY(data, {x: "x", y: "y", stroke: "s", marker: true}), Plot.text(data, Plot.selectLast({x: "x", y: "y", z: "s", text: "s", textAnchor: "start", dx: 6}))',
+            "choropleth": None}
+    mark = opts.get(chart)
+    if not mark:
+        raise ValueError(f"observable-plot has no recipe for '{chart}' (cw.py show {chart} --section build)")
+    if chart in ("grouped-bar", "stacked-bar-100", "small-multiples", "heatmap", "correlogram", "adjacency-matrix", "bubble", "slope") and not series:
+        raise ValueError(f"{chart} needs --series")
+    color = ', color: {legend: true' + (', scheme: "blues"' if chart in ("heatmap", "correlogram", "adjacency-matrix", "calendar-heatmap") else "") + "}" if (series or chart in ("heatmap", "calendar-heatmap")) else ""
+    yzero = ', y: {grid: true, label: ' + json.dumps(y) + (', zero: true' if chart in ("column", "stacked-bar", "grouped-bar", "lollipop", "area", "stacked-area") else "") + "}"
+    xlab = ', x: {label: ' + json.dumps(x) + "}"
+    if chart in ("bar", "dot-plot", "diverging-bar", "strip"):
+        yzero, xlab = ', y: {label: null}', ', x: {grid: true, label: ' + json.dumps(y) + ', zero: true}'
+    js = json.dumps(data, ensure_ascii=False)
+    js = re.sub(r'"__DATE__([^"]+)"', r'new Date("\1")', js)
+    marks = ("[Plot.ruleY([0]), " if chart in ("line", "multi-line", "step", "connected-scatter", "column", "stacked-bar", "grouped-bar", "lollipop", "area", "stacked-area", "histogram", "waffle", "small-multiples") else "[") + mark + "]"
+    return (f"const data = {js};\n"
+            f"const chart = Plot.plot({{title: {json.dumps(t)}, width: 720, height: 400, marginLeft: 60{xlab}{yzero}{color}, marks: {marks}}});\n")
+
+
+def build_gsheets(chart, rows, x, y, series, title):
+    """Google Sheets API: the data as a values grid plus a spreadsheets.batchUpdate addChart request (sheetId 0).
+    Write the values with spreadsheets.values.update on A1, then send the requests with batchUpdate."""
+    basic = {"bar": ("BAR", "NOT_STACKED"), "column": ("COLUMN", "NOT_STACKED"), "grouped-bar": ("COLUMN", "NOT_STACKED"),
+             "stacked-bar": ("COLUMN", "STACKED"), "stacked-bar-100": ("COLUMN", "PERCENT_STACKED"), "line": ("LINE", "NOT_STACKED"),
+             "multi-line": ("LINE", "NOT_STACKED"), "area": ("AREA", "NOT_STACKED"), "stacked-area": ("AREA", "STACKED"),
+             "step": ("STEPPED_AREA", "NOT_STACKED"), "scatter": ("SCATTER", "NOT_STACKED")}
+    if chart not in basic and chart not in ("pie", "donut"):
+        raise ValueError(f"gsheets has no builder for '{chart}' (kb/targets/gsheets.md lists the other EmbeddedChart specs to write by hand)")
+    groups = _series_split(rows, x, y, series)
+    xs = list(dict.fromkeys(r[x] for r in rows))
+    names = [n or y for n in groups]
+    values = [[x] + names] + [[v] + [dict(pts).get(v) for pts in groups.values()] for v in xs]
+    n, m = len(xs), len(names)
+    t = title or f"{y} by {x}"
+
+    def rng(col):
+        return {"sourceRange": {"sources": [{"sheetId": 0, "startRowIndex": 0, "endRowIndex": n + 1, "startColumnIndex": col, "endColumnIndex": col + 1}]}}
+
+    if chart in ("pie", "donut"):
+        spec = {"title": t, "pieChart": {"legendPosition": "LABELED_LEGEND", "domain": rng(0), "series": rng(1), **({"pieHole": 0.5} if chart == "donut" else {})}}
+    else:
+        ct, st = basic[chart]
+        spec = {"title": t, "basicChart": {"chartType": ct, "stackedType": st, "legendPosition": "BOTTOM_LEGEND" if m > 1 else "NO_LEGEND", "headerCount": 1,
+                                           "axis": [{"position": "BOTTOM_AXIS", "title": x}, {"position": "LEFT_AXIS", "title": y}],
+                                           "domains": [{"domain": rng(0)}], "series": [{"series": rng(i + 1), "targetAxis": "LEFT_AXIS"} for i in range(m)]}}
+    req = {"addChart": {"chart": {"spec": spec, "position": {"overlayPosition": {"anchorCell": {"sheetId": 0, "rowIndex": 0, "columnIndex": m + 2}, "widthPixels": 720, "heightPixels": 400}}}}}
+    return json.dumps({"range": "A1", "values": values, "requests": [req]}, indent=1, ensure_ascii=False) + "\n"
+
+
+def build_docx(chart, rows, x, y, series, title, out, data_path):
+    """A python-docx script: renders the Vega-Lite spec to PNG in memory (vl_convert) and writes a Word document
+    with a heading, the picture at 6 in wide and a caption. Run it with cw.py render --target docx."""
+    spec = build_vega_lite(chart, rows, x, y, series, title, data_path)
+    t = title or f"{y} by {x}"
+    out = out or "chart.docx"
+    lines = ["import io, json", "import vl_convert as vlc", "from docx import Document", "from docx.shared import Inches", "",
+             f"spec = {spec.strip()!r}", "png = vlc.vegalite_to_png(spec, scale=2)", "doc = Document()", f"doc.add_heading({t!r}, level=2)",
+             "doc.add_picture(io.BytesIO(png), width=Inches(6))",
+             f"cap = doc.add_paragraph({('Figure: ' + t + '. ' + chart + ' of ' + y + ' by ' + x + '.')!r}); cap.style = doc.styles['Caption']",
+             f"doc.save({out!r}); print('wrote', {out!r})"]
+    return "\n".join(lines) + "\n"
+
+
+HTML_PLOT = """<!doctype html><html><head><meta charset="utf-8"><title>{title}</title>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"></script>
+<style>body{{font-family:system-ui,sans-serif;margin:16px}}</style></head>
+<body><div id="chart" role="img" aria-label="{title}"></div>
+<script>{spec}
+document.getElementById('chart').append(chart);</script></body></html>
+"""
+
+
 HTML_ECHARTS = """<!doctype html><html><head><meta charset="utf-8"><title>{title}</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@6/dist/echarts.min.js"></script></head>
 <body><div id="chart" style="max-width:900px;height:420px" role="img" aria-label="{title}"></div>
@@ -966,7 +1157,7 @@ HTML_CHARTJS = """<!doctype html><html><head><meta charset="utf-8"><title>{title
 <body><div style="max-width:900px"><canvas id="chart" role="img" aria-label="{title}"></canvas></div>
 <script>new Chart(document.getElementById('chart'), {spec});</script></body></html>
 """
-HTML_WRAPPERS = {"vega-lite": HTML_VL, "plotly": HTML_PLOTLY, "chartjs": HTML_CHARTJS, "echarts": HTML_ECHARTS}
+HTML_WRAPPERS = {"vega-lite": HTML_VL, "plotly": HTML_PLOTLY, "chartjs": HTML_CHARTJS, "echarts": HTML_ECHARTS, "observable-plot": HTML_PLOT}
 
 
 def cmd_build(a):
@@ -1000,13 +1191,26 @@ def cmd_build(a):
         text = build_xlsx(a.chart, rows, a.x, a.y, a.series, a.title, a.png)
     elif t == "quickchart":
         text = build_quickchart(a.chart, rows, a.x, a.y, a.series, a.title)
+    elif t == "plantuml":
+        text = build_plantuml(a.chart, rows, a.x, a.y, a.series, a.title)
+    elif t == "d2":
+        text = build_d2(a.chart, rows, a.x, a.y, a.series, a.title)
+    elif t == "observable-plot":
+        text = build_observable_plot(a.chart, rows, a.x, a.y, a.series, a.title)
+    elif t == "gsheets":
+        text = build_gsheets(a.chart, rows, a.x, a.y, a.series, a.title)
+    elif t == "docx":
+        text = build_docx(a.chart, rows, a.x, a.y, a.series, a.title, a.png, a.data)
+    elif t == "gdocs":
+        print("gdocs has no builder: build a quickchart URL or a vega-lite PNG and follow kb/targets/gdocs.md")
+        return 1
     else:
-        print(f"unknown target '{t}' (mermaid, vega-lite, plotly, chartjs, matplotlib, terminal, echarts, pptx, xlsx, quickchart)")
+        print(f"unknown target '{t}' (mermaid, vega-lite, plotly, chartjs, matplotlib, terminal, echarts, pptx, xlsx, quickchart, plantuml, d2, observable-plot, gsheets, docx)")
         return 1
     if a.html:
         tpl = HTML_WRAPPERS.get(t)
         if not tpl:
-            print("--html applies to vega-lite, plotly, chartjs, echarts")
+            print("--html applies to vega-lite, plotly, chartjs, echarts, observable-plot")
             return 1
         text = tpl.format(title=a.title or f"{a.y} by {a.x}", spec=text.strip())
     if a.out:
@@ -1063,18 +1267,44 @@ def cmd_render(a):
             print("no mmdc and no npx: npm i -g @mermaid-js/mermaid-cli")
             return 1
         r = subprocess.run(cmd + ["-i", str(src), "-o", str(out), "-b", "white"], capture_output=True, text=True)
+        if m and src.exists():
+            src.unlink()  # the extracted block, not the user's file
         if r.returncode:
             print(r.stderr.strip()[-800:])
             return 1
-    elif a.target in ("matplotlib", "pptx", "xlsx"):
+    elif a.target in ("matplotlib", "pptx", "xlsx", "docx"):
         r = subprocess.run([sys.executable, str(src)], capture_output=True, text=True, cwd=str(out.parent or "."))
         if r.returncode:
             print(r.stderr.strip()[-800:])
             return 1
-    elif a.target in ("plotly", "chartjs", "echarts"):
+    elif a.target in ("plotly", "chartjs", "echarts", "observable-plot"):
         out.write_text(HTML_WRAPPERS[a.target].format(title=out.stem, spec=src.read_text(encoding="utf-8").strip()), encoding="utf-8")
+    elif a.target == "d2":
+        d2 = _which("d2", "d2.exe")
+        if not d2:
+            print("no d2 binary: https://d2lang.com/tour/install, or paste the .d2 into https://play.d2lang.com")
+            return 1
+        r = subprocess.run([d2, str(src), str(out)], capture_output=True, text=True)
+        if r.returncode:
+            print(r.stderr.strip()[-800:])
+            return 1
+    elif a.target == "plantuml":
+        pu = _which("plantuml", "plantuml.cmd")
+        if not pu:
+            import base64, zlib
+            raw = src.read_text(encoding="utf-8").encode("utf-8")
+            url = "https://kroki.io/plantuml/" + (ext or "svg") + "/" + base64.urlsafe_b64encode(zlib.compress(raw, 9)).decode()
+            print(f"no plantuml on PATH; render via Kroki: {url}")
+            return 1
+        r = subprocess.run([pu, f"-t{ext}", "-o", str(out.parent.resolve()), str(src)], capture_output=True, text=True)
+        if r.returncode:
+            print(r.stderr.strip()[-800:])
+            return 1
+        made = src.with_suffix(f".{ext}")
+        if made.exists() and made != out:
+            made.replace(out)
     else:
-        print("render targets: vega-lite, mermaid, matplotlib, pptx, xlsx, plotly, chartjs, echarts")
+        print("render targets: vega-lite, mermaid, matplotlib, pptx, xlsx, docx, plotly, chartjs, echarts, observable-plot, d2, plantuml")
         return 1
     if out.exists():
         print(f"wrote {out} ({out.stat().st_size} bytes)")
@@ -1240,6 +1470,13 @@ def cmd_targets(a):
 
 
 # ---------------------------------------------------------------- main
+def _hoist_globals(argv):
+    """Accept --json and --strict after the subcommand too (cw.py pick ... --json), by moving them to the front."""
+    argv = list(argv)
+    front = [f for f in ("--json", "--strict") if f in argv]
+    return front + [a for a in argv if a not in ("--json", "--strict")]
+
+
 def main(argv=None):
     global STRICT
     for stream in (sys.stdout, sys.stderr):  # Unicode sparklines on a cp1252 Windows console
@@ -1258,7 +1495,7 @@ def main(argv=None):
     p = sp.add_parser("data"); p.add_argument("data"); p.set_defaults(fn=cmd_data)
     p = sp.add_parser("build"); p.add_argument("--chart", required=True); p.add_argument("--target", required=True); p.add_argument("--data", required=True)
     p.add_argument("--x", required=True); p.add_argument("--y", required=True); p.add_argument("--series"); p.add_argument("--title")
-    p.add_argument("--out"); p.add_argument("--png", help="matplotlib/pptx/xlsx: the file the generated script writes (chart.png, chart.pptx, chart.xlsx)")
+    p.add_argument("--out"); p.add_argument("--png", help="matplotlib/pptx/xlsx/docx: the file the generated script writes (chart.png, chart.pptx, chart.xlsx, chart.docx)")
     p.add_argument("--html", action="store_true", help="wrap a web spec in a standalone page")
     p.add_argument("--flag", nargs="*", help="showData, dataByUrl, container, namedSeries")
     p.add_argument("--agg", default="sum", choices=["sum", "mean", "none"], help="how duplicate x values within a series combine (default sum)"); p.set_defaults(fn=cmd_build)
@@ -1271,7 +1508,7 @@ def main(argv=None):
     p = sp.add_parser("note"); p.add_argument("slug"); p.add_argument("text"); p.set_defaults(fn=cmd_note)
     sp.add_parser("doctor").set_defaults(fn=cmd_doctor)
     sp.add_parser("targets").set_defaults(fn=cmd_targets)
-    a = ap.parse_args(argv)
+    a = ap.parse_args(_hoist_globals(argv if argv is not None else sys.argv[1:]))
     STRICT = a.strict
     try:
         rc = a.fn(a) or 0

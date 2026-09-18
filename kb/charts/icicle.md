@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: none
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://plotly.com/javascript/icicle-charts/, https://vega.github.io/vega/examples/, https://www.brendangregg.com/flamegraphs.html, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]

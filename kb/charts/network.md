@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: none
+  d2: native
+  plantuml: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/network.html, https://networkx.org/documentation/stable/reference/drawing.html, https://vega.github.io/vega/examples/force-directed-layout/, https://plotly.com/python/network-graphs/, https://mermaid.js.org/syntax/flowchart.html, https://doi.org/10.1057/palgrave.ivs.9500092]
@@ -100,6 +105,14 @@ Precompute positions, then one `scatter` trace with `mode: "lines"` holding all 
 ### echarts
 
 Hand-written: series type `graph` with `layout: "force"`. See `kb/targets/echarts.md`.
+
+### plantuml
+
+`@startuml` component or object diagram with `A --> B : weight` edges; layout is PlantUML's, not force-directed.
+
+### d2
+
+`cw.py build --chart network --target d2 --data edges.csv --x source --series target --y weight --out graph.d2` (edge labels carry the weight); render with the `d2` binary or paste into play.d2lang.com.
 
 ## Notes
 

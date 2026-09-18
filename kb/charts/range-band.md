@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: approx
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/errorband.html, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://ieeexplore.ieee.org/document/6876013]
@@ -107,6 +112,14 @@ Approximate: AREA_STACKED with a transparent lower series.
 ### xlsx
 
 Approximate: AreaChart stacked with a transparent lower series.
+
+### plantuml
+
+two `area` series (upper and lower) in `@startchart`; the lower one painted background colour. Approximate.
+
+### observable-plot
+
+`Plot.areaY(data, {x, y1: "low", y2: "high", fillOpacity: 0.3})` under `Plot.lineY`.
 
 ## Notes
 

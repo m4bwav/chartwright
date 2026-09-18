@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/bump.html, https://vega.github.io/vega-lite/docs/window.html, https://github.com/davidsjoberg/ggbump]
@@ -99,6 +104,10 @@ Markdown hosts: Mermaid xychart cannot reverse its y axis or label line ends; re
 ### echarts
 
 Hand-written: `line` series per entity over rank on an inverted value axis. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.lineY(data, {x, y: "rank", stroke: "team", curve: "bump-x"})` with `y: {reverse: true}` and a text mark for labels.
 
 ## Notes
 

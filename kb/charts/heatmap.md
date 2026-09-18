@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/rect.html, https://plotly.com/python/heatmaps/, https://github.com/kurkle/chartjs-chart-matrix, https://seaborn.pydata.org/generated/seaborn.heatmap.html, https://jfly.uni-koeln.de/color/]
@@ -102,6 +107,10 @@ Community plugin `chartjs-chart-matrix`: `{"type": "matrix", "data": {"datasets"
 ### echarts
 
 `cw.py build --chart heatmap --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### observable-plot
+
+`cw.py build --chart heatmap --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

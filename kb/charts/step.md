@@ -24,6 +24,11 @@ support:
   quickchart: native
   xlsx: approx
   gdocs: image
+  docx: image
+  gsheets: native
+  observable-plot: native
+  d2: none
+  plantuml: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/line.html, https://plotly.com/javascript/line-charts/, https://www.chartjs.org/docs/latest/charts/line.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.step.html]
@@ -122,6 +127,18 @@ Approximate: a LINE chart with the data duplicated at each change.
 ### xlsx
 
 Approximate: LineChart with duplicated points at each change.
+
+### plantuml
+
+`@startchart` has no step curve; draw a `line` series with each value repeated at the next x, or use vega-lite.
+
+### observable-plot
+
+`cw.py build --chart step --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
+
+### gsheets
+
+`cw.py build --chart step --target gsheets --data file.csv --x <x> --y <y> [--series <s>] --out chart.json` writes `values` for `spreadsheets.values.update` at A1 and an `addChart` request for `spreadsheets.batchUpdate` (sheetId 0).
 
 ## Notes
 

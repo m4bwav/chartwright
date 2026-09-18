@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega-lite/examples/concat_population_pyramid.html, https://datavizcatalogue.com/methods/population_pyramid.html, https://www.datawrapper.de/charts, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]
@@ -105,6 +110,10 @@ Two horizontal `bar` traces (`orientation: "h"`), the female one with negated va
 ### echarts
 
 Hand-written: two horizontal `bar` series with the left one negated. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.barX` twice with one sex negated (`x: d => -d.value`) and a shared y age band; tick format `Math.abs`.
 
 ## Notes
 

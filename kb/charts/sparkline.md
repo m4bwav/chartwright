@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: approx
+  observable-plot: native
+  d2: none
+  plantuml: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/axis.html, https://www.datawrapper.de/blog/chart-types-guide]
@@ -110,6 +115,18 @@ Approximate: a tiny LINE chart with axes deleted (`chart.value_axis.visible = Fa
 ### quickchart
 
 Approximate: QuickChart `sparkline` type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### plantuml
+
+`cw.py build --chart sparkline --target plantuml --data file.csv --x <x> --y <y> [--series <s>]` writes an `@startchart` block (PlantUML 1.2026.0+); render with `plantuml -tsvg` or the Kroki URL `cw.py render` prints.
+
+### observable-plot
+
+`cw.py build --chart sparkline --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
+
+### gsheets
+
+the `=SPARKLINE(range, {"charttype","line"})` cell formula, not an EmbeddedChart.
 
 ## Notes
 

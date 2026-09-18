@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: approx
   gdocs: image
+  docx: image
+  gsheets: native
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/layer_candlestick.html, https://plotly.com/javascript/candlestick-charts/, https://github.com/chartjs/chartjs-chart-financial]
@@ -104,6 +109,14 @@ Hand-written: series type `candlestick` with [open, close, low, high] rows. See 
 ### xlsx
 
 Approximate: StockChart with open/high/low/close series.
+
+### observable-plot
+
+`Plot.ruleX(data, {x: "date", y1: "low", y2: "high"})` under `Plot.ruleX({y1: "open", y2: "close", stroke: d => d.close > d.open ? "green" : "red", strokeWidth: 4})`.
+
+### gsheets
+
+`candlestickChart` with `domain` and one `data` entry of `lowSeries`, `openSeries`, `closeSeries`, `highSeries` ranges.
 
 ## Notes
 

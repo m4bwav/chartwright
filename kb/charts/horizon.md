@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://idl.cs.washington.edu/papers/horizon/, https://vega.github.io/vega-lite/examples/area_horizon.html, https://observablehq.com/@d3/horizon-chart]
@@ -95,6 +100,10 @@ Markdown and Chart.js hosts: render the matplotlib or vega-lite version and link
 ### echarts
 
 Hand-written: stacked `line` bands with `areaStyle` and clipped `grid` per row. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+layered `Plot.areaY` bands with modular y; no built-in mark, so an image target is easier.
 
 ## Notes
 

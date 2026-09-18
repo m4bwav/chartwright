@@ -1,22 +1,28 @@
 {
   "name": "chartwright",
-  "version": "0.4.0",
-  "description": "Evergreen chart and graph skills: an evidence-based knowledge base of chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, notes) and render targets (Markdown/Mermaid, web with Vega-Lite, Plotly and Chart.js, static PNG/SVG via Python), a deterministic chooser and builder CLI that takes data by file reference to save tokens, and a curation skill that researches novel chart requests and grows the knowledge base so the next request is cheaper.",
+  "version": "0.5.0",
+  "description": "Evergreen chart and graph skills: an evidence-based knowledge base of chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, notes) and sixteen render targets (Markdown with Mermaid or PlantUML, web with Vega-Lite, ECharts, Plotly, Chart.js and Observable Plot, static PNG/SVG via Python, editable PowerPoint, Excel and Google Sheets charts, Word and Google Docs pictures, D2, QuickChart URLs, terminal sparklines), a deterministic chooser and builder CLI that takes data by file reference to save tokens, and a curation skill that researches novel chart requests and grows the knowledge base so the next request is cheaper.",
   "author": {
     "name": "Mark Rogers"
   },
   "license": "MIT",
   "keywords": [
-    "charts",
-    "graphs",
-    "data-visualization",
-    "mermaid",
-    "vega-lite",
-    "plotly",
     "chart.js",
-    "matplotlib",
+    "charts",
+    "data-visualization",
+    "docx",
+    "echarts",
     "evergreen",
-    "knowledge-base"
+    "graphs",
+    "knowledge-base",
+    "matplotlib",
+    "mermaid",
+    "observable-plot",
+    "plantuml",
+    "plotly",
+    "pptx",
+    "vega-lite",
+    "xlsx"
   ],
   "skills": "./skills",
   "repository": "https://github.com/m4bwav/chartwright"

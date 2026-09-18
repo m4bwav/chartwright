@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.data-to-viz.com/graph/ridgeline.html, https://vega.github.io/vega-lite/examples/area_density_stacked.html, https://plotly.com/python/violin/, https://github.com/leotac/joypy, https://wilkelab.org/ggridges/]
@@ -100,6 +105,10 @@ One `violin` trace per group with `side: "positive"`, `orientation: "h"`, `width
 ### echarts
 
 Hand-written: several `grid` entries with `line` plus `areaStyle` offset per row. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.areaY` with `fy: "group"` facets and a small negative `marginBottom`; density computed beforehand.
 
 ## Notes
 

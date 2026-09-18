@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: approx
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/, https://www.data-to-viz.com/graph/lollipop.html]
@@ -118,6 +123,10 @@ Approximate: floating bars `[low, high]`; write the Chart.js config by hand and 
 ### xlsx
 
 Approximate: stacked BarChart with a transparent first series.
+
+### observable-plot
+
+`Plot.link(data, {x1: "before", x2: "after", y: "category"})` plus two `Plot.dot` marks.
 
 ## Notes
 

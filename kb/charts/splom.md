@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega-lite/examples/interactive_splom.html, https://plotly.com/python/splom/, https://seaborn.pydata.org/generated/seaborn.pairplot.html, https://www.data-to-viz.com/graph/correlogram.html]
@@ -100,6 +105,10 @@ No faceting; a grid of separate scatter canvases is possible but tedious and axi
 ### echarts
 
 Hand-written: several `grid` entries with `scatter` series per pair. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+facet `Plot.dot` with `fx`/`fy` over the variable pairs from a melted table; approximate scatter matrix.
 
 ## Notes
 

@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/caveat/boxplot.html, https://vega.github.io/vega-lite/docs/boxplot.html, https://plotly.com/python/box-plots/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.boxplot.html, https://www.autodesk.com/research/publications/same-stats-different-graphs]
@@ -105,6 +110,10 @@ Hand-written: series type `boxplot` (pre-compute the five numbers or use the ecS
 ### quickchart
 
 Approximate: QuickChart `boxplot` plugin type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### observable-plot
+
+`cw.py build --chart boxplot --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

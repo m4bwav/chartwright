@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-18
 last_verified: 2026-09-18
 sources: [https://plotly.com/python/2d-histogram-contour/, https://seaborn.pydata.org/generated/seaborn.kdeplot.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.contour.html, https://www.data-to-viz.com/graph/density2d.html, https://vega.github.io/vega-lite/docs/density.html]
@@ -83,6 +88,10 @@ seaborn: `sns.kdeplot(data=df, x="x", y="y", fill=True, levels=8, hue="group")` 
 ### echarts
 
 Hand-written: `heatmap` on value axes over binned counts. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`cw.py build --chart density-2d --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

@@ -1,6 +1,6 @@
 # chartwright
 
-Evergreen chart and graph skills for AI coding agents. A knowledge base of about 80 chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, accessibility, per-target build recipes, dated notes), eleven render targets (Markdown via Mermaid; web via Vega-Lite, ECharts, Plotly and Chart.js; static PNG/SVG via Python; editable PowerPoint and Excel charts; Google Docs via image import; chart-as-URL images via QuickChart; terminal sparklines), a standard-library CLI that picks and builds charts from a CSV so the data never passes through the model, and a curation skill that researches novel requests and grows the base so the next request is cheaper.
+Evergreen chart and graph skills for AI coding agents. A knowledge base of about 80 chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, accessibility, per-target build recipes, dated notes), sixteen render targets (Markdown via Mermaid and PlantUML; web via Vega-Lite, ECharts, Plotly, Chart.js and Observable Plot; static PNG/SVG via Python; editable PowerPoint, Excel and Google Sheets charts; Word and Google Docs via pictures; D2 for networks and trees; chart-as-URL images via QuickChart; terminal sparklines), a standard-library CLI that picks and builds charts from a CSV so the data never passes through the model, and a curation skill that researches novel requests and grows the base so the next request is cheaper.
 
 ## Skills
 
@@ -38,6 +38,9 @@ python scripts/cw.py render --target vega-lite --in chart.vl.json --out chart.pn
 python scripts/cw.py build --chart column --target pptx --data sales.csv --x region --y sales --out chart.py --png deck.pptx
 python scripts/cw.py render --target pptx --in chart.py --out deck.pptx      # editable PowerPoint chart
 python scripts/cw.py build --chart line --target terminal --data prices.csv --x date --y price   # block sparkline
+python scripts/cw.py build --chart bar --target docx --data sales.csv --x region --y sales --out chart.py --png report.docx
+python scripts/cw.py render --target docx --in chart.py --out report.docx      # Word document with the chart as a picture and caption
+python scripts/cw.py build --chart column --target gsheets --data sales.csv --x region --y sales --out chart.json   # values + addChart request for the Sheets API
 python scripts/cw.py new-chart horizon --name "Horizon chart" --family change-over-time --shapes time,q*n
 python scripts/cw.py note pie "fine for two slices when the question is majority"
 python scripts/cw.py doctor                      # which renderers this machine has

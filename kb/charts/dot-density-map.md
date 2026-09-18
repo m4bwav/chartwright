@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://datavizcatalogue.com/methods/dot_distribution_map.html, https://vega.github.io/vega-lite/docs/geoshape.html, https://plotly.com/javascript/scatter-plots-on-maps/, https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.sample_points.html]
@@ -87,6 +92,10 @@ Two layers: a `geoshape` base map and a `circle` layer with `longitude` and `lat
 ### echarts
 
 Hand-written: `scatter` on `geo` with small symbols. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.geo(land)` under `Plot.dot(points, {x: "lon", y: "lat", r: 1})` with a `projection`.
 
 ## Notes
 

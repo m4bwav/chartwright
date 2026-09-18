@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/tick_strip.html, https://plotly.com/python/strip-charts/, https://seaborn.pydata.org/generated/seaborn.stripplot.html]
@@ -97,6 +102,10 @@ A `scatter` type with the category mapped to an integer y plus a small random of
 ### echarts
 
 Hand-written: `scatter` on a category axis. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`cw.py build --chart strip --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

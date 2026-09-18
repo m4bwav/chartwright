@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: approx
   gdocs: image
+  docx: image
+  gsheets: native
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/waterfall_chart.html, https://plotly.com/javascript/waterfall-charts/, https://www.storytellingwithdata.com/blog/2020/2/26/what-is-a-waterfall-chart]
@@ -119,6 +124,14 @@ Approximate: floating bars `[start, end]`; write the Chart.js config by hand and
 ### xlsx
 
 Approximate: stacked BarChart with a transparent base series.
+
+### observable-plot
+
+`Plot.rectY` with hand-computed y1/y2 running totals and a `Plot.ruleY([0])`.
+
+### gsheets
+
+`waterfallChart` with `domain`, `series[].data`, `stackedType`; subtotals via `customSubtotals`.
 
 ## Notes
 

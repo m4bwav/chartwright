@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/dual-axis-charts, https://vega.github.io/vega-lite/examples/connected_scatterplot.html, https://ieeexplore.ieee.org/document/7192687]
@@ -99,6 +104,14 @@ Markdown hosts: Mermaid has no scatter mark; render the vega-lite spec to SVG an
 ### echarts
 
 Hand-written: `line` series on two value axes with `symbol` and per-point labels. See `kb/targets/echarts.md`.
+
+### plantuml
+
+`@startchart` `line` with coordinate pairs `[(x1,y1), (x2,y2)]` plus a `scatter` of the same points.
+
+### observable-plot
+
+`cw.py build --chart connected-scatter --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

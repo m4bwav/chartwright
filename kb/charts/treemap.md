@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: native
+  observable-plot: none
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/syntax/treemap.html, https://plotly.com/javascript/treemaps/, https://vega.github.io/vega/examples/treemap/, https://github.com/laserson/squarify, https://www.semanticscholar.org/paper/55d3281f6b34c50df975b7261044689bf73ec610]
@@ -107,6 +112,10 @@ Hand-written: series type `treemap` with nested `children`. See `kb/targets/echa
 ### quickchart
 
 Approximate: QuickChart `treemap` plugin type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### gsheets
+
+`treemapChart` with `labels`, `parentLabels`, `sizeData`, `colorData` ranges.
 
 ## Notes
 

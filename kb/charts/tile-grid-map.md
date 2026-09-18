@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/docs/rect.html, https://github.com/kurkle/chartjs-chart-matrix, https://github.com/hafen/geofacet]
@@ -102,6 +107,10 @@ A `heatmap` trace with `z` as a 2D array holding the value at `[row][col]` and `
 ### echarts
 
 Hand-written: `heatmap` on a hand-laid category grid. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.cell(tiles, {x: "col", y: "row", fill: "value"})` with a hand-made tile layout table and `Plot.text` for the codes.
 
 ## Notes
 

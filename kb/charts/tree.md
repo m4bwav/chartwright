@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: approx
+  observable-plot: native
+  d2: native
+  plantuml: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://mermaid.js.org/syntax/flowchart.html, https://mermaid.js.org/syntax/mindmap.html, https://vega.github.io/vega/examples/tree-layout/, https://d3js.org/d3-hierarchy/tree, https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_agraph.graphviz_layout.html]
@@ -101,6 +106,22 @@ Hand-written: `networkx` graph, `pos = nx.nx_agraph.graphviz_layout(G, prog="dot
 ### echarts
 
 Hand-written: series type `tree`. See `kb/targets/echarts.md`.
+
+### plantuml
+
+`@startmindmap` (`* root`, `** child`) or `@startwbs` for a work-breakdown tree.
+
+### d2
+
+`cw.py build --chart tree --target d2 --data nodes.csv --x child --series parent --out tree.d2` (`direction: down`).
+
+### observable-plot
+
+`Plot.tree(paths, {path: "a/b/c"})` draws a tidy tree from slash-separated paths.
+
+### gsheets
+
+`orgChart` (`labels`, `parentLabels`) draws a boxed hierarchy, not a tidy tree.
 
 ## Notes
 

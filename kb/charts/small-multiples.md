@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/small-multiple-line-charts, https://vega.github.io/vega-lite/docs/facet.html, https://plotly.com/python/facet-plots/, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -108,6 +113,10 @@ One sparkline per panel: `cw.py build --chart line --target terminal --data file
 ### echarts
 
 Hand-written: several `grid` entries with matching series `xAxisIndex`/`yAxisIndex`. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`cw.py build --chart small-multiples --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

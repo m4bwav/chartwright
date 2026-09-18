@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/geo_circle.html, https://plotly.com/javascript/bubble-maps/, https://geopandas.org/en/stable/docs/user_guide/mapping.html]
@@ -97,6 +102,10 @@ Not supported by `cw.py build`; hand-written from the recipes. A base map (TopoJ
 ### echarts
 
 Hand-written: `scatter` on a `geo` coordinate system. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.geo(land)` under `Plot.dot(places, {x: "lon", y: "lat", r: "value"})`; `r` uses a sqrt scale by default.
 
 ## Notes
 

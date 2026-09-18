@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/parallel.html, https://plotly.com/javascript/parallel-coordinates-plot/, https://vega.github.io/vega-lite/examples/parallel_coordinate.html, https://pandas.pydata.org/docs/reference/api/pandas.plotting.parallel_coordinates.html]
@@ -96,6 +101,10 @@ Native trace with brushing and axis drag built in; `line.color` by one dimension
 ### echarts
 
 Hand-written: `parallelAxis` plus series type `parallel`. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.lineY(long, Plot.normalizeY("extent", {x: "axis", y: "value", z: "row"}))` after melting to long form.
 
 ## Notes
 

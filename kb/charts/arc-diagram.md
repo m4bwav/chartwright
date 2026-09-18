@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/arc.html, https://datavizcatalogue.com/methods/arc_diagram.html, https://vega.github.io/vega/examples/arc-diagram/, https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Arc.html]
@@ -86,6 +91,10 @@ Nodes as a `point` layer on `x` (ordinal position) at fixed `y`; arcs as a `line
 ### echarts
 
 Hand-written: series type `graph` with `layout: "none"`, nodes on a line and `lineStyle.curveness`. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.arrow` or `Plot.link` with `bend` between nodes placed on one axis; hand-computed positions.
 
 ## Notes
 

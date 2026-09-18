@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/timeunit.html, https://echarts.apache.org/en/option.html#calendar, https://plotly.com/python/heatmaps/]
@@ -52,7 +57,7 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 - Trend over the year: `line`.
 - Weekly or monthly totals: `column`.
 - Weekday by hour patterns: `heatmap` (7 by 24 grid).
-- Seasonal comparison across years: `small-multiples` of lines, one per year, or a cycle plot.
+- Seasonal comparison across years: `small-multiples` of lines, one per year, or `cycle-plot` (one panel per month, a mean line, the within-month trend across years).
 - Daily distribution: `histogram` of daily values.
 
 ## Evidence
@@ -101,6 +106,10 @@ Markdown hosts: render the vega-lite spec to SVG and link it.
 ### echarts
 
 Hand-written: series type `calendar` + `heatmap` with `coordinateSystem: "calendar"`. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`cw.py build --chart calendar-heatmap --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
 
 ## Notes
 

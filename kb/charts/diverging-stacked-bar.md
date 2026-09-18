@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/stacked-column-charts, https://vega.github.io/vega-lite/examples/, https://plotly.com/javascript/bar-charts/]
@@ -90,6 +95,10 @@ One horizontal `bar` trace per answer category, negatives as negative values (`x
 ### matplotlib
 
 `left = -(negatives.sum(axis=1) + neutral/2)` per row, then for each category in scale order `ax.barh(items, share, left=left, label=name, color=palette[i]); left += share`, `ax.axvline(0, color="black")`, `ax.xaxis.set_major_formatter(lambda v, _: f"{abs(v):.0f}%")`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### observable-plot
+
+`Plot.barX(data, Plot.stackX({offset: "center"}, {y, x: "count", fill: "level"}))`; a true neutral-centred offset needs a hand-computed x1/x2.
 
 ## Notes
 

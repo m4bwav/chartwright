@@ -332,5 +332,100 @@ class AuthoringTests(unittest.TestCase):
         self.assertIn("mermaid", r.stdout)
 
 
+
+class NewTargetTests(unittest.TestCase):
+    """plantuml, d2, observable-plot, gsheets, docx (0.5.0) and the fixes from the fresh-session runs."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def build(self, *argv):
+        rc, out = run("build", *argv)
+        self.assertEqual(rc, 0, out)
+        return out
+
+    def test_plantuml_chart_block(self):
+        out = self.build("--chart", "bar", "--target", "plantuml", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        self.assertTrue(out.startswith("@startchart" + chr(10)))
+        self.assertIn('v-axis "sales" 0 --> 150', out)
+        self.assertIn('bar "A" [120, 95, 60]', out)
+        self.assertIn("legend right", out)
+        out = self.build("--chart", "stacked-bar", "--target", "plantuml", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        self.assertIn("stackMode stacked", out)
+        rc, out = run("build", "--chart", "pie", "--target", "plantuml", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
+        self.assertEqual(rc, 1)
+
+    def test_d2_network_and_refusal(self):
+        out = self.build("--chart", "network", "--target", "d2", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        self.assertIn("North -> A: 120", out)
+        self.assertIn("direction: right", out)
+        rc, out = run("build", "--chart", "bar", "--target", "d2", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
+        self.assertEqual(rc, 1)
+        self.assertIn("diagrams, not data charts", out)
+
+    def test_observable_plot_snippet_and_page(self):
+        out = self.build("--chart", "line", "--target", "observable-plot", "--data", str(FIX / "prices.csv"), "--x", "date", "--y", "price")
+        self.assertIn('new Date("2026-01-01")', out)
+        self.assertIn('Plot.lineY(data, {x: "x", y: "y"})', out)
+        out = self.build("--chart", "grouped-bar", "--target", "observable-plot", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        self.assertIn('fx: "x"', out)
+        self.assertIn("color: {legend: true}", out)
+        html = self.tmp / "p.html"
+        self.build("--chart", "column", "--target", "observable-plot", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--html", "--out", str(html))
+        text = html.read_text(encoding="utf-8")
+        self.assertIn("@observablehq/plot@0.6", text)
+        self.assertIn("append(chart)", text)
+
+    def test_gsheets_values_and_add_chart(self):
+        out = self.build("--chart", "stacked-bar", "--target", "gsheets", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        d = json.loads(out)
+        self.assertEqual(d["values"][0], ["region", "A", "B"])
+        spec = d["requests"][0]["addChart"]["chart"]["spec"]["basicChart"]
+        self.assertEqual((spec["chartType"], spec["stackedType"], len(spec["series"])), ("COLUMN", "STACKED", 2))
+        self.assertEqual(spec["domains"][0]["domain"]["sourceRange"]["sources"][0]["endRowIndex"], 4)
+        out = self.build("--chart", "donut", "--target", "gsheets", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
+        self.assertEqual(json.loads(out)["requests"][0]["addChart"]["chart"]["spec"]["pieChart"]["pieHole"], 0.5)
+
+    def test_docx_script_and_render(self):
+        script, doc = self.tmp / "c.py", self.tmp / "report.docx"
+        out = self.build("--chart", "bar", "--target", "docx", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--out", str(script), "--png", str(doc))
+        text = script.read_text(encoding="utf-8")
+        compile(text, "c.py", "exec")
+        self.assertIn("doc.add_picture", text)
+        try:
+            import docx, vl_convert  # noqa: F401
+        except ImportError:
+            self.skipTest("python-docx or vl_convert not installed")
+        rc, msg = run("render", "--target", "docx", "--in", str(script), "--out", str(doc))
+        self.assertEqual(rc, 0, msg)
+        import zipfile
+        self.assertTrue(any(n.startswith("word/media/") for n in zipfile.ZipFile(doc).namelist()))
+
+    def test_global_flags_after_subcommand(self):
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = cw.main(["pick", "--question", "bar chart of sales by region", "--shape", "n,q", "--json"])
+        self.assertEqual(rc, 0)
+        self.assertEqual(json.loads(buf.getvalue())["picks"][0]["slug"], "bar")
+
+    def test_magnitude_question_picks_bar_not_beeswarm(self):
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            cw.main(["--json", "pick", "--question", "how long does one clip take to render at each quality preset", "--shape", "n,q", "--categories", "3"])
+        self.assertEqual(json.loads(buf.getvalue())["picks"][0]["slug"], "bar")
+
+    def test_mermaid_bars_start_at_zero_and_vega_bar_sorted(self):
+        out = self.build("--chart", "bar", "--target", "mermaid", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
+        self.assertIn('y-axis "sales" 0 --> 250', out)
+        out = self.build("--chart", "line", "--target", "mermaid", "--data", str(FIX / "prices.csv"), "--x", "date", "--y", "price")
+        self.assertNotIn("-->", out)
+        out = self.build("--chart", "bar", "--target", "vega-lite", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
+        self.assertEqual(json.loads(out)["encoding"]["x"]["sort"], "-y")
+        out = self.build("--chart", "line", "--target", "vega-lite", "--data", str(FIX / "prices.csv"), "--x", "date", "--y", "price")
+        self.assertEqual(json.loads(out)["encoding"]["x"]["axis"], {"tickCount": "month", "format": "%b %Y"})
+
 if __name__ == "__main__":
     unittest.main()

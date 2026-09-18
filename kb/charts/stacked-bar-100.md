@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: native
   gdocs: image
+  docx: image
+  gsheets: native
+  observable-plot: native
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/stacked-column-charts, https://vega.github.io/vega-lite/docs/stack.html, https://plotly.com/javascript/reference/layout/#layout-barnorm]
@@ -115,6 +120,14 @@ Approximate: pre-computed shares as a stacked bar; write the Chart.js config by 
 ### xlsx
 
 `cw.py build --chart stacked-bar-100 --target xlsx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.xlsx` then `cw.py render --target xlsx --in chart.py --out chart.xlsx` (data sheet plus editable chart).
+
+### observable-plot
+
+`cw.py build --chart stacked-bar-100 --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
+
+### gsheets
+
+`cw.py build --chart stacked-bar-100 --target gsheets --data file.csv --x <x> --y <y> [--series <s>] --out chart.json` writes `values` for `spreadsheets.values.update` at A1 and an `addChart` request for `spreadsheets.batchUpdate` (sheetId 0).
 
 ## Notes
 

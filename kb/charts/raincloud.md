@@ -24,6 +24,11 @@ support:
   quickchart: none
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: image
+  observable-plot: approx
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://discovery.ucl.ac.uk/id/eprint/10178652/, https://github.com/pog87/PtitPrince, https://github.com/njudd/ggrain, https://plotly.com/python/violin/, https://vega.github.io/vega-lite/docs/layer.html]
@@ -94,6 +99,10 @@ No density primitive and no jitter helper; the composition is not worth doing in
 ### echarts
 
 Hand-written: custom violin series plus `scatter` jitter plus `boxplot`. See `kb/targets/echarts.md`.
+
+### observable-plot
+
+`Plot.boxY` plus `Plot.dot` with `Plot.dodgeX` beside it; the half-density needs a precomputed KDE.
 
 ## Notes
 

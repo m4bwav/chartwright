@@ -24,6 +24,11 @@ support:
   quickchart: native
   xlsx: native
   gdocs: image
+  docx: image
+  gsheets: native
+  observable-plot: native
+  d2: none
+  plantuml: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.semanticscholar.org/paper/55d3281f6b34c50df975b7261044689bf73ec610, https://vega.github.io/vega-lite/docs/circle.html, https://plotly.com/python/bubble-charts/, https://www.chartjs.org/docs/latest/charts/bubble.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html]
@@ -113,6 +118,18 @@ Not drawable in Mermaid. Render with the vega-lite target and link the image.
 ### xlsx
 
 `cw.py build --chart bubble --target xlsx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.xlsx` then `cw.py render --target xlsx --in chart.py --out chart.xlsx` (data sheet plus editable chart).
+
+### plantuml
+
+`@startchart` `scatter` with per-series marker size; no continuous size channel, so bin the third variable into a few series.
+
+### observable-plot
+
+`cw.py build --chart bubble --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
+
+### gsheets
+
+`bubbleChart` spec (`domain`, `series`, `bubbleSizes`, `groupIds`) in the `addChart` request.
 
 ## Notes
 

@@ -24,6 +24,11 @@ support:
   quickchart: native
   xlsx: native
   gdocs: image
+  docx: image
+  gsheets: native
+  observable-plot: native
+  d2: none
+  plantuml: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://www.data-to-viz.com/caveat/grouped_bar.html]
@@ -128,6 +133,18 @@ One `{"type": "bar", "name": "2025", "x": regions, "y": values}` trace per serie
 ### xlsx
 
 `cw.py build --chart grouped-bar --target xlsx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.xlsx` then `cw.py render --target xlsx --in chart.py --out chart.xlsx` (data sheet plus editable chart).
+
+### plantuml
+
+`cw.py build --chart grouped-bar --target plantuml --data file.csv --x <x> --y <y> [--series <s>]` writes an `@startchart` block (PlantUML 1.2026.0+); render with `plantuml -tsvg` or the Kroki URL `cw.py render` prints.
+
+### observable-plot
+
+`cw.py build --chart grouped-bar --target observable-plot --data file.csv --x <x> --y <y> [--series <s>]` emits the `Plot.plot({...})` snippet; add `--html --out page.html` for a page (d3 and Plot 0.6 from jsdelivr).
+
+### gsheets
+
+`cw.py build --chart grouped-bar --target gsheets --data file.csv --x <x> --y <y> [--series <s>] --out chart.json` writes `values` for `spreadsheets.values.update` at A1 and an `addChart` request for `spreadsheets.batchUpdate` (sheetId 0).
 
 ## Notes
 

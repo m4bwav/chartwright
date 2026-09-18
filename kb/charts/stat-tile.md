@@ -24,6 +24,11 @@ support:
   quickchart: approx
   xlsx: image
   gdocs: image
+  docx: image
+  gsheets: native
+  observable-plot: none
+  d2: none
+  plantuml: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/chart-types-guide, https://plotly.com/javascript/indicator/, https://vega.github.io/vega-lite/docs/text.html, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -117,6 +122,10 @@ Approximate: a text box plus an optional sparkline chart.
 ### quickchart
 
 Approximate: a `doughnut` with centre text via the `doughnutlabel` plugin, or text only; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### gsheets
+
+`scorecardChart` with `keyValueData` and optional `baselineValueData` for the delta.
 
 ## Notes
 
