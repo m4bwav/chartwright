@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: approx
   quickchart: approx
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/chart-types-guide, https://plotly.com/javascript/indicator/, https://vega.github.io/vega-lite/docs/text.html, https://journals.sagepub.com/doi/10.1177/15291006211051956]

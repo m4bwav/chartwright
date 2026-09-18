@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: approx
   quickchart: approx
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/axis.html, https://www.datawrapper.de/blog/chart-types-guide]

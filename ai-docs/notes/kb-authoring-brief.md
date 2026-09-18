@@ -6,7 +6,7 @@ For anyone (human or agent) writing chart files in `kb/charts/`. Written 2026-09
 
 1. `kb/SCHEMA.md` (frontmatter fields, families, shape grammar, required sections).
 2. `kb/charts/line.md`: the exemplar; match its depth, tone and structure exactly.
-3. `kb/targets/*.md` (nine files): what each target can draw; a chart's `support:` map must agree with them.
+3. `kb/targets/*.md` (eleven files): what each target can draw; a chart's `support:` map must agree with them.
 4. `kb/rules/selection.md` and `kb/rules/evidence.md`: cite evidence by author-year as those files do.
 5. The relevant cards in `ai-docs/research/2026-09-17-chart-taxonomy-and-evidence.md` (section 2, by family) and, for build recipes, `ai-docs/research/2026-09-17-libraries-and-render-targets.md`.
 
@@ -31,6 +31,8 @@ For anyone (human or agent) writing chart files in `kb/charts/`. Written 2026-09
 - echarts (2026-09-18): line, multi-line, step, area, stacked-area, bar, column, grouped-bar, stacked-bar, stacked-bar-100, scatter, bubble, pie, donut, radar, funnel, sankey, alluvial, heatmap.
 - pptx (2026-09-18): bar, column, grouped-bar, stacked-bar, stacked-bar-100, line, multi-line, area, stacked-area, pie, donut, radar, scatter, bubble.
 - quickchart (2026-09-18): everything chartjs builds, as a URL.
+- xlsx (2026-09-18): bar, column, grouped-bar, stacked-bar, stacked-bar-100, line, multi-line, area, stacked-area, pie, donut, radar, scatter, bubble.
+- gdocs (2026-09-18): no builder (images only).
 - plotly: line, multi-line, step, area, stacked-area, scatter, bubble, bar, column, grouped-bar, stacked-bar, pie, donut, histogram, boxplot, heatmap.
 - chartjs: line, multi-line, area, step, bar, column, grouped-bar, stacked-bar, pie, donut, scatter, bubble, radar, polar-area.
 - matplotlib: line, multi-line, step, area, bar, column, grouped-bar, scatter, histogram, pie, donut, boxplot.

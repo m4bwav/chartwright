@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.data-to-viz.com/graph/density.html, https://vega.github.io/vega-lite/docs/density.html, https://seaborn.pydata.org/generated/seaborn.kdeplot.html, https://plotly.com/python/distplot/, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]

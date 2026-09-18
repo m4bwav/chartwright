@@ -80,3 +80,10 @@ Append-only. Newest at the bottom. One entry per working session.
 - Three targets added with builders and tests: `echarts` (option JSON plus page), `pptx` (python-pptx script producing an editable chart; a 34 KB deck rendered), `quickchart` (Chart.js config as a URL; live fetch returned image/png). Support lines and recipes were inserted across all 82 chart files by a table-driven script, which is the cheap way to add a target.
 - Both SKILL.md files rewritten as short routers (about 5 KB each) that point at `references/` files read only at the step that needs them, per the evergreen budget rule and the user's request.
 - Privacy scan before going public: removed the one absolute user path from HANDOFF; no emails, tokens or machine names in tracked files. Repository visibility set to public.
+
+## 2026-09-18: 0.4.0, Excel and Google Docs
+
+- Google Docs test: the user's Drive has no numbers-heavy Doc, so a test Doc was created from HTML (the Q2 summary with two QuickChart image URLs) through the Drive connector. The connector's text view cannot show images, so visual confirmation is left to the user. Recorded as the `gdocs` target: Docs has no chart API; images via HTML import, Docs API `insertInlineImage`, or manual insert.
+- `xlsx` target: openpyxl script (data sheet plus native chart), builder for 14 types, render branch, test. A stacked bar workbook rendered in the test suite.
+- Gotcha recorded: a patch script that writes another Python file must not double-escape newlines; the first xlsx wiring pass silently did nothing until rewritten with real newlines.
+- Context note: this session reached about 45% of the window; a fresh session should pick up from HANDOFF.md.

@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: approx
   quickchart: none
+  xlsx: approx
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/errorband.html, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://ieeexplore.ieee.org/document/6876013]
@@ -101,6 +103,10 @@ Hand-written: two stacked `line` series with `areaStyle` on the upper and transp
 ### pptx
 
 Approximate: AREA_STACKED with a transparent lower series.
+
+### xlsx
+
+Approximate: AreaChart stacked with a transparent lower series.
 
 ## Notes
 

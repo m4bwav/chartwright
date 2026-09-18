@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: native
   quickchart: approx
+  xlsx: native
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/stacked-column-charts, https://vega.github.io/vega-lite/docs/stack.html, https://plotly.com/javascript/reference/layout/#layout-barnorm]
@@ -109,6 +111,10 @@ Hand-written: compute `shares = values / values.sum(axis=0)`, then `ax.bar(cats,
 ### quickchart
 
 Approximate: pre-computed shares as a stacked bar; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### xlsx
+
+`cw.py build --chart stacked-bar-100 --target xlsx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.xlsx` then `cw.py render --target xlsx --in chart.py --out chart.xlsx` (data sheet plus editable chart).
 
 ## Notes
 

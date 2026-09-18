@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/network.html, https://networkx.org/documentation/stable/reference/drawing.html, https://vega.github.io/vega/examples/force-directed-layout/, https://plotly.com/python/network-graphs/, https://mermaid.js.org/syntax/flowchart.html, https://doi.org/10.1057/palgrave.ivs.9500092]

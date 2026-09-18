@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: approx
   quickchart: approx
+  xlsx: approx
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/, https://www.data-to-viz.com/graph/lollipop.html]
@@ -112,6 +114,10 @@ Approximate: a BAR_STACKED with a transparent first series and two scatter marke
 ### quickchart
 
 Approximate: floating bars `[low, high]`; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### xlsx
+
+Approximate: stacked BarChart with a transparent first series.
 
 ## Notes
 

@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: image
   quickchart: none
+  xlsx: approx
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/layer_candlestick.html, https://plotly.com/javascript/candlestick-charts/, https://github.com/chartjs/chartjs-chart-financial]
@@ -98,6 +100,10 @@ Markdown hosts: render the vega-lite spec to SVG and link it.
 ### echarts
 
 Hand-written: series type `candlestick` with [open, close, low, high] rows. See `kb/targets/echarts.md`.
+
+### xlsx
+
+Approximate: StockChart with open/high/low/close series.
 
 ## Notes
 

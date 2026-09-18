@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: native
   quickchart: native
+  xlsx: native
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -123,6 +125,10 @@ xychart-beta
 ### quickchart
 
 `cw.py build --chart line --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
+
+### xlsx
+
+`cw.py build --chart line --target xlsx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.xlsx` then `cw.py render --target xlsx --in chart.py --out chart.xlsx` (data sheet plus editable chart).
 
 ## Notes
 

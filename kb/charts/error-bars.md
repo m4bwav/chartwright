@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: approx
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega-lite/docs/errorbar.html, https://plotly.com/python/error-bars/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.errorbar.html, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]

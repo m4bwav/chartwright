@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.4.0 (2026-09-18)
+
+- Targets `xlsx` (openpyxl data sheet plus native chart, with builder and render) and `gdocs` (image routes into Google Docs; verified by creating a Doc from HTML with QuickChart images). Eleven targets total.
+
 ## 0.3.0 (2026-09-18)
 
 - Three more targets with builders: `echarts` (option JSON and page), `pptx` (editable PowerPoint chart via python-pptx), `quickchart` (Chart.js config as an image URL). Nine targets total, wired into all 82 chart files.

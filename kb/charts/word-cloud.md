@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://datavizcatalogue.com/methods/wordcloud.html, https://www.data-to-viz.com/graph/wordcloud.html, https://vega.github.io/vega/examples/word-cloud/, https://github.com/sgratzl/chartjs-chart-wordcloud, https://github.com/amueller/word_cloud, https://www.datawrapper.de/blog/chart-types-guide]

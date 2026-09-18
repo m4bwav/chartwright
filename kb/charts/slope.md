@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: approx
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/line_slope.html, https://journals.sagepub.com/doi/10.1177/15291006211051956]

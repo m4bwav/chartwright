@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.statsmodels.org/stable/generated/statsmodels.graphics.gofplots.qqplot.html, https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.probplot.html, https://vega.github.io/vega-lite/docs/quantile.html, https://plotly.com/python/v3/normality-test/, https://datavizcatalogue.com/]

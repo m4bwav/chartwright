@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: approx
   quickchart: approx
+  xlsx: approx
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/layer_bar_bullet.html, https://plotly.com/javascript/bullet-charts/, https://datavizcatalogue.com/methods/bullet_graph.html]
@@ -109,6 +111,10 @@ Approximate: BAR_STACKED bands plus a thin bar series.
 ### quickchart
 
 Approximate: QuickChart `progressBar` or a stacked horizontal bar; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### xlsx
+
+Approximate: stacked BarChart bands plus a thin bar series.
 
 ## Notes
 

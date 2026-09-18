@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: native
   quickchart: none
+  xlsx: native
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/stacked-column-charts, https://www.data-to-viz.com/caveat/stacking.html, https://vega.github.io/vega-lite/docs/stack.html]
@@ -102,6 +104,10 @@ Markdown hosts: Mermaid has no area or stacked mark; render the vega-lite spec t
 ### pptx
 
 `cw.py build --chart stacked-area --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### xlsx
+
+`cw.py build --chart stacked-area --target xlsx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.xlsx` then `cw.py render --target xlsx --in chart.py --out chart.xlsx` (data sheet plus editable chart).
 
 ## Notes
 

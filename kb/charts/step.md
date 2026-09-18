@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: approx
   quickchart: native
+  xlsx: approx
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/line.html, https://plotly.com/javascript/line-charts/, https://www.chartjs.org/docs/latest/charts/line.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.step.html]
@@ -116,6 +118,10 @@ Approximate: a LINE chart with the data duplicated at each change.
 ### quickchart
 
 `cw.py build --chart step --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
+
+### xlsx
+
+Approximate: LineChart with duplicated points at each change.
 
 ## Notes
 

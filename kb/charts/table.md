@@ -22,6 +22,8 @@ support:
   echarts: none
   pptx: approx
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/chart-types-guide, https://datavizcatalogue.com/methods/table.html, https://plotly.com/javascript/table/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.table.html, https://www.w3.org/WAI/tutorials/tables/]

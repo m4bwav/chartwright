@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://plotly.com/javascript/sunburst-charts/, https://vega.github.io/vega/examples/sunburst/, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://eagereyes.org/pie-charts]

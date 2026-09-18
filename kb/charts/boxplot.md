@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: image
   quickchart: approx
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/caveat/boxplot.html, https://vega.github.io/vega-lite/docs/boxplot.html, https://plotly.com/python/box-plots/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.boxplot.html, https://www.autodesk.com/research/publications/same-stats-different-graphs]

@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega-lite/examples/concat_population_pyramid.html, https://datavizcatalogue.com/methods/population_pyramid.html, https://www.datawrapper.de/charts, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]

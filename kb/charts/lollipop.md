@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: approx
   quickchart: approx
+  xlsx: approx
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/lollipop.html, https://vega.github.io/vega-lite/examples/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.stem.html]
@@ -108,6 +110,10 @@ Approximate: a clustered bar with narrow gap plus an XY_SCATTER overlay is not p
 ### quickchart
 
 Approximate: bar plus scatter mixed datasets; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### xlsx
+
+Approximate: not possible in one native chart; use a PNG.
 
 ## Notes
 

@@ -9,7 +9,8 @@ Pick the smallest target the destination renders natively, then the cheapest to 
 | Word, Google Docs, PowerPoint, Google Slides, Slack, email, LaTeX, PDF | PNG at 2x via `vega-lite` render | `matplotlib` script for types outside Vega-Lite; `pptx` target for an editable PowerPoint chart; `quickchart` URL when an image link is enough and the data is not confidential | These hosts show images only; SVG is rejected or degraded |
 | Terminal, chat reply with no image support | `terminal` target: `cw.py build --chart line --target terminal` (block sparkline) or `--chart bar` (block bars); a small markdown table for values | plotext for a real terminal plot | About one token per point |
 | Jupyter, data notebook | Altair (same Vega-Lite spec) | matplotlib, plotly | Notebook renders both interactively |
-| Spreadsheet | openpyxl (Excel) or Sheets API `EmbeddedChart` | image | Native charts stay editable |
+| Spreadsheet | `xlsx` target (openpyxl: data sheet plus native chart) or Sheets API `EmbeddedChart` | image | Native charts stay editable |
+| Google Docs | `gdocs`: a new Doc from HTML with `quickchart` or hosted PNG images (Drive connector), or `insertInlineImage` via the Docs API | manual insert of a PNG | Docs has no chart API |
 
 ## Decision steps
 
@@ -25,4 +26,4 @@ sparkline (1 token per point) < Mermaid xychart (30 + data) < Vega-Lite spec (12
 
 ## Adding a target
 
-`python scripts/cw.py new-target <slug> --name "<Name>" --kind markdown|web|image|office|terminal`, fill the stub, then add a `<slug>:` line to every chart's `support:` map (`cw.py validate` lists the gaps) and a `### <slug>` recipe under `## Build` for each chart marked native or approx. Candidates researched but not built: `xlsx` (openpyxl), `gsheets` (EmbeddedChart), `plantuml` (`@startchart` since 1.2026.0), `d2`, `observable-plot`. Added 2026-09-18: `terminal`, `echarts`, `pptx`, `quickchart`.
+`python scripts/cw.py new-target <slug> --name "<Name>" --kind markdown|web|image|office|terminal`, fill the stub, then add a `<slug>:` line to every chart's `support:` map (`cw.py validate` lists the gaps) and a `### <slug>` recipe under `## Build` for each chart marked native or approx. Candidates researched but not built: `gsheets` (EmbeddedChart), `plantuml` (`@startchart` since 1.2026.0), `d2`, `observable-plot`. Added 2026-09-18: `terminal`, `echarts`, `pptx`, `quickchart`, `xlsx`, `gdocs`.

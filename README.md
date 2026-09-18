@@ -1,6 +1,6 @@
 # chartwright
 
-Evergreen chart and graph skills for AI coding agents. A knowledge base of about 80 chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, accessibility, per-target build recipes, dated notes), nine render targets (Markdown via Mermaid; web via Vega-Lite, ECharts, Plotly and Chart.js; static PNG/SVG via Python; editable PowerPoint charts; chart-as-URL images via QuickChart; terminal sparklines), a standard-library CLI that picks and builds charts from a CSV so the data never passes through the model, and a curation skill that researches novel requests and grows the base so the next request is cheaper.
+Evergreen chart and graph skills for AI coding agents. A knowledge base of about 80 chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, accessibility, per-target build recipes, dated notes), eleven render targets (Markdown via Mermaid; web via Vega-Lite, ECharts, Plotly and Chart.js; static PNG/SVG via Python; editable PowerPoint and Excel charts; Google Docs via image import; chart-as-URL images via QuickChart; terminal sparklines), a standard-library CLI that picks and builds charts from a CSV so the data never passes through the model, and a curation skill that researches novel requests and grows the base so the next request is cheaper.
 
 ## Skills
 
@@ -47,7 +47,7 @@ Renderers are optional: `pip install vl-convert-python` for Vega-Lite to PNG/SVG
 
 ## Install
 
-Claude Code: add the repo as a marketplace and install (`/plugin marketplace add m4bwav/chartwright` then `/plugin install chartwright@chartwright`), or clone it into a local directory marketplace. Elsewhere, copy `skills/*` into the agent's skill store and keep the plugin folder where the skills can find `scripts/` and `kb/` (two levels up from each SKILL.md). Optional renderers: `pip install vl-convert-python matplotlib python-pptx`; Node plus `@mermaid-js/mermaid-cli` only to rasterise Mermaid.
+Claude Code: add the repo as a marketplace and install (`/plugin marketplace add m4bwav/chartwright` then `/plugin install chartwright@chartwright`), or clone it into a local directory marketplace. Elsewhere, copy `skills/*` into the agent's skill store and keep the plugin folder where the skills can find `scripts/` and `kb/` (two levels up from each SKILL.md). Optional renderers: `pip install vl-convert-python matplotlib python-pptx openpyxl`; Node plus `@mermaid-js/mermaid-cli` only to rasterise Mermaid.
 
 ## Versioning
 

@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: image
   quickchart: approx
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/histogram.html, https://vega.github.io/vega-lite/docs/bin.html, https://plotly.com/python/histograms/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hist.html]

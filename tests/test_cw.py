@@ -199,6 +199,20 @@ class BuildTests(unittest.TestCase):
         self.assertTrue(out.startswith("![price by date](https://quickchart.io/chart?version=4"))
         self.assertIn("%22type%22%3A%22line%22", out)
 
+    def test_xlsx_script_and_render(self):
+        out = self.build("--chart", "stacked-bar", "--target", "xlsx", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product", "--png", str(self.tmp / "c.xlsx"))
+        compile(out, "c.py", "exec")
+        self.assertIn("chart.grouping = 'stacked'", out)
+        try:
+            import openpyxl  # noqa: F401
+        except ImportError:
+            self.skipTest("openpyxl not installed")
+        script, book = self.tmp / "c.py", self.tmp / "c.xlsx"
+        script.write_text(out, encoding="utf-8")
+        rc, msg = run("render", "--target", "xlsx", "--in", str(script), "--out", str(book))
+        self.assertEqual(rc, 0, msg)
+        self.assertGreater(book.stat().st_size, 5000)
+
     def test_mermaid_pie_and_sankey(self):
         out = self.build("--chart", "pie", "--target", "mermaid", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
         self.assertIn('"North" : 120', out)

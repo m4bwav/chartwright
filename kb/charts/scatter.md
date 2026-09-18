@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: native
   quickchart: native
+  xlsx: native
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://vega.github.io/vega-lite/docs/point.html, https://plotly.com/python/line-and-scatter/, https://www.chartjs.org/docs/latest/charts/scatter.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html]
@@ -111,6 +113,10 @@ Not drawable in Mermaid (`xychart` has no point series). Render with the vega-li
 ### quickchart
 
 `cw.py build --chart scatter --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
+
+### xlsx
+
+`cw.py build --chart scatter --target xlsx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.xlsx` then `cw.py render --target xlsx --in chart.py --out chart.xlsx` (data sheet plus editable chart).
 
 ## Notes
 

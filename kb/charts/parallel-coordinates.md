@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/parallel.html, https://plotly.com/javascript/parallel-coordinates-plot/, https://vega.github.io/vega-lite/examples/parallel_coordinate.html, https://pandas.pydata.org/docs/reference/api/pandas.plotting.parallel_coordinates.html]

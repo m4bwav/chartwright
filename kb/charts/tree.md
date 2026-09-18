@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://mermaid.js.org/syntax/flowchart.html, https://mermaid.js.org/syntax/mindmap.html, https://vega.github.io/vega/examples/tree-layout/, https://d3js.org/d3-hierarchy/tree, https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_agraph.graphviz_layout.html]

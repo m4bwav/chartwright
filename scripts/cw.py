@@ -892,6 +892,48 @@ def build_pptx(chart, rows, x, y, series, title, out):
     return "\n".join(lines) + "\n"
 
 
+def build_xlsx(chart, rows, x, y, series, title, out):
+    """An openpyxl script that writes the data to a sheet and a native Excel chart beside it."""
+    kind = {"bar": ("BarChart", "bar"), "column": ("BarChart", "col"), "grouped-bar": ("BarChart", "col"), "stacked-bar": ("BarChart", "stacked"),
+            "stacked-bar-100": ("BarChart", "percentStacked"), "line": ("LineChart", None), "multi-line": ("LineChart", None), "area": ("AreaChart", None),
+            "stacked-area": ("AreaChart", "stacked"), "pie": ("PieChart", None), "donut": ("DoughnutChart", None), "radar": ("RadarChart", None),
+            "scatter": ("ScatterChart", None), "bubble": ("BubbleChart", None)}.get(chart)
+    if not kind:
+        raise ValueError(f"xlsx has no native chart for '{chart}'; insert a PNG with openpyxl.drawing.image.Image instead")
+    cls, style = kind
+    groups = _series_split(rows, x, y, series)
+    out = out or "chart.xlsx"
+    t = title or f"{y} by {x}"
+    xs = list(dict.fromkeys(r[x] for r in rows))
+    names = [n or y for n in groups]
+    lines = [f"from openpyxl import Workbook", f"from openpyxl.chart import {cls}, Reference, Series", "",
+             "wb = Workbook(); ws = wb.active; ws.title = 'data'", f"ws.append({[x] + names!r})"]
+    for v in xs:
+        lines.append(f"ws.append({[v] + [dict(pts).get(v) for pts in groups.values()]!r})")
+    n = len(xs); m = len(names)
+    lines += [f"chart = {cls}()", f"chart.title = {t!r}", "chart.height = 9; chart.width = 18"]
+    if cls in ("ScatterChart", "BubbleChart"):
+        lines += [f"xref = Reference(ws, min_col=1, min_row=2, max_row={n + 1})"]
+        for i, name in enumerate(names):
+            lines.append(f"chart.series.append(Series(Reference(ws, min_col={i + 2}, min_row=1, max_row={n + 1}), xref, title_from_data=True))")
+        lines += [f"chart.x_axis.title = {x!r}; chart.y_axis.title = {y!r}"]
+    else:
+        lines += [f"data = Reference(ws, min_col=2, max_col={m + 1}, min_row=1, max_row={n + 1})",
+                  f"cats = Reference(ws, min_col=1, min_row=2, max_row={n + 1})",
+                  "chart.add_data(data, titles_from_data=True); chart.set_categories(cats)"]
+        if cls == "BarChart":
+            lines.append("chart.type = 'bar'" if style == "bar" else "chart.type = 'col'")
+            if style in ("stacked", "percentStacked"):
+                lines.append(f"chart.grouping = {style!r}; chart.overlap = 100")
+        if cls == "AreaChart" and style == "stacked":
+            lines.append("chart.grouping = 'stacked'")
+        if cls not in ("PieChart", "DoughnutChart", "RadarChart"):
+            lines.append(f"chart.x_axis.title = {x!r}; chart.y_axis.title = {y!r}")
+    lines += [f"chart.legend = chart.legend if {m > 1 or cls in ('PieChart', 'DoughnutChart')} else None",
+              f"ws.add_chart(chart, '{chr(ord('A') + m + 2)}2')", f"wb.save({out!r}); print('wrote', {out!r})"]
+    return "\n".join(lines) + "\n"
+
+
 def build_quickchart(chart, rows, x, y, series, title):
     """A QuickChart image URL (Chart.js 4 config) and the markdown image line; no install, renders remotely."""
     import urllib.parse
@@ -954,10 +996,12 @@ def cmd_build(a):
         text = build_echarts(a.chart, rows, a.x, a.y, a.series, a.title)
     elif t == "pptx":
         text = build_pptx(a.chart, rows, a.x, a.y, a.series, a.title, a.png)
+    elif t == "xlsx":
+        text = build_xlsx(a.chart, rows, a.x, a.y, a.series, a.title, a.png)
     elif t == "quickchart":
         text = build_quickchart(a.chart, rows, a.x, a.y, a.series, a.title)
     else:
-        print(f"unknown target '{t}' (mermaid, vega-lite, plotly, chartjs, matplotlib, terminal, echarts, pptx, quickchart)")
+        print(f"unknown target '{t}' (mermaid, vega-lite, plotly, chartjs, matplotlib, terminal, echarts, pptx, xlsx, quickchart)")
         return 1
     if a.html:
         tpl = HTML_WRAPPERS.get(t)
@@ -1022,7 +1066,7 @@ def cmd_render(a):
         if r.returncode:
             print(r.stderr.strip()[-800:])
             return 1
-    elif a.target in ("matplotlib", "pptx"):
+    elif a.target in ("matplotlib", "pptx", "xlsx"):
         r = subprocess.run([sys.executable, str(src)], capture_output=True, text=True, cwd=str(out.parent or "."))
         if r.returncode:
             print(r.stderr.strip()[-800:])
@@ -1030,7 +1074,7 @@ def cmd_render(a):
     elif a.target in ("plotly", "chartjs", "echarts"):
         out.write_text(HTML_WRAPPERS[a.target].format(title=out.stem, spec=src.read_text(encoding="utf-8").strip()), encoding="utf-8")
     else:
-        print("render targets: vega-lite, mermaid, matplotlib, pptx, plotly, chartjs, echarts")
+        print("render targets: vega-lite, mermaid, matplotlib, pptx, xlsx, plotly, chartjs, echarts")
         return 1
     if out.exists():
         print(f"wrote {out} ({out.stat().st_size} bytes)")
@@ -1041,7 +1085,7 @@ def cmd_render(a):
 
 def cmd_doctor(a):
     info = {"python": sys.version.split()[0], "platform": sys.platform, "plugin_root": str(ROOT)}
-    for mod in ("vl_convert", "matplotlib", "plotly", "altair", "pptx"):
+    for mod in ("vl_convert", "matplotlib", "plotly", "altair", "pptx", "openpyxl"):
         try:
             m = __import__(mod)
             info[mod] = getattr(m, "__version__", "present")
@@ -1214,7 +1258,7 @@ def main(argv=None):
     p = sp.add_parser("data"); p.add_argument("data"); p.set_defaults(fn=cmd_data)
     p = sp.add_parser("build"); p.add_argument("--chart", required=True); p.add_argument("--target", required=True); p.add_argument("--data", required=True)
     p.add_argument("--x", required=True); p.add_argument("--y", required=True); p.add_argument("--series"); p.add_argument("--title")
-    p.add_argument("--out"); p.add_argument("--png", help="matplotlib/pptx: the file the generated script writes (chart.png, chart.pptx)")
+    p.add_argument("--out"); p.add_argument("--png", help="matplotlib/pptx/xlsx: the file the generated script writes (chart.png, chart.pptx, chart.xlsx)")
     p.add_argument("--html", action="store_true", help="wrap a web spec in a standalone page")
     p.add_argument("--flag", nargs="*", help="showData, dataByUrl, container, namedSeries")
     p.add_argument("--agg", default="sum", choices=["sum", "mean", "none"], help="how duplicate x values within a series combine (default sum)"); p.set_defaults(fn=cmd_build)

@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-18
 last_verified: 2026-09-18
 sources: [https://plotly.com/python/2d-histogram-contour/, https://seaborn.pydata.org/generated/seaborn.kdeplot.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.contour.html, https://www.data-to-viz.com/graph/density2d.html, https://vega.github.io/vega-lite/docs/density.html]

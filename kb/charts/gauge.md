@@ -22,6 +22,8 @@ support:
   echarts: native
   pptx: image
   quickchart: approx
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://plotly.com/javascript/gauge-charts/, https://datavizcatalogue.com/methods/gauge.html, https://www.chartjs.org/docs/latest/charts/doughnut.html, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]

@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260918-6 · 2026-09-18 · Targets xlsx and gdocs
+- because: HANDOFF next step 2 (remaining office targets) and the user's Google Docs test request
+- files: scripts/cw.py (build_xlsx, render xlsx), kb/targets/{xlsx,gdocs}.md, every kb/charts file (support lines; 21 xlsx recipes), kb/rules/choosing-a-target.md, references/build-and-verify.md, tests/test_cw.py
+- Excel: openpyxl script writing the data sheet and a native chart (rendered and tested). Google Docs: no chart API, so the target documents the three image routes; verified by creating a Doc from HTML with QuickChart images through the Drive connector (image embedding to be confirmed visually by the user).
+
 ### C-20260918-5 · 2026-09-18 · SKILL.md slimmed to a router; detail moved to references/
 - because: user request (keep the main file small; load detail only at the step that needs it), evergreen protocol budget rule
 - files: SKILL.md, references/build-and-verify.md, references/document-charts.md

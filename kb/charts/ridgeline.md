@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: image
   quickchart: none
+  xlsx: image
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.data-to-viz.com/graph/ridgeline.html, https://vega.github.io/vega-lite/examples/area_density_stacked.html, https://plotly.com/python/violin/, https://github.com/leotac/joypy, https://wilkelab.org/ggridges/]

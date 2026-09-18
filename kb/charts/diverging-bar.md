@@ -22,6 +22,8 @@ support:
   echarts: approx
   pptx: approx
   quickchart: approx
+  xlsx: approx
+  gdocs: image
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -122,6 +124,10 @@ Approximate: BAR_CLUSTERED with negative values and the axis crossing at zero.
 ### quickchart
 
 Approximate: a horizontal bar with negative values; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
+
+### xlsx
+
+Approximate: BarChart with negative values, axis crossing at zero.
 
 ## Notes
 

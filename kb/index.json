@@ -42,7 +42,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "matrix diagram",
@@ -96,7 +98,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "parallel sets",
@@ -148,7 +152,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "arc plot",
@@ -195,7 +201,9 @@
     "terminal": "native",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "filled line chart",
@@ -246,7 +254,9 @@
     "terminal": "native",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "horizontal bar chart",
@@ -297,7 +307,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "swarm plot",
@@ -347,7 +359,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "box-and-whisker plot",
@@ -397,7 +411,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "proportional symbol map",
@@ -447,7 +463,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "bubble plot",
@@ -500,7 +518,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "approx",
+    "gdocs": "image"
    },
    "aliases": [
     "bullet graph",
@@ -550,7 +570,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "rank chart",
@@ -599,7 +621,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "calendar chart",
@@ -648,7 +672,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "approx",
+    "gdocs": "image"
    },
    "aliases": [
     "OHLC chart",
@@ -699,7 +725,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "scaled cartogram",
@@ -750,7 +778,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "chord chart",
@@ -802,7 +832,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "filled map",
@@ -854,7 +886,9 @@
     "terminal": "none",
     "echarts": "none",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "circular treemap",
@@ -906,7 +940,9 @@
     "terminal": "native",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "vertical bar chart",
@@ -952,7 +988,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "connected scatter",
@@ -999,7 +1037,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "correlation matrix",
@@ -1049,7 +1089,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "cluster tree",
@@ -1096,7 +1138,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "contour plot",
@@ -1145,7 +1189,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "KDE plot",
@@ -1196,7 +1242,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "approx",
+    "gdocs": "image"
    },
    "aliases": [
     "positive negative bar chart",
@@ -1248,7 +1296,9 @@
     "terminal": "none",
     "echarts": "image",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "Likert chart",
@@ -1297,7 +1347,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "doughnut chart",
@@ -1347,7 +1399,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "dot map",
@@ -1400,7 +1454,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "Cleveland dot plot",
@@ -1453,7 +1509,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "approx",
+    "gdocs": "image"
    },
    "aliases": [
     "range plot",
@@ -1503,7 +1561,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "empirical cumulative distribution function",
@@ -1554,7 +1614,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "edge bundling",
@@ -1605,7 +1667,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "confidence interval plot",
@@ -1657,7 +1721,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "connection map",
@@ -1710,7 +1776,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "conversion funnel",
@@ -1760,7 +1828,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "project schedule",
@@ -1811,7 +1881,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "meter",
@@ -1864,7 +1936,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "clustered bar chart",
@@ -1917,7 +1991,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "heat map",
@@ -1970,7 +2046,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "hexagon map",
@@ -2018,7 +2096,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "hexagonal binning",
@@ -2067,7 +2147,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "frequency distribution",
@@ -2113,7 +2195,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "horizon graph",
@@ -2162,7 +2246,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "partition chart",
@@ -2217,7 +2303,9 @@
     "terminal": "native",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "line graph",
@@ -2267,7 +2355,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "approx",
+    "gdocs": "image"
    },
    "aliases": [
     "lollipop plot",
@@ -2315,7 +2405,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "mosaic plot",
@@ -2367,7 +2459,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "node-link diagram",
@@ -2419,7 +2513,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "parallel coordinates plot",
@@ -2469,7 +2565,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "isotype chart",
@@ -2515,7 +2613,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "pie graph",
@@ -2563,7 +2663,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "age-sex pyramid",
@@ -2611,7 +2713,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "quantile-quantile plot",
@@ -2660,7 +2764,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "2x2 matrix",
@@ -2710,7 +2816,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "spider chart",
@@ -2762,7 +2870,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "circular bar chart",
@@ -2810,7 +2920,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "rain cloud plot",
@@ -2860,7 +2972,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "approx",
+    "gdocs": "image"
    },
    "aliases": [
     "band chart",
@@ -2911,7 +3025,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "joyplot",
@@ -2962,7 +3078,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "sankey chart",
@@ -3015,7 +3133,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "scatterplot",
@@ -3065,7 +3185,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "slopegraph",
@@ -3119,7 +3241,9 @@
     "terminal": "approx",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "trellis chart",
@@ -3171,7 +3295,9 @@
     "terminal": "native",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "inline chart",
@@ -3218,7 +3344,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "SPLOM",
@@ -3265,7 +3393,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "stacked area graph",
@@ -3316,7 +3446,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "percent stacked bar",
@@ -3367,7 +3499,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "native",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "native",
+    "gdocs": "image"
    },
    "aliases": [
     "stacked column chart",
@@ -3420,7 +3554,9 @@
     "terminal": "approx",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "KPI tile",
@@ -3471,7 +3607,9 @@
     "terminal": "native",
     "echarts": "native",
     "pptx": "approx",
-    "quickchart": "native"
+    "quickchart": "native",
+    "xlsx": "approx",
+    "gdocs": "image"
    },
    "aliases": [
     "step line",
@@ -3518,7 +3656,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "stream graph",
@@ -3567,7 +3707,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "dot strip plot",
@@ -3617,7 +3759,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "radial treemap",
@@ -3671,7 +3815,9 @@
     "terminal": "approx",
     "echarts": "none",
     "pptx": "approx",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "data table",
@@ -3723,7 +3869,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "tile map",
@@ -3775,7 +3923,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "event timeline",
@@ -3826,7 +3976,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "tree chart",
@@ -3880,7 +4032,9 @@
     "terminal": "none",
     "echarts": "native",
     "pptx": "image",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "tree map",
@@ -3929,7 +4083,9 @@
     "terminal": "none",
     "echarts": "none",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "Euler diagram",
@@ -3975,7 +4131,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "violin chart",
@@ -4021,7 +4179,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "gridplot",
@@ -4075,7 +4235,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "approx",
-    "quickchart": "approx"
+    "quickchart": "approx",
+    "xlsx": "approx",
+    "gdocs": "image"
    },
    "aliases": [
     "bridge chart",
@@ -4124,7 +4286,9 @@
     "terminal": "none",
     "echarts": "approx",
     "pptx": "image",
-    "quickchart": "none"
+    "quickchart": "none",
+    "xlsx": "image",
+    "gdocs": "image"
    },
    "aliases": [
     "tag cloud",
@@ -4161,6 +4325,17 @@
     "server-side SVG via Node SSR"
    ],
    "version_checked": "ECharts 6.1.0 (2026-05-19); 6.0.0 2025-07-30",
+   "renderer": "none",
+   "last_verified": "2026-09-18"
+  },
+  {
+   "slug": "gdocs",
+   "name": "Google Docs (images via HTML import or Drive upload)",
+   "kind": "office",
+   "renders_in": [
+    "Google Docs"
+   ],
+   "version_checked": "Google Drive API v3 HTML-to-Doc conversion; Docs API has no chart resource (checked 2026-09-18)",
    "renderer": "none",
    "last_verified": "2026-09-18"
   },
@@ -4270,6 +4445,19 @@
    "version_checked": "Vega-Lite 6.4.3 (2026-04), Vega 6.4.0, vega-embed 7.2.0, vl-convert-python 1.9.0.post1 (2.0.0rc7 in preview), Altair 6.3.0",
    "renderer": "vl_convert",
    "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "xlsx",
+   "name": "Excel native chart (openpyxl)",
+   "kind": "office",
+   "renders_in": [
+    "Excel",
+    "LibreOffice Calc",
+    "Google Sheets (imported .xlsx)"
+   ],
+   "version_checked": "openpyxl 3.1.5",
+   "renderer": "python",
+   "last_verified": "2026-09-18"
   }
  ],
  "families": [
