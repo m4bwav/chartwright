@@ -439,6 +439,25 @@ class NewTargetTests(unittest.TestCase):
                 cw.main(["--json", "pick", "--question", q, "--shape", shape])
             self.assertEqual(json.loads(buf.getvalue())["picks"][0]["slug"], want, q)
 
+    def test_plotly_and_matplotlib_compositions(self):
+        d = json.loads(self.build("--chart", "waterfall", "--target", "plotly", "--data", str(FIX / "waterfall.csv"), "--x", "step", "--y", "change"))
+        self.assertEqual(d["data"][0]["type"], "waterfall")
+        d = json.loads(self.build("--chart", "dumbbell", "--target", "plotly", "--data", str(FIX / "dumbbell.csv"), "--x", "city", "--y", "before", "--y2", "after"))
+        self.assertEqual(len(d["data"]), 5)
+        self.assertEqual(d["data"][-1]["name"], "after")
+        d = json.loads(self.build("--chart", "bullet", "--target", "plotly", "--data", str(FIX / "bullet.csv"), "--x", "kpi", "--y", "actual", "--y2", "target"))
+        self.assertEqual(d["layout"]["barmode"], "overlay")
+        for chart, args in (("waterfall", ["--data", str(FIX / "waterfall.csv"), "--x", "step", "--y", "change"]),
+                            ("dumbbell", ["--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product"]),
+                            ("bullet", ["--data", str(FIX / "bullet.csv"), "--x", "kpi", "--y", "actual", "--y2", "target", "--series", "poor"])):
+            out = self.build("--chart", chart, "--target", "matplotlib", *args, "--png", str(self.tmp / (chart + ".png")))
+            compile(out, chart + ".py", "exec")
+            self.assertIn("fig.savefig", out)
+        d = json.loads(self.build("--chart", "dumbbell", "--target", "vega-lite", "--data", str(FIX / "dumbbell.csv"), "--x", "city", "--y", "before", "--y2", "after"))
+        self.assertEqual(d["transform"][0]["fold"], ["before", "after"])
+        rc, out = run("build", "--chart", "dumbbell", "--target", "plotly", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
+        self.assertEqual(rc, 1)
+
     def test_global_flags_after_subcommand(self):
         buf = io.StringIO()
         with redirect_stdout(buf):

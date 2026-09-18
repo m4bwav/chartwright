@@ -574,8 +574,11 @@ def _vl_composed(chart, rows, x, y, series, base):
     n = {"field": x, "type": "nominal"}
     yq = json.dumps(y)
     if chart == "dumbbell":
-        base["encoding"] = {"y": {**n, "sort": "-x"}, "x": {**q, "title": y}}
-        base["layer"] = [{"mark": "rule", "encoding": {"x": {**q, "aggregate": "min"}, "x2": {"field": y, "aggregate": "max"}}},
+        if _Y2:  # wide form: fold the two value columns into (end, value) pairs inside the spec
+            base["transform"] = [{"fold": [y, _Y2], "as": ["end", "value"]}]
+            q = {"field": "value", "type": "quantitative"}; series = "end"
+        base["encoding"] = {"y": {**n, "sort": "-x"}, "x": {**q, "title": y if not _Y2 else f"{y} to {_Y2}"}}
+        base["layer"] = [{"mark": "rule", "encoding": {"x": {**q, "aggregate": "min"}, "x2": {"field": q["field"], "aggregate": "max"}}},
                          {"mark": {"type": "point", "filled": True, "size": 90}, "encoding": {"color": {"field": series, "type": "nominal"}}}]
     elif chart == "slope":
         last = rows[-1][x]
@@ -660,7 +663,9 @@ def build_vega_lite(chart, rows, x, y, series, title, data_path):
             if k and _num(r.get(k)) is not None and not _is_time(r.get(k)):
                 r[k] = _num(r[k])
     if chart in VL_COMPOSED:
-        if chart in ("dumbbell", "slope", "stacked-bar-100", "small-multiples", "connected-scatter", "bump") and not series:
+        if chart in ("slope", "stacked-bar-100", "small-multiples", "connected-scatter", "bump") and not series:
+            raise ValueError(f"{chart} needs --series (column roles in cw.py _vl_composed)")
+        if chart == "dumbbell" and not series and not _Y2:
             raise ValueError(f"{chart} needs --series (column roles in cw.py _vl_composed)")
         spec.pop("encoding"); spec.pop("mark")
         return json.dumps(_vl_composed(chart, rows, x, y, series, spec), indent=1, ensure_ascii=False) + "\n"
@@ -713,16 +718,53 @@ def build_vega_lite(chart, rows, x, y, series, title, data_path):
     return json.dumps(spec, indent=1, ensure_ascii=False) + "\n"
 
 
+def _two_ends(rows, x, y, series):
+    """Dumbbell inputs: wide form (--y2 second value) or long form (--series with exactly two values).
+    Returns (categories, first values, second values, (name1, name2))."""
+    if _Y2:
+        return [r[x] for r in rows], [_num(r[y]) for r in rows], [_num(r[_Y2]) for r in rows], (y, _Y2)
+    if not series:
+        raise ValueError("dumbbell needs --y2 <second value column> or --series <column with two ends>")
+    ends = list(dict.fromkeys(r[series] for r in rows))
+    if len(ends) != 2:
+        raise ValueError(f"dumbbell --series must have exactly two values, got {ends}")
+    d = {(r[x], r[series]): _num(r[y]) for r in rows}
+    cats = list(dict.fromkeys(r[x] for r in rows))
+    return cats, [d.get((c, ends[0])) for c in cats], [d.get((c, ends[1])) for c in cats], (ends[0], ends[1])
+
+
 def build_plotly(chart, rows, x, y, series, title):
     groups = _series_split(rows, x, y, series)
     traces = []
     kind = {"line": "scatter", "multi-line": "scatter", "area": "scatter", "stacked-area": "scatter", "scatter": "scatter",
             "bar": "bar", "column": "bar", "grouped-bar": "bar", "stacked-bar": "bar", "pie": "pie", "donut": "pie",
             "histogram": "histogram", "boxplot": "box", "heatmap": "heatmap", "bubble": "scatter", "step": "scatter"}.get(chart)
-    if not kind:
-        raise ValueError(f"plotly has no recipe for '{chart}'")
     layout = {"title": {"text": title or f"{y} by {x}"}, "xaxis": {"title": {"text": x}}, "yaxis": {"title": {"text": y}},
               "template": "plotly_white", "margin": {"t": 50, "r": 20}}
+    if chart == "waterfall":  # x=step, y=signed change; Plotly has a native waterfall trace
+        traces.append({"type": "waterfall", "x": [r[x] for r in rows], "y": [_num(r[y]) for r in rows], "connector": {"line": {"color": "#999"}},
+                       "increasing": {"marker": {"color": "#2a78d6"}}, "decreasing": {"marker": {"color": "#e34948"}}, "totals": {"marker": {"color": "#555"}}})
+        return json.dumps({"data": traces, "layout": layout}, indent=1, ensure_ascii=False) + "\n"
+    if chart == "dumbbell":  # x=category, y=value, --y2 second value (wide) or --series with two ends (long)
+        cats, a, b, names = _two_ends(rows, x, y, series)
+        for c, v1, v2 in zip(cats, a, b):
+            traces.append({"type": "scatter", "mode": "lines", "x": [v1, v2], "y": [c, c], "line": {"color": "#bbb", "width": 3}, "showlegend": False, "hoverinfo": "skip"})
+        traces.append({"type": "scatter", "mode": "markers", "name": names[0], "x": a, "y": cats, "marker": {"size": 11, "color": "#2a78d6"}})
+        traces.append({"type": "scatter", "mode": "markers", "name": names[1], "x": b, "y": cats, "marker": {"size": 11, "color": "#e34948"}})
+        layout["xaxis"]["title"]["text"] = y; layout["yaxis"]["title"]["text"] = x; layout["yaxis"]["autorange"] = "reversed"
+        return json.dumps({"data": traces, "layout": layout}, indent=1, ensure_ascii=False) + "\n"
+    if chart == "bullet":  # x=measure name, y=actual, --y2 target, optional --series poor band
+        if not _Y2:
+            raise ValueError("bullet needs --y2 <target column>")
+        cats = [r[x] for r in rows]
+        if series:
+            traces.append({"type": "bar", "orientation": "h", "name": series, "y": cats, "x": [_num(r[series]) for r in rows], "marker": {"color": "#d9d9d9"}, "width": 0.8})
+        traces.append({"type": "bar", "orientation": "h", "name": y, "y": cats, "x": [_num(r[y]) for r in rows], "marker": {"color": "#2a78d6"}, "width": 0.4})
+        traces.append({"type": "scatter", "mode": "markers", "name": _Y2, "y": cats, "x": [_num(r[_Y2]) for r in rows], "marker": {"symbol": "line-ns", "size": 22, "line": {"width": 3, "color": "#222"}}})
+        layout["barmode"] = "overlay"; layout["xaxis"]["title"]["text"] = y; layout["yaxis"]["title"]["text"] = None; layout["yaxis"]["autorange"] = "reversed"
+        return json.dumps({"data": traces, "layout": layout}, indent=1, ensure_ascii=False) + "\n"
+    if not kind:
+        raise ValueError(f"plotly has no recipe for '{chart}'")
     if kind == "pie":
         traces.append({"type": "pie", "labels": [r[x] for r in rows], "values": [_num(r[y]) for r in rows],
                        "hole": 0.5 if chart == "donut" else 0, "sort": False, "textinfo": "label+percent"})
@@ -789,6 +831,32 @@ def build_matplotlib(chart, rows, x, y, series, title, out):
     out = out or "chart.png"
     lines = ["import matplotlib", "matplotlib.use('Agg')", "import matplotlib.pyplot as plt", "",
              "fig, ax = plt.subplots(figsize=(8, 4.2), dpi=150)"]
+    t = title or f"{y} by {x}"
+    if chart in ("waterfall", "dumbbell", "bullet"):
+        if chart == "waterfall":
+            xs = [r[x] for r in rows]; ys = [_num(r[y]) for r in rows]
+            lines += [f"xs, ys = {xs!r}, {ys!r}", "start, bottoms, colors = 0, [], []",
+                      "for v in ys:", "    bottoms.append(start if v >= 0 else start + v); colors.append('#2a78d6' if v >= 0 else '#e34948'); start += v",
+                      "ax.bar(xs, [abs(v) for v in ys], bottom=bottoms, color=colors)", "ax.axhline(0, color='#333', linewidth=0.8)",
+                      "for i in range(len(xs) - 1):", "    ax.plot([i + 0.4, i + 0.6], [bottoms[i] + abs(ys[i]) if ys[i] >= 0 else bottoms[i]] * 2, color='#999', linewidth=1)",
+                      f"ax.set_xlabel({x!r}); ax.set_ylabel({y!r})"]
+        elif chart == "dumbbell":
+            cats, a, b, names = _two_ends(rows, x, y, series)
+            lines += [f"cats, a, b = {cats!r}, {a!r}, {b!r}", "ax.hlines(cats, a, b, color='#bbb', linewidth=3)",
+                      f"ax.scatter(a, cats, s=80, color='#2a78d6', label={names[0]!r}, zorder=3)", f"ax.scatter(b, cats, s=80, color='#e34948', label={names[1]!r}, zorder=3)",
+                      "ax.invert_yaxis()", f"ax.set_xlabel({y!r})", "ax.legend()"]
+        else:
+            if not _Y2:
+                raise ValueError("bullet needs --y2 <target column>")
+            cats = [r[x] for r in rows]; act = [_num(r[y]) for r in rows]; tgt = [_num(r[_Y2]) for r in rows]
+            if series:
+                lines.append(f"ax.barh({cats!r}, {[_num(r[series]) for r in rows]!r}, height=0.8, color='#d9d9d9', label={series!r})")
+            lines += [f"ax.barh({cats!r}, {act!r}, height=0.35, color='#2a78d6', label={y!r})",
+                      f"ax.scatter({tgt!r}, {cats!r}, marker='|', s=400, color='#222', linewidths=3, label={_Y2!r}, zorder=3)",
+                      "ax.invert_yaxis()", f"ax.set_xlabel({y!r})", "ax.legend(loc='lower right')"]
+        lines += ["ax.spines[['top','right']].set_visible(False)", "ax.grid(axis='x' if " + repr(chart != "waterfall") + " else 'y', alpha=0.3)",
+                  f"ax.set_title({t!r})", "fig.tight_layout()", f"fig.savefig({out!r}); print('wrote', {out!r})"]
+        return "\n".join(lines) + "\n"
     for name, pts in groups.items():
         xs = [p[0] for p in pts]
         ys = [p[1] for p in pts]
@@ -815,7 +883,6 @@ def build_matplotlib(chart, rows, x, y, series, title, out):
         lines += [f"ax.set_xlabel({x!r}); ax.set_ylabel({y!r})", "ax.spines[['top','right']].set_visible(False)", "ax.grid(axis='y', alpha=0.3)"]
         if len(rows) > 8:
             lines.append("plt.setp(ax.get_xticklabels(), rotation=45, ha='right')")
-    t = title or f"{y} by {x}"
     lines += [f"ax.set_title({t!r})", "ax.legend()" if series else "", "fig.tight_layout()",
               f"fig.savefig({out!r}); print('wrote', {out!r})"]
     return "\n".join(l for l in lines if l) + "\n"

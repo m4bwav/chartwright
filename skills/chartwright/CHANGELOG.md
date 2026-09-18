@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260918-10 · 2026-09-18 · Plotly and matplotlib compositions; wide-form dumbbell
+- because: HANDOFF next step 2 (the last builder gap this machine can close)
+- files: scripts/cw.py (_two_ends, build_plotly waterfall/dumbbell/bullet, build_matplotlib waterfall/dumbbell/bullet, _vl_composed dumbbell fold), kb/charts/{waterfall,dumbbell,bullet}.md (recipe lines; plotly support native for dumbbell and bullet), references/build-and-verify.md, tests/fixtures/dumbbell.csv, tests/test_cw.py
+- Plotly uses its native waterfall trace; matplotlib stacks floating bars. Both dumbbells and bullets rendered and checked.
+
 ### C-20260918-9 · 2026-09-18 · `--y2` and four more Vega-Lite compositions
 - because: HANDOFF next step 2 (builder gaps) after the 0.5.0 release
 - files: scripts/cw.py (_Y2, _vl_composed bullet/range-band/connected-scatter/bump, build_observable_plot y2 marks, build --y2), kb/charts/{bullet,range-band,connected-scatter,bump}.md (vega-lite recipe line), references/build-and-verify.md (column roles, builder coverage), tests/fixtures/{bullet,band,connected,bump}.csv, tests/test_cw.py

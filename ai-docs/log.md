@@ -110,3 +110,8 @@ Append-only. Newest at the bottom. One entry per working session.
 - Handoff next step 3: eight real questions probed against `pick`; all landed on the expected chart (donut edged pie for "share of revenue", acceptable). Seven locked as a regression test. 43 tests pass.
 - Not done: live Sheets API send for `gsheets` (needs OAuth outside the connectors), PlantUML render (no local PlantUML), Observable Plot screenshot (no headless browser step); `namedSeries` auto-enable (needs host detection). Left in HANDOFF.
 - Same session: evergreen refresh of the local-delegate skill (separate repo, see its RESEARCH.md R-20260918-*).
+
+## 2026-09-18: 0.7.0, Plotly and matplotlib compositions
+
+- Last builder gap the machine can close: waterfall (Plotly native trace; matplotlib floating bars), dumbbell (wide form via `--y2` in Vega-Lite, Plotly, matplotlib; long form kept) and bullet (Plotly overlay bars with a line marker; matplotlib barh plus `|` marker). All rendered and inspected. 44 tests pass.
+- End of the road for this handoff: what remains needs a live Sheets API session, a PlantUML install or a headless browser, none on this PC. Next real work should come from real chart requests, and the evergreen refresh on 2026-10-01.

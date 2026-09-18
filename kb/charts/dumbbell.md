@@ -15,7 +15,7 @@ status: stable
 support:
   mermaid: image
   vega-lite: native
-  plotly: approx
+  plotly: native
   chartjs: approx
   matplotlib: native
   terminal: none
@@ -83,6 +83,8 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 
 ### vega-lite
 
+Wide form: `cw.py build --chart dumbbell --target vega-lite --data before-after.csv --x city --y before --y2 after` folds the two columns inside the spec; long form uses `--series` with exactly two values.
+
 ```json
 {"$schema": "https://vega.github.io/schema/vega-lite/v6.json", "data": {"url": "gap.csv"},
  "encoding": {"y": {"field": "country", "type": "nominal", "sort": {"field": "y2026", "order": "descending"}}},
@@ -98,6 +100,8 @@ Not in `cw.py build`; hand-write from this recipe with wide data (one column per
 
 ### plotly
 
+`cw.py build --chart dumbbell --target plotly --data before-after.csv --x city --y before --y2 after --html` (wide form; or long form with `--series end`) draws grey connectors and two coloured marker traces.
+
 `approx`: one `scatter` trace per endpoint (`mode: "markers"`) and one `scatter` trace per row (`mode: "lines"`, `x: [a, b]`, `y: [cat, cat]`, `showlegend: false`) for the connectors, or a single `shapes` list in the layout. Hand-written; the connectors are many small traces rather than one mark.
 
 ### chartjs
@@ -105,6 +109,8 @@ Not in `cw.py build`; hand-write from this recipe with wide data (one column per
 `approx`: a floating `bar` dataset with `data: [[a, b], ...]`, `barThickness: 2`, `indexAxis: "y"` for connectors plus two `line` datasets with `showLine: false` for the endpoint dots. Hand-written mixed chart.
 
 ### matplotlib
+
+`cw.py build --chart dumbbell --target matplotlib --data before-after.csv --x city --y before --y2 after --out chart.py --png chart.png` (`hlines` plus two `scatter` calls).
 
 `ax.hlines(categories, a, b, color="0.6", linewidth=2); ax.plot(a, categories, "o", label="2016"); ax.plot(b, categories, "o", label="2026"); ax.legend()` on rows sorted by `b`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
 

@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.7.0 (2026-09-18)
+
+- Composed recipes beyond Vega-Lite: Plotly and matplotlib now build waterfall, dumbbell and bullet; the dumbbell accepts wide form (`--y2`) in all three targets and long form (`--series` with two ends) as before. All rendered and inspected.
+
 ## 0.6.0 (2026-09-18)
 
 - `--y2` names a second numeric column. Vega-Lite now composes bullet (actual bar, target tick, optional poor band), range-band (area between `--y` and `--y2`, optional centre line), connected-scatter (path in `--series` order with labels) and bump (rank 1 on top, entity labels); observable-plot gains range-band, timeline and dumbbell through the same flag. All four rendered and checked.

@@ -557,7 +557,7 @@
    "support": {
     "mermaid": "image",
     "vega-lite": "native",
-    "plotly": "approx",
+    "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
     "terminal": "none",
@@ -1701,7 +1701,7 @@
    "support": {
     "mermaid": "image",
     "vega-lite": "native",
-    "plotly": "approx",
+    "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
     "terminal": "none",

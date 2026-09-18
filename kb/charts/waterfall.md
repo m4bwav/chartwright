@@ -99,6 +99,8 @@ Data rows `step, amount, total` in order, with total rows carrying the full valu
 
 ### plotly
 
+`cw.py build --chart waterfall --target plotly --data steps.csv --x step --y change --html` uses Plotly's native `waterfall` trace (blue increases, red decreases, connectors).
+
 `{"type": "waterfall", "x": steps, "y": amounts, "measure": ["absolute", "relative", "relative", "total"], "connector": {"line": {"width": 1}}, "increasing": {"marker": {"color": "#009E73"}}, "decreasing": {"marker": {"color": "#D55E00"}}, "totals": {"marker": {"color": "#555"}}, "textposition": "outside", "text": amounts}`. Native trace; hand-written and opened with `cw.py render --target plotly --in fig.json --out chart.html`.
 
 ### chartjs
@@ -106,6 +108,8 @@ Data rows `step, amount, total` in order, with total rows carrying the full valu
 `approx`: floating bars, one dataset with `data: [[start, end], ...]` computed in advance and `backgroundColor` per bar by sign; totals as `[0, value]`. No connectors without a custom plugin. Hand-written.
 
 ### matplotlib
+
+`cw.py build --chart waterfall --target matplotlib --data steps.csv --x step --y change --out chart.py --png chart.png` stacks floating bars on running totals with connector ticks.
 
 Compute `starts = cumsum shifted` and draw `ax.bar(steps, amounts, bottom=starts, color=colours)` with totals as `ax.bar(step, total, bottom=0, color="#555")`, `ax.bar_label` for values, and `ax.plot([i, i + 1], [end_i, end_i], color="0.5", linewidth=1)` per connector. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
 

@@ -15,7 +15,7 @@ status: stable
 support:
   mermaid: image
   vega-lite: native
-  plotly: approx
+  plotly: native
   chartjs: approx
   matplotlib: native
   terminal: none
@@ -97,6 +97,8 @@ Wide data with `kpi, actual, target, band1, band2, band3`; use `"resolve": {"sca
 
 ### plotly
 
+`cw.py build --chart bullet --target plotly --data kpis.csv --x kpi --y actual --y2 target [--series poor] --html` overlays the band bar, the measure bar and a `line-ns` target marker.
+
 `approx`: `{"type": "indicator", "mode": "number+gauge", "gauge": {"shape": "bullet", "axis": {"range": [0, 60]}, "threshold": {"value": 50, "line": {"color": "black", "width": 3}}, "steps": [{"range": [0, 20], "color": "#ccc"}, {"range": [20, 40], "color": "#ddd"}, {"range": [40, 60], "color": "#eee"}], "bar": {"color": "#0072B2"}}, "value": 42}`; one indicator per row in a `grid` layout. Real bullet look, but each row is a separate indicator with its own domain, so alignment across rows is manual. Hand-written.
 
 ### chartjs
@@ -104,6 +106,8 @@ Wide data with `kpi, actual, target, band1, band2, band3`; use `"resolve": {"sca
 `approx`: three stacked-free floating `bar` datasets `[[0, band1], [band1, band2], [band2, band3]]` in greys with `barPercentage: 1`, a narrow `bar` dataset for the actual (`barPercentage: 0.4`), and a `scatter` or line dataset with a `"line"` point style rotated 90 degrees for the target, all on `indexAxis: "y"`. Hand-written mixed chart.
 
 ### matplotlib
+
+`cw.py build --chart bullet --target matplotlib --data kpis.csv --x kpi --y actual --y2 target [--series poor] --out chart.py --png chart.png` (`barh` twice plus a `|` marker for the target).
 
 `ax.barh(y, band3, color="#eee", height=0.8); ax.barh(y, band2, color="#ddd", height=0.8); ax.barh(y, band1, color="#ccc", height=0.8); ax.barh(y, actual, color="#0072B2", height=0.3); ax.vlines(target, y - 0.4, y + 0.4, color="black", linewidth=3)` per row, `ax.set_yticks(range(n), kpis)`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
 

@@ -15,7 +15,7 @@ Support: N native, A approximate, I image only, . none. Target columns in order:
 | boxplot | distribution | How do the median and spread of a numeric variable compare across groups? | n,q o,q q | -/20 | m | core | A.INIININ.NIA.NI |
 | bubble-map | spatial | How much of something is at each place? | geo,q geo,q,n q,q,q | 3/- | m | core | ..INIIN.N.NI..NI |
 | bubble | correlation | How do two numeric variables relate, with a third rough magnitude shown by size? | q,q,q q,q,q,n q,q,q,text | 4/- | m | core | N.ININNINANNN.NN |
-| bullet | deviation | How does the actual value compare to its target and to qualitative bands (poor, satisfactory, good)? | n,q,q q,q n,q,q,q+ | 1/12 | m | niche | A.IAIINIA.AAA.NA |
+| bullet | deviation | How does the actual value compare to its target and to qualitative bands (poor, satisfactory, good)? | n,q,q q,q n,q,q,q+ | 1/12 | m | niche | A.IAIINIA.NAA.NA |
 | bump | change-over-time | How did the rank order of a set of entities change across several periods? | time,n,q time,q*n o,q*n | 10/- | m | rising | A.IAIINIA.AI..AI |
 | calendar-heatmap | change-over-time | Which days, weeks or months were high or low across a year or more? | time,q | 1/- | l | rising | A.INIININ.AI..NI |
 | candlestick | change-over-time | What were the open, high, low and close of a traded price in each period? | time,q,q,q,q time,q+ | 1/- | l | niche | A.ININNIA.NI..NA |
@@ -35,7 +35,7 @@ Support: N native, A approximate, I image only, . none. Target columns in order:
 | donut | part-to-whole | How big is each slice of one whole, with a headline figure in the centre? | n,q | -/5 | m | core | N.ININNA..NNN.NN |
 | dot-density-map | spatial | How is a population or set of events spread across space? | geo,q geo,q,n q,q q,q,n | 4/- | l | common | ..INIIA.N.AI..AI |
 | dot-plot | magnitude | What is each category's value, and how do a few values per category compare, when the baseline need not be zero? | n,q n,q+ n,q*n o,q | 4/40 | h | rising | A.IAIININANI..NI |
-| dumbbell | deviation | How far apart are two values per category, and which way did each move? | n,q,q n,o,q | 2/30 | m | rising | A.IAIININ.AAA.NA |
+| dumbbell | deviation | How far apart are two values per category, and which way did each move? | n,q,q n,o,q | 2/30 | m | rising | A.IAIININ.NAA.NA |
 | ecdf | distribution | What fraction of values is below x, and how do several distributions compare across their whole range? | q q,n | 6/- | m | rising | A.IAIINIA.NI..AI |
 | edge-bundling | relationship | Which parts of a hierarchy are linked to which other parts, and where do the links concentrate? | hier,flow flow n,n,q | -/300 | m | niche | ..IAIII...II..II |
 | error-bars | distribution | What is the estimate for each group and how uncertain is it? | n,q,q,q n,q,q o,q,q,q time,q,q,q | 3/20 | m | common | A.IAIININ.NA..NI |
