@@ -466,8 +466,7 @@ class NewTargetTests(unittest.TestCase):
             rc, out = run("tested", "plantuml", "--platform", "macOS", "rendered chart.svg with plantuml 1.2026.1 and opened it")
             self.assertEqual(rc, 0, out)
             text = target.read_text(encoding="utf-8")
-            self.assertRegex(text, r"tested:
-  - macOS \d{4}-\d{2}-\d{2}: rendered chart.svg")
+            self.assertRegex(text, "tested:" + chr(10) + r"  - macOS \d{4}-\d{2}-\d{2}: rendered chart.svg")
             self.assertIn("tested on macOS", text)
             self.assertIsInstance(cw.targets()["plantuml"]["tested"], list)
         finally:
