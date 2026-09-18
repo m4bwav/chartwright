@@ -19,6 +19,9 @@ support:
   chartjs: image
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://seaborn.pydata.org/generated/seaborn.swarmplot.html, https://observablehq.com/plot/transforms/dodge, https://plotly.com/python/strip-charts/, https://vega.github.io/vega/docs/transforms/force/]
@@ -84,6 +87,10 @@ No layout transform; a jittered scatter is possible but a swarm is not worth han
 ### matplotlib
 
 `seaborn.swarmplot(data=df, x="group", y="value", size=4, ax=ax)` computes the packing; add `hue="highlight"` with a two-colour palette to pick out units and `ax.annotate` for labels. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`. seaborn warns when points cannot fit; reduce `size` or fall back to `stripplot`.
+
+### echarts
+
+Hand-written: `scatter` with the 6.0 `jitter` option on a category axis. See `kb/targets/echarts.md`.
 
 ## Notes
 

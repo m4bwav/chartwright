@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: native
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/stacked-column-charts, https://vega.github.io/vega-lite/docs/stack.html, https://plotly.com/javascript/reference/layout/#layout-barnorm]
@@ -94,6 +97,18 @@ Chart.js has no normalisation option: divide each value by its bar total before 
 ### matplotlib
 
 Hand-written: compute `shares = values / values.sum(axis=0)`, then `ax.bar(cats, share_i, bottom=cumulative)` per segment with `ax.yaxis.set_major_formatter(PercentFormatter(1.0))`. `approx` for the same reason as Chart.js. Render with `cw.py render --target matplotlib`.
+
+### echarts
+
+`cw.py build --chart stacked-bar-100 --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart stacked-bar-100 --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### quickchart
+
+Approximate: pre-computed shares as a stacked bar; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: native
+  quickchart: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/caveat/spider.html, https://mermaid.js.org/syntax/radar.html, https://www.chartjs.org/docs/latest/charts/radar.html, https://plotly.com/javascript/radar-chart/]
@@ -92,6 +95,18 @@ radar-beta
 ### matplotlib
 
 `ax = fig.add_subplot(polar=True); angles = numpy.linspace(0, 2*numpy.pi, n, endpoint=False); ax.plot(numpy.append(angles, angles[0]), numpy.append(values, values[0])); ax.fill(..., alpha=0.2); ax.set_xticks(angles, labels); ax.set_ylim(0, 100)`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+`cw.py build --chart radar --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart radar --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### quickchart
+
+`cw.py build --chart radar --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
 
 ## Notes
 

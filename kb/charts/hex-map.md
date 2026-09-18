@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/hexbinmap.html, https://vega.github.io/vega-lite/docs/geoshape.html, https://plotly.com/python/hexbin-mapbox/, https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hexbin.html, https://github.com/odileeds/hexmaps]
@@ -77,6 +80,10 @@ Hex tile: `choropleth` with `geojson` of hexagon features and `featureidkey: "pr
 ### matplotlib
 
 Hex tile: `gdf = geopandas.read_file("hexes.geojson").merge(df, on="code"); gdf.plot(column="value", cmap="Blues", edgecolor="white", ax=ax)` plus `ax.annotate` per centroid. Hexbin over a base map: `ax.hexbin(df.lon, df.lat, gridsize=40, cmap="viridis", mincnt=1)` on the same axes as `base.plot(...)`. Render with `cw.py render --target matplotlib --in hex.py --out hex.png`.
+
+### echarts
+
+Hand-written: custom series over a hex grid. See `kb/targets/echarts.md`.
 
 ## Notes
 

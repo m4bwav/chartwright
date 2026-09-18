@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: none
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega/examples/circle-packing/, https://d3js.org/d3-hierarchy/pack, https://www.data-to-viz.com/graph/circularpacking.html, https://github.com/elmotec/circlify, https://www.semanticscholar.org/paper/55d3281f6b34c50df975b7261044689bf73ec610]

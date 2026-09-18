@@ -180,6 +180,25 @@ class BuildTests(unittest.TestCase):
         self.assertIn("South", out)
         self.assertIn("225", out)
 
+    def test_echarts_option_shapes(self):
+        out = self.build("--chart", "stacked-bar", "--target", "echarts", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        opt = json.loads(out)
+        self.assertEqual(opt["xAxis"]["data"], ["North", "South", "East"])
+        self.assertEqual([s["stack"] for s in opt["series"]], ["total", "total"])
+        out = self.build("--chart", "sankey", "--target", "echarts", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        self.assertEqual(json.loads(out)["series"][0]["links"][0], {"source": "North", "target": "A", "value": 120.0})
+        html = self.tmp / "e.html"
+        self.build("--chart", "pie", "--target", "echarts", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--html", "--out", str(html))
+        self.assertIn("echarts.init", html.read_text(encoding="utf-8"))
+
+    def test_pptx_script_compiles_and_quickchart_url(self):
+        out = self.build("--chart", "column", "--target", "pptx", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product", "--png", str(self.tmp / "c.pptx"))
+        compile(out, "c.py", "exec")
+        self.assertIn("XL_CHART_TYPE.COLUMN_CLUSTERED", out)
+        out = self.build("--chart", "line", "--target", "quickchart", "--data", str(FIX / "prices.csv"), "--x", "date", "--y", "price")
+        self.assertTrue(out.startswith("![price by date](https://quickchart.io/chart?version=4"))
+        self.assertIn("%22type%22%3A%22line%22", out)
+
     def test_mermaid_pie_and_sankey(self):
         out = self.build("--chart", "pie", "--target", "mermaid", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
         self.assertIn('"North" : 120', out)
@@ -260,6 +279,17 @@ class RenderTests(unittest.TestCase):
         rc, msg = run("render", "--target", "matplotlib", "--in", str(script), "--out", str(png))
         self.assertEqual(rc, 0, msg)
         self.assertGreater(png.stat().st_size, 1000)
+
+    def test_pptx_render_writes_file(self):
+        try:
+            import pptx  # noqa: F401
+        except ImportError:
+            self.skipTest("python-pptx not installed")
+        script, deck = self.tmp / "c.py", self.tmp / "c.pptx"
+        run("build", "--chart", "bar", "--target", "pptx", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--out", str(script), "--png", str(deck))
+        rc, msg = run("render", "--target", "pptx", "--in", str(script), "--out", str(deck))
+        self.assertEqual(rc, 0, msg)
+        self.assertGreater(deck.stat().st_size, 10000)
 
 
 class AuthoringTests(unittest.TestCase):

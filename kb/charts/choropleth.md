@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/docs/geoshape.html, https://plotly.com/javascript/choropleth-maps/, https://geopandas.org/en/stable/docs/user_guide/mapping.html, https://colorbrewer2.org]
@@ -90,6 +93,10 @@ Not supported by `cw.py build`; every recipe is hand-written. All targets need a
 ### matplotlib
 
 `gdf = geopandas.read_file("counties.geojson").merge(df, on="id"); gdf.plot(column="rate", cmap="Blues", scheme="quantiles", k=5, legend=True, edgecolor="white", linewidth=0.3, ax=ax); ax.set_axis_off()`. `scheme` needs `mapclassify`. Save with `fig.savefig("map.png", dpi=200)`. Run through `cw.py render --target matplotlib --in map.py --out map.png`.
+
+### echarts
+
+Hand-written: series type `map` after `echarts.registerMap` with GeoJSON. See `kb/targets/echarts.md`.
 
 ## Notes
 

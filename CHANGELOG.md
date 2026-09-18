@@ -2,6 +2,12 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.3.0 (2026-09-18)
+
+- Three more targets with builders: `echarts` (option JSON and page), `pptx` (editable PowerPoint chart via python-pptx), `quickchart` (Chart.js config as an image URL). Nine targets total, wired into all 82 chart files.
+- Both skills rewritten as short routers with `references/` files loaded on demand.
+- Document path verified end to end on `examples/report/`. Repository made public.
+
 ## 0.2.0 (2026-09-18)
 
 - New `terminal` render target (block sparklines and bars, UTF-8 forced on Windows). `cw.py build` composes seven more Vega-Lite charts (dumbbell, slope, waterfall, calendar-heatmap, diverging-bar, stacked-bar-100, small-multiples) and emits named Mermaid series with `--flag namedSeries`. Fresh-session evals: chartwright triggers and holds on a decoy; chartwright-curate description tuned after an undertrigger.

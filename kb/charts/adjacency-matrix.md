@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/heatmap.html, https://vega.github.io/vega-lite/docs/rect.html, https://plotly.com/javascript/heatmaps/, https://github.com/kurkle/chartjs-chart-matrix, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.imshow.html, https://doi.org/10.1057/palgrave.ivs.9500092]
@@ -89,6 +92,10 @@ Sort both axes by a precomputed `order` column (cluster or degree). Render with 
 ### matplotlib
 
 `im = ax.imshow(M, cmap="Blues"); ax.set_xticks(range(n), names, rotation=90); ax.set_yticks(range(n), names); fig.colorbar(im, ax=ax, label="weight")` and, for small n, `for i, j in np.ndindex(M.shape): ax.text(j, i, M[i, j], ha="center", va="center", fontsize=7)`. `seaborn.heatmap(M, annot=True, fmt="d", cmap="Blues", xticklabels=names, yticklabels=names)` does the same in one call; `seaborn.clustermap` reorders rows and columns by clustering. Render with `cw.py render --target matplotlib --in matrix.py --out matrix.png`.
+
+### echarts
+
+Hand-written: `heatmap` on category axes. See `kb/targets/echarts.md`.
 
 ## Notes
 

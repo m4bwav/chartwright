@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://datavizcatalogue.com/methods/radial_bar_chart.html, https://www.data-to-viz.com/graph/circularbarplot.html, https://plotly.com/javascript/polar-chart/, https://www.chartjs.org/docs/latest/charts/polar.html, https://matplotlib.org/stable/gallery/pie_and_polar_charts/polar_bar.html]
@@ -84,6 +87,10 @@ sources: [https://datavizcatalogue.com/methods/radial_bar_chart.html, https://ww
 ### matplotlib
 
 `ax = fig.add_subplot(polar=True); theta = numpy.linspace(0, 2*numpy.pi, n, endpoint=False); ax.bar(theta, values, width=2*numpy.pi/n*0.9, bottom=inner); ax.set_xticks(theta, labels); ax.set_theta_zero_location("N"); ax.set_theta_direction(-1)`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `bar` series on `polar` with `angleAxis`/`radiusAxis`. See `kb/targets/echarts.md`.
 
 ## Notes
 

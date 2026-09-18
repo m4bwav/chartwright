@@ -1,6 +1,6 @@
 # chartwright
 
-Evergreen chart and graph skills for AI coding agents. A knowledge base of about 80 chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, accessibility, per-target build recipes, dated notes), five render targets (Markdown via Mermaid; web via Vega-Lite, Plotly and Chart.js; static PNG/SVG via Python), a standard-library CLI that picks and builds charts from a CSV so the data never passes through the model, and a curation skill that researches novel requests and grows the base so the next request is cheaper.
+Evergreen chart and graph skills for AI coding agents. A knowledge base of about 80 chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, accessibility, per-target build recipes, dated notes), nine render targets (Markdown via Mermaid; web via Vega-Lite, ECharts, Plotly and Chart.js; static PNG/SVG via Python; editable PowerPoint charts; chart-as-URL images via QuickChart; terminal sparklines), a standard-library CLI that picks and builds charts from a CSV so the data never passes through the model, and a curation skill that researches novel requests and grows the base so the next request is cheaper.
 
 ## Skills
 
@@ -35,6 +35,9 @@ python scripts/cw.py data prices.csv             # column kinds and shape guess
 python scripts/cw.py build --chart line --target mermaid --data prices.csv --x date --y price
 python scripts/cw.py build --chart grouped-bar --target vega-lite --data sales.csv --x region --y sales --series product --html --out chart.html
 python scripts/cw.py render --target vega-lite --in chart.vl.json --out chart.png
+python scripts/cw.py build --chart column --target pptx --data sales.csv --x region --y sales --out chart.py --png deck.pptx
+python scripts/cw.py render --target pptx --in chart.py --out deck.pptx      # editable PowerPoint chart
+python scripts/cw.py build --chart line --target terminal --data prices.csv --x date --y price   # block sparkline
 python scripts/cw.py new-chart horizon --name "Horizon chart" --family change-over-time --shapes time,q*n
 python scripts/cw.py note pie "fine for two slices when the question is majority"
 python scripts/cw.py doctor                      # which renderers this machine has
@@ -44,7 +47,7 @@ Renderers are optional: `pip install vl-convert-python` for Vega-Lite to PNG/SVG
 
 ## Install
 
-Claude Code, from the local marketplace that holds this folder: `/plugin install chartwright@mark-local`. Elsewhere, copy `skills/*` into the agent's skill store and keep the plugin folder where the skills can find `scripts/` and `kb/` (two levels up from each SKILL.md).
+Claude Code: add the repo as a marketplace and install (`/plugin marketplace add m4bwav/chartwright` then `/plugin install chartwright@chartwright`), or clone it into a local directory marketplace. Elsewhere, copy `skills/*` into the agent's skill store and keep the plugin folder where the skills can find `scripts/` and `kb/` (two levels up from each SKILL.md). Optional renderers: `pip install vl-convert-python matplotlib python-pptx`; Node plus `@mermaid-js/mermaid-cli` only to rasterise Mermaid.
 
 ## Versioning
 

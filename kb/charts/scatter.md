@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: native
+  quickchart: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://vega.github.io/vega-lite/docs/point.html, https://plotly.com/python/line-and-scatter/, https://www.chartjs.org/docs/latest/charts/scatter.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html]
@@ -96,6 +99,18 @@ Not drawable in Mermaid (`xychart` has no point series). Render with the vega-li
 ### matplotlib
 
 `ax.scatter(x, y, s=30, alpha=0.7, label=name, marker="o")` per group with distinct markers, `ax.legend()`, `ax.annotate(name, (xi, yi))` for outliers; `numpy.polyfit` or `seaborn.regplot` for a trend line. `cw.py build --chart scatter --target matplotlib --data points.csv --x income --y life_expectancy --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+`cw.py build --chart scatter --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart scatter --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### quickchart
+
+`cw.py build --chart scatter --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
 
 ## Notes
 

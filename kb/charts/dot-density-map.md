@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://datavizcatalogue.com/methods/dot_distribution_map.html, https://vega.github.io/vega-lite/docs/geoshape.html, https://plotly.com/javascript/scatter-plots-on-maps/, https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.sample_points.html]
@@ -78,6 +81,10 @@ Two layers: a `geoshape` base map and a `circle` layer with `longitude` and `lat
 ### matplotlib
 
 `pts = gdf.sample_points(size=(gdf.population // 1000).astype(int)).explode(index_parts=False); base = gdf.plot(color="#f2f2f2", edgecolor="white", ax=ax); pts.plot(ax=ax, markersize=1, alpha=0.5, color="#0072B2"); ax.set_axis_off()`. Save with dpi 200 or more so the dots stay separate. Render with `cw.py render --target matplotlib --in map.py --out map.png`.
+
+### echarts
+
+Hand-written: `scatter` on `geo` with small symbols. See `kb/targets/echarts.md`.
 
 ## Notes
 

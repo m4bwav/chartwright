@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/docs/rect.html, https://github.com/kurkle/chartjs-chart-matrix, https://github.com/hafen/geofacet]
@@ -93,6 +96,10 @@ A `heatmap` trace with `z` as a 2D array holding the value at `[row][col]` and `
 ### matplotlib
 
 `for r in rows: ax.add_patch(Rectangle((r.col, -r.row), 1, 1, facecolor=cmap(norm(r.value)), edgecolor="white", linewidth=2)); ax.text(r.col + 0.5, -r.row + 0.5, r.state, ha="center", va="center")`, then `ax.set_aspect("equal"); ax.set_axis_off()` and a `ScalarMappable` colour bar. Render with `cw.py render --target matplotlib --in tiles.py --out tiles.png`.
+
+### echarts
+
+Hand-written: `heatmap` on a hand-laid category grid. See `kb/targets/echarts.md`.
 
 ## Notes
 

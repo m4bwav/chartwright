@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/connectionmap.html, https://vega.github.io/vega-lite/examples/geo_rule.html, https://plotly.com/javascript/lines-on-maps/, https://scitools.org.uk/cartopy/docs/latest/]
@@ -87,6 +90,10 @@ One `scattergeo` trace per flow with `mode: "lines"`, `lon: [olon, dlon]`, `lat:
 ### matplotlib
 
 `base = world.plot(color="#eee", edgecolor="white", ax=ax); for r in flows.itertuples(): ax.plot([r.olon, r.dlon], [r.olat, r.dlat], linewidth=0.5 + 7 * r.value / vmax, color="#0072B2", alpha=0.7)`. For true great circles use `cartopy` (`transform=ccrs.Geodetic()` on a `PlateCarree` axes). Arrowheads with `ax.annotate("", xy=dest, xytext=origin, arrowprops=dict(arrowstyle="->"))`. Render with `cw.py render --target matplotlib --in flows.py --out flows.png`.
+
+### echarts
+
+Hand-written: series type `lines` on a `geo` coordinate system. See `kb/targets/echarts.md`.
 
 ## Notes
 

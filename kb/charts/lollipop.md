@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: approx
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/lollipop.html, https://vega.github.io/vega-lite/examples/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.stem.html]
@@ -93,6 +96,18 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 ### matplotlib
 
 `ax.hlines(categories, 0, values, color="C0", linewidth=2); ax.plot(values, categories, "o", markersize=8, color="C0")` on data sorted ascending, or `ax.stem(values)` for a vertical variant. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `bar` with `barWidth: 2` plus a `scatter` series at the tips. See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: a clustered bar with narrow gap plus an XY_SCATTER overlay is not possible in one chart; use two shapes or a PNG.
+
+### quickchart
+
+Approximate: bar plus scatter mixed datasets; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

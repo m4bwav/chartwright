@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: native
   terminal: approx
+  echarts: approx
+  pptx: approx
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/chart-types-guide, https://plotly.com/javascript/indicator/, https://vega.github.io/vega-lite/docs/text.html, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -100,6 +103,18 @@ Hand-written; add a `line` layer with `"width": 200, "height": 30` below via `vc
 ### terminal
 
 The number on its own line with its delta and a sparkline from `cw.py build --chart sparkline --target terminal ...`.
+
+### echarts
+
+Hand-written: `graphic` text elements (or plain HTML around a sparkline). See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: a text box plus an optional sparkline chart.
+
+### quickchart
+
+Approximate: a `doughnut` with centre text via the `doughnutlabel` plugin, or text only; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

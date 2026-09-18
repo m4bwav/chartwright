@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: image
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/stacked-column-charts, https://vega.github.io/vega-lite/examples/, https://plotly.com/javascript/bar-charts/]

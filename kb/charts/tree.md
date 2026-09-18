@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://mermaid.js.org/syntax/flowchart.html, https://mermaid.js.org/syntax/mindmap.html, https://vega.github.io/vega/examples/tree-layout/, https://d3js.org/d3-hierarchy/tree, https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_agraph.graphviz_layout.html]
@@ -92,6 +95,10 @@ Not available: no hierarchical layout. Use Mermaid in markdown or an image.
 ### matplotlib
 
 Hand-written: `networkx` graph, `pos = nx.nx_agraph.graphviz_layout(G, prog="dot")` (needs Graphviz) or `nx.bfs_layout(G, root)` for a plain layered layout, `nx.draw(G, pos, with_labels=True, node_color="#EEE", edgecolors="#333")`. Render with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: series type `tree`. See `kb/targets/echarts.md`.
 
 ## Notes
 

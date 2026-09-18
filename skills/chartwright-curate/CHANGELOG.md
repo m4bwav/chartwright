@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260918-2 · 2026-09-18 · SKILL.md slimmed to a router; procedures moved to references/procedures.md
+- because: user request (small main file, detail on demand), evergreen protocol budget rule
+- files: SKILL.md, references/procedures.md
+- The five procedures (research, add chart, note, add target, audit) are sections A to E of the reference; SKILL.md keeps routing, the proof step and the output shape.
+
 ### C-20260918-1 · 2026-09-18 · Description: "add a note to the <chart> entry" phrasings
 - because: T-20260918-2 (fresh-session run wrote the note through the CLI without invoking the skill: undertrigger)
 - files: SKILL.md (description)

@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/chord.html, https://github.com/fengwangPhysics/matplotlib-chord-diagram, https://plotly.com/python/v3/filled-chord-diagram/, https://echarts.apache.org/handbook/en/basics/release-note/v6-feature/]
@@ -74,6 +77,10 @@ No chord trace; the composition is a `scatterpolar` or `scatter` figure with `la
 ### matplotlib
 
 `pip install mpl-chord-diagram`, then `from mpl_chord_diagram import chord_diagram; chord_diagram(matrix, names=names, order=None, sort="size", ax=ax)`; `colors=` accepts a palette list, `gap=0.03` opens the ring, `chordwidth=0.7` controls ribbon curvature. Add totals to `names` yourself (`f"{n} ({t})"`). Render with `cw.py render --target matplotlib --in chord.py --out chord.png`.
+
+### echarts
+
+Hand-written: series type `chord` (ECharts 6.0+). See `kb/targets/echarts.md`.
 
 ## Notes
 

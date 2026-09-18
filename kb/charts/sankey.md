@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://mermaid.js.org/syntax/sankey.html, https://plotly.com/javascript/sankey-diagram/, https://github.com/kurkle/chartjs-chart-sankey, https://matplotlib.org/stable/api/sankey_api.html, https://www.data-to-viz.com/graph/sankey.html]
@@ -92,6 +95,14 @@ Raw CSV lines, no indentation, quote labels that contain commas. Renders on GitH
 ### matplotlib
 
 `matplotlib.sankey.Sankey` draws single-node inflow and outflow diagrams (`Sankey(ax=ax, flows=[42, 30, -38, -34], labels=[...], orientations=[0, 0, 0, 0]).finish()`), not multi-stage graphs; for a real multi-stage Sankey as an image, build the Plotly figure and export with kaleido, or use the `pySankey` package (`sankey(left, right, leftWeight=...)`) for two stages. Say which in the script header.
+
+### echarts
+
+`cw.py build --chart sankey --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### quickchart
+
+Approximate: QuickChart `sankey` plugin type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

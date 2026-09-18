@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: native
+  echarts: approx
+  pptx: approx
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/axis.html, https://www.datawrapper.de/blog/chart-types-guide]
@@ -93,6 +96,18 @@ Hand-written (no builder); `cw.py render --target vega-lite --in spark.vl.json -
 ### terminal
 
 `cw.py build --chart sparkline --target terminal --data file.csv --x date --y value` prints the block sparkline with endpoints and range.
+
+### echarts
+
+Hand-written: `line` with axes hidden (`show: false`) and `grid` zeroed. See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: a tiny LINE chart with axes deleted (`chart.value_axis.visible = False`).
+
+### quickchart
+
+Approximate: QuickChart `sparkline` type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

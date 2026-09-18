@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: image
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/edge_bundling.html, https://vega.github.io/vega/examples/edge-bundling/, https://observablehq.com/@d3/hierarchical-edge-bundling, https://doi.org/10.1109/TVCG.2006.147]
@@ -71,6 +74,10 @@ Not supported by `cw.py build`. All five targets are `image` or `none`: none of 
 - Python: `pyecharts` or a matplotlib script that draws bezier paths through the tree ancestors by hand; long and not recommended when Vega is available.
 
 The `plotly` and `matplotlib` targets are `image` because a hand-drawn bundle in either is more work than the Vega spec and gives a worse result; when the document already ships those libraries, still make the picture with Vega and embed it.
+
+### echarts
+
+Hand-written: series type `graph` with `layout: "circular"` and curved edges (no bundling). See `kb/targets/echarts.md`.
 
 ## Notes
 

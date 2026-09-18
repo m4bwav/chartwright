@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://mermaid.js.org/syntax/gantt.html, https://plotly.com/python/gantt/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.broken_barh.html, https://datavizcatalogue.com/methods/gantt_chart.html]
@@ -104,6 +107,10 @@ Python: `px.timeline(df, x_start="start", x_end="end", y="task", color="phase")`
 ### matplotlib
 
 `ax.broken_barh([(start, end - start)], (row - 0.4, 0.8), facecolors=colour)` per task with `matplotlib.dates.date2num` values, `ax.set_yticks(rows, names)`, `ax.invert_yaxis()`, `ax.axvline(today, linestyle="--")`; dependencies with `ax.annotate("", xy=..., xytext=..., arrowprops={"arrowstyle": "->"})`. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: custom series `renderItem` drawing bars from start to end (the ECharts gantt example). See `kb/targets/echarts.md`.
 
 ## Notes
 

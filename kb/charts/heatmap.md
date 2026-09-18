@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/rect.html, https://plotly.com/python/heatmaps/, https://github.com/kurkle/chartjs-chart-matrix, https://seaborn.pydata.org/generated/seaborn.heatmap.html, https://jfly.uni-koeln.de/color/]
@@ -93,6 +96,10 @@ Community plugin `chartjs-chart-matrix`: `{"type": "matrix", "data": {"datasets"
 ### matplotlib
 
 `seaborn.heatmap(pivot, cmap="viridis", annot=True, fmt=".0f", linewidths=0.5, ax=ax)`; plain matplotlib: `im = ax.imshow(matrix, cmap="viridis"); fig.colorbar(im)`, then `ax.set_xticks(range(n), labels=cols)`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+`cw.py build --chart heatmap --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
 
 ## Notes
 

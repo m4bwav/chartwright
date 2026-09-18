@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://datavizcatalogue.com/methods/wordcloud.html, https://www.data-to-viz.com/graph/wordcloud.html, https://vega.github.io/vega/examples/word-cloud/, https://github.com/sgratzl/chartjs-chart-wordcloud, https://github.com/amueller/word_cloud, https://www.datawrapper.de/blog/chart-types-guide]
@@ -77,6 +80,10 @@ Vega-Lite has no word cloud; full Vega has the `wordcloud` transform (the `word-
 ### matplotlib
 
 `pip install wordcloud`, then `from wordcloud import WordCloud, STOPWORDS; wc = WordCloud(width=1200, height=600, background_color="white", stopwords=STOPWORDS, prefer_horizontal=1.0, colormap="Blues", max_words=80).generate_from_frequencies(counts); ax.imshow(wc, interpolation="bilinear"); ax.set_axis_off()`. `generate(text)` does the counting for raw text. Render with `cw.py render --target matplotlib --in cloud.py --out cloud.png`.
+
+### echarts
+
+Hand-written: echarts-wordcloud extension. See `kb/targets/echarts.md`.
 
 ## Notes
 

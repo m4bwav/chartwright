@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/arc.html, https://datavizcatalogue.com/methods/arc_diagram.html, https://vega.github.io/vega/examples/arc-diagram/, https://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Arc.html]
@@ -77,6 +80,10 @@ Nodes as a `point` layer on `x` (ordinal position) at fixed `y`; arcs as a `line
 ### matplotlib
 
 `for s, t, w in edges: r = (x[t] - x[s]) / 2; ax.add_patch(Arc((x[s] + r, 0), 2 * r, 2 * r, theta1=0, theta2=180, linewidth=0.5 + 3 * w / wmax, alpha=0.6, color="#0072B2"))`; nodes with `ax.scatter(x, [0] * n)` and `ax.set_xticks(x, names, rotation=45, ha="right")`; `ax.set_ylim(0, max_r * 1.05); ax.set_aspect("equal")`. Render with `cw.py render --target matplotlib --in arc.py --out arc.png`.
+
+### echarts
+
+Hand-written: series type `graph` with `layout: "none"`, nodes on a line and `lineStyle.curveness`. See `kb/targets/echarts.md`.
 
 ## Notes
 

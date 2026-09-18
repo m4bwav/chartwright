@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://plotly.com/javascript/sunburst-charts/, https://vega.github.io/vega/examples/sunburst/, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://eagereyes.org/pie-charts]
@@ -82,6 +85,10 @@ Not available: no core type and no maintained plugin. Use plotly or a matplotlib
 ### matplotlib
 
 Hand-written: nested `ax.pie` calls with `radius` and `wedgeprops=dict(width=0.3, edgecolor="white")`, inner ring for parents and outer ring for children in the same order, so the outer wedges align with their parents; or `ax.bar` on a polar axis with computed `left`/`width` per level. Render with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: series type `sunburst` with nested `children`. See `kb/targets/echarts.md`.
 
 ## Notes
 

@@ -19,6 +19,9 @@ support:
   chartjs: image
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega-lite/examples/interactive_splom.html, https://plotly.com/python/splom/, https://seaborn.pydata.org/generated/seaborn.pairplot.html, https://www.data-to-viz.com/graph/correlogram.html]
@@ -91,6 +94,10 @@ No faceting; a grid of separate scatter canvases is possible but tedious and axi
 ### matplotlib
 
 `seaborn.pairplot(df[cols + ["origin"]], hue="origin", corner=True, plot_kws={"s": 12, "alpha": 0.6})` (`corner=True` drops the duplicate triangle; `diag_kind="hist"` or `"kde"`). Plain pandas: `pandas.plotting.scatter_matrix(df[cols], alpha=0.6, diagonal="hist")`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: several `grid` entries with `scatter` series per pair. See `kb/targets/echarts.md`.
 
 ## Notes
 

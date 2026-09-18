@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: approx
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/waterfall_chart.html, https://plotly.com/javascript/waterfall-charts/, https://www.storytellingwithdata.com/blog/2020/2/26/what-is-a-waterfall-chart]
@@ -98,6 +101,18 @@ Data rows `step, amount, total` in order, with total rows carrying the full valu
 ### matplotlib
 
 Compute `starts = cumsum shifted` and draw `ax.bar(steps, amounts, bottom=starts, color=colours)` with totals as `ax.bar(step, total, bottom=0, color="#555")`, `ax.bar_label` for values, and `ax.plot([i, i + 1], [end_i, end_i], color="0.5", linewidth=1)` per connector. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: stacked `bar` with a transparent base series (`itemStyle.color: "transparent"`). See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: COLUMN_STACKED with a transparent base series.
+
+### quickchart
+
+Approximate: floating bars `[start, end]`; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

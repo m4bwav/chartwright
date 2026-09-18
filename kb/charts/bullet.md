@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: approx
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/layer_bar_bullet.html, https://plotly.com/javascript/bullet-charts/, https://datavizcatalogue.com/methods/bullet_graph.html]
@@ -94,6 +97,18 @@ Wide data with `kpi, actual, target, band1, band2, band3`; use `"resolve": {"sca
 ### matplotlib
 
 `ax.barh(y, band3, color="#eee", height=0.8); ax.barh(y, band2, color="#ddd", height=0.8); ax.barh(y, band1, color="#ccc", height=0.8); ax.barh(y, actual, color="#0072B2", height=0.3); ax.vlines(target, y - 0.4, y + 0.4, color="black", linewidth=3)` per row, `ax.set_yticks(range(n), kpis)`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: horizontal stacked `bar` bands plus a `bar` for the measure and a `markLine` target. See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: BAR_STACKED bands plus a thin bar series.
+
+### quickchart
+
+Approximate: QuickChart `progressBar` or a stacked horizontal bar; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

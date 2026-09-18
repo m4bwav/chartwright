@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.statsmodels.org/stable/generated/statsmodels.graphics.gofplots.qqplot.html, https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.probplot.html, https://vega.github.io/vega-lite/docs/quantile.html, https://plotly.com/python/v3/normality-test/, https://datavizcatalogue.com/]
@@ -91,6 +94,10 @@ Same precomputation, then a `scatter` dataset for the points and a `line` datase
 ### matplotlib
 
 `statsmodels.api.qqplot(values, line="45", ax=ax)` (pip `statsmodels`), or `scipy.stats.probplot(values, dist="norm", plot=ax)` which draws points and the fitted line; two-sample: sort both, interpolate to equal length, `ax.scatter(qa, qb)`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `scatter` on value axes plus a `markLine` diagonal. See `kb/targets/echarts.md`.
 
 ## Notes
 

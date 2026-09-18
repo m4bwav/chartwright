@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: none
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/, https://github.com/konstantint/matplotlib-venn, https://ieeexplore.ieee.org/document/6876017, https://datavizcatalogue.com/methods/venn_diagram.html]

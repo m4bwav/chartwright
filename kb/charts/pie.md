@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: native
+  quickchart: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://eagereyes.org/pie-charts, https://media.eagereyes.org/papers/2016/Skau-EuroVis-2016.pdf, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/syntax/pie.html, https://www.data-to-viz.com/caveat/pie.html]
@@ -101,6 +104,18 @@ pie showData
 ### matplotlib
 
 `ax.pie(values, labels=names, autopct="%1.0f%%", startangle=90, counterclock=False); ax.axis("equal")`. `cw.py build --chart pie --target matplotlib --data traffic.csv --x device --y visits --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+`cw.py build --chart pie --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart pie --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### quickchart
+
+`cw.py build --chart pie --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
 
 ## Notes
 

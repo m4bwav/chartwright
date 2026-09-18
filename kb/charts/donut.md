@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: native
+  quickchart: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://eagereyes.org/pie-charts, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/docs/arc.html]
@@ -89,6 +92,18 @@ Mermaid `pie` has no hole, so `cw.py build --chart donut --target mermaid --data
 ### matplotlib
 
 `ax.pie(values, labels=names, autopct="%1.0f%%", startangle=90, wedgeprops=dict(width=0.4)); ax.text(0, 0, "58%\nmobile", ha="center", va="center")`. `cw.py build --chart donut --target matplotlib --data traffic.csv --x device --y visits --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+`cw.py build --chart donut --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart donut --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### quickchart
+
+`cw.py build --chart donut --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
 
 ## Notes
 

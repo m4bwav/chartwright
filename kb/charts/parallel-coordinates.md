@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/parallel.html, https://plotly.com/javascript/parallel-coordinates-plot/, https://vega.github.io/vega-lite/examples/parallel_coordinate.html, https://pandas.pydata.org/docs/reference/api/pandas.plotting.parallel_coordinates.html]
@@ -87,6 +90,10 @@ Native trace with brushing and axis drag built in; `line.color` by one dimension
 ### matplotlib
 
 `pandas.plotting.parallel_coordinates(df, "class", colormap="viridis", alpha=0.4)` on a data frame normalised per column (`(df - df.min()) / (df.max() - df.min())`), or one `ax.plot(range(n_dims), row)` per entity. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `parallelAxis` plus series type `parallel`. See `kb/targets/echarts.md`.
 
 ## Notes
 

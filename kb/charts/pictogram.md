@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://datavizcatalogue.com/methods/pictogram_chart.html, https://github.com/gyli/PyWaffle, https://vega.github.io/vega-lite/examples/isotype_bar_chart.html]
@@ -81,6 +84,10 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 ### matplotlib
 
 `from pywaffle import Waffle; fig = plt.figure(FigureClass=Waffle, rows=5, values={"Yes": 30, "No": 70}, icons="person", icon_size=18, legend={"loc": "lower left"})` (pywaffle bundles Font Awesome icons); for a row per category pass `plots={...}` with one entry each. `pip install pywaffle`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `pictorialBar` series. See `kb/targets/echarts.md`.
 
 ## Notes
 

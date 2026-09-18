@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega-lite/examples/concat_population_pyramid.html, https://datavizcatalogue.com/methods/population_pyramid.html, https://www.datawrapper.de/charts, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]
@@ -96,6 +99,10 @@ Two horizontal `bar` traces (`orientation: "h"`), the female one with negated va
 ### matplotlib
 
 `ax.barh(ages, -female, color="#CC79A7", label="Female"); ax.barh(ages, male, color="#0072B2", label="Male")`, then `ax.xaxis.set_major_formatter(lambda v, _: f"{abs(v):,.0f}")` and `ax.legend()`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`. Composed from `barh`, hence `approx`.
+
+### echarts
+
+Hand-written: two horizontal `bar` series with the left one negated. See `kb/targets/echarts.md`.
 
 ## Notes
 

@@ -19,6 +19,9 @@ support:
   chartjs: image
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/rect_mosaic_labelled.html, https://www.datawrapper.de/blog/chart-types-guide, https://datavizcatalogue.com]
@@ -96,6 +99,10 @@ Chart.js bars cannot take a per-bar width; render the chart elsewhere (vega-lite
 ### matplotlib
 
 Hand-written: compute `lefts = cumsum(totals) - totals`, then per segment `ax.bar(lefts, shares_i, width=totals, bottom=cum_i, align="edge", edgecolor="white")`; label columns at `lefts + totals / 2`. Render with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: custom series `renderItem` (variable-width bars). See `kb/targets/echarts.md`.
 
 ## Notes
 

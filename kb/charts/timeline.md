@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/syntax/timeline.html, https://plotly.com/python/gantt/, https://datavizcatalogue.com/methods/timeline.html]
@@ -100,6 +103,10 @@ Python: `px.timeline(df, x_start="start", x_end="end", y="name")` then `fig.upda
 ### matplotlib
 
 Durations: `ax.barh(names, [e - s for s, e in spans], left=[s for s, e in spans], height=0.5)`; events: `ax.plot(dates, [0] * len(dates), "o")` on a horizontal axis line with `ax.annotate(label, (d, 0), xytext=(0, 12 * level), textcoords="offset points", ha="center")` alternating levels. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `scatter` on a `time` axis with labels. See `kb/targets/echarts.md`.
 
 ## Notes
 

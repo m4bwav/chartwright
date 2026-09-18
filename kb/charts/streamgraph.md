@@ -19,6 +19,9 @@ support:
   chartjs: image
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/streamgraph.html, https://vega.github.io/vega-lite/docs/stack.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.stackplot.html]
@@ -85,6 +88,10 @@ One `{"type": "scatter", "mode": "lines", "stackgroup": "one", ...}` trace per c
 `ax.stackplot(years, *rows, labels=names, baseline="wiggle")` (`"sym"` for centred, `"weighted_wiggle"` for the Byron and Wattenberg variant); hide the y axis with `ax.yaxis.set_visible(False)`. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
 
 Markdown and Chart.js hosts: render the matplotlib or vega-lite version to SVG or PNG and link it; Chart.js has no offset stacking.
+
+### echarts
+
+Hand-written: stacked `line` with `areaStyle` and `stack`; no wiggle offset, so `approx`. See `kb/targets/echarts.md`.
 
 ## Notes
 

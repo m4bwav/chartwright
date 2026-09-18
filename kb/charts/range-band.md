@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: approx
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/errorband.html, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://ieeexplore.ieee.org/document/6876013]
@@ -90,6 +93,14 @@ Three traces in order: `{"x": dates, "y": hi, "mode": "lines", "line": {"width":
 `ax.fill_between(dates, lo, hi, alpha=0.25, linewidth=0)` then `ax.plot(dates, mid, linewidth=2)`; repeat `fill_between` with narrower intervals for a fan. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
 
 Markdown hosts: render the vega-lite spec to SVG and link it.
+
+### echarts
+
+Hand-written: two stacked `line` series with `areaStyle` on the upper and transparent lower. See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: AREA_STACKED with a transparent lower series.
 
 ## Notes
 

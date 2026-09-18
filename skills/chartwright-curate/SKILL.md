@@ -5,59 +5,28 @@ description: "Grow and correct chartwright's chart knowledge base so the next ch
 
 # chartwright-curate
 
-Outcome: the knowledge base under `<plugin root>/kb/` gained or corrected an entry that `cw.py --strict validate` accepts, `kb/INDEX.md` was regenerated, the change is logged with its reason, and, for research, the sources and their velocity signals are recorded so the entry can be re-verified later.
+Outcome: the knowledge base under `<plugin root>/kb/` gained or corrected an entry that `cw.py --strict validate` accepts, `kb/INDEX.md` was regenerated, the change is logged with its reason, and research is recorded with sources so the entry can be re-verified later.
 
-Plugin root: two levels above this file. `CW` means `python "<plugin root>/scripts/cw.py"`. Schema: `kb/SCHEMA.md`. Authoring standard: `ai-docs/notes/kb-authoring-brief.md`.
+Plugin root: two levels above this file. `CW` = `python "<plugin root>/scripts/cw.py"`. Schema: `kb/SCHEMA.md`. The full procedure for each path is in [references/procedures.md](references/procedures.md); read only the section you need.
 
 ## Step 0: freshness (every use, one read)
 
 Read `evergreen.json` next to this file. If `verify_at_use` is true, re-check the listed `volatile_claims` before relying on them. If `contradiction` is set or today is on or after `next_due`, tell the user in one line, do the task with the current content, then run the refresh (`evergreen-refresh`) in the same session. If `tests.failing` is non-empty, say so in one line and run `evergreen-tune` after the task. Never block the task on a refresh unless the task depends on the stale claim.
 
-## Step 1: what kind of curation
-
-| Ask | Path |
-|---|---|
-| A chart type or question the index lacks | Research (Step 2), then Add chart (Step 3) |
-| A note or correction on an existing chart | Note (Step 4) |
-| A new place to render charts | Add target (Step 5) |
-| "Audit", "gaps", "what is stale" | Audit (Step 6) |
+## Step 1: route
 
 Check first: `CW list` and a grep of `kb/charts/*.md` for the name and its aliases. A chart that exists under another name gets an alias, not a new file.
 
-## Step 2: research a chart type or question
+| Ask | Path (section in references/procedures.md) | Core action and its evidence |
+|---|---|---|
+| A chart type or question the index lacks | A (research) then B (add) | an `R-` entry in RESEARCH.md; a new `kb/charts/<slug>.md` that validates |
+| A note or correction on an existing chart | C | `CW note <slug> "<text>"` (dated line in the file) or an edited section plus a `C-` entry |
+| A new place to render charts | D | `kb/targets/<slug>.md`, a support line in every chart, recipes, builder and tests when mechanical |
+| "Audit", "gaps", "what is stale" | E | validate output, re-verified entries with `last_verified` updated, the report |
 
-Search primary sources, newest first, on four tracks, and keep the notes:
+## Step 2: prove it
 
-1. Subject: what the chart is, what it encodes, its aliases; sources in this order: the Financial Times Visual Vocabulary, the Data Visualisation Catalogue, From Data to Viz, Datawrapper's blog, then the original paper or the tool that introduced it.
-2. Evidence: any perception study on the encoding (start from `kb/rules/evidence.md`; search `"<chart>" perception study`, `"<chart>" Cleveland McGill`, `site:eagereyes.org <chart>`), and practitioner guidance on misuse.
-3. Popularity and velocity: which of Vega-Lite, Plotly, ECharts, Chart.js, Observable Plot, D3, matplotlib, seaborn, Datawrapper, Flourish and Mermaid support it natively; release notes that added it in the last three years (rising) or guides that discourage it (declining). Record what was checked and the date.
-4. Build: the idiomatic minimal recipe per target from official docs; mark `approx` or `image` honestly.
-
-Write the findings to `RESEARCH.md` next to this file as an `R-` entry (date, question, sources with URLs, what changed) before touching the knowledge base. If a fact could not be verified, the chart file says so in its Evidence section rather than smoothing it over.
-
-## Step 3: add a chart type
-
-1. `CW new-chart <slug> --name "<Name>" --family <family> --shapes "<shape>" ...` writes the stub with every section.
-2. Fill it to the standard of `kb/charts/line.md`: frontmatter (aliases, family, also, question, shapes, goals, caps, evidence, popularity, status, support for every target, sources), then When to use, When not to use, Substitutes (existing slugs in backticks), Evidence (cite by author-year; say how strong), Accessibility, Build (a `###` per native or approx target; name `CW build` only for charts it supports, listed in the authoring brief), Notes with the dated origin line.
-3. If the chart is common enough that `cw.py build` should support it, add the recipe to the builder (`build_vega_lite` first, then others), add a test in `tests/test_cw.py`, and run the tests.
-4. `CW --strict validate` then `CW index`. Both must pass; the index is what the chartwright skill reads.
-5. Log: a `C-` entry in `CHANGELOG.md` next to this file (what, why, source `R-` id), and `python <evergreen plugin>/scripts/evergreen.py bump <this skill dir> --changes`.
-
-## Step 4: note or correct an existing chart
-
-- A user preference or a lesson about a chart: `CW note <slug> "<text>"` appends a dated line under `## Notes`. If the note changes the guidance (a cap, a "when not"), edit that section too and log it in `CHANGELOG.md`; a preference that applies to every chart ("never pies") goes to `LEARNINGS.md` next to this file and the chartwright skill reads it via Step 6 there.
-- A factual correction with a source: edit the section, update `last_verified` and `sources`, log the `C-` entry citing the source. If the correction contradicts `kb/rules/`, fix the rule and set `contradiction` in `evergreen.json` so the next refresh re-checks the area.
-
-## Step 5: add or update a render target
-
-1. `CW new-target <slug> --name "<Name>" --kind markdown|web|image|office|terminal` and fill the stub: what it can draw (a table of slugs with support levels), syntax essentials, limits, render (how to get a file out, what to install), notes. Candidates already researched (versions in `kb/rules/choosing-a-target.md`): `echarts`, `pptx`, `xlsx`, `gsheets`, `plantuml`, `terminal`, `quickchart`.
-2. Every chart file needs a `<slug>:` line in `support:`; `CW --strict validate` lists the gaps. Add a `### <slug>` build recipe to every chart marked native or approx (a short one-liner is fine when the target's own file carries the details).
-3. If the target can be built mechanically, add a `build_<slug>` function and, when there is a headless renderer, a branch in `cmd_render`, with tests.
-4. `CW index`, `CHANGELOG.md` entry, `kb/rules/choosing-a-target.md` row.
-
-## Step 6: audit the knowledge base
-
-`CW --strict validate` (schema), then list charts whose `last_verified` is older than the skill's interval (`evergreen.json` next to this file) or whose Evidence section says unverified; re-check those with Step 2's tracks, update `last_verified` only when a source was actually read. Compare the index with the current chart menus of Datawrapper, Flourish, Vega-Lite, Plotly, ECharts and Mermaid for types the base lacks; add the ones with real use (present in two or more menus, or rising in release notes). Report: counts, what was verified, what was added, what remains unverified.
+Every path ends with `CW --strict validate` (exit 0) and `CW index`; a change to `scripts/cw.py` also runs `python -m unittest discover -s tests`. Log the change as a `C-` entry in [CHANGELOG.md](CHANGELOG.md) (what, why, the `R-`, `L-` or `T-` id it answers) and bump the counter with the evergreen plugin's `evergreen.py bump <this dir> --changes`. Nothing is reported done until validate and index have run.
 
 ## Output
 
@@ -69,4 +38,4 @@ If the user corrects you, the same error happens twice, a workaround is found, o
 
 ## Maintenance
 
-This skill is evergreen (topic: sources for chart taxonomy, perception evidence, and library chart menus used to grow the chart knowledge base; tier `moderate`, currently every 30 days, next due 2026-10-17). Files: `evergreen.json` (state), [RESEARCH.md](RESEARCH.md) (findings and search plan), [CHANGELOG.md](CHANGELOG.md) (every change, with reasons), [LEARNINGS.md](LEARNINGS.md) (lessons), [TESTS.md](TESTS.md) and `evals/evals.json` (the cases that prove it and the runs). Protocol: the evergreen plugin's `protocol/PROTOCOL.md` (../../protocol/PROTOCOL.md when this plugin is vendored beside it). Refresh with `evergreen-refresh`; test with `evergreen-test`; fix a failure with `evergreen-tune`; audit with `evergreen-audit`.
+This skill is evergreen (topic: sources for chart taxonomy, perception evidence, and library chart menus used to grow the chart knowledge base; tier `moderate`, currently every 30 days, next due 2026-10-17). Files: `evergreen.json` (state), [RESEARCH.md](RESEARCH.md), [CHANGELOG.md](CHANGELOG.md), [LEARNINGS.md](LEARNINGS.md), [TESTS.md](TESTS.md) and `evals/evals.json`; procedures in `references/`. Protocol: the installed evergreen plugin (`protocol: "plugin"` in evergreen.json). Refresh with `evergreen-refresh`; test with `evergreen-test`; fix a failure with `evergreen-tune`; audit with `evergreen-audit`.

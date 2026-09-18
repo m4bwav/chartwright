@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -98,6 +101,10 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 ### matplotlib
 
 `ax.scatter(values, categories, s=60, label=name)` per series on data sorted by the primary series, `ax.hlines(categories, xmin, xmax, color="0.8", zorder=0)` for guide lines, `ax.set_xlim(left=min_value * 0.95)` when not starting at zero. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `scatter` on a category axis. See `kb/targets/echarts.md`.
 
 ## Notes
 

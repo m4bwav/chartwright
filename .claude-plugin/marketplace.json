@@ -1,0 +1,8 @@
+{
+  "name": "chartwright",
+  "owner": { "name": "Mark Rogers" },
+  "metadata": { "description": "Evergreen chart and graph skills with an evidence-based chart knowledge base" },
+  "plugins": [
+    { "name": "chartwright", "source": "./", "description": "Pick and build the right chart in Markdown, web, image, PowerPoint or terminal form; curate the chart knowledge base" }
+  ]
+}

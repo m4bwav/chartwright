@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: native
+  quickchart: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://www.data-to-viz.com/caveat/grouped_bar.html]
@@ -107,6 +110,18 @@ One `{"type": "bar", "name": "2025", "x": regions, "y": values}` trace per serie
 ### matplotlib
 
 `w = 0.8 / n_series; ax.bar(x + i*w - 0.4 + w/2, values_i, width=w, label=name)` for series `i` over `x = numpy.arange(n_categories)`, then `ax.set_xticks(x, categories)` and `ax.legend()`. `cw.py build --chart grouped-bar --target matplotlib --data units.csv --x region --y units --series year --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+`cw.py build --chart grouped-bar --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart grouped-bar --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### quickchart
+
+`cw.py build --chart grouped-bar --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
 
 ## Notes
 

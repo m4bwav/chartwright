@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/tick_strip.html, https://plotly.com/python/strip-charts/, https://seaborn.pydata.org/generated/seaborn.stripplot.html]
@@ -88,6 +91,10 @@ A `scatter` type with the category mapped to an integer y plus a small random of
 ### matplotlib
 
 `seaborn.stripplot(data=df, x="value", y="category", jitter=0.25, alpha=0.6, ax=ax)`; plain matplotlib: `ax.plot(values, [i] * len(values), "|", markersize=12, alpha=0.6)` per row for ticks. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `scatter` on a category axis. See `kb/targets/echarts.md`.
 
 ## Notes
 

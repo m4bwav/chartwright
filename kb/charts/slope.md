@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: approx
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/line_slope.html, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -104,6 +107,14 @@ One `{"type": "scatter", "mode": "lines+markers+text", "x": ["2015", "2025"], "y
 ### matplotlib
 
 For each entity `ax.plot([0, 1], [a, b], marker="o")` then `ax.text(-0.05, a, f"{name} {a}", ha="right", va="center")` and `ax.text(1.05, b, f"{name} {b}", ha="left", va="center")`; `ax.set_xticks([0, 1], ["2015", "2025"])`, hide spines. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `line` series per entity over a two-category axis with `endLabel`. See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: LINE_MARKERS with two categories and a series per entity.
 
 ## Notes
 

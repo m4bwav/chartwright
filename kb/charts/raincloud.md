@@ -19,6 +19,9 @@ support:
   chartjs: image
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://discovery.ucl.ac.uk/id/eprint/10178652/, https://github.com/pog87/PtitPrince, https://github.com/njudd/ggrain, https://plotly.com/python/violin/, https://vega.github.io/vega-lite/docs/layer.html]
@@ -85,6 +88,10 @@ No density primitive and no jitter helper; the composition is not worth doing in
 ### matplotlib
 
 `ptitprince.RainCloud(x="group", y="value", data=df, orient="h", width_viol=0.6, ax=ax)` (pip `ptitprince`, wraps seaborn). Plain seaborn: `sns.violinplot(..., inner=None, cut=0)` then clip each violin body to its left half, `sns.boxplot(..., width=0.15)`, `sns.stripplot(..., jitter=0.15, alpha=0.5)` on the same axes with a small offset. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`. Add-on composition, hence `approx`.
+
+### echarts
+
+Hand-written: custom violin series plus `scatter` jitter plus `boxplot`. See `kb/targets/echarts.md`.
 
 ## Notes
 

@@ -19,6 +19,9 @@ support:
   chartjs: image
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hexbin.html, https://observablehq.com/plot/transforms/hexbin, https://vega.github.io/vega-lite/docs/bin.html, https://plotly.com/python/2D-Histogram/, https://www.datawrapper.de/blog/chart-types-guide]
@@ -93,6 +96,10 @@ No 2D binning and no hexagon shape; the matrix plugin could draw square bins com
 ### matplotlib
 
 `hb = ax.hexbin(x, y, gridsize=40, cmap="viridis", bins="log", mincnt=1); fig.colorbar(hb, label="count")`; `C=z, reduce_C_function=numpy.mean` aggregates a third variable per cell. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: custom series `renderItem` drawing hexagons (the ECharts hexbin example). See `kb/targets/echarts.md`.
 
 ## Notes
 

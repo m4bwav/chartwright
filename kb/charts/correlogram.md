@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-18
 last_verified: 2026-09-18
 sources: [https://www.data-to-viz.com/graph/correlogram.html, https://seaborn.pydata.org/examples/many_pairwise_correlations.html, https://plotly.com/python/heatmaps/, https://vega.github.io/vega-lite/examples/rect_heatmap.html, https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html]
@@ -76,6 +79,10 @@ Approximate: the `chartjs-chart-matrix` plugin draws coloured cells; compute the
 ### matplotlib
 
 `sns.heatmap(df.corr(), vmin=-1, vmax=1, cmap="RdBu", center=0, annot=True, fmt=".2f", mask=np.triu(np.ones_like(corr, dtype=bool)))` for the lower triangle; `sns.clustermap` to order by similarity. Native; hand-written.
+
+### echarts
+
+Hand-written: `heatmap` on category axes with `visualMap` from -1 to 1. See `kb/targets/echarts.md`.
 
 ## Notes
 

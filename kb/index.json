@@ -39,7 +39,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "matrix diagram",
@@ -90,7 +93,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "approx"
    },
    "aliases": [
     "parallel sets",
@@ -139,7 +145,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "arc plot",
@@ -183,7 +192,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "native"
+    "terminal": "native",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "filled line chart",
@@ -231,7 +243,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "native"
+    "terminal": "native",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "horizontal bar chart",
@@ -279,7 +294,10 @@
     "plotly": "approx",
     "chartjs": "image",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "swarm plot",
@@ -326,7 +344,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "approx"
    },
    "aliases": [
     "box-and-whisker plot",
@@ -373,7 +394,10 @@
     "plotly": "native",
     "chartjs": "none",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "proportional symbol map",
@@ -420,7 +444,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "bubble plot",
@@ -470,7 +497,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "approx"
    },
    "aliases": [
     "bullet graph",
@@ -517,7 +547,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "rank chart",
@@ -563,7 +596,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "calendar chart",
@@ -609,7 +645,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "OHLC chart",
@@ -657,7 +696,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "scaled cartogram",
@@ -705,7 +747,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "chord chart",
@@ -754,7 +799,10 @@
     "plotly": "native",
     "chartjs": "none",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "filled map",
@@ -803,7 +851,10 @@
     "plotly": "image",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "none",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "circular treemap",
@@ -852,7 +903,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "native"
+    "terminal": "native",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "vertical bar chart",
@@ -895,7 +949,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "connected scatter",
@@ -939,7 +996,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "correlation matrix",
@@ -986,7 +1046,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "cluster tree",
@@ -1030,7 +1093,10 @@
     "plotly": "native",
     "chartjs": "none",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "contour plot",
@@ -1076,7 +1142,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "KDE plot",
@@ -1124,7 +1193,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "approx"
    },
    "aliases": [
     "positive negative bar chart",
@@ -1173,7 +1245,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "image",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "Likert chart",
@@ -1219,7 +1294,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "doughnut chart",
@@ -1266,7 +1344,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "dot map",
@@ -1316,7 +1397,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "Cleveland dot plot",
@@ -1366,7 +1450,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "approx"
    },
    "aliases": [
     "range plot",
@@ -1413,7 +1500,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "empirical cumulative distribution function",
@@ -1461,7 +1551,10 @@
     "plotly": "image",
     "chartjs": "none",
     "matplotlib": "image",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "edge bundling",
@@ -1509,7 +1602,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "none"
    },
    "aliases": [
     "confidence interval plot",
@@ -1558,7 +1654,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "connection map",
@@ -1608,7 +1707,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "conversion funnel",
@@ -1655,7 +1757,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "project schedule",
@@ -1703,7 +1808,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "approx"
    },
    "aliases": [
     "meter",
@@ -1753,7 +1861,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "clustered bar chart",
@@ -1803,7 +1914,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "heat map",
@@ -1853,7 +1967,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "hexagon map",
@@ -1898,7 +2015,10 @@
     "plotly": "approx",
     "chartjs": "image",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "hexagonal binning",
@@ -1944,7 +2064,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "approx"
    },
    "aliases": [
     "frequency distribution",
@@ -1987,7 +2110,10 @@
     "plotly": "approx",
     "chartjs": "image",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "horizon graph",
@@ -2033,7 +2159,10 @@
     "plotly": "native",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "partition chart",
@@ -2085,7 +2214,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "native"
+    "terminal": "native",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "line graph",
@@ -2132,7 +2264,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "approx"
    },
    "aliases": [
     "lollipop plot",
@@ -2177,7 +2312,10 @@
     "plotly": "approx",
     "chartjs": "image",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "mosaic plot",
@@ -2226,7 +2364,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "node-link diagram",
@@ -2275,7 +2416,10 @@
     "plotly": "native",
     "chartjs": "none",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "parallel coordinates plot",
@@ -2322,7 +2466,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "isotype chart",
@@ -2365,7 +2512,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "pie graph",
@@ -2410,7 +2560,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "age-sex pyramid",
@@ -2455,7 +2608,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "quantile-quantile plot",
@@ -2501,7 +2657,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "2x2 matrix",
@@ -2548,7 +2707,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "spider chart",
@@ -2597,7 +2759,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "circular bar chart",
@@ -2642,7 +2807,10 @@
     "plotly": "approx",
     "chartjs": "image",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "rain cloud plot",
@@ -2689,7 +2857,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "none"
    },
    "aliases": [
     "band chart",
@@ -2737,7 +2908,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "joyplot",
@@ -2785,7 +2959,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "approx"
    },
    "aliases": [
     "sankey chart",
@@ -2835,7 +3012,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "scatterplot",
@@ -2882,7 +3062,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "none"
    },
    "aliases": [
     "slopegraph",
@@ -2933,7 +3116,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "approx"
+    "terminal": "approx",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "trellis chart",
@@ -2982,7 +3168,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "native"
+    "terminal": "native",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "approx"
    },
    "aliases": [
     "inline chart",
@@ -3026,7 +3215,10 @@
     "plotly": "native",
     "chartjs": "image",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "SPLOM",
@@ -3070,7 +3262,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "none"
    },
    "aliases": [
     "stacked area graph",
@@ -3118,7 +3313,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "approx"
    },
    "aliases": [
     "percent stacked bar",
@@ -3166,7 +3364,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "native",
+    "quickchart": "native"
    },
    "aliases": [
     "stacked column chart",
@@ -3216,7 +3417,10 @@
     "plotly": "native",
     "chartjs": "none",
     "matplotlib": "native",
-    "terminal": "approx"
+    "terminal": "approx",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "approx"
    },
    "aliases": [
     "KPI tile",
@@ -3264,7 +3468,10 @@
     "plotly": "native",
     "chartjs": "native",
     "matplotlib": "native",
-    "terminal": "native"
+    "terminal": "native",
+    "echarts": "native",
+    "pptx": "approx",
+    "quickchart": "native"
    },
    "aliases": [
     "step line",
@@ -3308,7 +3515,10 @@
     "plotly": "approx",
     "chartjs": "image",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "stream graph",
@@ -3354,7 +3564,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "dot strip plot",
@@ -3401,7 +3614,10 @@
     "plotly": "native",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "radial treemap",
@@ -3452,7 +3668,10 @@
     "plotly": "native",
     "chartjs": "none",
     "matplotlib": "native",
-    "terminal": "approx"
+    "terminal": "approx",
+    "echarts": "none",
+    "pptx": "approx",
+    "quickchart": "none"
    },
    "aliases": [
     "data table",
@@ -3501,7 +3720,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "tile map",
@@ -3550,7 +3772,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "event timeline",
@@ -3598,7 +3823,10 @@
     "plotly": "approx",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "tree chart",
@@ -3649,7 +3877,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "native",
+    "pptx": "image",
+    "quickchart": "approx"
    },
    "aliases": [
     "tree map",
@@ -3695,7 +3926,10 @@
     "plotly": "image",
     "chartjs": "none",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "none",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "Euler diagram",
@@ -3738,7 +3972,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "approx"
    },
    "aliases": [
     "violin chart",
@@ -3781,7 +4018,10 @@
     "plotly": "approx",
     "chartjs": "approx",
     "matplotlib": "approx",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "gridplot",
@@ -3832,7 +4072,10 @@
     "plotly": "native",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "approx",
+    "quickchart": "approx"
    },
    "aliases": [
     "bridge chart",
@@ -3878,7 +4121,10 @@
     "plotly": "image",
     "chartjs": "approx",
     "matplotlib": "native",
-    "terminal": "none"
+    "terminal": "none",
+    "echarts": "approx",
+    "pptx": "image",
+    "quickchart": "none"
    },
    "aliases": [
     "tag cloud",
@@ -3903,6 +4149,20 @@
    "version_checked": "Chart.js 4.5.1 (2025-10-13; no release for 11 months), chartjs-node-canvas 5.0.0, QuickChart Chart.js 4 via version=4",
    "renderer": "none",
    "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "echarts",
+   "name": "Web, interactive (Apache ECharts)",
+   "kind": "web",
+   "renders_in": [
+    "any web page",
+    "dashboards",
+    "Vue/React wrappers",
+    "server-side SVG via Node SSR"
+   ],
+   "version_checked": "ECharts 6.1.0 (2026-05-19); 6.0.0 2025-07-30",
+   "renderer": "none",
+   "last_verified": "2026-09-18"
   },
   {
    "slug": "matplotlib",
@@ -3951,6 +4211,35 @@
    "version_checked": "plotly.js 4.1.1 (2026-09-14), plotly.py 7.1.0 (2026-09-15), kaleido 1.4.0",
    "renderer": "none",
    "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "pptx",
+   "name": "PowerPoint native chart (python-pptx)",
+   "kind": "office",
+   "renders_in": [
+    "PowerPoint",
+    "Keynote and Google Slides (imported .pptx)",
+    "LibreOffice Impress"
+   ],
+   "version_checked": "python-pptx 1.0.2",
+   "renderer": "python",
+   "last_verified": "2026-09-18"
+  },
+  {
+   "slug": "quickchart",
+   "name": "Chart as a URL image (QuickChart)",
+   "kind": "image",
+   "renders_in": [
+    "any place that shows an image URL: chat messages",
+    "Slack",
+    "email",
+    "GitHub comments",
+    "Notion",
+    "wikis"
+   ],
+   "version_checked": "quickchart.io hosted API, Chart.js 4 via version=4; typpo/quickchart AGPL-3.0 for self-hosting",
+   "renderer": "none",
+   "last_verified": "2026-09-18"
   },
   {
    "slug": "terminal",

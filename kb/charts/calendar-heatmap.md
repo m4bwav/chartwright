@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/timeunit.html, https://echarts.apache.org/en/option.html#calendar, https://plotly.com/python/heatmaps/]
@@ -92,6 +95,10 @@ Hand-written (no builder). For several years add `"row": {"field": "date", "time
 Reshape the daily series to a 7 by 53 array (`numpy.full((7, 53), numpy.nan)` filled by `[weekday, week]`), then `ax.imshow(grid, cmap="Greens", aspect="equal")` with month ticks from the first week of each month; or `pip install calplot` and `calplot.calplot(series)`. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
 
 Markdown hosts: render the vega-lite spec to SVG and link it.
+
+### echarts
+
+Hand-written: series type `calendar` + `heatmap` with `coordinateSystem: "calendar"`. See `kb/targets/echarts.md`.
 
 ## Notes
 

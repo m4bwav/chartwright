@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/syntax/treemap.html, https://plotly.com/javascript/treemaps/, https://vega.github.io/vega/examples/treemap/, https://github.com/laserson/squarify, https://www.semanticscholar.org/paper/55d3281f6b34c50df975b7261044689bf73ec610]
@@ -94,6 +97,14 @@ Hand-written with the community `chartjs-chart-treemap` plugin: `{"type": "treem
 ### matplotlib
 
 Hand-written: `pip install squarify` then `squarify.plot(sizes=values, label=names, alpha=0.9, pad=True); plt.axis("off")` for one level; nest by computing `squarify.squarify` rectangles per group and drawing `matplotlib.patches.Rectangle`. Render with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: series type `treemap` with nested `children`. See `kb/targets/echarts.md`.
+
+### quickchart
+
+Approximate: QuickChart `treemap` plugin type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

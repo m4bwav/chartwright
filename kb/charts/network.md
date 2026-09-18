@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/network.html, https://networkx.org/documentation/stable/reference/drawing.html, https://vega.github.io/vega/examples/force-directed-layout/, https://plotly.com/python/network-graphs/, https://mermaid.js.org/syntax/flowchart.html, https://doi.org/10.1057/palgrave.ivs.9500092]
@@ -91,6 +94,10 @@ Precompute positions, then one `scatter` trace with `mode: "lines"` holding all 
 ### matplotlib
 
 `G = nx.from_pandas_edgelist(df, "source", "target", edge_attr="weight"); pos = nx.spring_layout(G, seed=7, k=0.3); nx.draw_networkx_edges(G, pos, alpha=0.3, ax=ax); nx.draw_networkx_nodes(G, pos, node_size=[20 * G.degree(n) for n in G], node_color=groups, cmap="tab10", ax=ax); nx.draw_networkx_labels(G, pos, font_size=8, ax=ax); ax.set_axis_off()`. Community colours via `nx.community.louvain_communities(G, seed=7)`. Render with `cw.py render --target matplotlib --in net.py --out net.png`.
+
+### echarts
+
+Hand-written: series type `graph` with `layout: "force"`. See `kb/targets/echarts.md`.
 
 ## Notes
 

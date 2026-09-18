@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/caveat/boxplot.html, https://vega.github.io/vega-lite/docs/boxplot.html, https://plotly.com/python/box-plots/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.boxplot.html, https://www.autodesk.com/research/publications/same-stats-different-graphs]
@@ -92,6 +95,14 @@ Community plugin `@sgratzl/chartjs-chart-boxplot`: register it, then `{"type": "
 ### matplotlib
 
 `ax.boxplot([g1, g2, g3], tick_labels=names, whis=1.5, showfliers=True)` (matplotlib 3.9+ spells it `tick_labels`); or `seaborn.boxplot(data=df, x="group", y="value", ax=ax)`. `cw.py build --chart boxplot --target matplotlib --data values.csv --x group --y value --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: series type `boxplot` (pre-compute the five numbers or use the ecStat `boxplot` transform). See `kb/targets/echarts.md`.
+
+### quickchart
+
+Approximate: QuickChart `boxplot` plugin type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

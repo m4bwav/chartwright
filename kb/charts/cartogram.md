@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/cartogram.html, https://datavizcatalogue.com/methods/cartogram.html, https://github.com/mthh/cartogram_geopandas, https://vega.github.io/vega-lite/docs/geoshape.html]
@@ -78,6 +81,10 @@ Contiguous: `choropleth` with `geojson` set to the computed features and `featur
 ### matplotlib
 
 `from cartogram_geopandas import make_cartogram; cg = make_cartogram(gdf, "population", iterations=5); cg.plot(column="winner", categorical=True, legend=True, edgecolor="white", ax=ax); ax.set_axis_off()`. Dorling: `ax.scatter(x, y, s=area, c=colors)` with computed non-overlapping centres and `ax.set_aspect("equal")`. Render with `cw.py render --target matplotlib --in carto.py --out carto.png`.
+
+### echarts
+
+Hand-written: series type `map` with pre-distorted GeoJSON. See `kb/targets/echarts.md`.
 
 ## Notes
 

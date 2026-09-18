@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-18
 last_verified: 2026-09-18
 sources: [https://mermaid.js.org/syntax/quadrantChart.html, https://datavizcatalogue.com/methods/scatterplot.html, https://www.datawrapper.de/blog/chart-types-guide]
@@ -91,6 +94,10 @@ Approximate: `scatter` dataset with the `chartjs-plugin-annotation` plugin for t
 ### matplotlib
 
 Approximate: `ax.scatter`, `ax.axvline` and `ax.axhline` at the thresholds, `ax.axhspan`/`ax.axvspan` for tints, `ax.annotate` per point. Hand-written.
+
+### echarts
+
+Hand-written: `scatter` with `markLine` at the thresholds and `markArea` tints. See `kb/targets/echarts.md`.
 
 ## Notes
 

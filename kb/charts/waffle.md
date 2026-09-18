@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com, https://datavizcatalogue.com, https://github.com/gyli/PyWaffle]
@@ -96,6 +99,10 @@ Hand-written: `chartjs-chart-matrix` plugin with 100 cells (`x`, `y`, `v`) and `
 ### matplotlib
 
 Hand-written: `pip install pywaffle` then `plt.figure(FigureClass=Waffle, rows=10, columns=10, values={"Mobile": 62, "Desktop": 34, "Tablet": 4}, legend={"loc": "lower left", "bbox_to_anchor": (0, 1)})`; without the add-on, `ax.imshow` of a 10x10 integer grid with a `ListedColormap`. Render with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `scatter` on a 10x10 category grid. See `kb/targets/echarts.md`.
 
 ## Notes
 

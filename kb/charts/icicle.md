@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://plotly.com/javascript/icicle-charts/, https://vega.github.io/vega/examples/, https://www.brendangregg.com/flamegraphs.html, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]
@@ -82,6 +85,10 @@ Not available: no core type and no maintained plugin. Use plotly or a matplotlib
 ### matplotlib
 
 Hand-written: compute the partition (depth-first, each node's `x0` = running offset within its parent, width = value / root total), then `ax.barh(y=depth, width=w, left=x0, height=1, edgecolor="white")` per node and `ax.text` labels where `w` exceeds the text width; `ax.invert_yaxis()` for an icicle, leave it for a flame graph. Render with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: series type `treemap` with `leafDepth` and orthogonal layout approximated, or `sunburst`. See `kb/targets/echarts.md`.
 
 ## Notes
 

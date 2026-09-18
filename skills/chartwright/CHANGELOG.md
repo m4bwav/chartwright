@@ -4,6 +4,16 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260918-5 · 2026-09-18 · SKILL.md slimmed to a router; detail moved to references/
+- because: user request (keep the main file small; load detail only at the step that needs it), evergreen protocol budget rule
+- files: SKILL.md, references/build-and-verify.md, references/document-charts.md
+- Steps 2a and 3 to 5 now live in two reference files; SKILL.md keeps the outcome, freshness, classification, pick steps and pointers (about 6 KB).
+
+### C-20260918-4 · 2026-09-18 · Targets echarts, pptx, quickchart
+- because: HANDOFF next step 2; research R-20260917-2 already covered all three
+- files: scripts/cw.py (build_echarts, build_pptx, build_quickchart, HTML_ECHARTS, render pptx/echarts), kb/targets/{echarts,pptx,quickchart}.md, every kb/charts file (support lines and recipes), kb/rules/choosing-a-target.md, tests/test_cw.py
+- ECharts option JSON with a standalone page; python-pptx script producing an editable native chart; QuickChart URL wrapping the Chart.js config. Verified: pptx deck written (34 KB), QuickChart live fetch returned image/png.
+
 ### C-20260918-3 · 2026-09-18 · Terminal target, composed Vega-Lite recipes, named Mermaid series
 - because: HANDOFF next steps 2 to 4 (user asked to continue); fresh-session trigger run T-20260918-2
 - files: scripts/cw.py (build_terminal, _vl_composed, namedSeries flag, UTF-8 stdout), kb/targets/terminal.md, every kb/charts file (terminal support line; nine terminal recipes; seven vega-lite recipes), kb/rules/choosing-a-target.md, SKILL.md Step 3, tests/test_cw.py

@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: approx
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -107,6 +110,18 @@ Bars extend from zero automatically; a `rule` layer at `"x": {"datum": 0}` empha
 ### matplotlib
 
 `ax.barh(products, changes, color=["#0072B2" if v >= 0 else "#D55E00" for v in changes]); ax.axvline(0, color="black", linewidth=1); ax.bar_label(ax.containers[0], fmt="%+.0f")` on rows sorted by value. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `bar` with per-item `itemStyle.color` by sign. See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: BAR_CLUSTERED with negative values and the axis crossing at zero.
+
+### quickchart
+
+Approximate: a horizontal bar with negative values; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://plotly.com/javascript/gauge-charts/, https://datavizcatalogue.com/methods/gauge.html, https://www.chartjs.org/docs/latest/charts/doughnut.html, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]
@@ -83,6 +86,14 @@ sources: [https://plotly.com/javascript/gauge-charts/, https://datavizcatalogue.
 ### matplotlib
 
 `approx`: on a polar axes with `ax.set_thetamin(0); ax.set_thetamax(180)`, draw band arcs with `ax.barh(1, width, left=start, height=0.3, color=grey)` in radians and a needle with `ax.plot([theta, theta], [0, 1.1], color="black", linewidth=3)`, hide the polar grid, and `ax.text(0, 0, "72%")` at the centre. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: series type `gauge` (the knowledge base prefers `bullet`). See `kb/targets/echarts.md`.
+
+### quickchart
+
+Approximate: QuickChart `gauge` / `radialGauge` plugin types; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

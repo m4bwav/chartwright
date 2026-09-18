@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/histogram.html, https://vega.github.io/vega-lite/docs/bin.html, https://plotly.com/python/histograms/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hist.html]
@@ -94,6 +97,14 @@ No histogram type: bin in code first, then `{"type": "bar", "data": {"labels": [
 ### matplotlib
 
 `ax.hist(values, bins=30, edgecolor="white")`; several groups as `ax.hist([a, b], bins=30, alpha=0.6, label=[...])` then `ax.legend()`; `density=True` for a share axis. `cw.py build --chart histogram --target matplotlib --data values.csv --x value --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: ecStat `histogram` transform feeding a `bar` series. See `kb/targets/echarts.md`.
+
+### quickchart
+
+Approximate: pre-binned counts as a bar config; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

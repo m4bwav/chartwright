@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: native
+  echarts: native
+  pptx: native
+  quickchart: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://homepage.divms.uiowa.edu/~luke/classes/STAT4580/percep.html, https://mermaid.js.org/syntax/xyChart.html]
@@ -107,6 +110,18 @@ xychart-beta
 ### terminal
 
 `cw.py build --chart column --target terminal ...` prints horizontal block bars (there is no vertical text bar worth reading).
+
+### echarts
+
+`cw.py build --chart column --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart column --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### quickchart
+
+`cw.py build --chart column --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
 
 ## Notes
 

@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: native
   terminal: approx
+  echarts: none
+  pptx: approx
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/chart-types-guide, https://datavizcatalogue.com/methods/table.html, https://plotly.com/javascript/table/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.table.html, https://www.w3.org/WAI/tutorials/tables/]
@@ -96,6 +99,10 @@ Sort rows before writing; a block-character bar column (`████░░`) gi
 ### terminal
 
 A markdown table in a code block; sort it and right-align numbers.
+
+### pptx
+
+Approximate: a native table (`slide.shapes.add_table`), not a chart.
 
 ## Notes
 

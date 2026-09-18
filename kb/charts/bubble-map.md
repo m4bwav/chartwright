@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/geo_circle.html, https://plotly.com/javascript/bubble-maps/, https://geopandas.org/en/stable/docs/user_guide/mapping.html]
@@ -88,6 +91,10 @@ Not supported by `cw.py build`; hand-written from the recipes. A base map (TopoJ
 ### matplotlib
 
 `base = geopandas.read_file("states.geojson").plot(color="#eee", edgecolor="white", ax=ax); ax.scatter(df.lon, df.lat, s=df.population / df.population.max() * 2000, alpha=0.6, edgecolor="#333")`. `s` is in points squared, so it is area; add three reference circles with `ax.scatter` and `ax.legend`. Render with `cw.py render --target matplotlib --in map.py --out map.png`.
+
+### echarts
+
+Hand-written: `scatter` on a `geo` coordinate system. See `kb/targets/echarts.md`.
 
 ## Notes
 

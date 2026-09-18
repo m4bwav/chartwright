@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/layer_candlestick.html, https://plotly.com/javascript/candlestick-charts/, https://github.com/chartjs/chartjs-chart-financial]
@@ -91,6 +94,10 @@ Hand-written from the gallery example (`layer_candlestick`); no builder. `"scale
 `ax.vlines(dates, low, high, color="grey", linewidth=1)` then `ax.bar(dates, close - open, bottom=open, width=0.6, color=[up if c >= o else down for o, c in zip(open, close)])`; or `pip install mplfinance` and `mpf.plot(df, type="candle", volume=True, savefig="chart.png")`. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
 
 Markdown hosts: render the vega-lite spec to SVG and link it.
+
+### echarts
+
+Hand-written: series type `candlestick` with [open, close, low, high] rows. See `kb/targets/echarts.md`.
 
 ## Notes
 

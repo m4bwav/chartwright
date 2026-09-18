@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.dendrogram.html, https://plotly.com/python/dendrogram/, https://seaborn.pydata.org/generated/seaborn.clustermap.html, https://vega.github.io/vega/examples/tree-layout/, https://www.data-to-viz.com/graph/dendrogram.html]
@@ -83,6 +86,10 @@ Not available. Use a matplotlib image.
 ### matplotlib
 
 Hand-written: `from scipy.cluster.hierarchy import linkage, dendrogram; Z = linkage(X, method="ward"); dendrogram(Z, labels=names, orientation="left", color_threshold=h, ax=ax); ax.axvline(h, linestyle="--")` (draw the cut); `seaborn.clustermap(df)` when a heatmap should accompany it. Render with `cw.py render --target matplotlib --in chart.py --out chart.png`. `approx`: scipy computes and draws, matplotlib only hosts the axes.
+
+### echarts
+
+Hand-written: series type `tree` with `layout: "orthogonal"` and computed depths. See `kb/targets/echarts.md`.
 
 ## Notes
 

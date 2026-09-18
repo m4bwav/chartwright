@@ -19,6 +19,9 @@ support:
   chartjs: image
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://idl.cs.washington.edu/papers/horizon/, https://vega.github.io/vega-lite/examples/area_horizon.html, https://observablehq.com/@d3/horizon-chart]
@@ -86,6 +89,10 @@ Hand-written from the gallery example (`area_horizon`): one clipped, translucent
 For each series `ax = axes[i]` then for `k in range(bands)`: `ax.fill_between(dates, 0, numpy.clip(values - k * band, 0, band), color=colour, alpha=0.35)`; `ax.set_ylim(0, band)`, `ax.set_yticks([])`, negative values mirrored with `-values` in the second hue. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
 
 Markdown and Chart.js hosts: render the matplotlib or vega-lite version and link the image.
+
+### echarts
+
+Hand-written: stacked `line` bands with `areaStyle` and clipped `grid` per row. See `kb/targets/echarts.md`.
 
 ## Notes
 

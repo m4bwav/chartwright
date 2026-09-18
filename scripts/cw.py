@@ -795,6 +795,117 @@ def build_terminal(chart, rows, x, y, series, title):
     raise ValueError(f"terminal has no recipe for '{chart}' (line, sparkline, bar, column); use a table")
 
 
+def build_echarts(chart, rows, x, y, series, title):
+    """Apache ECharts option JSON. Covers the cartesian basics plus pie, radar, funnel, sankey, heatmap."""
+    groups = _series_split(rows, x, y, series)
+    t = title or f"{y} by {x}"
+    opt = {"title": {"text": t}, "tooltip": {"trigger": "axis"}, "legend": {"show": bool(series)}, "grid": {"containLabel": True}}
+    xs = list(dict.fromkeys(r[x] for r in rows))
+    kind = {"line": "line", "multi-line": "line", "step": "line", "area": "line", "stacked-area": "line", "bar": "bar", "column": "bar",
+            "grouped-bar": "bar", "stacked-bar": "bar", "stacked-bar-100": "bar", "scatter": "scatter", "bubble": "scatter",
+            "pie": "pie", "donut": "pie", "radar": "radar", "funnel": "funnel", "sankey": "sankey", "alluvial": "sankey", "heatmap": "heatmap"}.get(chart)
+    if not kind:
+        raise ValueError(f"echarts has no recipe for '{chart}'")
+    if kind == "pie":
+        opt["tooltip"] = {"trigger": "item"}; opt["legend"] = {"show": True}
+        opt["series"] = [{"type": "pie", "radius": ["45%", "70%"] if chart == "donut" else "65%", "label": {"formatter": "{b}: {d}%"},
+                          "data": [{"name": r[x], "value": _num(r[y])} for r in rows]}]
+    elif kind == "funnel":
+        opt["tooltip"] = {"trigger": "item"}
+        opt["series"] = [{"type": "funnel", "sort": "descending", "label": {"formatter": "{b}: {c}"}, "data": [{"name": r[x], "value": _num(r[y])} for r in rows]}]
+    elif kind == "sankey":
+        nodes = list(dict.fromkeys([r[x] for r in rows] + [r[series] for r in rows]))
+        opt["tooltip"] = {"trigger": "item"}
+        opt["series"] = [{"type": "sankey", "data": [{"name": n} for n in nodes], "links": [{"source": r[x], "target": r[series], "value": _num(r[y])} for r in rows]}]
+    elif kind == "radar":
+        axes = list(dict.fromkeys(r[x] for r in rows))
+        opt["radar"] = {"indicator": [{"name": a} for a in axes]}
+        opt["tooltip"] = {"trigger": "item"}; opt["legend"] = {"show": True}
+        opt["series"] = [{"type": "radar", "data": [{"name": name or y, "value": [dict(pts).get(a) for a in axes]} for name, pts in groups.items()]}]
+    elif kind == "heatmap":
+        ys = list(dict.fromkeys(r[series] for r in rows))
+        vals = [_num(r[y]) for r in rows]
+        opt["tooltip"] = {"trigger": "item"}
+        opt["xAxis"] = {"type": "category", "data": xs}; opt["yAxis"] = {"type": "category", "data": ys}
+        opt["visualMap"] = {"min": min(vals), "max": max(vals), "calculable": True, "orient": "horizontal", "left": "center", "bottom": 0}
+        opt["series"] = [{"type": "heatmap", "data": [[xs.index(r[x]), ys.index(r[series]), _num(r[y])] for r in rows], "label": {"show": True}}]
+    elif kind == "scatter":
+        opt["tooltip"] = {"trigger": "item"}
+        opt["xAxis"] = {"type": "value", "name": x}; opt["yAxis"] = {"type": "value", "name": y}
+        opt["series"] = [{"type": "scatter", "name": name or y, "data": [[_num(px), py] for px, py in pts],
+                          **({"symbolSize": 12} if chart == "scatter" else {})} for name, pts in groups.items()]
+    else:
+        opt["xAxis"] = {"type": "category", "data": xs, "name": x, "boundaryGap": kind == "bar"}
+        opt["yAxis"] = {"type": "value", "name": y}
+        ser = []
+        for name, pts in groups.items():
+            d = dict(pts)
+            item = {"type": kind, "name": name or y, "data": [d.get(v) for v in xs]}
+            if chart == "step":
+                item["step"] = "end"
+            if chart in ("area", "stacked-area"):
+                item["areaStyle"] = {}
+            if chart in ("stacked-area", "stacked-bar", "stacked-bar-100"):
+                item["stack"] = "total"
+            if chart in ("line", "multi-line", "area", "stacked-area"):
+                item["smooth"] = False; item["symbol"] = "circle" if len(pts) <= 40 else "none"
+            ser.append(item)
+        opt["series"] = ser
+        if chart == "stacked-bar-100":
+            opt["yAxis"]["max"] = 100
+            totals = {v: sum((dict(pts).get(v) or 0) for pts in groups.values()) for v in xs}
+            for item in ser:
+                item["data"] = [round(100 * (val or 0) / totals[v], 2) if totals[v] else 0 for v, val in zip(xs, item["data"])]
+    return json.dumps(opt, indent=1, ensure_ascii=False) + "\n"
+
+
+def build_pptx(chart, rows, x, y, series, title, out):
+    """A python-pptx script that writes a native, editable PowerPoint chart. Run it with cw.py render --target pptx."""
+    kind = {"bar": "BAR_CLUSTERED", "column": "COLUMN_CLUSTERED", "grouped-bar": "COLUMN_CLUSTERED", "stacked-bar": "COLUMN_STACKED",
+            "stacked-bar-100": "COLUMN_STACKED_100", "line": "LINE_MARKERS", "multi-line": "LINE_MARKERS", "area": "AREA", "stacked-area": "AREA_STACKED",
+            "pie": "PIE", "donut": "DOUGHNUT", "radar": "RADAR", "scatter": "XY_SCATTER", "bubble": "BUBBLE"}.get(chart)
+    if not kind:
+        raise ValueError(f"pptx has no native chart for '{chart}'; insert a PNG from the vega-lite target instead")
+    groups = _series_split(rows, x, y, series)
+    out = out or "chart.pptx"
+    t = title or f"{y} by {x}"
+    lines = ["from pptx import Presentation", "from pptx.chart.data import CategoryChartData, XyChartData, BubbleChartData",
+             "from pptx.enum.chart import XL_CHART_TYPE, XL_LEGEND_POSITION", "from pptx.util import Inches, Pt", "",
+             "prs = Presentation()", "slide = prs.slides.add_slide(prs.slide_layouts[5])", f"slide.shapes.title.text = {t!r}"]
+    if kind in ("XY_SCATTER", "BUBBLE"):
+        lines.append("data = XyChartData()" if kind == "XY_SCATTER" else "data = BubbleChartData()")
+        for name, pts in groups.items():
+            lines.append(f"s = data.add_series({(name or y)!r})")
+            for px, py in pts:
+                lines.append(f"s.add_data_point({_num(px)!r}, {py!r})" if kind == "XY_SCATTER" else f"s.add_data_point({_num(px)!r}, {py!r}, 1)")
+    else:
+        xs = list(dict.fromkeys(r[x] for r in rows))
+        lines += ["data = CategoryChartData()", f"data.categories = {xs!r}"]
+        for name, pts in groups.items():
+            d = dict(pts)
+            lines.append(f"data.add_series({(name or y)!r}, {[d.get(v) for v in xs]!r})")
+    lines += [f"gf = slide.shapes.add_chart(XL_CHART_TYPE.{kind}, Inches(0.7), Inches(1.5), Inches(8.6), Inches(5), data)", "chart = gf.chart",
+              f"chart.has_legend = {bool(series) or kind in ('PIE', 'DOUGHNUT')}", "if chart.has_legend:", "    chart.legend.position = XL_LEGEND_POSITION.BOTTOM; chart.legend.include_in_layout = False",
+              "plot = chart.plots[0]", "plot.has_data_labels = " + ("True" if kind in ("PIE", "DOUGHNUT") else "False"),
+              "if plot.has_data_labels:", "    plot.data_labels.number_format = '0%'; plot.data_labels.show_percentage = True; plot.data_labels.show_value = False",
+              f"prs.save({out!r}); print('wrote', {out!r})"]
+    return "\n".join(lines) + "\n"
+
+
+def build_quickchart(chart, rows, x, y, series, title):
+    """A QuickChart image URL (Chart.js 4 config) and the markdown image line; no install, renders remotely."""
+    import urllib.parse
+    cfg = json.loads(build_chartjs(chart, rows, x, y, series, title))
+    url = "https://quickchart.io/chart?version=4&w=800&h=400&c=" + urllib.parse.quote(json.dumps(cfg, separators=(",", ":")), safe="")
+    return f"![{title or f'{y} by {x}'}]({url})\n"
+
+
+HTML_ECHARTS = """<!doctype html><html><head><meta charset="utf-8"><title>{title}</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@6/dist/echarts.min.js"></script></head>
+<body><div id="chart" style="max-width:900px;height:420px" role="img" aria-label="{title}"></div>
+<script>const chart = echarts.init(document.getElementById('chart')); chart.setOption({spec}); window.addEventListener('resize', () => chart.resize());</script></body></html>
+"""
+
 HTML_VL = """<!doctype html><html><head><meta charset="utf-8"><title>{title}</title>
 <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
@@ -813,7 +924,7 @@ HTML_CHARTJS = """<!doctype html><html><head><meta charset="utf-8"><title>{title
 <body><div style="max-width:900px"><canvas id="chart" role="img" aria-label="{title}"></canvas></div>
 <script>new Chart(document.getElementById('chart'), {spec});</script></body></html>
 """
-HTML_WRAPPERS = {"vega-lite": HTML_VL, "plotly": HTML_PLOTLY, "chartjs": HTML_CHARTJS}
+HTML_WRAPPERS = {"vega-lite": HTML_VL, "plotly": HTML_PLOTLY, "chartjs": HTML_CHARTJS, "echarts": HTML_ECHARTS}
 
 
 def cmd_build(a):
@@ -839,13 +950,19 @@ def cmd_build(a):
         text = build_matplotlib(a.chart, rows, a.x, a.y, a.series, a.title, a.png)
     elif t == "terminal":
         text = build_terminal(a.chart, rows, a.x, a.y, a.series, a.title)
+    elif t == "echarts":
+        text = build_echarts(a.chart, rows, a.x, a.y, a.series, a.title)
+    elif t == "pptx":
+        text = build_pptx(a.chart, rows, a.x, a.y, a.series, a.title, a.png)
+    elif t == "quickchart":
+        text = build_quickchart(a.chart, rows, a.x, a.y, a.series, a.title)
     else:
-        print(f"unknown target '{t}' (mermaid, vega-lite, plotly, chartjs, matplotlib, terminal)")
+        print(f"unknown target '{t}' (mermaid, vega-lite, plotly, chartjs, matplotlib, terminal, echarts, pptx, quickchart)")
         return 1
     if a.html:
         tpl = HTML_WRAPPERS.get(t)
         if not tpl:
-            print("--html applies to vega-lite, plotly, chartjs")
+            print("--html applies to vega-lite, plotly, chartjs, echarts")
             return 1
         text = tpl.format(title=a.title or f"{a.y} by {a.x}", spec=text.strip())
     if a.out:
@@ -905,15 +1022,15 @@ def cmd_render(a):
         if r.returncode:
             print(r.stderr.strip()[-800:])
             return 1
-    elif a.target == "matplotlib":
+    elif a.target in ("matplotlib", "pptx"):
         r = subprocess.run([sys.executable, str(src)], capture_output=True, text=True, cwd=str(out.parent or "."))
         if r.returncode:
             print(r.stderr.strip()[-800:])
             return 1
-    elif a.target in ("plotly", "chartjs"):
+    elif a.target in ("plotly", "chartjs", "echarts"):
         out.write_text(HTML_WRAPPERS[a.target].format(title=out.stem, spec=src.read_text(encoding="utf-8").strip()), encoding="utf-8")
     else:
-        print("render targets: vega-lite, mermaid, matplotlib, plotly, chartjs")
+        print("render targets: vega-lite, mermaid, matplotlib, pptx, plotly, chartjs, echarts")
         return 1
     if out.exists():
         print(f"wrote {out} ({out.stat().st_size} bytes)")
@@ -924,7 +1041,7 @@ def cmd_render(a):
 
 def cmd_doctor(a):
     info = {"python": sys.version.split()[0], "platform": sys.platform, "plugin_root": str(ROOT)}
-    for mod in ("vl_convert", "matplotlib", "plotly", "altair"):
+    for mod in ("vl_convert", "matplotlib", "plotly", "altair", "pptx"):
         try:
             m = __import__(mod)
             info[mod] = getattr(m, "__version__", "present")
@@ -1097,7 +1214,7 @@ def main(argv=None):
     p = sp.add_parser("data"); p.add_argument("data"); p.set_defaults(fn=cmd_data)
     p = sp.add_parser("build"); p.add_argument("--chart", required=True); p.add_argument("--target", required=True); p.add_argument("--data", required=True)
     p.add_argument("--x", required=True); p.add_argument("--y", required=True); p.add_argument("--series"); p.add_argument("--title")
-    p.add_argument("--out"); p.add_argument("--png", help="matplotlib: image path the generated script writes")
+    p.add_argument("--out"); p.add_argument("--png", help="matplotlib/pptx: the file the generated script writes (chart.png, chart.pptx)")
     p.add_argument("--html", action="store_true", help="wrap a web spec in a standalone page")
     p.add_argument("--flag", nargs="*", help="showData, dataByUrl, container, namedSeries")
     p.add_argument("--agg", default="sum", choices=["sum", "mean", "none"], help="how duplicate x values within a series combine (default sum)"); p.set_defaults(fn=cmd_build)

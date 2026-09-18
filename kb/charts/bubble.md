@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: native
+  quickchart: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.semanticscholar.org/paper/55d3281f6b34c50df975b7261044689bf73ec610, https://vega.github.io/vega-lite/docs/circle.html, https://plotly.com/python/bubble-charts/, https://www.chartjs.org/docs/latest/charts/bubble.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html]
@@ -92,6 +95,18 @@ Not drawable in Mermaid. Render with the vega-lite target and link the image.
 ### matplotlib
 
 `ax.scatter(x, y, s=area_scale * pop / pop.max(), alpha=0.6, edgecolor="k", linewidth=0.5)`: `s` is area in points squared, so pass the value scaled linearly, not its square root. Legend circles via `ax.scatter([], [], s=...)` with labels. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+`cw.py build --chart bubble --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart bubble --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### quickchart
+
+`cw.py build --chart bubble --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
 
 ## Notes
 

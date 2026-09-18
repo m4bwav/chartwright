@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/bump.html, https://vega.github.io/vega-lite/docs/window.html, https://github.com/davidsjoberg/ggbump]
@@ -90,6 +93,10 @@ Compute ranks per period in Python (`df.groupby("year")["value"].rank(ascending=
 `for name, ranks in table.items(): ax.plot(periods, ranks, marker="o", label=name)` then `ax.invert_yaxis()`, `ax.set_yticks(range(1, n + 1))` and end labels with `ax.text`. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
 
 Markdown hosts: Mermaid xychart cannot reverse its y axis or label line ends; render the vega-lite spec to SVG and link it.
+
+### echarts
+
+Hand-written: `line` series per entity over rank on an inverted value axis. See `kb/targets/echarts.md`.
 
 ## Notes
 

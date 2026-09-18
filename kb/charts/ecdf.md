@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://seaborn.pydata.org/generated/seaborn.ecdfplot.html, https://plotly.com/python/ecdf-plots/, https://vega.github.io/vega-lite/examples/area_cumulative_freq.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.ecdf.html, https://www.data-to-viz.com/]
@@ -93,6 +96,10 @@ Sort values in code, compute `i / n` for each, then a `line` type with `stepped:
 ### matplotlib
 
 `ax.ecdf(values, label=name)` (matplotlib 3.8+) per group, or `seaborn.ecdfplot(data=df, x="value", hue="group", ax=ax)`; `ax.axhline(0.95, ls=":")` marks a percentile of interest. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `line` with `step: "end"` over sorted cumulative values. See `kb/targets/echarts.md`.
 
 ## Notes
 

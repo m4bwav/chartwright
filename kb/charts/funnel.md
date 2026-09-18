@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://plotly.com/javascript/funnel-charts/, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://datavizcatalogue.com/methods/funnel_chart.html, https://www.data-to-viz.com]
@@ -93,6 +96,10 @@ Hand-written with the community `chartjs-chart-funnel` plugin (`type: "funnel"`)
 ### matplotlib
 
 Hand-written: `ax.barh(stages, counts, left=-counts / 2, color="#0072B2")` for a centred funnel (or `ax.barh(stages, counts)` for the honest bar), `ax.invert_yaxis()`, `ax.bar_label` with the counts and rates, x axis hidden. Render with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+`cw.py build --chart funnel --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
 
 ## Notes
 

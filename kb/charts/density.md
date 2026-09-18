@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.data-to-viz.com/graph/density.html, https://vega.github.io/vega-lite/docs/density.html, https://seaborn.pydata.org/generated/seaborn.kdeplot.html, https://plotly.com/python/distplot/, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]
@@ -93,6 +96,10 @@ Compute the density curve in code, then `{"type": "line", "data": {"datasets": [
 ### matplotlib
 
 `seaborn.kdeplot(data=df, x="value", hue="group", fill=True, alpha=0.4, ax=ax)`; `bw_adjust=0.5` narrows the bandwidth, `clip=(0, None)` respects a bound, `common_norm=False` normalises each group separately. Plain matplotlib: `scipy.stats.gaussian_kde(values)(grid)` then `ax.fill_between(grid, curve, alpha=0.4)`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: `line` with `areaStyle` over pre-computed density points. See `kb/targets/echarts.md`.
 
 ## Notes
 

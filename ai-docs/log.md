@@ -4,7 +4,7 @@ Append-only. Newest at the bottom. One entry per working session.
 
 ## 2026-09-17: plugin created
 
-- Asked for: the ultimate chart/graph plugin: knowledge base of chart types (when, excels, when not, notes, build per target), evidence-based selection, novel-request research that improves the base, evergreen, tests, versioning, cross-platform token-saving scripts, private repo.
+- Asked for: the ultimate chart/graph plugin: knowledge base of chart types (when, excels, when not, notes, build per target), evidence-based selection, novel-request research that improves the base, evergreen, tests, versioning, cross-platform token-saving scripts, a repo (private at first, made public 2026-09-18).
 - Decisions: name `chartwright`; targets mermaid, vega-lite, plotly, chartjs, matplotlib for 0.1; full evergreen. See `ai-docs/decisions/`.
 - Research: two parallel web research passes (taxonomy and evidence; libraries and targets) saved under `ai-docs/research/`.
 - Built: schema, five target files, rules (selection, evidence, choosing a target), the `cw.py` CLI with launchers, 23 unit tests, two skills with evergreen scaffolding, README/AGENTS/CLAUDE docs. Knowledge base chart files authored by five parallel agents from the research and an exemplar (`kb/charts/line.md`).
@@ -73,3 +73,10 @@ Append-only. Newest at the bottom. One entry per working session.
 
 - Fresh-session evals through `claude -p`: chartwright triggers (Skill call in trace) and ignores a sequence-diagram decoy; chartwright-curate triggered only from a neutral directory, because inside the repo AGENTS.md routes straight to the CLI (L-20260918-2).
 - Builder: seven composed Vega-Lite recipes (dumbbell, slope, waterfall, calendar-heatmap, diverging-bar, stacked-bar-100, small-multiples), all rendered and checked visually; `--flag namedSeries` for Mermaid 11.16+; new `terminal` target with block sparklines and bars (UTF-8 forced on Windows consoles). 29 tests pass; 82 charts and 6 targets validate. Tagged v0.2.0.
+
+## 2026-09-18: 0.3.0, nine targets, router skills, public repo
+
+- Document path proven from a fresh session on `examples/report/quarterly-summary.md`: the skill fired, extracted prose numbers to a CSV, and placed four Mermaid charts next to their claims with the claim as title.
+- Three targets added with builders and tests: `echarts` (option JSON plus page), `pptx` (python-pptx script producing an editable chart; a 34 KB deck rendered), `quickchart` (Chart.js config as a URL; live fetch returned image/png). Support lines and recipes were inserted across all 82 chart files by a table-driven script, which is the cheap way to add a target.
+- Both SKILL.md files rewritten as short routers (about 5 KB each) that point at `references/` files read only at the step that needs them, per the evergreen budget rule and the user's request.
+- Privacy scan before going public: removed the one absolute user path from HANDOFF; no emails, tokens or machine names in tracked files. Repository visibility set to public.

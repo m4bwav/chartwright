@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: approx
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega-lite/docs/errorbar.html, https://plotly.com/python/error-bars/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.errorbar.html, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary]
@@ -93,6 +96,14 @@ Community plugin `chartjs-chart-error-bars` adds `barWithErrorBars`, `lineWithEr
 ### matplotlib
 
 `ax.errorbar(means, groups, xerr=[means - lower, upper - means], fmt="o", capsize=3, markersize=6)` for a horizontal dot and interval chart; `yerr` for vertical. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: custom series `renderItem` (the ECharts error-bar example). See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: LINE_MARKERS plus manual error bars (python-pptx has no API); simpler as a PNG.
 
 ## Notes
 

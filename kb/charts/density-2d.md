@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-18
 last_verified: 2026-09-18
 sources: [https://plotly.com/python/2d-histogram-contour/, https://seaborn.pydata.org/generated/seaborn.kdeplot.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.contour.html, https://www.data-to-viz.com/graph/density2d.html, https://vega.github.io/vega-lite/docs/density.html]
@@ -74,6 +77,10 @@ Approximate: Vega-Lite has a 1D `density` transform only; a 2D density is drawn 
 ### matplotlib
 
 seaborn: `sns.kdeplot(data=df, x="x", y="y", fill=True, levels=8, hue="group")` or matplotlib `ax.contourf(X, Y, Z)` after `scipy.stats.gaussian_kde`. Native; hand-written.
+
+### echarts
+
+Hand-written: `heatmap` on value axes over binned counts. See `kb/targets/echarts.md`.
 
 ## Notes
 

@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: approx
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/, https://www.data-to-viz.com/graph/lollipop.html]
@@ -97,6 +100,18 @@ Not in `cw.py build`; hand-write from this recipe with wide data (one column per
 ### matplotlib
 
 `ax.hlines(categories, a, b, color="0.6", linewidth=2); ax.plot(a, categories, "o", label="2016"); ax.plot(b, categories, "o", label="2026"); ax.legend()` on rows sorted by `b`. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: two `scatter` series plus `line` series per category. See `kb/targets/echarts.md`.
+
+### pptx
+
+Approximate: a BAR_STACKED with a transparent first series and two scatter markers; simpler as a PNG.
+
+### quickchart
+
+Approximate: floating bars `[low, high]`; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

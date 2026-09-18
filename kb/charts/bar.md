@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: native
+  echarts: native
+  pptx: native
+  quickchart: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://www.data-to-viz.com/graph/barplot.html, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -108,6 +111,18 @@ xychart-beta horizontal
 ### terminal
 
 `cw.py build --chart bar --target terminal --data sales.csv --x region --y sales` prints horizontal block bars with the value at the end.
+
+### echarts
+
+`cw.py build --chart bar --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart bar --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
+
+### quickchart
+
+`cw.py build --chart bar --target quickchart --data file.csv --x <x> --y <y> [--series <s>]` prints a markdown image line whose URL renders the chart (data is public in the URL).
 
 ## Notes
 

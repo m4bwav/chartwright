@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: approx
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/small-multiple-line-charts, https://vega.github.io/vega-lite/docs/facet.html, https://plotly.com/python/facet-plots/, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -99,6 +102,10 @@ Python: `px.line(df, x="date", y="value", facet_col="region", facet_col_wrap=4)`
 ### terminal
 
 One sparkline per panel: `cw.py build --chart line --target terminal --data file.csv --x date --y value --series panel`.
+
+### echarts
+
+Hand-written: several `grid` entries with matching series `xAxisIndex`/`yAxisIndex`. See `kb/targets/echarts.md`.
 
 ## Notes
 

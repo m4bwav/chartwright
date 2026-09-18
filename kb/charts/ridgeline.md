@@ -19,6 +19,9 @@ support:
   chartjs: none
   matplotlib: approx
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.data-to-viz.com/graph/ridgeline.html, https://vega.github.io/vega-lite/examples/area_density_stacked.html, https://plotly.com/python/violin/, https://github.com/leotac/joypy, https://wilkelab.org/ggridges/]
@@ -91,6 +94,10 @@ One `violin` trace per group with `side: "positive"`, `orientation: "h"`, `width
 ### matplotlib
 
 `joypy.joyplot(df, by="month", column="value", overlap=0.6)` (pip `joypy`), or plain matplotlib: one density per group via `scipy.stats.gaussian_kde`, drawn with `ax.fill_between(grid, i * step, i * step + density, alpha=0.7)` and group labels on the left. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`. Composition rather than a primitive, hence `approx`.
+
+### echarts
+
+Hand-written: several `grid` entries with `line` plus `areaStyle` offset per row. See `kb/targets/echarts.md`.
 
 ## Notes
 

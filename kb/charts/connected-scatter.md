@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/dual-axis-charts, https://vega.github.io/vega-lite/examples/connected_scatterplot.html, https://ieeexplore.ieee.org/document/7192687]
@@ -90,6 +93,10 @@ Hand-written from the gallery example (`connected_scatterplot`). The `"order"` e
 `ax.plot(x, y, "-o", linewidth=1.5)` on time-ordered data, then `for xi, yi, yr in zip(x, y, years): ax.annotate(yr, (xi, yi), textcoords="offset points", xytext=(4, 4))`; arrows via `ax.annotate("", xy=(x[i+1], y[i+1]), xytext=(x[i], y[i]), arrowprops={"arrowstyle": "->"})`. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
 
 Markdown hosts: Mermaid has no scatter mark; render the vega-lite spec to SVG and link it.
+
+### echarts
+
+Hand-written: `line` series on two value axes with `symbol` and per-point labels. See `kb/targets/echarts.md`.
 
 ## Notes
 

@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: native
   terminal: none
+  echarts: approx
+  pptx: image
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/violin.html, https://vega.github.io/vega-lite/examples/layer_violin_density.html, https://plotly.com/python/violin/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.violinplot.html]
@@ -96,6 +99,14 @@ Community plugin `@sgratzl/chartjs-chart-boxplot` also registers a `violin` type
 ### matplotlib
 
 `ax.violinplot([g1, g2], showmedians=True)`, or `seaborn.violinplot(data=df, x="group", y="value", inner="box", cut=0, ax=ax)` (`inner="quart"` for quartile lines, `split=True` with `hue` for two-sided comparisons). Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### echarts
+
+Hand-written: custom series (the ECharts 6 reusable violin example). See `kb/targets/echarts.md`.
+
+### quickchart
+
+Approximate: QuickChart `violin` plugin type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

@@ -19,6 +19,9 @@ support:
   chartjs: approx
   matplotlib: approx
   terminal: none
+  echarts: native
+  pptx: image
+  quickchart: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://mermaid.js.org/syntax/sankey.html, https://plotly.com/python/parallel-categories-diagram/, https://plotly.com/javascript/sankey-diagram/, https://github.com/corybrunson/ggalluvial]
@@ -90,6 +93,14 @@ Two forms. `parcats` trace, built for this: `{"type": "parcats", "dimensions": [
 ### matplotlib
 
 No add-on in the target list draws alluvials directly; `pySankey` (`sankey(left=df.class, right=df.survived, aspect=20)`) draws a two-column alluvial as a matplotlib figure and `alluvial` on PyPI handles more columns with a less maintained API. For an image of a three-plus column diagram, build the Plotly `parcats` figure and export with kaleido. State the package in the script header.
+
+### echarts
+
+`cw.py build --chart alluvial --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### quickchart
+
+Approximate: QuickChart `sankey` plugin type; write the Chart.js config by hand and URL-encode it (see `kb/targets/quickchart.md`).
 
 ## Notes
 

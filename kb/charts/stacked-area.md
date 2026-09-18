@@ -19,6 +19,9 @@ support:
   chartjs: native
   matplotlib: native
   terminal: none
+  echarts: native
+  pptx: native
+  quickchart: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/stacked-column-charts, https://www.data-to-viz.com/caveat/stacking.html, https://vega.github.io/vega-lite/docs/stack.html]
@@ -91,6 +94,14 @@ One `{"type": "scatter", "mode": "lines", "stackgroup": "one", "name": ..., "x":
 `ax.stackplot(years, *[series[p] for p in parts], labels=parts)`; for 100 percent divide each column by the total first. Hand-written from this recipe (no builder), then `cw.py render --target matplotlib --in chart.py --out chart.png`.
 
 Markdown hosts: Mermaid has no area or stacked mark; render the vega-lite spec to SVG (`cw.py render --target vega-lite --in chart.vl.json --out chart.svg`) and link it.
+
+### echarts
+
+`cw.py build --chart stacked-area --target echarts --data file.csv --x <x> --y <y> [--series <s>] --html` writes the option and page.
+
+### pptx
+
+`cw.py build --chart stacked-area --target pptx --data file.csv --x <x> --y <y> [--series <s>] --out chart.py --png chart.pptx` then `cw.py render --target pptx --in chart.py --out chart.pptx` (editable native chart).
 
 ## Notes
 
