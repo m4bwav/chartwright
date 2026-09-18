@@ -12,9 +12,9 @@ Updated 2026-09-18 (v0.2.0 pushed: terminal target, composed Vega-Lite recipes, 
 
 0. Done 2026-09-18: fresh `claude -p` sessions from a neutral directory invoke both skills (T-20260918-2/3). Run future trigger evals from outside the repo (L-20260918-2 in chartwright-curate).
 1. Use it on a real document and a real README; capture learnings and notes with `cw.py note`.
-2. Add targets that were researched but not built: `echarts` (v6.1, chord and beeswarm native), `pptx` (python-pptx native charts), `terminal` (plotext), `quickchart` (Chart.js config as a URL image).
-3. Extend `cw.py build` to more types in Vega-Lite (dumbbell, slope, waterfall, bullet, calendar heatmap are all layer or transform recipes already described in the chart files).
-4. Mermaid: emit named series (`line "name" [...]`) when the host is known to be 11.16+; today the builder emits unnamed series for the 11.13 floor.
+2. Add targets that were researched but not built: `echarts` (v6.1, chord and beeswarm native), `pptx` (python-pptx native charts), `quickchart` (Chart.js config as a URL image). `terminal` was added in 0.2.0.
+3. Extend `cw.py build` further: bullet, range-band, connected-scatter, bump in Vega-Lite; composed recipes for Plotly and matplotlib (0.2.0 added seven Vega-Lite compositions).
+4. Done in 0.2.0: `--flag namedSeries` emits named Mermaid series; consider auto-enabling it when the host is known to be 11.16+.
 5. Run the evergreen refresh when due; Mermaid 12 host adoption (GitHub, Obsidian) is the claim most likely to change.
 
 ## Gotchas

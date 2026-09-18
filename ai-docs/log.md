@@ -68,3 +68,8 @@ Append-only. Newest at the bottom. One entry per working session.
 ## 2026-09-18: second note on pie chart
 
 - Added a curation note to `kb/charts/pie.md`: label slices directly, never with a legend. Equivalent to `cw.py note pie "..."` (edited directly, same dated-bullet format). Reinforces the existing "When not to use" and "Accessibility" guidance on the same file with an explicit standalone rule. Preference/clarification note only, no guidance section changed, so no `CHANGELOG.md` entry per the chartwright-curate skill's Step 4. `--strict validate` re-run clean after (82 charts, 6 targets).
+
+## 2026-09-18: next steps, 0.2.0
+
+- Fresh-session evals through `claude -p`: chartwright triggers (Skill call in trace) and ignores a sequence-diagram decoy; chartwright-curate triggered only from a neutral directory, because inside the repo AGENTS.md routes straight to the CLI (L-20260918-2).
+- Builder: seven composed Vega-Lite recipes (dumbbell, slope, waterfall, calendar-heatmap, diverging-bar, stacked-bar-100, small-multiples), all rendered and checked visually; `--flag namedSeries` for Mermaid 11.16+; new `terminal` target with block sparklines and bars (UTF-8 forced on Windows consoles). 29 tests pass; 82 charts and 6 targets validate. Tagged v0.2.0.
