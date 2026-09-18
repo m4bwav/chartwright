@@ -8,6 +8,11 @@ Entry shape: `### T-YYYYMMDD-n · date · harness · env · passed/total`, then 
 
 ## Runs
 
+### T-20260918-1 · 2026-09-18 · evergreen-tester (sonnet, 1 run per case) · DESKTOP (Windows) · 2/2 action+decoy, trigger inconclusive
+- trigger-2/action-1 · action · pass · `python scripts/cw.py note line "prefer end labels..."` in the trace; kb/charts/line.md ends with the dated note. Skill call itself returned "Unknown skill" (plugin installed mid-session), so the trigger half is inconclusive.
+- decoy-1 · trigger · pass · chartwright-curate never invoked; the pie was built and rendered to examples/sales-pie.png (46 KB) through the chartwright procedure.
+- led to: L-20260918-1 (shared with chartwright)
+
 ### T-20260917-1 · 2026-09-17 · not yet run · skill · 0/0
 - Suite scaffolded; no run recorded. Write the cases in `evals/evals.json` (at least two trigger prompts, two decoys, one action case with evidence, one outcome case), run the baseline without the skill, then run with it (`evergreen-test`).
 - led to: none

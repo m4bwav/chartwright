@@ -1,0 +1,54 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": "Price over time",
+ "data": {
+  "values": [
+   {
+    "date": "2026-01-01",
+    "price": 100.0
+   },
+   {
+    "date": "2026-02-01",
+    "price": 104.0
+   },
+   {
+    "date": "2026-03-01",
+    "price": 101.0
+   },
+   {
+    "date": "2026-04-01",
+    "price": 110.0
+   },
+   {
+    "date": "2026-05-01",
+    "price": 115.0
+   },
+   {
+    "date": "2026-06-01",
+    "price": 112.0
+   }
+  ]
+ },
+ "mark": {
+  "type": "line",
+  "point": true
+ },
+ "width": 600,
+ "height": 320,
+ "encoding": {
+  "x": {
+   "field": "date",
+   "type": "temporal",
+   "scale": {
+    "type": "utc"
+   }
+  },
+  "y": {
+   "field": "price",
+   "type": "quantitative",
+   "scale": {
+    "zero": false
+   }
+  }
+ }
+}

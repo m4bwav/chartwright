@@ -107,3 +107,4 @@ xychart-beta
 ## Notes
 
 - 2026-09-17: written from the 2026-09-17 taxonomy research; the canonical example for the knowledge base format.
+- 2026-09-18: prefer end labels over a legend when there are three series or fewer

@@ -467,13 +467,27 @@ def cmd_data(a):
 
 
 # ---------------------------------------------------------------- build
+_AGG = "sum"
+
+
 def _series_split(rows, x, y, series):
-    if not series:
-        return {"": [(r[x], _num(r[y])) for r in rows]}
+    """Group rows into series -> [(x, y)], aggregating duplicate x values within a series
+    (sum by default, --agg mean|none) so a bar of sales by region sums the products."""
     out: dict[str, list] = {}
     for r in rows:
-        out.setdefault(r[series], []).append((r[x], _num(r[y])))
-    return out
+        out.setdefault(r[series] if series else "", []).append((r[x], _num(r[y])))
+    if _AGG == "none":
+        return out
+    agg: dict[str, list] = {}
+    for name, pts in out.items():
+        groups: dict = {}
+        for xv, yv in pts:
+            groups.setdefault(xv, []).append(yv)
+        dup = any(len(v) > 1 for v in groups.values())
+        agg[name] = [(xv, (sum(v) / len(v) if _AGG == "mean" else sum(v)) if dup else v[0]) for xv, v in groups.items()]
+        if dup:
+            print(f"note: duplicate {x} values aggregated by {_AGG} ({len(pts)} rows -> {len(groups)} points)", file=sys.stderr)
+    return agg
 
 
 def _mq(s) -> str:
@@ -716,6 +730,8 @@ HTML_WRAPPERS = {"vega-lite": HTML_VL, "plotly": HTML_PLOTLY, "chartjs": HTML_CH
 
 
 def cmd_build(a):
+    global _AGG
+    _AGG = a.agg
     _FLAGS.clear()
     _FLAGS.update(a.flag or [])
     cols, rows = read_csv(a.data)
@@ -991,7 +1007,8 @@ def main(argv=None):
     p.add_argument("--x", required=True); p.add_argument("--y", required=True); p.add_argument("--series"); p.add_argument("--title")
     p.add_argument("--out"); p.add_argument("--png", help="matplotlib: image path the generated script writes")
     p.add_argument("--html", action="store_true", help="wrap a web spec in a standalone page")
-    p.add_argument("--flag", nargs="*", help="showData, dataByUrl, container"); p.set_defaults(fn=cmd_build)
+    p.add_argument("--flag", nargs="*", help="showData, dataByUrl, container")
+    p.add_argument("--agg", default="sum", choices=["sum", "mean", "none"], help="how duplicate x values within a series combine (default sum)"); p.set_defaults(fn=cmd_build)
     p = sp.add_parser("render"); p.add_argument("--target", required=True); p.add_argument("--in", dest="infile", required=True); p.add_argument("--out", required=True)
     p.add_argument("--scale", type=float, default=2.0); p.set_defaults(fn=cmd_render)
     p = sp.add_parser("new-chart"); p.add_argument("slug"); p.add_argument("--name", required=True); p.add_argument("--family", required=True, choices=FAMILIES)

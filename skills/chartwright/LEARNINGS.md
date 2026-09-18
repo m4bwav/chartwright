@@ -15,3 +15,11 @@ Write an entry the moment a real signal happens: a user correction, the same err
 - Scope: skill | repo:<slug> | env:<name> | global
 - Status: active · helpful 1 · harmful 0 · last_confirmed 2026-09-17
 -->
+
+### L-20260918-1 · 2026-09-18 · A plugin installed mid-session is invisible to that session's Skill tool
+- Trigger: every eval run in the creating session got "Unknown skill: chartwright" although `claude plugin install` had succeeded; testers fell back to reading SKILL.md and running cw.py by hand.
+- Hypothesis: the skill registry is built at session start; subagents inherit it.
+- Evidence: six tester runs on 2026-09-18, each with the Skill call failing and the skill absent from the available-skills list, while `claude plugin install` had reported success and the folder existed.
+- Rule: trigger evals run from a session started after the install; same-session trigger results are recorded as inconclusive.
+- Apply: after installing or renaming a skill, run evergreen-test from a fresh session; treat same-session trigger results as inconclusive, not failing.
+

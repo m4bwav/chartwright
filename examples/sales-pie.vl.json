@@ -1,0 +1,31 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": "Sales by region",
+ "data": {
+  "values": [
+   {
+    "region": "North",
+    "sales": 200.0
+   },
+   {
+    "region": "South",
+    "sales": 225.0
+   },
+   {
+    "region": "East",
+    "sales": 130.0
+   }
+  ]
+ },
+ "mark": "arc",
+ "encoding": {
+  "theta": {
+   "field": "sales",
+   "type": "quantitative"
+  },
+  "color": {
+   "field": "region",
+   "type": "nominal"
+  }
+ }
+}

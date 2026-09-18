@@ -143,6 +143,12 @@ class BuildTests(unittest.TestCase):
         self.assertIn("xychart-beta", out)
         self.assertIn("line [100, 104, 101, 110, 115, 112]", out)
 
+    def test_duplicate_x_values_are_summed(self):
+        out = self.build("--chart", "bar", "--target", "mermaid", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
+        self.assertIn("bar [200, 225, 130]", out)
+        out = self.build("--chart", "bar", "--target", "mermaid", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--agg", "mean")
+        self.assertIn("bar [100, 112.5, 65]", out)
+
     def test_mermaid_pie_and_sankey(self):
         out = self.build("--chart", "pie", "--target", "mermaid", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
         self.assertIn('"North" : 120', out)
