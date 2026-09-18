@@ -77,6 +77,8 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 
 ### vega-lite
 
+`cw.py build --chart connected-scatter --target vega-lite --data phillips.csv --x unemployment --y inflation --series year` draws the path in `--series` order with a label at every point.
+
 ```json
 {"$schema": "https://vega.github.io/schema/vega-lite/v6.json", "data": {"url": "phillips.csv"},
  "layer": [

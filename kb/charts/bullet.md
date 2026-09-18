@@ -81,6 +81,8 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 
 ### vega-lite
 
+`cw.py build --chart bullet --target vega-lite --data kpis.csv --x kpi --y actual --y2 target [--series poor_threshold]` composes the grey range bar, the blue measure bar and the target tick.
+
 ```json
 {"$schema": "https://vega.github.io/schema/vega-lite/v6.json", "data": {"url": "kpis.csv"},
  "encoding": {"y": {"field": "kpi", "type": "nominal", "axis": {"title": null}}},

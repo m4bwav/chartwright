@@ -2,6 +2,11 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.6.0 (2026-09-18)
+
+- `--y2` names a second numeric column. Vega-Lite now composes bullet (actual bar, target tick, optional poor band), range-band (area between `--y` and `--y2`, optional centre line), connected-scatter (path in `--series` order with labels) and bump (rank 1 on top, entity labels); observable-plot gains range-band, timeline and dumbbell through the same flag. All four rendered and checked.
+- Chooser regression set: seven real questions locked in `tests/test_cw.py`.
+
 ## 0.5.0 (2026-09-18)
 
 - Five more targets with builders and tests: `plantuml` (`@startchart`, 1.2026.0+), `d2` (network and tree edges; D2 has no data charts), `observable-plot` (mark snippet and page, Plot 0.6.17), `gsheets` (values plus `addChart` request for the Sheets API), `docx` (python-docx script that renders the Vega-Lite PNG and writes heading, picture, caption). Sixteen targets, wired into all 82 chart files.

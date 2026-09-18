@@ -472,6 +472,7 @@ def cmd_data(a):
 
 # ---------------------------------------------------------------- build
 _AGG = "sum"
+_Y2 = None  # --y2: a second numeric column (target, upper bound) for bullet, range-band and the like
 
 
 def _series_split(rows, x, y, series):
@@ -553,7 +554,7 @@ VL_MARKS = {"line": "line", "multi-line": "line", "bar": "bar", "column": "bar",
             "boxplot": "boxplot", "pie": "arc", "donut": "arc", "strip": "tick", "dot": "point", "lollipop": "point", "step": "line"}
 
 
-VL_COMPOSED = ("dumbbell", "slope", "waterfall", "calendar-heatmap", "diverging-bar", "stacked-bar-100", "small-multiples")
+VL_COMPOSED = ("dumbbell", "slope", "waterfall", "calendar-heatmap", "diverging-bar", "stacked-bar-100", "small-multiples", "bullet", "range-band", "connected-scatter", "bump")
 
 
 def _vl_composed(chart, rows, x, y, series, base):
@@ -564,7 +565,11 @@ def _vl_composed(chart, rows, x, y, series, base):
     calendar-heatmap: x=date, y=value
     diverging-bar: x=category, y=signed value
     stacked-bar-100: x=category, y=value, series=part
-    small-multiples: x=time or category, y=value, series=panel"""
+    small-multiples: x=time or category, y=value, series=panel
+    bullet: x=measure name, y=actual, --y2 target (optional series=qualitative band column)
+    range-band: x=time, y=lower, --y2 upper, optional series=centre line column
+    connected-scatter: x=first measure, y=second measure, series=time or order label
+    bump: x=period, y=rank (1 = top), series=entity"""
     q = {"field": y, "type": "quantitative"}
     n = {"field": x, "type": "nominal"}
     yq = json.dumps(y)
@@ -596,6 +601,41 @@ def _vl_composed(chart, rows, x, y, series, base):
     elif chart == "stacked-bar-100":
         base["mark"] = "bar"
         base["encoding"] = {"x": {**n, "axis": {"labelAngle": 0}}, "y": {**q, "stack": "normalize", "axis": {"format": "%"}}, "color": {"field": series, "type": "nominal"}}
+    elif chart == "bullet":
+        if not _Y2:
+            raise ValueError("bullet needs --y2 <target column>")
+        base["encoding"] = {"y": {**n, "axis": {"title": None}}}
+        base["layer"] = [{"mark": {"type": "bar", "size": 14, "color": "#2a78d6"}, "encoding": {"x": {**q, "title": y}}},
+                         {"mark": {"type": "tick", "thickness": 3, "size": 26, "color": "#222"}, "encoding": {"x": {"field": _Y2, "type": "quantitative"}}}]
+        if series:
+            base["layer"].insert(0, {"mark": {"type": "bar", "size": 26, "color": "#d9d9d9"}, "encoding": {"x": {"field": series, "type": "quantitative"}}})
+        base["height"] = max(60, 28 * len({r[x] for r in rows}))
+    elif chart == "range-band":
+        if not _Y2:
+            raise ValueError("range-band needs --y2 <upper column> (--y is the lower)")
+        xk = "temporal" if all(_is_time(r[x]) for r in rows) else "quantitative"
+        xe = {"field": x, "type": xk, **({"scale": {"type": "utc"}} if xk == "temporal" else {})}
+        if xk == "temporal" and all(re.fullmatch(r"\d{4}-\d{2}-01", str(r[x])) for r in rows):
+            xe["axis"] = {"tickCount": "month", "format": "%b %Y"}
+        base["encoding"] = {"x": xe}
+        base["layer"] = [{"mark": {"type": "area", "opacity": 0.3}, "encoding": {"y": {**q, "title": f"{y} to {_Y2}", "scale": {"zero": False}}, "y2": {"field": _Y2}}}]
+        if series:
+            base["layer"].append({"mark": "line", "encoding": {"y": {"field": series, "type": "quantitative"}}})
+    elif chart == "connected-scatter":
+        if not series:
+            raise ValueError("connected-scatter needs --series <time or order column> for the path order and labels")
+        base["encoding"] = {"x": {"field": x, "type": "quantitative", "scale": {"zero": False}}, "y": {**q, "scale": {"zero": False}}, "order": {"field": series}}
+        base["layer"] = [{"mark": {"type": "line", "color": "#2a78d6"}}, {"mark": {"type": "point", "filled": True, "size": 60, "color": "#2a78d6"}},
+                         {"mark": {"type": "text", "align": "left", "dx": 7, "dy": -4}, "encoding": {"text": {"field": series}}}]
+    elif chart == "bump":
+        if not series:
+            raise ValueError("bump needs --series <entity column>; --y is the rank (1 = top)")
+        top = max(_num(r[y]) or 0 for r in rows)
+        base["encoding"] = {"x": {**n, "axis": {"labelAngle": 0}}, "y": {**q, "scale": {"domain": [0.5, top + 0.5], "reverse": True, "nice": False}, "axis": {"tickMinStep": 1, "values": list(range(1, int(top) + 1))}, "title": "rank"},
+                            "color": {"field": series, "type": "nominal", "legend": None}}
+        last = rows[-1][x]
+        base["layer"] = [{"mark": {"type": "line", "point": True, "interpolate": "monotone", "strokeWidth": 3}},
+                         {"mark": {"type": "text", "align": "left", "dx": 8}, "transform": [{"filter": {"field": x, "equal": last}}], "encoding": {"text": {"field": series}}}]
     elif chart == "small-multiples":
         xk = "temporal" if all(_is_time(r[x]) for r in rows) else "nominal"
         xe = {"field": x, "type": xk}
@@ -616,11 +656,11 @@ def build_vega_lite(chart, rows, x, y, series, title, data_path):
             "data": {"url": Path(data_path).name} if a_flag("dataByUrl") else {"values": rows},
             "mark": VL_MARKS.get(chart, "bar"), "width": "container" if a_flag("container") else 600, "height": 320, "encoding": {}}
     for r in rows:  # numbers as numbers so Vega-Lite does not treat them as strings
-        for k in (x, y, series):
+        for k in (x, y, series, _Y2):
             if k and _num(r.get(k)) is not None and not _is_time(r.get(k)):
                 r[k] = _num(r[k])
     if chart in VL_COMPOSED:
-        if chart in ("dumbbell", "slope", "stacked-bar-100", "small-multiples") and not series:
+        if chart in ("dumbbell", "slope", "stacked-bar-100", "small-multiples", "connected-scatter", "bump") and not series:
             raise ValueError(f"{chart} needs --series (column roles in cw.py _vl_composed)")
         spec.pop("encoding"); spec.pop("mark")
         return json.dumps(_vl_composed(chart, rows, x, y, series, spec), indent=1, ensure_ascii=False) + "\n"
@@ -1062,9 +1102,16 @@ def build_observable_plot(chart, rows, x, y, series, title):
             "hexbin": 'Plot.dot(data, Plot.hexbin({r: "count"}, {x: "x", y: "y"}))',
             "slope": 'Plot.lineY(data, {x: "x", y: "y", stroke: "s", marker: true}), Plot.text(data, Plot.selectLast({x: "x", y: "y", z: "s", text: "s", textAnchor: "start", dx: 6}))',
             "choropleth": None}
+    if _Y2:
+        y2 = {r[x]: _num(r[_Y2]) for r in rows}
+        for d in data:
+            d["y2"] = y2.get(d["x"] if not xt else str(d["x"]).replace("__DATE__", ""))
+        opts["range-band"] = 'Plot.areaY(data, {x: "x", y1: "y", y2: "y2", fillOpacity: 0.3}), Plot.lineY(data, {x: "x", y: "y"}), Plot.lineY(data, {x: "x", y: "y2"})'
+        opts["timeline"] = 'Plot.barX(data, {y: "x", x1: "y", x2: "y2"})'
+        opts["dumbbell"] = 'Plot.link(data, {x1: "y", x2: "y2", y: "x"}), Plot.dot(data, {x: "y", y: "x", fill: "#2a78d6"}), Plot.dot(data, {x: "y2", y: "x", fill: "#e34948"})'
     mark = opts.get(chart)
     if not mark:
-        raise ValueError(f"observable-plot has no recipe for '{chart}' (cw.py show {chart} --section build)")
+        raise ValueError(f"observable-plot has no recipe for '{chart}' (cw.py show {chart} --section build; range-band, timeline and dumbbell need --y2)")
     if chart in ("grouped-bar", "stacked-bar-100", "small-multiples", "heatmap", "correlogram", "adjacency-matrix", "bubble", "slope") and not series:
         raise ValueError(f"{chart} needs --series")
     color = ', color: {legend: true' + (', scheme: "blues"' if chart in ("heatmap", "correlogram", "adjacency-matrix", "calendar-heatmap") else "") + "}" if (series or chart in ("heatmap", "calendar-heatmap")) else ""
@@ -1161,12 +1208,13 @@ HTML_WRAPPERS = {"vega-lite": HTML_VL, "plotly": HTML_PLOTLY, "chartjs": HTML_CH
 
 
 def cmd_build(a):
-    global _AGG
+    global _AGG, _Y2
     _AGG = a.agg
+    _Y2 = a.y2
     _FLAGS.clear()
     _FLAGS.update(a.flag or [])
     cols, rows = read_csv(a.data)
-    for c in (a.x, a.y, a.series):
+    for c in (a.x, a.y, a.series, a.y2):
         if c and c not in cols:
             print(f"column '{c}' not in {cols}")
             return 1
@@ -1494,7 +1542,7 @@ def main(argv=None):
     p.add_argument("--categories", type=int); p.add_argument("--target"); p.add_argument("--top", type=int, default=3); p.set_defaults(fn=cmd_pick)
     p = sp.add_parser("data"); p.add_argument("data"); p.set_defaults(fn=cmd_data)
     p = sp.add_parser("build"); p.add_argument("--chart", required=True); p.add_argument("--target", required=True); p.add_argument("--data", required=True)
-    p.add_argument("--x", required=True); p.add_argument("--y", required=True); p.add_argument("--series"); p.add_argument("--title")
+    p.add_argument("--x", required=True); p.add_argument("--y", required=True); p.add_argument("--series"); p.add_argument("--y2", help="second numeric column: bullet target, range-band upper bound"); p.add_argument("--title")
     p.add_argument("--out"); p.add_argument("--png", help="matplotlib/pptx/xlsx/docx: the file the generated script writes (chart.png, chart.pptx, chart.xlsx, chart.docx)")
     p.add_argument("--html", action="store_true", help="wrap a web spec in a standalone page")
     p.add_argument("--flag", nargs="*", help="showData, dataByUrl, container, namedSeries")

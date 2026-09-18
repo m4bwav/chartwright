@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260918-9 · 2026-09-18 · `--y2` and four more Vega-Lite compositions
+- because: HANDOFF next step 2 (builder gaps) after the 0.5.0 release
+- files: scripts/cw.py (_Y2, _vl_composed bullet/range-band/connected-scatter/bump, build_observable_plot y2 marks, build --y2), kb/charts/{bullet,range-band,connected-scatter,bump}.md (vega-lite recipe line), references/build-and-verify.md (column roles, builder coverage), tests/fixtures/{bullet,band,connected,bump}.csv, tests/test_cw.py
+- A second numeric column was the missing role for targets and bounds; the four compositions were rendered and inspected (band y-axis no longer starts at zero; bump rank axis runs 1..n).
+
 ### C-20260918-8 · 2026-09-18 · Fixes from the README and Word fresh-session runs
 - because: T-20260918-3 (two evergreen-tester runs from a neutral directory), L-20260918-3
 - files: scripts/cw.py (_hoist_globals, build_mermaid y-axis range, build_vega_lite bar sort, GENERIC words and magnitude synonyms in pick, mermaid render cleanup), references/build-and-verify.md (Word row now points at the `docx` target), tests/test_cw.py

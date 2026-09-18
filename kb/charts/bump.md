@@ -76,6 +76,8 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 
 ### vega-lite
 
+`cw.py build --chart bump --target vega-lite --data ranks.csv --x period --y rank --series team` (rank 1 at the top, monotone curves, entity labels at the last period).
+
 ```json
 {"$schema": "https://vega.github.io/schema/vega-lite/v6.json", "data": {"url": "sales.csv"},
  "transform": [{"window": [{"op": "rank", "as": "rank"}], "sort": [{"field": "value", "order": "descending"}], "groupby": ["year"]}],

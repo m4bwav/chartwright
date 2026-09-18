@@ -77,6 +77,8 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 
 ### vega-lite
 
+`cw.py build --chart range-band --target vega-lite --data forecast.csv --x date --y low --y2 high [--series mean]` composes the band (area from `--y` to `--y2`) and an optional centre line.
+
 ```json
 {"$schema": "https://vega.github.io/schema/vega-lite/v6.json", "data": {"url": "forecast.csv"},
  "encoding": {"x": {"field": "date", "type": "temporal"}},

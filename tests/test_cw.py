@@ -404,6 +404,41 @@ class NewTargetTests(unittest.TestCase):
         import zipfile
         self.assertTrue(any(n.startswith("word/media/") for n in zipfile.ZipFile(doc).namelist()))
 
+    def test_y2_compositions(self):
+        out = self.build("--chart", "bullet", "--target", "vega-lite", "--data", str(FIX / "bullet.csv"), "--x", "kpi", "--y", "actual", "--y2", "target", "--series", "poor")
+        d = json.loads(out)
+        self.assertEqual(len(d["layer"]), 3)
+        self.assertEqual(d["layer"][2]["encoding"]["x"]["field"], "target")
+        out = self.build("--chart", "range-band", "--target", "vega-lite", "--data", str(FIX / "band.csv"), "--x", "date", "--y", "low", "--y2", "high", "--series", "mean")
+        d = json.loads(out)
+        self.assertEqual(d["layer"][0]["encoding"]["y2"]["field"], "high")
+        self.assertEqual(d["encoding"]["x"]["axis"]["tickCount"], "month")
+        out = self.build("--chart", "connected-scatter", "--target", "vega-lite", "--data", str(FIX / "connected.csv"), "--x", "unemployment", "--y", "inflation", "--series", "year")
+        self.assertEqual(json.loads(out)["encoding"]["order"]["field"], "year")
+        out = self.build("--chart", "bump", "--target", "vega-lite", "--data", str(FIX / "bump.csv"), "--x", "period", "--y", "rank", "--series", "team")
+        self.assertEqual(json.loads(out)["encoding"]["y"]["scale"]["domain"], [0.5, 3.5])
+        rc, out = run("build", "--chart", "bullet", "--target", "vega-lite", "--data", str(FIX / "bullet.csv"), "--x", "kpi", "--y", "actual")
+        self.assertEqual(rc, 1)
+        rc, out = run("build", "--chart", "bullet", "--target", "vega-lite", "--data", str(FIX / "bullet.csv"), "--x", "kpi", "--y", "actual", "--y2", "nope")
+        self.assertEqual(rc, 1)
+        out = self.build("--chart", "range-band", "--target", "observable-plot", "--data", str(FIX / "band.csv"), "--x", "date", "--y", "low", "--y2", "high")
+        self.assertIn('y2: "y2"', out)
+        self.assertIn('"y2": 110.0', out)
+
+    def test_real_questions_regression(self):
+        cases = [("how did monthly active users change over the last two years", "time,q", "line"),
+                 ("distribution of response times across servers", "n,q*n", "boxplot"),
+                 ("which steps of the checkout lose the most users", "o,q", "funnel"),
+                 ("compare 2025 and 2026 revenue for each region", "n,n,q", "grouped-bar"),
+                 ("correlation between ad spend and signups", "q,q", "scatter"),
+                 ("survey answers from strongly disagree to strongly agree per question", "n,o,q", "diverging-stacked-bar"),
+                 ("flow of visitors from source to landing page to conversion", "n,n,q", "sankey")]
+        for q, shape, want in cases:
+            buf = io.StringIO()
+            with redirect_stdout(buf):
+                cw.main(["--json", "pick", "--question", q, "--shape", shape])
+            self.assertEqual(json.loads(buf.getvalue())["picks"][0]["slug"], want, q)
+
     def test_global_flags_after_subcommand(self):
         buf = io.StringIO()
         with redirect_stdout(buf):

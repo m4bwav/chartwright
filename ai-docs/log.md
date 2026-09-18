@@ -103,3 +103,10 @@ Append-only. Newest at the bottom. One entry per working session.
 - Researched the cycle plot (seasonal subseries plot, month plot) from Robbins 2008 (Perceptual Edge PDF), FPP3 section 2.5, statsmodels `month_plot`, R `monthplot` / `gg_subseries`, VizWiz and PolicyViz; recorded as R-20260918-1 in `skills/chartwright-curate/RESEARCH.md`. Origin Cleveland, Dunn and Terpenning 1978 (secondary citation only). No library among the sixteen targets draws it natively; only matplotlib via statsmodels counts as native.
 - `kb/charts/cycle-plot.md` written (family change-over-time, evidence medium, popularity niche); `calendar-heatmap` Substitutes now links the slug. `cw.py --strict validate`: 83 charts, 16 targets, exit 0; `cw.py index` regenerated. Logged as C-20260918-4.
 - Gotchas: the NIST e-Handbook page for the seasonal subseries plot (pmc4441) redirects to nist.gov/itl as of today, so it was not used as a source; WebFetch could not summarise the Perceptual Edge PDF but the saved PDF read fine with the Read tool.
+
+## 2026-09-18: 0.6.0, --y2 compositions, chooser regression set
+
+- Handoff next step 2: `--y2` added to `cw.py build`; Vega-Lite composes bullet, range-band, connected-scatter and bump; observable-plot gets range-band, timeline and dumbbell from the same flag. Rendered all four and fixed two things the pictures showed: the band's y-axis started at zero and the bump rank axis ran from 0. Fixtures bullet.csv, band.csv, connected.csv, bump.csv.
+- Handoff next step 3: eight real questions probed against `pick`; all landed on the expected chart (donut edged pie for "share of revenue", acceptable). Seven locked as a regression test. 43 tests pass.
+- Not done: live Sheets API send for `gsheets` (needs OAuth outside the connectors), PlantUML render (no local PlantUML), Observable Plot screenshot (no headless browser step); `namedSeries` auto-enable (needs host detection). Left in HANDOFF.
+- Same session: evergreen refresh of the local-delegate skill (separate repo, see its RESEARCH.md R-20260918-*).
