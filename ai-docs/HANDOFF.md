@@ -1,15 +1,16 @@
 # HANDOFF
 
-Updated 2026-09-17 (session that created the plugin). Read this first, then `ai-docs/log.md`.
+Updated 2026-09-18 (end of the session that created the plugin; v0.1.1 pushed). Read this first, then `ai-docs/log.md`.
 
 ## State
 
 - Plugin `chartwright` 0.1.0 at `D:\m4bwa\Claude\Projects\Ai\chartwright`, installed in Claude Code from the `mark-local` marketplace, pushed to the private repo `m4bwav/chartwright`.
-- Knowledge base: about 80 chart files, 5 targets, rules; `python scripts/cw.py --strict validate` and `python -m unittest discover -s tests` both pass at handoff (see log for the exact counts).
+- Knowledge base: 82 chart files, 5 targets, rules; `python scripts/cw.py --strict validate` clean and 26 unit tests pass at handoff. Tags v0.1.0 and v0.1.1 on the repo.
 - Skills are evergreen: `chartwright` due 2026-10-01 (fast), `chartwright-curate` due 2026-10-17 (moderate). Evals in `skills/*/evals/evals.json`; results in `skills/*/TESTS.md`.
 
 ## Next steps (in order of value)
 
+0. Re-run the trigger evals from a fresh session (`evergreen-test` on both skills): this session was started before the plugin was installed, so its Skill registry never saw `chartwright`; action and decoy cases already pass on evidence (skills/*/TESTS.md T-20260918-1).
 1. Use it on a real document and a real README; capture learnings and notes with `cw.py note`.
 2. Add targets that were researched but not built: `echarts` (v6.1, chord and beeswarm native), `pptx` (python-pptx native charts), `terminal` (plotext), `quickchart` (Chart.js config as a URL image).
 3. Extend `cw.py build` to more types in Vega-Lite (dumbbell, slope, waterfall, bullet, calendar heatmap are all layer or transform recipes already described in the chart files).

@@ -47,3 +47,8 @@ Append-only. Newest at the bottom. One entry per working session.
 - Built: `examples/sales-by-region.csv` (aggregated source data), `examples/sales-pie.vl.json` (Vega-Lite spec), `examples/sales-pie.png` (rendered chart, 2x scale for print/slide use) — viewed and confirmed correct: three cleanly separated slices (North/South/East) sized to 200/225/130, titled "Sales by region", legend labeled by region, no collisions.
 - Target chosen: `vega-lite` → PNG at 2x, per the skill's target rule for slides/documents.
 - Learned: reaffirms the CLI aggregation gap (`build` should sum or refuse on duplicate x values) and the Skill-tool discoverability gap for both `chartwright` and `chartwright-curate` in this environment; both already noted in earlier entries.
+
+## 2026-09-18: first eval run, 0.1.1
+
+- Six evergreen-tester runs (one per case, sonnet): actions and decoys pass on evidence (files written through cw.py, correct skill chosen); trigger cases inconclusive because the Skill tool in this session never registered the plugin installed mid-session (L-20260918-1 in both skills).
+- The action run exposed the duplicate-x overwrite in `cw.py build`; fixed with sum-by-default aggregation and `--agg` (C-20260918-2). Version 0.1.1 tagged and pushed; evergreen state now points at the installed plugin's protocol.
