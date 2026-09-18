@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-18
 last_verified: 2026-09-18
 sources: [https://www.data-to-viz.com/graph/correlogram.html, https://seaborn.pydata.org/examples/many_pairwise_correlations.html, https://plotly.com/python/heatmaps/, https://vega.github.io/vega-lite/examples/rect_heatmap.html, https://cran.r-project.org/web/packages/corrplot/vignettes/corrplot-intro.html]

@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/caveat/spider.html, https://mermaid.js.org/syntax/radar.html, https://www.chartjs.org/docs/latest/charts/radar.html, https://plotly.com/javascript/radar-chart/]

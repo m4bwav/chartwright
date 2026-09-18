@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/, https://www.data-to-viz.com/graph/lollipop.html]
@@ -82,6 +83,8 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 ```
 
 Not in `cw.py build`; hand-write from this recipe with wide data (one column per endpoint). For long data use `"x": {"aggregate": "min"}` and `"x2": {"aggregate": "max"}` on the rule layer and `color` by the period field on the point layer. Render with `cw.py render --target vega-lite --in chart.vl.json --out chart.svg`.
+
+`cw.py build --chart dumbbell --target vega-lite --data file.csv --x category --y value --series period` (two rows per category, one per end) layers a rule between the min and max and a point per end.
 
 ### plotly
 

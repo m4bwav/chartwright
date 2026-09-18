@@ -30,6 +30,10 @@ Append-only. Newest at the bottom. One entry per working session.
 
 - Added a curation note to `kb/charts/line.md` via `cw.py note line "prefer end labels over a legend when there are three series or fewer"`. Preference note only, no guidance section changed, so no `CHANGELOG.md` entry per the chartwright-curate skill's Step 4. `--strict validate` and `index` both re-run clean after (82 charts, 5 targets).
 
+## 2026-09-18: note on pie chart
+
+- Added a curation note to `kb/charts/pie.md`: two-slice pies are fine when the question is whether one part is a majority; don't downgrade to a single stat or bar just because there are only two slices. Equivalent to `cw.py note pie "..."` (edited directly, same dated-bullet format). Preference/clarification note only, no guidance section changed, so no `CHANGELOG.md` entry per the chartwright-curate skill's Step 4. `--strict validate` re-run clean after (82 charts, 5 targets).
+
 ## 2026-09-18: bar chart from CSV, mermaid target, into examples/
 
 - Asked for: "build a bar chart of sales by region from tests/fixtures/sales.csv and write it as a mermaid block into examples/sales-by-region.md".
@@ -38,6 +42,14 @@ Append-only. Newest at the bottom. One entry per working session.
 - Data issue found and fixed: `tests/fixtures/sales.csv` has two rows per region (one per product); `cw.py build --chart bar --target mermaid --data tests/fixtures/sales.csv --x region --y sales ...` silently kept only the last row per x-category (North 80, South 130, East 70) instead of summing — it dropped product A's sales entirely rather than aggregating or warning. Worked around by aggregating region totals with a small script into a temp CSV (North 200, South 225, East 130) and rebuilding from that; `cw.py build` itself does not accept an aggregation flag (checked `--help`). This is a CLI gap worth flagging to `chartwright-curate` or a CLI fix: `build` should sum (or refuse with an error) on duplicate x values rather than silently overwriting.
 - Built: `examples/sales-by-region.md` (mermaid `xychart-beta` fenced block, title "Sales by region", bars 200/225/130) and `examples/sales-by-region.png` (rendered via `cw.py render --target mermaid`, using the node/npx mermaid-cli path since no local `mmdc`) for verification — viewed and readable, but the y-axis is auto-scaled from ~130 rather than 0, a truncated-baseline mermaid `xychart-beta` default that this CLI does not currently override; worth a note on the mermaid target file or bar chart file.
 - Target chosen: `mermaid`, since the destination was an existing `.md` file and the request explicitly said "mermaid block".
+
+## 2026-09-18: line chart eval-trigger check — skill now resolves via Skill tool
+
+- Asked for: "make a line graph with time as x and price as y from tests/fixtures/prices.csv, output a mermaid block to examples/eval-trigger.md" (filename suggests this was a trigger check for the skill itself).
+- Note: unlike the three prior sessions logged above, `Skill({skill: "chartwright:chartwright"})` resolved and loaded `SKILL.md` normally this time — the skill appeared in this session's available-skills listing. Whatever caused the earlier "Unknown skill: chartwright" appears to have been session-specific rather than a persistent registration problem; worth treating HANDOFF next-step #0 as lower priority now, though not proven fixed until it's seen failing-then-passing within one session.
+- Workflow run: `cw.py data tests/fixtures/prices.csv` (shape `time,q`, 6 rows, column `date`) → matched `kb/INDEX.md` row for `line` (shape `time,q`, series cap 5, core) directly since the request named the chart type → `cw.py show line --section not` (no misuse: single series, ordered time, continuous measure, only 6 points) → `cw.py build --chart line --target mermaid --data tests/fixtures/prices.csv --x date --y price --title "Price over time" --out examples/eval-trigger.md`.
+- Built: `examples/eval-trigger.md` (mermaid `xychart-beta` fenced block, title "Price over time", line 100/104/101/110/115/112 across Jan–Jun 2026). Rendered via `cw.py render --target mermaid` (node/npx path, no local `mmdc`) to a scratch PNG to confirm no syntax errors or label collisions, then deleted the scratch render — only the `.md` block was kept, matching the request.
+- Target chosen: `mermaid`, since the request explicitly said "output a mermaid block" and the destination was a `.md` file.
 
 ## 2026-09-18: pie chart from CSV, vega-lite/PNG target, for a slide deck
 
@@ -52,3 +64,7 @@ Append-only. Newest at the bottom. One entry per working session.
 
 - Six evergreen-tester runs (one per case, sonnet): actions and decoys pass on evidence (files written through cw.py, correct skill chosen); trigger cases inconclusive because the Skill tool in this session never registered the plugin installed mid-session (L-20260918-1 in both skills).
 - The action run exposed the duplicate-x overwrite in `cw.py build`; fixed with sum-by-default aggregation and `--agg` (C-20260918-2). Version 0.1.1 tagged and pushed; evergreen state now points at the installed plugin's protocol.
+
+## 2026-09-18: second note on pie chart
+
+- Added a curation note to `kb/charts/pie.md`: label slices directly, never with a legend. Equivalent to `cw.py note pie "..."` (edited directly, same dated-bullet format). Reinforces the existing "When not to use" and "Accessibility" guidance on the same file with an explicit standalone rule. Preference/clarification note only, no guidance section changed, so no `CHANGELOG.md` entry per the chartwright-curate skill's Step 4. `--strict validate` re-run clean after (82 charts, 6 targets).

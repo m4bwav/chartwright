@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: none
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://plotly.com/javascript/sunburst-charts/, https://vega.github.io/vega/examples/sunburst/, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://eagereyes.org/pie-charts]

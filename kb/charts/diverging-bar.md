@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -92,6 +93,8 @@ Hand-written; sort the values first. For coloured sides render the vega-lite rec
 ```
 
 Bars extend from zero automatically; a `rule` layer at `"x": {"datum": 0}` emphasises the reference. For a non-zero reference add `{"calculate": "datum.value - 100", "as": "change"}`. Hand-written (the `bar` builder works when colour by sign is not needed); render with `cw.py render --target vega-lite --in chart.vl.json --out chart.svg`.
+
+`cw.py build --chart diverging-bar --target vega-lite --data file.csv --x category --y value` sorts by value and colours the sign.
 
 ### plotly
 

@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: image
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/streamgraph.html, https://vega.github.io/vega-lite/docs/stack.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.stackplot.html]

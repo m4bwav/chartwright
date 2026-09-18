@@ -38,7 +38,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "matrix diagram",
@@ -88,7 +89,8 @@
     "vega-lite": "image",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "parallel sets",
@@ -136,7 +138,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "arc plot",
@@ -179,7 +182,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "native"
    },
    "aliases": [
     "filled line chart",
@@ -226,7 +230,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "native"
    },
    "aliases": [
     "horizontal bar chart",
@@ -273,7 +278,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "image",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "swarm plot",
@@ -319,7 +325,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "box-and-whisker plot",
@@ -365,7 +372,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "none",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "proportional symbol map",
@@ -411,7 +419,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "bubble plot",
@@ -460,7 +469,8 @@
     "vega-lite": "native",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "bullet graph",
@@ -506,7 +516,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "rank chart",
@@ -551,7 +562,8 @@
     "vega-lite": "native",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "calendar chart",
@@ -596,7 +608,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "OHLC chart",
@@ -643,7 +656,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "scaled cartogram",
@@ -690,7 +704,8 @@
     "vega-lite": "image",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "chord chart",
@@ -738,7 +753,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "none",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "filled map",
@@ -786,7 +802,8 @@
     "vega-lite": "approx",
     "plotly": "image",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "circular treemap",
@@ -834,7 +851,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "native"
    },
    "aliases": [
     "vertical bar chart",
@@ -876,7 +894,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "connected scatter",
@@ -919,7 +938,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "correlation matrix",
@@ -965,7 +985,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "cluster tree",
@@ -1008,7 +1029,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "none",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "contour plot",
@@ -1053,7 +1075,8 @@
     "vega-lite": "native",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "KDE plot",
@@ -1100,7 +1123,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "positive negative bar chart",
@@ -1148,7 +1172,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "Likert chart",
@@ -1193,7 +1218,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "doughnut chart",
@@ -1239,7 +1265,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "dot map",
@@ -1288,7 +1315,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "Cleveland dot plot",
@@ -1337,7 +1365,8 @@
     "vega-lite": "native",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "range plot",
@@ -1383,7 +1412,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "empirical cumulative distribution function",
@@ -1430,7 +1460,8 @@
     "vega-lite": "image",
     "plotly": "image",
     "chartjs": "none",
-    "matplotlib": "image"
+    "matplotlib": "image",
+    "terminal": "none"
    },
    "aliases": [
     "edge bundling",
@@ -1477,7 +1508,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "confidence interval plot",
@@ -1525,7 +1557,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "connection map",
@@ -1574,7 +1607,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "conversion funnel",
@@ -1620,7 +1654,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "project schedule",
@@ -1667,7 +1702,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "meter",
@@ -1716,7 +1752,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "clustered bar chart",
@@ -1765,7 +1802,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "heat map",
@@ -1814,7 +1852,8 @@
     "vega-lite": "native",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "hexagon map",
@@ -1858,7 +1897,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "image",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "hexagonal binning",
@@ -1903,7 +1943,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "frequency distribution",
@@ -1945,7 +1986,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "image",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "horizon graph",
@@ -1990,7 +2032,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "partition chart",
@@ -2041,7 +2084,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "native"
    },
    "aliases": [
     "line graph",
@@ -2087,7 +2131,8 @@
     "vega-lite": "native",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "lollipop plot",
@@ -2131,7 +2176,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "image",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "mosaic plot",
@@ -2179,7 +2225,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "node-link diagram",
@@ -2227,7 +2274,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "none",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "parallel coordinates plot",
@@ -2273,7 +2321,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "isotype chart",
@@ -2315,7 +2364,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "pie graph",
@@ -2359,7 +2409,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "age-sex pyramid",
@@ -2403,7 +2454,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "quantile-quantile plot",
@@ -2448,7 +2500,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "2x2 matrix",
@@ -2494,7 +2547,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "spider chart",
@@ -2542,7 +2596,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "circular bar chart",
@@ -2586,7 +2641,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "image",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "rain cloud plot",
@@ -2632,7 +2688,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "band chart",
@@ -2679,7 +2736,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "joyplot",
@@ -2726,7 +2784,8 @@
     "vega-lite": "image",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "sankey chart",
@@ -2775,7 +2834,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "scatterplot",
@@ -2821,7 +2881,8 @@
     "vega-lite": "native",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "slopegraph",
@@ -2871,7 +2932,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "approx"
    },
    "aliases": [
     "trellis chart",
@@ -2919,7 +2981,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "native"
    },
    "aliases": [
     "inline chart",
@@ -2962,7 +3025,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "image",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "SPLOM",
@@ -3005,7 +3069,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "stacked area graph",
@@ -3052,7 +3117,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "percent stacked bar",
@@ -3099,7 +3165,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "stacked column chart",
@@ -3148,7 +3215,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "none",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "approx"
    },
    "aliases": [
     "KPI tile",
@@ -3195,7 +3263,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "native",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "native"
    },
    "aliases": [
     "step line",
@@ -3238,7 +3307,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "image",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "stream graph",
@@ -3283,7 +3353,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "dot strip plot",
@@ -3329,7 +3400,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "radial treemap",
@@ -3379,7 +3451,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "none",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "approx"
    },
    "aliases": [
     "data table",
@@ -3427,7 +3500,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "tile map",
@@ -3475,7 +3549,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "event timeline",
@@ -3522,7 +3597,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "tree chart",
@@ -3572,7 +3648,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "tree map",
@@ -3617,7 +3694,8 @@
     "vega-lite": "image",
     "plotly": "image",
     "chartjs": "none",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "Euler diagram",
@@ -3659,7 +3737,8 @@
     "vega-lite": "approx",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "violin chart",
@@ -3701,7 +3780,8 @@
     "vega-lite": "approx",
     "plotly": "approx",
     "chartjs": "approx",
-    "matplotlib": "approx"
+    "matplotlib": "approx",
+    "terminal": "none"
    },
    "aliases": [
     "gridplot",
@@ -3751,7 +3831,8 @@
     "vega-lite": "native",
     "plotly": "native",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "bridge chart",
@@ -3796,7 +3877,8 @@
     "vega-lite": "approx",
     "plotly": "image",
     "chartjs": "approx",
-    "matplotlib": "native"
+    "matplotlib": "native",
+    "terminal": "none"
    },
    "aliases": [
     "tag cloud",
@@ -3869,6 +3951,21 @@
    "version_checked": "plotly.js 4.1.1 (2026-09-14), plotly.py 7.1.0 (2026-09-15), kaleido 1.4.0",
    "renderer": "none",
    "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "terminal",
+   "name": "Terminal and plain chat (Unicode)",
+   "kind": "terminal",
+   "renders_in": [
+    "any terminal",
+    "chat replies with no image support",
+    "commit messages",
+    "log output",
+    "Slack code blocks"
+   ],
+   "version_checked": "Unicode block elements U+2581..U+2588 (no library); plotext 6.1.0 (2026-09) for full terminal plots",
+   "renderer": "none",
+   "last_verified": "2026-09-18"
   },
   {
    "slug": "vega-lite",

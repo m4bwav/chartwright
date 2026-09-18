@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: native
+  terminal: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/small-multiple-line-charts, https://vega.github.io/vega-lite/docs/facet.html, https://plotly.com/python/facet-plots/, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -81,6 +82,8 @@ Hand-written for every target; there is no builder. Build the base chart first w
 
 `facet` shares scales by default (`"resolve": {"scale": {"y": "independent"}}` to break that, with a warning in the caption). For a grey background of all series add a layer with `"detail"` on a copy of the data without the facet field. `"row"` and `"column"` encodings inside a single spec are the shorthand.
 
+`cw.py build --chart small-multiples --target vega-lite --data file.csv --x date --y value --series panel` facets one line per panel, three columns, shared axes.
+
 ### plotly
 
 Python: `px.line(df, x="date", y="value", facet_col="region", facet_col_wrap=4)`; plotly.js: `make_subplots`-style layout with one trace per `xaxisN`/`yaxisN` pair and `matches: "y"` on each y axis to share the scale. Hand-written.
@@ -92,6 +95,10 @@ Python: `px.line(df, x="date", y="value", facet_col="region", facet_col_wrap=4)`
 ### matplotlib
 
 `fig, axes = plt.subplots(rows, cols, sharex=True, sharey=True, figsize=(cols * 2.2, rows * 1.6))`, then `for ax, (name, sub) in zip(axes.flat, groups): ax.plot(sub.date, sub.value); ax.set_title(name, fontsize=9)`; hide unused axes with `ax.set_visible(False)`. seaborn: `sns.relplot(data=df, x="date", y="value", col="region", col_wrap=4, kind="line")`. Hand-written, then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### terminal
+
+One sparkline per panel: `cw.py build --chart line --target terminal --data file.csv --x date --y value --series panel`.
 
 ## Notes
 

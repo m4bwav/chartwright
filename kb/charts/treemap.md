@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/syntax/treemap.html, https://plotly.com/javascript/treemaps/, https://vega.github.io/vega/examples/treemap/, https://github.com/laserson/squarify, https://www.semanticscholar.org/paper/55d3281f6b34c50df975b7261044689bf73ec610]

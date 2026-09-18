@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/dual-axis-charts, https://vega.github.io/vega-lite/examples/connected_scatterplot.html, https://ieeexplore.ieee.org/document/7192687]

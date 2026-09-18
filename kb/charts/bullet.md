@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/layer_bar_bullet.html, https://plotly.com/javascript/bullet-charts/, https://datavizcatalogue.com/methods/bullet_graph.html]

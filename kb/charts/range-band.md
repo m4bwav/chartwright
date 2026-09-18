@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/errorband.html, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://ieeexplore.ieee.org/document/6876013]

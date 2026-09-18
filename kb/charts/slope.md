@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/examples/line_slope.html, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -89,6 +90,8 @@ xychart-beta
 ```
 
 Hand-written from the gallery example (`line_slope`); `"detail"` draws one line per entity without a colour legend, the text layer labels the right end. Set `"width": 200` so the slopes are steep enough to read.
+
+`cw.py build --chart slope --target vega-lite --data file.csv --x period --y value --series entity` draws one line per entity between the two periods with the entity name at the right end.
 
 ### plotly
 

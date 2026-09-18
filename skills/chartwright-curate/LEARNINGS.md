@@ -23,3 +23,10 @@ Write an entry the moment a real signal happens: a user correction, the same err
 - Rule: trigger evals run from a session started after the install; same-session trigger results are recorded as inconclusive.
 - Apply: after installing or renaming a skill, run evergreen-test from a fresh session; treat same-session trigger results as inconclusive, not failing.
 
+### L-20260918-2 · 2026-09-18 · Trigger evals run inside the plugin's own repo are biased
+- Trigger: two fresh-session runs in D:\...\chartwright wrote the note through cw.py without invoking chartwright-curate; the same prompt from an empty directory invoked the skill.
+- Hypothesis: the repo's AGENTS.md and CLAUDE.md name the CLI first, so the model takes the documented route before considering skills.
+- Evidence: T-20260918-2 (in repo, no Skill call) vs T-20260918-3 (neutral directory, Skill call in the trace).
+- Rule: run trigger cases from a neutral working directory; in-repo results count only for action evidence.
+- Apply: evergreen-test for this plugin starts `claude -p` from a scratch folder.
+

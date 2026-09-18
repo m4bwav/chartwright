@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: none
   matplotlib: native
+  terminal: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/chart-types-guide, https://datavizcatalogue.com/methods/table.html, https://plotly.com/javascript/table/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.table.html, https://www.w3.org/WAI/tutorials/tables/]
@@ -91,6 +92,10 @@ Sort rows before writing; a block-character bar column (`████░░`) gi
 ### matplotlib
 
 `ax.axis("off"); tbl = ax.table(cellText=rows, colLabels=headers, loc="center", cellLoc="right"); tbl.auto_set_font_size(False); tbl.set_fontsize(9)`; colour cells with `tbl[(i, j)].set_facecolor(cmap(norm(value)))` for a heat table. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`. Prefer a real table in the host document whenever it supports one.
+
+### terminal
+
+A markdown table in a code block; sort it and right-align numbers.
 
 ## Notes
 

@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: none
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/hexbinmap.html, https://vega.github.io/vega-lite/docs/geoshape.html, https://plotly.com/python/hexbin-mapbox/, https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hexbin.html, https://github.com/odileeds/hexmaps]

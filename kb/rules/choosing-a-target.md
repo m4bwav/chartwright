@@ -7,7 +7,7 @@ Pick the smallest target the destination renders natively, then the cheapest to 
 | README, GitHub or GitLab issue/PR, Obsidian note, Notion, Azure DevOps wiki, Docusaurus or MkDocs page | `mermaid` if the type is line, bar, pie, sankey, radar, quadrant, timeline, gantt | SVG via `vega-lite` render, linked as an image, spec saved beside it | Mermaid renders in place with no build step; everything else is a picture |
 | Web page, dashboard, HTML report, Claude artifact | `vega-lite` (vega-embed) | `plotly` for candlestick, sankey, sunburst, treemap, 3D, gauges; `chartjs` when the page already uses it | Vega-Lite is the most reliable for generated specs and the smallest |
 | Word, Google Docs, PowerPoint, Google Slides, Slack, email, LaTeX, PDF | PNG at 2x via `vega-lite` render | `matplotlib` script for types outside Vega-Lite; native python-pptx or openpyxl charts when the file must stay editable | These hosts show images only; SVG is rejected or degraded |
-| Terminal, chat reply with no image support | Unicode sparkline `▁▂▃▅▇` or a small markdown table | plotext for a real terminal plot | About one token per point |
+| Terminal, chat reply with no image support | `terminal` target: `cw.py build --chart line --target terminal` (block sparkline) or `--chart bar` (block bars); a small markdown table for values | plotext for a real terminal plot | About one token per point |
 | Jupyter, data notebook | Altair (same Vega-Lite spec) | matplotlib, plotly | Notebook renders both interactively |
 | Spreadsheet | openpyxl (Excel) or Sheets API `EmbeddedChart` | image | Native charts stay editable |
 
@@ -25,4 +25,4 @@ sparkline (1 token per point) < Mermaid xychart (30 + data) < Vega-Lite spec (12
 
 ## Adding a target
 
-`python scripts/cw.py new-target <slug> --name "<Name>" --kind markdown|web|image|office|terminal`, fill the stub, then add a `<slug>:` line to every chart's `support:` map (`cw.py validate` lists the gaps) and a `### <slug>` recipe under `## Build` for each chart marked native or approx. Candidates already researched for a later version: `echarts` (v6.1, chord and beeswarm native, SSR to SVG), `pptx` (python-pptx native charts), `xlsx` (openpyxl), `gsheets` (EmbeddedChart), `plantuml` (`@startchart` since 1.2026.0), `terminal` (plotext, termgraph), `quickchart` (Chart.js config as a URL).
+`python scripts/cw.py new-target <slug> --name "<Name>" --kind markdown|web|image|office|terminal`, fill the stub, then add a `<slug>:` line to every chart's `support:` map (`cw.py validate` lists the gaps) and a `### <slug>` recipe under `## Build` for each chart marked native or approx. Candidates already researched for a later version: `echarts` (v6.1, chord and beeswarm native, SSR to SVG), `pptx` (python-pptx native charts), `xlsx` (openpyxl), `gsheets` (EmbeddedChart), `plantuml` (`@startchart` since 1.2026.0), `quickchart` (Chart.js config as a URL). `terminal` was added 2026-09-18.

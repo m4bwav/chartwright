@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://eagereyes.org/pie-charts, https://media.eagereyes.org/papers/2016/Skau-EuroVis-2016.pdf, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/syntax/pie.html, https://www.data-to-viz.com/caveat/pie.html]
@@ -104,3 +105,6 @@ pie showData
 ## Notes
 
 - 2026-09-17: written from the 2026-09-17 taxonomy research.
+- 2026-09-18: two-slice pies are fine when the question is whether one part is a majority; don't downgrade to a single stat or bar just because there are only two slices.
+- 2026-09-18: label slices directly, never with a legend; readers should never have to hunt between a slice and a colour key.
+- 2026-09-18: Sort slices largest first, starting at 12 o'clock.

@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://seaborn.pydata.org/generated/seaborn.ecdfplot.html, https://plotly.com/python/ecdf-plots/, https://vega.github.io/vega-lite/examples/area_cumulative_freq.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.ecdf.html, https://www.data-to-viz.com/]

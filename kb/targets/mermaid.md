@@ -64,4 +64,4 @@ xychart
 
 ## Notes
 
-- 2026-09-17: created from the 2026-09-17 library research (Mermaid 12.0.0 released 2026-09-10 with ELK default, treemap, venn, use case, agentflow). `cw.py build --target mermaid` emits `xychart-beta` and unnamed series for maximum host compatibility; hand-add series names when the host is 11.16+.
+- 2026-09-17: created from the 2026-09-17 library research (Mermaid 12.0.0 released 2026-09-10 with ELK default, treemap, venn, use case, agentflow). `cw.py build --target mermaid` emits `xychart-beta` and unnamed series for maximum host compatibility; add `--flag namedSeries` for `xychart` with named series and a legend when the host is 11.16+.

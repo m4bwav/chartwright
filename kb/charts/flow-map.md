@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: none
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/connectionmap.html, https://vega.github.io/vega-lite/examples/geo_rule.html, https://plotly.com/javascript/lines-on-maps/, https://scitools.org.uk/cartopy/docs/latest/]

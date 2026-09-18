@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://journals.sagepub.com/doi/10.1177/15291006211051956, https://vega.github.io/vega-lite/docs/point.html, https://plotly.com/python/line-and-scatter/, https://www.chartjs.org/docs/latest/charts/scatter.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html]

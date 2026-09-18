@@ -149,6 +149,37 @@ class BuildTests(unittest.TestCase):
         out = self.build("--chart", "bar", "--target", "mermaid", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--agg", "mean")
         self.assertIn("bar [100, 112.5, 65]", out)
 
+    def test_composed_vega_lite_recipes(self):
+        out = self.build("--chart", "waterfall", "--target", "vega-lite", "--data", str(FIX / "waterfall.csv"), "--x", "step", "--y", "change")
+        spec = json.loads(out)
+        self.assertEqual(spec["transform"][0]["window"][0]["op"], "sum")
+        self.assertEqual(spec["encoding"]["y2"], {"field": "end"})
+        out = self.build("--chart", "slope", "--target", "vega-lite", "--data", str(FIX / "slope.csv"), "--x", "period", "--y", "value", "--series", "city")
+        spec = json.loads(out)
+        self.assertEqual(len(spec["layer"]), 2)
+        self.assertEqual(spec["layer"][1]["transform"][0]["filter"], {"field": "period", "equal": "2026"})
+        out = self.build("--chart", "small-multiples", "--target", "vega-lite", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        self.assertEqual(json.loads(out)["facet"]["field"], "product")
+        out = self.build("--chart", "stacked-bar-100", "--target", "vega-lite", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        self.assertEqual(json.loads(out)["encoding"]["y"]["stack"], "normalize")
+        rc, out = run("build", "--chart", "dumbbell", "--target", "vega-lite", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
+        self.assertEqual(rc, 1)
+        self.assertIn("needs --series", out)
+
+    def test_mermaid_named_series_flag(self):
+        out = self.build("--chart", "line", "--target", "mermaid", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product", "--flag", "namedSeries")
+        self.assertIn("xychart\n", out)
+        self.assertIn('line "A" [120, 95, 60]', out)
+        self.assertNotIn("%%", out)
+
+    def test_terminal_sparkline_and_bars(self):
+        out = self.build("--chart", "line", "--target", "terminal", "--data", str(FIX / "prices.csv"), "--x", "date", "--y", "price")
+        self.assertIn("100 -> 112", out)
+        self.assertEqual(len([c for c in out.splitlines()[1].split()[0] if c in cw.BLOCKS]), 6)
+        out = self.build("--chart", "bar", "--target", "terminal", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
+        self.assertIn("South", out)
+        self.assertIn("225", out)
+
     def test_mermaid_pie_and_sankey(self):
         out = self.build("--chart", "pie", "--target", "mermaid", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
         self.assertIn('"North" : 120', out)

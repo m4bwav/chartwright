@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/stacked-column-charts, https://vega.github.io/vega-lite/docs/stack.html, https://plotly.com/javascript/reference/layout/#layout-barnorm]
@@ -79,6 +80,8 @@ Mermaid `xychart` has no stacking or normalisation. Render with vega-lite to an 
 ```
 
 Hand-written from the `stacked-bar` builder output: `cw.py build --chart stacked-bar --target vega-lite --data shares.csv --x country --y count --series source`, then set `"stack": "normalize"` on the quantitative channel and `"axis": {"format": "%"}`.
+
+`cw.py build --chart stacked-bar-100 --target vega-lite --data file.csv --x category --y value --series part` uses `"stack": "normalize"` with a percent axis.
 
 ### plotly
 

@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -103,6 +104,10 @@ xychart-beta
 ### matplotlib
 
 `ax.plot(dates, values, marker="o", linewidth=2, label=name)` per series, `ax.legend()` or end labels via `ax.annotate`, dates through `matplotlib.dates.DateFormatter`. `cw.py build --chart line --target matplotlib --data prices.csv --x date --y price --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### terminal
+
+`cw.py build --chart line --target terminal --data prices.csv --x date --y price` prints a block sparkline with endpoints and range; one line per series with `--series`.
 
 ## Notes
 

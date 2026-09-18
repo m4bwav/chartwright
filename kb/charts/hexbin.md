@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: image
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hexbin.html, https://observablehq.com/plot/transforms/hexbin, https://vega.github.io/vega-lite/docs/bin.html, https://plotly.com/python/2D-Histogram/, https://www.datawrapper.de/blog/chart-types-guide]

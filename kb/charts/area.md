@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://www.data-to-viz.com/graph/area.html, https://vega.github.io/vega-lite/docs/area.html]
@@ -88,6 +89,10 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 `ax.fill_between(dates, values, 0, alpha=0.4)` plus `ax.plot(dates, values, linewidth=2)` for the edge; `ax.set_ylim(bottom=0)`. `cw.py build --chart area --target matplotlib --data traffic.csv --x date --y visits --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
 
 Markdown hosts: Mermaid has no area mark (`cw.py build --target mermaid` emits a plain line). Render the vega-lite spec to SVG with `cw.py render --target vega-lite --in chart.vl.json --out chart.svg` and link the image.
+
+### terminal
+
+Same block sparkline as `line` (`cw.py build --chart area --target terminal ...`); the fill is implied.
 
 ## Notes
 

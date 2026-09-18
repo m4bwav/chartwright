@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.data-to-viz.com/graph/heatmap.html, https://vega.github.io/vega-lite/docs/rect.html, https://plotly.com/javascript/heatmaps/, https://github.com/kurkle/chartjs-chart-matrix, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.imshow.html, https://doi.org/10.1057/palgrave.ivs.9500092]

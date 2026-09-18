@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://mermaid.js.org/syntax/sankey.html, https://plotly.com/python/parallel-categories-diagram/, https://plotly.com/javascript/sankey-diagram/, https://github.com/corybrunson/ggalluvial]

@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/line.html, https://plotly.com/javascript/line-charts/, https://www.chartjs.org/docs/latest/charts/line.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.step.html]
@@ -96,6 +97,10 @@ xychart-beta
 ### matplotlib
 
 `ax.step(dates, values, where="post", linewidth=2)` (`where="post"` is step-after). `cw.py build --chart step --target matplotlib --data rate.csv --x date --y rate --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### terminal
+
+Same block sparkline as `line` (`cw.py build --chart step --target terminal ...`).
 
 ## Notes
 

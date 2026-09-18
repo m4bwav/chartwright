@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://www.data-to-viz.com/graph/barplot.html, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -103,6 +104,10 @@ xychart-beta horizontal
 ### matplotlib
 
 `ax.barh(categories, values)` on data sorted ascending (so the largest ends on top), `ax.bar_label(ax.containers[0], padding=3)` for end values, `ax.invert_yaxis()` if the sort is descending. `cw.py build --chart bar --target matplotlib --data revenue.csv --x product --y revenue --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### terminal
+
+`cw.py build --chart bar --target terminal --data sales.csv --x region --y sales` prints horizontal block bars with the value at the end.
 
 ## Notes
 

@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: image
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://discovery.ucl.ac.uk/id/eprint/10178652/, https://github.com/pog87/PtitPrince, https://github.com/njudd/ggrain, https://plotly.com/python/violin/, https://vega.github.io/vega-lite/docs/layer.html]

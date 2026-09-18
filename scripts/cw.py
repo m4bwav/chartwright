@@ -504,12 +504,14 @@ def build_mermaid(chart, rows, x, y, series, title):
         kind = "line" if chart in ("line", "multi-line", "area", "step") else "bar"
         groups = _series_split(rows, x, y, series)
         xs = list(dict.fromkeys(r[x] for r in rows))
-        lines = ["xychart-beta", f"    title {_mq(t)}",
+        named = a_flag("namedSeries")  # Mermaid 11.16+: named series get a legend; default stays on the 11.13 floor
+        lines = ["xychart" if named else "xychart-beta", f"    title {_mq(t)}",
                  "    x-axis [" + ", ".join(_mq(v) for v in xs) + "]", f"    y-axis {_mq(y)}"]
         for name, pts in groups.items():
             d = dict(pts)
-            lines.append(f"    {kind} [" + ", ".join(_g(d.get(v)) for v in xs) + "]")
-        note = "" if len(groups) == 1 else f"%% xychart has no legend: series in order are {', '.join(groups)}\n"
+            label = f" {_mq(name or y)}" if named else ""
+            lines.append(f"    {kind}{label} [" + ", ".join(_g(d.get(v)) for v in xs) + "]")
+        note = "" if (len(groups) == 1 or named) else f"%% xychart has no legend: series in order are {', '.join(groups)}\n"
         return "```mermaid\n" + note + "\n".join(lines) + "\n```\n"
     if chart in ("pie", "donut"):
         lines = ["pie" + (" showData" if a_flag("showData") else ""), f"    title {_mq(t)}"]
@@ -544,17 +546,77 @@ VL_MARKS = {"line": "line", "multi-line": "line", "bar": "bar", "column": "bar",
             "boxplot": "boxplot", "pie": "arc", "donut": "arc", "strip": "tick", "dot": "point", "lollipop": "point", "step": "line"}
 
 
+VL_COMPOSED = ("dumbbell", "slope", "waterfall", "calendar-heatmap", "diverging-bar", "stacked-bar-100", "small-multiples")
+
+
+def _vl_composed(chart, rows, x, y, series, base):
+    """Layer and transform recipes. Column roles per chart:
+    dumbbell: x=category, y=value, series=the two ends (before/after)
+    slope: x=period (two values), y=value, series=entity
+    waterfall: x=step label, y=signed change (running total computed in the spec)
+    calendar-heatmap: x=date, y=value
+    diverging-bar: x=category, y=signed value
+    stacked-bar-100: x=category, y=value, series=part
+    small-multiples: x=time or category, y=value, series=panel"""
+    q = {"field": y, "type": "quantitative"}
+    n = {"field": x, "type": "nominal"}
+    yq = json.dumps(y)
+    if chart == "dumbbell":
+        base["encoding"] = {"y": {**n, "sort": "-x"}, "x": {**q, "title": y}}
+        base["layer"] = [{"mark": "rule", "encoding": {"x": {**q, "aggregate": "min"}, "x2": {"field": y, "aggregate": "max"}}},
+                         {"mark": {"type": "point", "filled": True, "size": 90}, "encoding": {"color": {"field": series, "type": "nominal"}}}]
+    elif chart == "slope":
+        last = rows[-1][x]
+        base["encoding"] = {"x": {**n, "axis": {"labelAngle": 0}}, "y": {**q, "scale": {"zero": False}}, "color": {"field": series, "type": "nominal", "legend": None}}
+        base["layer"] = [{"mark": {"type": "line", "point": True}},
+                         {"mark": {"type": "text", "align": "left", "dx": 6}, "transform": [{"filter": {"field": x, "equal": last}}], "encoding": {"text": {"field": series}}}]
+        base["width"] = 300
+    elif chart == "waterfall":
+        base["transform"] = [{"window": [{"op": "sum", "field": y, "as": "end"}]}, {"calculate": f"datum.end - datum[{yq}]", "as": "start"},
+                             {"calculate": f"datum[{yq}] < 0 ? 'decrease' : 'increase'", "as": "dir"}]
+        base["encoding"] = {"x": {**n, "sort": None, "axis": {"labelAngle": 0}}, "y": {"field": "start", "type": "quantitative", "title": y}, "y2": {"field": "end"},
+                            "color": {"field": "dir", "type": "nominal", "scale": {"domain": ["increase", "decrease"], "range": ["#2a78d6", "#e34948"]}, "legend": None}}
+        base["mark"] = "bar"
+    elif chart == "calendar-heatmap":
+        base["mark"] = "rect"
+        base["encoding"] = {"x": {"field": x, "type": "ordinal", "timeUnit": "week", "title": "week"}, "y": {"field": x, "type": "ordinal", "timeUnit": "day", "title": None},
+                            "color": {**q, "scale": {"scheme": "greens"}}, "tooltip": [{"field": x, "type": "temporal"}, q]}
+        base["height"] = 140
+    elif chart == "diverging-bar":
+        base["mark"] = "bar"
+        base["transform"] = [{"calculate": f"datum[{yq}] < 0 ? 'negative' : 'positive'", "as": "sign"}]
+        base["encoding"] = {"y": {**n, "sort": "-x"}, "x": q, "color": {"field": "sign", "type": "nominal", "scale": {"domain": ["positive", "negative"], "range": ["#2a78d6", "#e34948"]}, "legend": None}}
+    elif chart == "stacked-bar-100":
+        base["mark"] = "bar"
+        base["encoding"] = {"x": {**n, "axis": {"labelAngle": 0}}, "y": {**q, "stack": "normalize", "axis": {"format": "%"}}, "color": {"field": series, "type": "nominal"}}
+    elif chart == "small-multiples":
+        xk = "temporal" if all(_is_time(r[x]) for r in rows) else "nominal"
+        xe = {"field": x, "type": xk}
+        if xk == "temporal":
+            xe["scale"] = {"type": "utc"}
+        base.pop("width"); base.pop("height")
+        base["facet"] = {"field": series, "type": "nominal", "columns": 3, "title": None}
+        base["spec"] = {"mark": {"type": "line", "point": len(rows) <= 60}, "width": 180, "height": 120,
+                        "encoding": {"x": xe, "y": {**q, "scale": {"zero": False}}}}
+    return base
+
+
 def build_vega_lite(chart, rows, x, y, series, title, data_path):
-    if chart not in VL_MARKS:
+    if chart not in VL_MARKS and chart not in VL_COMPOSED:
         raise ValueError(f"vega-lite has no recipe for '{chart}'")
     xk = "temporal" if all(_is_time(r[x]) for r in rows) else ("quantitative" if all(_num(r[x]) is not None for r in rows) else "nominal")
     spec = {"$schema": "https://vega.github.io/schema/vega-lite/v6.json", "title": title or f"{y} by {x}",
             "data": {"url": Path(data_path).name} if a_flag("dataByUrl") else {"values": rows},
-            "mark": VL_MARKS[chart], "width": "container" if a_flag("container") else 600, "height": 320, "encoding": {}}
+            "mark": VL_MARKS.get(chart, "bar"), "width": "container" if a_flag("container") else 600, "height": 320, "encoding": {}}
     for r in rows:  # numbers as numbers so Vega-Lite does not treat them as strings
         for k in (x, y, series):
             if k and _num(r.get(k)) is not None and not _is_time(r.get(k)):
                 r[k] = _num(r[k])
+    if chart in VL_COMPOSED:
+        if chart in ("dumbbell", "slope", "stacked-bar-100", "small-multiples") and not series:
+            raise ValueError(f"{chart} needs --series (column roles in cw.py _vl_composed)")
+        spec.pop("encoding"); spec.pop("mark")
+        return json.dumps(_vl_composed(chart, rows, x, y, series, spec), indent=1, ensure_ascii=False) + "\n"
     if chart in ("pie", "donut"):
         spec["mark"] = {"type": "arc", "innerRadius": 60} if chart == "donut" else "arc"
         spec["encoding"] = {"theta": {"field": y, "type": "quantitative"}, "color": {"field": x, "type": "nominal"}}
@@ -708,6 +770,31 @@ def build_matplotlib(chart, rows, x, y, series, title, out):
     return "\n".join(l for l in lines if l) + "\n"
 
 
+BLOCKS = "\u2581\u2582\u2583\u2584\u2585\u2586\u2587\u2588"
+
+
+def build_terminal(chart, rows, x, y, series, title):
+    """Unicode charts for chat replies and terminals: sparkline (line, sparkline), block bars (bar, column)."""
+    groups = _series_split(rows, x, y, series)
+    out = [title or f"{y} by {x}"]
+    if chart in ("line", "sparkline", "multi-line", "area", "step"):
+        for name, pts in groups.items():
+            vals = [v for _, v in pts if v is not None]
+            lo, hi = min(vals), max(vals)
+            spark = "".join(BLOCKS[0 if hi == lo else int((v - lo) / (hi - lo) * 7)] for v in vals)
+            label = f"{name}: " if name else ""
+            out.append(f"{label}{spark}  {vals[0]:g} -> {vals[-1]:g} (min {lo:g}, max {hi:g}, {len(vals)} points, {pts[0][0]} to {pts[-1][0]})")
+        return "\n".join(out) + "\n"
+    if chart in ("bar", "column"):
+        pts = groups[""] if "" in groups else [p for g in groups.values() for p in g]
+        width = max(len(str(k)) for k, _ in pts)
+        hi = max(v for _, v in pts) or 1
+        for k, v in pts:
+            out.append(f"{str(k):<{width}}  {BLOCKS[-1] * int(round(v / hi * 30)):<30} {v:g}")
+        return "\n".join(out) + "\n"
+    raise ValueError(f"terminal has no recipe for '{chart}' (line, sparkline, bar, column); use a table")
+
+
 HTML_VL = """<!doctype html><html><head><meta charset="utf-8"><title>{title}</title>
 <script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
@@ -750,8 +837,10 @@ def cmd_build(a):
         text = build_chartjs(a.chart, rows, a.x, a.y, a.series, a.title)
     elif t == "matplotlib":
         text = build_matplotlib(a.chart, rows, a.x, a.y, a.series, a.title, a.png)
+    elif t == "terminal":
+        text = build_terminal(a.chart, rows, a.x, a.y, a.series, a.title)
     else:
-        print(f"unknown target '{t}' (mermaid, vega-lite, plotly, chartjs, matplotlib)")
+        print(f"unknown target '{t}' (mermaid, vega-lite, plotly, chartjs, matplotlib, terminal)")
         return 1
     if a.html:
         tpl = HTML_WRAPPERS.get(t)
@@ -992,6 +1081,9 @@ def cmd_targets(a):
 # ---------------------------------------------------------------- main
 def main(argv=None):
     global STRICT
+    for stream in (sys.stdout, sys.stderr):  # Unicode sparklines on a cp1252 Windows console
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="replace")
     ap = argparse.ArgumentParser(prog="cw.py", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--strict", action="store_true", help="exit non-zero on problems")
     ap.add_argument("--json", action="store_true")
@@ -1007,7 +1099,7 @@ def main(argv=None):
     p.add_argument("--x", required=True); p.add_argument("--y", required=True); p.add_argument("--series"); p.add_argument("--title")
     p.add_argument("--out"); p.add_argument("--png", help="matplotlib: image path the generated script writes")
     p.add_argument("--html", action="store_true", help="wrap a web spec in a standalone page")
-    p.add_argument("--flag", nargs="*", help="showData, dataByUrl, container")
+    p.add_argument("--flag", nargs="*", help="showData, dataByUrl, container, namedSeries")
     p.add_argument("--agg", default="sum", choices=["sum", "mean", "none"], help="how duplicate x values within a series combine (default sum)"); p.set_defaults(fn=cmd_build)
     p = sp.add_parser("render"); p.add_argument("--target", required=True); p.add_argument("--in", dest="infile", required=True); p.add_argument("--out", required=True)
     p.add_argument("--scale", type=float, default=2.0); p.set_defaults(fn=cmd_render)

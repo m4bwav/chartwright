@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://datavizcatalogue.com/methods/radial_bar_chart.html, https://www.data-to-viz.com/graph/circularbarplot.html, https://plotly.com/javascript/polar-chart/, https://www.chartjs.org/docs/latest/charts/polar.html, https://matplotlib.org/stable/gallery/pie_and_polar_charts/polar_bar.html]

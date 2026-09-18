@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: none
   matplotlib: native
+  terminal: approx
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.datawrapper.de/blog/chart-types-guide, https://plotly.com/javascript/indicator/, https://vega.github.io/vega-lite/docs/text.html, https://journals.sagepub.com/doi/10.1177/15291006211051956]
@@ -95,6 +96,10 @@ Hand-written; add a `line` layer with `"width": 200, "height": 30` below via `vc
 ### matplotlib
 
 `fig, ax = plt.subplots(figsize=(3, 1.4)); ax.axis("off"); ax.text(0, 0.9, "Revenue, Q2 2026", fontsize=11, color="0.3"); ax.text(0, 0.45, "USD 4.2 m", fontsize=26, fontweight="bold"); ax.text(0, 0.1, "up 12% vs Q1", fontsize=11)`; an inset `ax.inset_axes([0.6, 0.1, 0.4, 0.4]).plot(history)` adds the sparkline. Hand-written; run with `cw.py render --target matplotlib --in chart.py --out chart.png`. In a web page, plain HTML beats an image.
+
+### terminal
+
+The number on its own line with its delta and a sparkline from `cw.py build --chart sparkline --target terminal ...`.
 
 ## Notes
 

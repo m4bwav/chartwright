@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: image
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://idl.cs.washington.edu/papers/horizon/, https://vega.github.io/vega-lite/examples/area_horizon.html, https://observablehq.com/@d3/horizon-chart]

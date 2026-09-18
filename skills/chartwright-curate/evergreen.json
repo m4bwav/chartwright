@@ -35,18 +35,18 @@
     }
   ],
   "counts": {
-    "learnings": 1,
+    "learnings": 2,
     "changes": 0,
     "research": 0,
-    "tests": 1
+    "tests": 2
   },
   "consolidate_every": 25,
   "tests": {
-    "last_run": "2026-09-18T06:51",
-    "harness": "evergreen-tester",
+    "last_run": "2026-09-18T07:01",
+    "harness": "claude -p",
     "env": "DESKTOP",
-    "cases": 2,
-    "passed": 2,
+    "cases": 1,
+    "passed": 1,
     "failed": 0,
     "failing": [],
     "last_failure": null,

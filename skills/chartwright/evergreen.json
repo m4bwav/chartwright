@@ -38,15 +38,15 @@
     "learnings": 1,
     "changes": 1,
     "research": 0,
-    "tests": 1
+    "tests": 2
   },
   "consolidate_every": 25,
   "tests": {
-    "last_run": "2026-09-18T06:51",
-    "harness": "evergreen-tester",
+    "last_run": "2026-09-18T06:59",
+    "harness": "claude -p",
     "env": "DESKTOP",
-    "cases": 3,
-    "passed": 3,
+    "cases": 2,
+    "passed": 2,
     "failed": 0,
     "failing": [],
     "last_failure": null,

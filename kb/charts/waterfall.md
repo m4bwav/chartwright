@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/waterfall_chart.html, https://plotly.com/javascript/waterfall-charts/, https://www.storytellingwithdata.com/blog/2020/2/26/what-is-a-waterfall-chart]
@@ -83,6 +84,8 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 ```
 
 Data rows `step, amount, total` in order, with total rows carrying the full value and `total: true` (for a true total bar from zero set its `start` to 0 with a conditional calculate). The `window` running sum computes the floats; connectors are an extra `rule` layer. Hand-written; render with `cw.py render --target vega-lite --in chart.vl.json --out chart.svg`.
+
+`cw.py build --chart waterfall --target vega-lite --data steps.csv --x step --y change` computes the running total in the spec (window sum) and colours increases blue, decreases red.
 
 ### plotly
 

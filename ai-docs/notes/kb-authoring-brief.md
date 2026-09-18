@@ -25,8 +25,9 @@ For anyone (human or agent) writing chart files in `kb/charts/`. Written 2026-09
 
 ## What `cw.py build` supports today (so Build sections can name the command)
 
-- mermaid: line, multi-line, step (as line), bar, column, area (as line, no fill), grouped-bar (overlapping, lossy), pie, donut (as pie), sankey, alluvial (as sankey), quadrant, radar.
-- vega-lite: line, multi-line, step, bar, column, grouped-bar, stacked-bar, area, stacked-area, scatter, bubble, heatmap, histogram, boxplot, pie, donut, strip, dot, lollipop.
+- mermaid: line, multi-line, step (as line), bar, column, area (as line, no fill), grouped-bar (overlapping, lossy), pie, donut (as pie), sankey, alluvial (as sankey), quadrant, radar; `--flag namedSeries` emits `xychart` with named series (11.16+ hosts).
+- vega-lite: line, multi-line, step, bar, column, grouped-bar, stacked-bar, area, stacked-area, scatter, bubble, heatmap, histogram, boxplot, pie, donut, strip, dot, lollipop; composed (2026-09-18): dumbbell, slope, waterfall, calendar-heatmap, diverging-bar, stacked-bar-100, small-multiples.
+- terminal (2026-09-18): line, sparkline, area, step (block sparkline), bar, column (block bars).
 - plotly: line, multi-line, step, area, stacked-area, scatter, bubble, bar, column, grouped-bar, stacked-bar, pie, donut, histogram, boxplot, heatmap.
 - chartjs: line, multi-line, area, step, bar, column, grouped-bar, stacked-bar, pie, donut, scatter, bubble, radar, polar-area.
 - matplotlib: line, multi-line, step, area, bar, column, grouped-bar, scatter, histogram, pie, donut, boxplot.

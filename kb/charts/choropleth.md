@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: none
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://vega.github.io/vega-lite/docs/geoshape.html, https://plotly.com/javascript/choropleth-maps/, https://geopandas.org/en/stable/docs/user_guide/mapping.html, https://colorbrewer2.org]

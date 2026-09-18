@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: none
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://datavizcatalogue.com/methods/pictogram_chart.html, https://github.com/gyli/PyWaffle, https://vega.github.io/vega-lite/examples/isotype_bar_chart.html]

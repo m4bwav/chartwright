@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: none
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://datavizcatalogue.com/methods/dot_distribution_map.html, https://vega.github.io/vega-lite/docs/geoshape.html, https://plotly.com/javascript/scatter-plots-on-maps/, https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoSeries.sample_points.html]

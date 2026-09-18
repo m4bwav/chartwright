@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://mermaid.js.org/syntax/gantt.html, https://plotly.com/python/gantt/, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.broken_barh.html, https://datavizcatalogue.com/methods/gantt_chart.html]

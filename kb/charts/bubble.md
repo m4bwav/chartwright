@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.semanticscholar.org/paper/55d3281f6b34c50df975b7261044689bf73ec610, https://vega.github.io/vega-lite/docs/circle.html, https://plotly.com/python/bubble-charts/, https://www.chartjs.org/docs/latest/charts/bubble.html, https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html]

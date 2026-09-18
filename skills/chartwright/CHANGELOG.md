@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260918-3 · 2026-09-18 · Terminal target, composed Vega-Lite recipes, named Mermaid series
+- because: HANDOFF next steps 2 to 4 (user asked to continue); fresh-session trigger run T-20260918-2
+- files: scripts/cw.py (build_terminal, _vl_composed, namedSeries flag, UTF-8 stdout), kb/targets/terminal.md, every kb/charts file (terminal support line; nine terminal recipes; seven vega-lite recipes), kb/rules/choosing-a-target.md, SKILL.md Step 3, tests/test_cw.py
+- Sixth target `terminal` (block sparkline and block bars); `cw.py build` now composes dumbbell, slope, waterfall, calendar-heatmap, diverging-bar, stacked-bar-100 and small-multiples in Vega-Lite; `--flag namedSeries` emits Mermaid `xychart` with a legend.
+
 ### C-20260918-2 · 2026-09-18 · Builder sums duplicate x values (new --agg sum|mean|none)
 - because: T-20260918-1 action-1 (a bar of sales by region kept only the last product row per region)
 - files: scripts/cw.py (_series_split, cmd_build), tests/test_cw.py

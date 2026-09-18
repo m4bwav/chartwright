@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: image
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/examples/rect_mosaic_labelled.html, https://www.datawrapper.de/blog/chart-types-guide, https://datavizcatalogue.com]

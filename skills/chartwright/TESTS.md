@@ -8,6 +8,11 @@ Entry shape: `### T-YYYYMMDD-n · date · harness · env · passed/total`, then 
 
 ## Runs
 
+### T-20260918-2 · 2026-09-18 · claude -p fresh sessions (sonnet, 1 run per case) · DESKTOP (Windows) · 2/2
+- trigger-1 · trigger · pass · trace shows `Skill{"skill":"chartwright:chartwright"}`; examples/eval-trigger.md holds the xychart block built by cw.py.
+- decoy-2 (sequence diagram) · trigger · pass · no Skill call in the trace.
+- led to: none (resolves the inconclusive trigger of T-20260918-1)
+
 ### T-20260918-1 · 2026-09-18 · evergreen-tester (sonnet, 1 run per case) · DESKTOP (Windows) · 3/3 action+decoy, 1 trigger inconclusive
 - trigger-1 · trigger · harness · Skill("chartwright") returned "Unknown skill": the plugin was installed after this session started, so the tester's registry lacked it. Inconclusive, not a failure; re-run from a fresh session.
 - decoy-1 · trigger · pass · chartwright was not invoked; the tester reached for chartwright-curate (also unregistered) and did the note via cw.py, then reverted.

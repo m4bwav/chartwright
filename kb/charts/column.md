@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/chart-types-guide, https://homepage.divms.uiowa.edu/~luke/classes/STAT4580/percep.html, https://mermaid.js.org/syntax/xyChart.html]
@@ -102,6 +103,10 @@ xychart-beta
 ### matplotlib
 
 `ax.bar(periods, values, width=0.7)` then `ax.bar_label(ax.containers[0])` for value labels; `ax.set_ylim(bottom=0)`. `cw.py build --chart column --target matplotlib --data sales.csv --x quarter --y units --out chart.py --png chart.png` then `cw.py render --target matplotlib --in chart.py --out chart.png`.
+
+### terminal
+
+`cw.py build --chart column --target terminal ...` prints horizontal block bars (there is no vertical text bar worth reading).
 
 ## Notes
 

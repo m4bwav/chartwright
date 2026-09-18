@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: approx
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/timeunit.html, https://echarts.apache.org/en/option.html#calendar, https://plotly.com/python/heatmaps/]
@@ -75,6 +76,8 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 ```
 
 Hand-written (no builder). For several years add `"row": {"field": "date", "timeUnit": "year"}`. `timeUnit` does the calendar arithmetic, so the data stays one row per day.
+
+`cw.py build --chart calendar-heatmap --target vega-lite --data daily.csv --x date --y value` uses `timeUnit` week on x and day on y with a green sequential scale.
 
 ### plotly
 

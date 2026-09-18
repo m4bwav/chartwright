@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: image
   matplotlib: native
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://vega.github.io/vega-lite/examples/interactive_splom.html, https://plotly.com/python/splom/, https://seaborn.pydata.org/generated/seaborn.pairplot.html, https://www.data-to-viz.com/graph/correlogram.html]

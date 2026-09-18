@@ -18,6 +18,7 @@ support:
   plotly: native
   chartjs: native
   matplotlib: native
+  terminal: native
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0001OR, https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://vega.github.io/vega-lite/docs/axis.html, https://www.datawrapper.de/blog/chart-types-guide]
@@ -88,6 +89,10 @@ Hand-written (no builder); `cw.py render --target vega-lite --in spark.vl.json -
 ### matplotlib
 
 `fig, ax = plt.subplots(figsize=(1.2, 0.3), dpi=200); ax.plot(values, linewidth=1.2); ax.plot(len(values) - 1, values[-1], "o", markersize=3); ax.axis("off"); fig.savefig("spark.png", bbox_inches="tight", pad_inches=0)`. Hand-written, then `cw.py render --target matplotlib --in chart.py --out spark.png`.
+
+### terminal
+
+`cw.py build --chart sparkline --target terminal --data file.csv --x date --y value` prints the block sparkline with endpoints and range.
 
 ## Notes
 

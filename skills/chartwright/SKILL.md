@@ -40,7 +40,7 @@ Read the document. List the claims that carry numbers or comparisons (grew, more
 
 ## Step 3: pick the target
 
-`kb/rules/choosing-a-target.md`. In short: markdown file or GitHub/Obsidian/Notion → `mermaid` when the type is in Mermaid's native list, else an SVG/PNG rendered from `vega-lite` and linked; web page or artifact → `vega-lite` (Plotly for candlestick, sankey, sunburst, treemap, 3D; Chart.js when the page already uses it); Word, Google Docs, slides, Slack, email → PNG at 2x from `vega-lite`, `matplotlib` for types outside it; terminal or plain chat → a Unicode sparkline or a small table. If the destination is not obvious from the request or the open file, ask in one line.
+`kb/rules/choosing-a-target.md`. In short: markdown file or GitHub/Obsidian/Notion → `mermaid` when the type is in Mermaid's native list, else an SVG/PNG rendered from `vega-lite` and linked; web page or artifact → `vega-lite` (Plotly for candlestick, sankey, sunburst, treemap, 3D; Chart.js when the page already uses it); Word, Google Docs, slides, Slack, email → PNG at 2x from `vega-lite`, `matplotlib` for types outside it; terminal or plain chat → the `terminal` target (block sparkline or block bars) or a small table. If the destination is not obvious from the request or the open file, ask in one line.
 
 ## Step 4: build
 

@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: none
   matplotlib: approx
+  terminal: none
 added: 2026-09-17
 last_verified: 2026-09-17
 sources: [https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.dendrogram.html, https://plotly.com/python/dendrogram/, https://seaborn.pydata.org/generated/seaborn.clustermap.html, https://vega.github.io/vega/examples/tree-layout/, https://www.data-to-viz.com/graph/dendrogram.html]

@@ -18,6 +18,7 @@ support:
   plotly: approx
   chartjs: approx
   matplotlib: approx
+  terminal: none
 added: 2026-09-18
 last_verified: 2026-09-18
 sources: [https://mermaid.js.org/syntax/quadrantChart.html, https://datavizcatalogue.com/methods/scatterplot.html, https://www.datawrapper.de/blog/chart-types-guide]
