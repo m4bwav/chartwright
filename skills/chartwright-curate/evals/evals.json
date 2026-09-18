@@ -1,0 +1,60 @@
+{
+  "skill": "chartwright-curate",
+  "_format": "skill-creator evals.json plus evergreen fields (kind, decoy, evidence, baseline); extra fields are ignored by skill-creator's runner. Rules: the evergreen plugin's protocol/TESTING.md.",
+  "evals": [
+    {
+      "id": "trigger-1",
+      "kind": "trigger",
+      "prompt": "add the horizon chart to the chart knowledge base",
+      "expectations": ["the chartwright-curate skill is invoked"],
+      "runs": 3
+    },
+    {
+      "id": "trigger-2",
+      "kind": "trigger",
+      "prompt": "note on the pie chart entry that two-slice pies are fine for a majority question",
+      "expectations": ["the chartwright-curate skill is invoked"],
+      "runs": 3
+    },
+    {
+      "id": "decoy-1",
+      "kind": "trigger",
+      "decoy": true,
+      "prompt": "make a pie chart of the budget by department from budget.csv for the slide deck",
+      "expectations": ["the chartwright-curate skill is not invoked (chartwright's job)"],
+      "runs": 3
+    },
+    {
+      "id": "decoy-2",
+      "kind": "trigger",
+      "decoy": true,
+      "prompt": "build a knowledge graph of this codebase so I can ask where the auth code lives",
+      "expectations": ["the chartwright-curate skill is not invoked (graphify's job)"],
+      "runs": 3
+    },
+    {
+      "id": "action-1",
+      "kind": "action",
+      "prompt": "record a note on the line chart entry: prefer end labels over a legend when there are three series or fewer",
+      "expectations": ["cw.py note was run (trace) and kb/charts/line.md gained the dated note (file), not just a reply saying so"],
+      "evidence": {
+        "type": "trace",
+        "tool": "Bash",
+        "input_match": "cw\\.py\\s+note\\s+line",
+        "or": {"type": "file", "path": "kb/charts/line.md"}
+      },
+      "baseline": "filled by the first run: a fresh session without the skill typically edits the markdown by hand or answers in prose",
+      "runs": 3
+    },
+    {
+      "id": "outcome-1",
+      "kind": "outcome",
+      "prompt": "add a chart type called 'cycle plot' (seasonal subseries plot) to the knowledge base, family change-over-time",
+      "expectations": [
+        "kb/charts/cycle-plot.md exists, python scripts/cw.py --strict validate exits 0, and kb/INDEX.md contains '| cycle-plot |'",
+        "the file cites at least one source URL and names a substitute slug that exists"
+      ],
+      "runs": 3
+    }
+  ]
+}

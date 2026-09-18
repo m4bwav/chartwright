@@ -1,0 +1,69 @@
+{
+  "skill": "chartwright",
+  "_format": "skill-creator evals.json plus evergreen fields (kind, decoy, evidence, baseline); extra fields are ignored by skill-creator's runner. Rules: the evergreen plugin's protocol/TESTING.md.",
+  "evals": [
+    {
+      "id": "trigger-1",
+      "kind": "trigger",
+      "prompt": "make a line graph with time as x and price as y from prices.csv",
+      "expectations": ["the chartwright skill is invoked"],
+      "runs": 3
+    },
+    {
+      "id": "trigger-2",
+      "kind": "trigger",
+      "prompt": "can you add some relevant graphs to this report? it's the quarterly-summary.md in this folder",
+      "expectations": ["the chartwright skill is invoked"],
+      "runs": 3
+    },
+    {
+      "id": "trigger-3",
+      "kind": "trigger",
+      "prompt": "what kind of chart should I use to show how people drop off between the steps of our signup funnel?",
+      "expectations": ["the chartwright skill is invoked"],
+      "runs": 3
+    },
+    {
+      "id": "decoy-1",
+      "kind": "trigger",
+      "decoy": true,
+      "prompt": "add the horizon chart to the chart knowledge base with a note that it is niche",
+      "expectations": ["the chartwright skill is not invoked (chartwright-curate's job)"],
+      "runs": 3
+    },
+    {
+      "id": "decoy-2",
+      "kind": "trigger",
+      "decoy": true,
+      "prompt": "draw a sequence diagram of the login flow between the browser, the API and the auth service",
+      "expectations": ["the chartwright skill is not invoked (a diagram with no data)"],
+      "runs": 3
+    },
+    {
+      "id": "action-1",
+      "kind": "action",
+      "prompt": "build a bar chart of sales by region from tests/fixtures/sales.csv for the README (markdown)",
+      "files": ["tests/fixtures/sales.csv"],
+      "expectations": ["cw.py pick or cw.py build was run (trace), and a mermaid block or image was produced, proven by the trace or a written file, not by the reply saying so"],
+      "evidence": {
+        "type": "trace",
+        "tool": "Bash",
+        "input_match": "cw\\.py\\s+(pick|build)",
+        "or": {"type": "file", "path": "README.md"}
+      },
+      "baseline": "filled by the first run: a fresh session without the skill typically writes a mermaid block by hand from the CSV without profiling or the chooser",
+      "runs": 3
+    },
+    {
+      "id": "outcome-1",
+      "kind": "outcome",
+      "prompt": "render a PNG line chart of price over time from tests/fixtures/prices.csv into out/price.png",
+      "files": ["tests/fixtures/prices.csv"],
+      "expectations": [
+        "out/price.png exists and is larger than 1000 bytes",
+        "the reply names the chart type and the rule that picked it in one to three lines"
+      ],
+      "runs": 3
+    }
+  ]
+}

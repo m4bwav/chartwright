@@ -1,0 +1,3904 @@
+{
+ "generated": "2026-09-18",
+ "charts": [
+  {
+   "slug": "adjacency-matrix",
+   "name": "Adjacency matrix",
+   "family": "relationship",
+   "also": [
+    "flow",
+    "correlation"
+   ],
+   "question": "Which pairs are connected and how strongly, for every pair at once?",
+   "shapes": [
+    "n,n,q",
+    "n,n",
+    "flow"
+   ],
+   "goals": [
+    "relationship",
+    "matrix",
+    "pairwise",
+    "between every pair",
+    "transitions",
+    "origin destination",
+    "co-occurrence",
+    "confusion",
+    "dense network",
+    "who with whom",
+    "grid"
+   ],
+   "max_series": 0,
+   "max_categories": 60,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "matrix diagram",
+    "network matrix",
+    "transition matrix",
+    "origin-destination matrix",
+    "co-occurrence matrix",
+    "confusion matrix"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "alluvial",
+   "name": "Alluvial diagram",
+   "family": "flow",
+   "also": [
+    "part-to-whole",
+    "change-over-time"
+   ],
+   "question": "How do groups redistribute across the categories of several ordered variables?",
+   "shapes": [
+    "flow",
+    "n,n,q",
+    "n,n,n,q",
+    "o,n,q"
+   ],
+   "goals": [
+    "flow",
+    "cohorts",
+    "transitions",
+    "switching",
+    "moved from",
+    "changed from",
+    "categories over stages",
+    "survey waves",
+    "class to outcome",
+    "parallel sets",
+    "regroup"
+   ],
+   "max_series": 0,
+   "max_categories": 8,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "image",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "parallel sets",
+    "alluvial plot",
+    "alluvial flow",
+    "cohort flow",
+    "category flow diagram"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "arc-diagram",
+   "name": "Arc diagram",
+   "family": "flow",
+   "also": [
+    "relationship",
+    "change-over-time"
+   ],
+   "question": "Which items in an ordered sequence are linked, and how far apart are the linked ones?",
+   "shapes": [
+    "flow",
+    "n,n,q",
+    "o,o,q"
+   ],
+   "goals": [
+    "flow",
+    "relationship",
+    "links along a line",
+    "sequence",
+    "order matters",
+    "repetition",
+    "references",
+    "co-occurrence",
+    "timeline links",
+    "chapters",
+    "connections between positions"
+   ],
+   "max_series": 0,
+   "max_categories": 40,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "arc plot",
+    "linear network diagram",
+    "arc link diagram",
+    "one-dimensional network"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "area",
+   "name": "Area chart",
+   "family": "change-over-time",
+   "also": [
+    "magnitude"
+   ],
+   "question": "How does the volume of one measure change over time?",
+   "shapes": [
+    "time,q",
+    "o,q"
+   ],
+   "goals": [
+    "area",
+    "volume",
+    "total over time",
+    "cumulative",
+    "filled",
+    "magnitude over time",
+    "traffic",
+    "revenue over time",
+    "trend"
+   ],
+   "max_series": 1,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "filled line chart",
+    "area graph",
+    "mountain chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "bar",
+   "name": "Bar chart",
+   "family": "magnitude",
+   "also": [
+    "ranking"
+   ],
+   "question": "How big is each category, and which is largest?",
+   "shapes": [
+    "n,q",
+    "o,q"
+   ],
+   "goals": [
+    "magnitude",
+    "compare",
+    "how big",
+    "largest",
+    "smallest",
+    "rank",
+    "ranking",
+    "top",
+    "bottom",
+    "by category",
+    "amount",
+    "total",
+    "count",
+    "size"
+   ],
+   "max_series": 1,
+   "max_categories": 30,
+   "evidence": "high",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "horizontal bar chart",
+    "ordered bar chart",
+    "ranked bar chart",
+    "bar graph",
+    "sorted bars"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "beeswarm",
+   "name": "Beeswarm plot",
+   "family": "distribution",
+   "also": [
+    "ranking",
+    "magnitude"
+   ],
+   "question": "Where does every individual sit along one measure, and which ones stand out?",
+   "shapes": [
+    "q",
+    "n,q",
+    "q,n"
+   ],
+   "goals": [
+    "distribution",
+    "every value",
+    "individuals",
+    "each country",
+    "each player",
+    "highlight one",
+    "where does x sit",
+    "outliers",
+    "small n",
+    "beeswarm"
+   ],
+   "max_series": 0,
+   "max_categories": 8,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "image",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "swarm plot",
+    "bee swarm",
+    "dodge plot",
+    "packed dot strip"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "boxplot",
+   "name": "Box plot",
+   "family": "distribution",
+   "also": [
+    "ranking",
+    "deviation"
+   ],
+   "question": "How do the median and spread of a numeric variable compare across groups?",
+   "shapes": [
+    "n,q",
+    "o,q",
+    "q"
+   ],
+   "goals": [
+    "distribution",
+    "compare groups",
+    "median",
+    "spread",
+    "quartiles",
+    "outliers",
+    "variability",
+    "range",
+    "across categories",
+    "box plot"
+   ],
+   "max_series": 0,
+   "max_categories": 20,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "box-and-whisker plot",
+    "box and whisker",
+    "Tukey box plot",
+    "boxplot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "bubble-map",
+   "name": "Bubble map",
+   "family": "spatial",
+   "also": [
+    "magnitude"
+   ],
+   "question": "How much of something is at each place?",
+   "shapes": [
+    "geo,q",
+    "geo,q,n",
+    "q,q,q"
+   ],
+   "goals": [
+    "spatial",
+    "map",
+    "count",
+    "total",
+    "volume",
+    "size by location",
+    "cities",
+    "sites",
+    "where is the most",
+    "population",
+    "locations"
+   ],
+   "max_series": 3,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "none",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "proportional symbol map",
+    "symbol map",
+    "graduated symbol map",
+    "circle map",
+    "point size map"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "bubble",
+   "name": "Bubble chart",
+   "family": "correlation",
+   "also": [
+    "magnitude",
+    "distribution"
+   ],
+   "question": "How do two numeric variables relate, with a third rough magnitude shown by size?",
+   "shapes": [
+    "q,q,q",
+    "q,q,q,n",
+    "q,q,q,text"
+   ],
+   "goals": [
+    "correlation",
+    "three variables",
+    "size",
+    "magnitude",
+    "weighted",
+    "population",
+    "versus",
+    "relationship",
+    "bubble"
+   ],
+   "max_series": 4,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "bubble plot",
+    "sized scatter",
+    "three-variable scatter",
+    "Gapminder chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "bullet",
+   "name": "Bullet chart",
+   "family": "deviation",
+   "also": [
+    "single-value",
+    "magnitude"
+   ],
+   "question": "How does the actual value compare to its target and to qualitative bands (poor, satisfactory, good)?",
+   "shapes": [
+    "n,q,q",
+    "q,q",
+    "n,q,q,q+"
+   ],
+   "goals": [
+    "deviation",
+    "target",
+    "actual vs target",
+    "progress",
+    "goal",
+    "against plan",
+    "kpi",
+    "thresholds",
+    "bands",
+    "on track",
+    "quota",
+    "attainment",
+    "meter"
+   ],
+   "max_series": 1,
+   "max_categories": 12,
+   "evidence": "medium",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "bullet graph",
+    "target bar",
+    "progress bar with target",
+    "Few bullet",
+    "KPI bar"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "bump",
+   "name": "Bump chart",
+   "family": "change-over-time",
+   "also": [
+    "ranking"
+   ],
+   "question": "How did the rank order of a set of entities change across several periods?",
+   "shapes": [
+    "time,n,q",
+    "time,q*n",
+    "o,q*n"
+   ],
+   "goals": [
+    "bump",
+    "rank over time",
+    "league table",
+    "standings",
+    "position",
+    "who leads",
+    "ranking changes",
+    "top ten over years",
+    "season",
+    "overtaken"
+   ],
+   "max_series": 10,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "rank chart",
+    "ranking over time",
+    "bumps chart",
+    "position chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "calendar-heatmap",
+   "name": "Calendar heatmap",
+   "family": "change-over-time",
+   "also": [
+    "distribution",
+    "magnitude"
+   ],
+   "question": "Which days, weeks or months were high or low across a year or more?",
+   "shapes": [
+    "time,q"
+   ],
+   "goals": [
+    "calendar",
+    "daily",
+    "by day",
+    "contributions",
+    "activity",
+    "streak",
+    "weekday pattern",
+    "seasonal",
+    "day of week",
+    "year at a glance",
+    "heatmap over time"
+   ],
+   "max_series": 1,
+   "max_categories": 0,
+   "evidence": "low",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "calendar chart",
+    "contribution graph",
+    "GitHub graph",
+    "day grid",
+    "activity calendar",
+    "year calendar heatmap"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "candlestick",
+   "name": "Candlestick chart",
+   "family": "change-over-time",
+   "also": [
+    "distribution"
+   ],
+   "question": "What were the open, high, low and close of a traded price in each period?",
+   "shapes": [
+    "time,q,q,q,q",
+    "time,q+"
+   ],
+   "goals": [
+    "candlestick",
+    "OHLC",
+    "stock price",
+    "trading",
+    "open high low close",
+    "daily range",
+    "ticker",
+    "volatility",
+    "market data"
+   ],
+   "max_series": 1,
+   "max_categories": 0,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "OHLC chart",
+    "open-high-low-close",
+    "stock chart",
+    "price bars",
+    "Japanese candlestick"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "cartogram",
+   "name": "Cartogram",
+   "family": "spatial",
+   "also": [
+    "magnitude",
+    "part-to-whole"
+   ],
+   "question": "How big is each region when area stands for a value instead of land?",
+   "shapes": [
+    "geo,q",
+    "geo,q,n"
+   ],
+   "goals": [
+    "spatial",
+    "map",
+    "population",
+    "votes",
+    "weighted by",
+    "distorted",
+    "scaled",
+    "electoral",
+    "seats",
+    "land does not vote",
+    "proportional area"
+   ],
+   "max_series": 1,
+   "max_categories": 7,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "scaled cartogram",
+    "contiguous cartogram",
+    "Dorling cartogram",
+    "area cartogram",
+    "population cartogram",
+    "distorted map"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "chord",
+   "name": "Chord diagram",
+   "family": "flow",
+   "also": [
+    "relationship"
+   ],
+   "question": "How much flows between each pair in a small set of entities, in both directions, and who are the net winners?",
+   "shapes": [
+    "flow",
+    "n,n,q"
+   ],
+   "goals": [
+    "flow",
+    "between",
+    "pairwise",
+    "two-way",
+    "mutual",
+    "trade between",
+    "migration between",
+    "exchange",
+    "matrix of flows",
+    "net flow",
+    "circular"
+   ],
+   "max_series": 0,
+   "max_categories": 10,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "image",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "chord chart",
+    "circular flow diagram",
+    "radial flow diagram",
+    "circos plot",
+    "migration circle"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "choropleth",
+   "name": "Choropleth map",
+   "family": "spatial",
+   "also": [
+    "magnitude",
+    "deviation"
+   ],
+   "question": "How does a rate or ratio vary across regions?",
+   "shapes": [
+    "geo,q",
+    "geo,o"
+   ],
+   "goals": [
+    "spatial",
+    "map",
+    "by region",
+    "by state",
+    "by country",
+    "by county",
+    "rate",
+    "share",
+    "density",
+    "per capita",
+    "geography",
+    "where"
+   ],
+   "max_series": 1,
+   "max_categories": 7,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "none",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "filled map",
+    "shaded map",
+    "thematic map",
+    "region map",
+    "heat map by region"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "circle-packing",
+   "name": "Circle packing",
+   "family": "hierarchy",
+   "also": [
+    "part-to-whole",
+    "magnitude"
+   ],
+   "question": "How does a hierarchy nest, with each node sized by a value, in a picture readers find inviting?",
+   "shapes": [
+    "hier,q",
+    "hier",
+    "n,q"
+   ],
+   "goals": [
+    "hierarchy",
+    "nested",
+    "bubbles",
+    "cluster",
+    "groups",
+    "sizes",
+    "containment",
+    "overview",
+    "explore",
+    "packed",
+    "circles"
+   ],
+   "max_series": 0,
+   "max_categories": 50,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "image",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "circular treemap",
+    "bubble hierarchy",
+    "packed circles",
+    "nested circles"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "column",
+   "name": "Column chart",
+   "family": "change-over-time",
+   "also": [
+    "magnitude",
+    "ranking"
+   ],
+   "question": "How much was there in each period, and how do the totals compare period to period?",
+   "shapes": [
+    "time,q",
+    "o,q",
+    "n,q",
+    "time,q*n"
+   ],
+   "goals": [
+    "column",
+    "per period",
+    "quarterly",
+    "monthly",
+    "annual",
+    "totals",
+    "count",
+    "amount",
+    "over time",
+    "compare periods",
+    "discrete"
+   ],
+   "max_series": 3,
+   "max_categories": 12,
+   "evidence": "high",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "vertical bar chart",
+    "bar chart over time",
+    "column graph",
+    "clustered column"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "connected-scatter",
+   "name": "Connected scatterplot",
+   "family": "change-over-time",
+   "also": [
+    "correlation"
+   ],
+   "question": "How did two measures move together over time, and along what path?",
+   "shapes": [
+    "time,q,q"
+   ],
+   "goals": [
+    "connected scatter",
+    "two variables over time",
+    "trajectory",
+    "path",
+    "co-evolve",
+    "joint change",
+    "inflation and unemployment",
+    "phase",
+    "dual axis alternative"
+   ],
+   "max_series": 3,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "connected scatter",
+    "phase plot",
+    "trajectory plot",
+    "path chart",
+    "x-y over time"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "correlogram",
+   "name": "Correlogram",
+   "family": "correlation",
+   "also": [
+    "magnitude"
+   ],
+   "question": "Which pairs among many variables are strongly correlated, positively or negatively?",
+   "shapes": [
+    "n,n,q",
+    "q+"
+   ],
+   "goals": [
+    "correlation",
+    "correlation matrix",
+    "many variables",
+    "pairwise",
+    "feature selection",
+    "collinearity",
+    "which variables relate",
+    "matrix"
+   ],
+   "max_series": 0,
+   "max_categories": 30,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "correlation matrix",
+    "correlation heatmap",
+    "corrplot",
+    "correlation plot"
+   ],
+   "last_verified": "2026-09-18"
+  },
+  {
+   "slug": "dendrogram",
+   "name": "Dendrogram",
+   "family": "hierarchy",
+   "also": [
+    "distribution",
+    "relationship"
+   ],
+   "question": "How do items cluster together, and at what distance do the clusters merge?",
+   "shapes": [
+    "hier,q",
+    "q+"
+   ],
+   "goals": [
+    "clustering",
+    "cluster",
+    "similarity",
+    "hierarchical clustering",
+    "merge",
+    "distance",
+    "phylogeny",
+    "taxonomy",
+    "groups",
+    "linkage",
+    "dendrogram"
+   ],
+   "max_series": 0,
+   "max_categories": 100,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "cluster tree",
+    "hierarchical clustering plot",
+    "phylogenetic tree",
+    "cluster dendrogram"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "density-2d",
+   "name": "2D density plot",
+   "family": "correlation",
+   "also": [
+    "distribution"
+   ],
+   "question": "Where do two continuous variables concentrate together, and how many modes does the joint distribution have?",
+   "shapes": [
+    "q,q"
+   ],
+   "goals": [
+    "correlation",
+    "distribution",
+    "density",
+    "contour",
+    "concentration",
+    "overplotting",
+    "many points",
+    "clusters",
+    "modes",
+    "joint distribution"
+   ],
+   "max_series": 3,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "none",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "contour plot",
+    "kernel density contour",
+    "2D KDE",
+    "density contour",
+    "bivariate density"
+   ],
+   "last_verified": "2026-09-18"
+  },
+  {
+   "slug": "density",
+   "name": "Density plot",
+   "family": "distribution",
+   "also": [
+    "correlation"
+   ],
+   "question": "What is the smooth shape of one numeric variable, and how do two or three groups' shapes compare?",
+   "shapes": [
+    "q",
+    "q,n"
+   ],
+   "goals": [
+    "distribution",
+    "shape",
+    "smooth",
+    "density",
+    "kernel",
+    "spread",
+    "skew",
+    "compare shapes",
+    "overlay",
+    "bimodal"
+   ],
+   "max_series": 3,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "KDE plot",
+    "kernel density plot",
+    "density curve",
+    "smoothed histogram"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "diverging-bar",
+   "name": "Diverging bar chart",
+   "family": "deviation",
+   "also": [
+    "magnitude",
+    "ranking"
+   ],
+   "question": "Which categories are above or below a reference (zero, target, average), and by how much?",
+   "shapes": [
+    "n,q",
+    "o,q",
+    "time,q"
+   ],
+   "goals": [
+    "deviation",
+    "above and below",
+    "positive and negative",
+    "change",
+    "difference from",
+    "versus target",
+    "versus average",
+    "surplus deficit",
+    "gain loss",
+    "growth rate",
+    "net"
+   ],
+   "max_series": 1,
+   "max_categories": 30,
+   "evidence": "high",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "approx",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "positive negative bar chart",
+    "bar chart with negatives",
+    "deviation bar chart",
+    "above below bar",
+    "signed bar chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "diverging-stacked-bar",
+   "name": "Diverging stacked bar chart",
+   "family": "deviation",
+   "also": [
+    "part-to-whole",
+    "distribution"
+   ],
+   "question": "How does agreement compare to disagreement across survey items, with the neutral answers centred?",
+   "shapes": [
+    "n,o,q",
+    "o,o,q"
+   ],
+   "goals": [
+    "deviation",
+    "likert",
+    "survey",
+    "agree disagree",
+    "sentiment",
+    "satisfaction",
+    "rating scale",
+    "responses",
+    "opinion",
+    "net agreement",
+    "ordinal scale",
+    "questionnaire"
+   ],
+   "max_series": 7,
+   "max_categories": 20,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "Likert chart",
+    "diverging stacked bar",
+    "survey response chart",
+    "sentiment bar",
+    "agreement scale chart",
+    "centred stacked bar"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "donut",
+   "name": "Donut chart",
+   "family": "part-to-whole",
+   "also": [
+    "single-value"
+   ],
+   "question": "How big is each slice of one whole, with a headline figure in the centre?",
+   "shapes": [
+    "n,q"
+   ],
+   "goals": [
+    "share",
+    "percentage",
+    "proportion",
+    "part to whole",
+    "breakdown",
+    "dashboard",
+    "headline number",
+    "ring",
+    "portion",
+    "of the total"
+   ],
+   "max_series": 0,
+   "max_categories": 5,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "approx",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "doughnut chart",
+    "ring chart",
+    "hollow pie"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "dot-density-map",
+   "name": "Dot density map",
+   "family": "spatial",
+   "also": [
+    "distribution"
+   ],
+   "question": "How is a population or set of events spread across space?",
+   "shapes": [
+    "geo,q",
+    "geo,q,n",
+    "q,q",
+    "q,q,n"
+   ],
+   "goals": [
+    "spatial",
+    "map",
+    "density",
+    "spread",
+    "distribution",
+    "where people live",
+    "events",
+    "incidents",
+    "points",
+    "settlement",
+    "concentration"
+   ],
+   "max_series": 4,
+   "max_categories": 0,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "dot map",
+    "dot distribution map",
+    "one dot per n map",
+    "point density map"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "dot-plot",
+   "name": "Dot plot",
+   "family": "magnitude",
+   "also": [
+    "ranking",
+    "distribution",
+    "deviation"
+   ],
+   "question": "What is each category's value, and how do a few values per category compare, when the baseline need not be zero?",
+   "shapes": [
+    "n,q",
+    "n,q+",
+    "n,q*n",
+    "o,q"
+   ],
+   "goals": [
+    "magnitude",
+    "compare",
+    "rank",
+    "ranking",
+    "values close together",
+    "no zero baseline",
+    "many categories",
+    "per category",
+    "precise",
+    "position",
+    "dot"
+   ],
+   "max_series": 4,
+   "max_categories": 40,
+   "evidence": "high",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "Cleveland dot plot",
+    "dot chart",
+    "point plot",
+    "dot strip plot",
+    "categorical dot plot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "dumbbell",
+   "name": "Dumbbell chart",
+   "family": "deviation",
+   "also": [
+    "change-over-time",
+    "magnitude",
+    "ranking"
+   ],
+   "question": "How far apart are two values per category, and which way did each move?",
+   "shapes": [
+    "n,q,q",
+    "n,o,q"
+   ],
+   "goals": [
+    "deviation",
+    "gap",
+    "difference",
+    "before and after",
+    "change between",
+    "two points",
+    "range",
+    "from to",
+    "min max",
+    "moved",
+    "between two years",
+    "dumbbell"
+   ],
+   "max_series": 2,
+   "max_categories": 30,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "range plot",
+    "connected dot plot",
+    "barbell chart",
+    "gap chart",
+    "dumbbell plot",
+    "arrow plot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "ecdf",
+   "name": "Cumulative distribution (ECDF)",
+   "family": "distribution",
+   "also": [
+    "correlation",
+    "deviation"
+   ],
+   "question": "What fraction of values is below x, and how do several distributions compare across their whole range?",
+   "shapes": [
+    "q",
+    "q,n"
+   ],
+   "goals": [
+    "distribution",
+    "cumulative",
+    "fraction below",
+    "percentile",
+    "share under",
+    "compare distributions",
+    "latency",
+    "inequality",
+    "ecdf"
+   ],
+   "max_series": 6,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "empirical cumulative distribution function",
+    "cumulative curve",
+    "cumulative frequency plot",
+    "Lorenz curve",
+    "percentile plot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "edge-bundling",
+   "name": "Hierarchical edge bundling",
+   "family": "relationship",
+   "also": [
+    "hierarchy",
+    "flow"
+   ],
+   "question": "Which parts of a hierarchy are linked to which other parts, and where do the links concentrate?",
+   "shapes": [
+    "hier,flow",
+    "flow",
+    "n,n,q"
+   ],
+   "goals": [
+    "relationship",
+    "hierarchy",
+    "dependencies",
+    "cross links",
+    "bundled",
+    "imports",
+    "calls between modules",
+    "radial",
+    "which groups talk to which",
+    "software architecture"
+   ],
+   "max_series": 0,
+   "max_categories": 300,
+   "evidence": "medium",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "image",
+    "plotly": "image",
+    "chartjs": "none",
+    "matplotlib": "image"
+   },
+   "aliases": [
+    "edge bundling",
+    "bundled edges",
+    "radial edge bundling",
+    "hierarchical bundling",
+    "dependency wheel"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "error-bars",
+   "name": "Error bars",
+   "family": "distribution",
+   "also": [
+    "deviation",
+    "magnitude"
+   ],
+   "question": "What is the estimate for each group and how uncertain is it?",
+   "shapes": [
+    "n,q,q,q",
+    "n,q,q",
+    "o,q,q,q",
+    "time,q,q,q"
+   ],
+   "goals": [
+    "uncertainty",
+    "confidence interval",
+    "standard error",
+    "standard deviation",
+    "mean per group",
+    "estimate",
+    "margin of error",
+    "precision",
+    "error bars"
+   ],
+   "max_series": 3,
+   "max_categories": 20,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "confidence interval plot",
+    "dot and interval",
+    "mean with error bars",
+    "point range",
+    "dynamite plot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "flow-map",
+   "name": "Flow map",
+   "family": "spatial",
+   "also": [
+    "flow"
+   ],
+   "question": "How much moves from which place to which place?",
+   "shapes": [
+    "geo,geo,q",
+    "flow",
+    "q,q,q,q,q"
+   ],
+   "goals": [
+    "spatial",
+    "flow",
+    "map",
+    "migration",
+    "trade",
+    "routes",
+    "origin",
+    "destination",
+    "between cities",
+    "movement",
+    "traffic",
+    "connections"
+   ],
+   "max_series": 1,
+   "max_categories": 0,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "connection map",
+    "origin-destination map",
+    "migration map",
+    "route map",
+    "great circle map",
+    "OD map"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "funnel",
+   "name": "Funnel chart",
+   "family": "part-to-whole",
+   "also": [
+    "flow",
+    "ranking"
+   ],
+   "question": "How much drops out at each stage of a fixed sequence?",
+   "shapes": [
+    "o,q"
+   ],
+   "goals": [
+    "funnel",
+    "conversion",
+    "drop-off",
+    "pipeline",
+    "stages",
+    "retention",
+    "sign-up",
+    "checkout",
+    "leads",
+    "step by step",
+    "remaining",
+    "steps",
+    "signup"
+   ],
+   "max_series": 2,
+   "max_categories": 7,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "conversion funnel",
+    "sales funnel",
+    "pipeline chart",
+    "drop-off chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "gantt",
+   "name": "Gantt chart",
+   "family": "change-over-time",
+   "also": [
+    "flow"
+   ],
+   "question": "Which tasks run when, for how long, and which depend on which?",
+   "shapes": [
+    "n,time,time",
+    "n,n,time,time"
+   ],
+   "goals": [
+    "gantt",
+    "schedule",
+    "project plan",
+    "roadmap",
+    "tasks",
+    "phases",
+    "dependencies",
+    "milestones",
+    "sprint",
+    "deadline",
+    "who does what when",
+    "timeline of work"
+   ],
+   "max_series": 0,
+   "max_categories": 30,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "project schedule",
+    "task bar chart",
+    "schedule chart",
+    "roadmap chart",
+    "Gantt diagram"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "gauge",
+   "name": "Gauge",
+   "family": "single-value",
+   "also": [
+    "deviation",
+    "magnitude"
+   ],
+   "question": "Where does one value sit within a fixed range, shown as a dial?",
+   "shapes": [
+    "q",
+    "q,q"
+   ],
+   "goals": [
+    "single value",
+    "gauge",
+    "meter",
+    "dial",
+    "speedometer",
+    "percent of target",
+    "utilisation",
+    "score out of",
+    "level",
+    "dashboard",
+    "progress"
+   ],
+   "max_series": 1,
+   "max_categories": 0,
+   "evidence": "low",
+   "popularity": "declining",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "meter",
+    "speedometer chart",
+    "dial chart",
+    "radial gauge",
+    "angular gauge",
+    "progress dial"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "grouped-bar",
+   "name": "Grouped bar chart",
+   "family": "magnitude",
+   "also": [
+    "ranking",
+    "change-over-time"
+   ],
+   "question": "How do two or three series compare within each category?",
+   "shapes": [
+    "n,q*n",
+    "o,q*n",
+    "n,n,q"
+   ],
+   "goals": [
+    "magnitude",
+    "compare",
+    "side by side",
+    "grouped",
+    "clustered",
+    "paired",
+    "by group",
+    "two series",
+    "versus",
+    "this year and last year",
+    "within each category"
+   ],
+   "max_series": 3,
+   "max_categories": 10,
+   "evidence": "high",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "approx",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "clustered bar chart",
+    "paired bar chart",
+    "multi-set bar chart",
+    "side-by-side bars",
+    "clustered column"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "heatmap",
+   "name": "Heatmap",
+   "family": "correlation",
+   "also": [
+    "magnitude",
+    "change-over-time",
+    "table"
+   ],
+   "question": "What is the pattern of a value across two categorical dimensions?",
+   "shapes": [
+    "n,n,q",
+    "o,o,q",
+    "time,n,q",
+    "n,o,q"
+   ],
+   "goals": [
+    "pattern",
+    "matrix",
+    "two dimensions",
+    "by hour and day",
+    "by month and year",
+    "grid",
+    "intensity",
+    "cross-tab",
+    "where is it high",
+    "heatmap"
+   ],
+   "max_series": 0,
+   "max_categories": 50,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "heat map",
+    "matrix chart",
+    "colour matrix",
+    "XY heatmap",
+    "heat table",
+    "grid chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "hex-map",
+   "name": "Hex map",
+   "family": "spatial",
+   "also": [
+    "distribution",
+    "magnitude"
+   ],
+   "question": "What is the value in each region or cell, on a hexagonal grid that keeps neighbours together?",
+   "shapes": [
+    "geo,q",
+    "geo,o",
+    "q,q"
+   ],
+   "goals": [
+    "spatial",
+    "map",
+    "hexagons",
+    "constituencies",
+    "equal area",
+    "binned",
+    "density",
+    "grid",
+    "election",
+    "aggregate points",
+    "hexbin"
+   ],
+   "max_series": 1,
+   "max_categories": 7,
+   "evidence": "low",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "native",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "hexagon map",
+    "hex tile map",
+    "hexbin map",
+    "hex cartogram",
+    "hexagonal grid map"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "hexbin",
+   "name": "Hexbin plot",
+   "family": "correlation",
+   "also": [
+    "distribution"
+   ],
+   "question": "Where is the mass in a scatter of many thousands of points, and does the relationship still hold under the pile?",
+   "shapes": [
+    "q,q",
+    "q,q,q"
+   ],
+   "goals": [
+    "correlation",
+    "large data",
+    "many points",
+    "overplotting",
+    "density",
+    "where is the mass",
+    "thousands of points",
+    "binned",
+    "hexbin"
+   ],
+   "max_series": 1,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "image",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "hexagonal binning",
+    "hex density plot",
+    "2D histogram",
+    "binned scatter",
+    "hexbin map of points"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "histogram",
+   "name": "Histogram",
+   "family": "distribution",
+   "also": [
+    "magnitude"
+   ],
+   "question": "What is the shape of one numeric variable: where is it centred, how spread out is it, is it skewed or bimodal?",
+   "shapes": [
+    "q",
+    "q,n"
+   ],
+   "goals": [
+    "distribution",
+    "shape",
+    "spread",
+    "frequency",
+    "how many fall",
+    "bins",
+    "skew",
+    "outliers",
+    "range of values",
+    "histogram"
+   ],
+   "max_series": 3,
+   "max_categories": 0,
+   "evidence": "high",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "frequency distribution",
+    "binned bar chart",
+    "frequency histogram"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "horizon",
+   "name": "Horizon chart",
+   "family": "change-over-time",
+   "also": [
+    "deviation"
+   ],
+   "question": "How do dozens of series change over time when each can only have a few pixels of height?",
+   "shapes": [
+    "time,q*n",
+    "time,n,q"
+   ],
+   "goals": [
+    "horizon",
+    "many series",
+    "dense",
+    "dashboard",
+    "compact",
+    "dozens of time series",
+    "monitoring",
+    "above and below baseline",
+    "space-saving"
+   ],
+   "max_series": 50,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "image",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "horizon graph",
+    "layered band chart",
+    "folded area chart",
+    "two-tone pseudo colouring"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "icicle",
+   "name": "Icicle chart",
+   "family": "hierarchy",
+   "also": [
+    "part-to-whole"
+   ],
+   "question": "How does a hierarchy partition by size at every level, with labels readable at each depth?",
+   "shapes": [
+    "hier,q",
+    "n,n,q"
+   ],
+   "goals": [
+    "hierarchy",
+    "partition",
+    "levels",
+    "nested",
+    "flame graph",
+    "profiling",
+    "call stack",
+    "breakdown",
+    "depth",
+    "path",
+    "icicle"
+   ],
+   "max_series": 0,
+   "max_categories": 40,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "partition chart",
+    "partition layout",
+    "flame graph",
+    "rectangular sunburst",
+    "adjacency diagram"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "line",
+   "name": "Line chart",
+   "family": "change-over-time",
+   "also": [
+    "correlation",
+    "magnitude"
+   ],
+   "question": "How does a value change over time, and how do a few series compare as they change?",
+   "shapes": [
+    "time,q",
+    "time,q*n",
+    "o,q",
+    "o,q*n"
+   ],
+   "goals": [
+    "trend",
+    "over time",
+    "change",
+    "growth",
+    "decline",
+    "forecast",
+    "history",
+    "series",
+    "price",
+    "rate",
+    "daily",
+    "monthly",
+    "yearly"
+   ],
+   "max_series": 5,
+   "max_categories": 0,
+   "evidence": "high",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "line graph",
+    "time series chart",
+    "trend line",
+    "multi-line chart",
+    "spaghetti chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "lollipop",
+   "name": "Lollipop chart",
+   "family": "ranking",
+   "also": [
+    "magnitude"
+   ],
+   "question": "How do many categories rank, shown with less ink than bars?",
+   "shapes": [
+    "n,q",
+    "o,q"
+   ],
+   "goals": [
+    "ranking",
+    "rank",
+    "magnitude",
+    "compare",
+    "many categories",
+    "top",
+    "lollipop",
+    "less ink",
+    "sorted",
+    "minimal",
+    "per category"
+   ],
+   "max_series": 1,
+   "max_categories": 40,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "lollipop plot",
+    "stem plot",
+    "dot and stem chart",
+    "needle chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "marimekko",
+   "name": "Marimekko chart",
+   "family": "part-to-whole",
+   "also": [
+    "magnitude",
+    "correlation"
+   ],
+   "question": "How do shares split by two categorical variables, when the widths also mean the size of each group?",
+   "shapes": [
+    "n,n,q"
+   ],
+   "goals": [
+    "share",
+    "segment",
+    "market share",
+    "mix",
+    "two dimensions",
+    "size and share",
+    "cross tab",
+    "contingency",
+    "part to whole",
+    "weighted"
+   ],
+   "max_series": 5,
+   "max_categories": 5,
+   "evidence": "low",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "image",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "mosaic plot",
+    "mekko chart",
+    "variable-width stacked bar",
+    "spine plot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "network",
+   "name": "Network diagram",
+   "family": "relationship",
+   "also": [
+    "flow"
+   ],
+   "question": "Who is connected to whom, and what is the structure of the connections?",
+   "shapes": [
+    "flow",
+    "n,n",
+    "n,n,q"
+   ],
+   "goals": [
+    "relationship",
+    "network",
+    "connected to",
+    "graph",
+    "nodes",
+    "edges",
+    "links",
+    "who knows whom",
+    "dependencies",
+    "clusters",
+    "communities",
+    "hubs",
+    "structure"
+   ],
+   "max_series": 0,
+   "max_categories": 200,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "approx",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "node-link diagram",
+    "graph",
+    "force-directed graph",
+    "network graph",
+    "social network diagram",
+    "relationship map"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "parallel-coordinates",
+   "name": "Parallel coordinates",
+   "family": "magnitude",
+   "also": [
+    "correlation",
+    "distribution"
+   ],
+   "question": "How do many entities compare across many quantitative dimensions, and which dimensions move together?",
+   "shapes": [
+    "n,q+",
+    "q+"
+   ],
+   "goals": [
+    "magnitude",
+    "correlation",
+    "many dimensions",
+    "multivariate",
+    "high-dimensional",
+    "compare across variables",
+    "profiles",
+    "explore",
+    "brushing",
+    "parallel coordinates",
+    "trade-offs"
+   ],
+   "max_series": 0,
+   "max_categories": 12,
+   "evidence": "medium",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "none",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "parallel coordinates plot",
+    "parcoords",
+    "parallel axes plot",
+    "PCP"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "pictogram",
+   "name": "Pictogram",
+   "family": "magnitude",
+   "also": [
+    "part-to-whole"
+   ],
+   "question": "How many units are there, shown as repeated icons a general audience can count?",
+   "shapes": [
+    "n,q",
+    "q"
+   ],
+   "goals": [
+    "magnitude",
+    "how many",
+    "count",
+    "units",
+    "people",
+    "icons",
+    "out of 100",
+    "general audience",
+    "infographic",
+    "isotype",
+    "one in ten",
+    "risk"
+   ],
+   "max_series": 1,
+   "max_categories": 6,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "isotype chart",
+    "unit chart",
+    "icon array",
+    "pictograph",
+    "icon chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "pie",
+   "name": "Pie chart",
+   "family": "part-to-whole",
+   "also": [],
+   "question": "How big is each slice of one whole, and do a few slices together make a majority?",
+   "shapes": [
+    "n,q"
+   ],
+   "goals": [
+    "share",
+    "percentage",
+    "proportion",
+    "part to whole",
+    "majority",
+    "breakdown",
+    "slice",
+    "of the total",
+    "split",
+    "portion"
+   ],
+   "max_series": 0,
+   "max_categories": 5,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "pie graph",
+    "circle chart",
+    "sector chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "population-pyramid",
+   "name": "Population pyramid",
+   "family": "distribution",
+   "also": [
+    "deviation",
+    "magnitude"
+   ],
+   "question": "How is a population distributed across age bands, and how do two groups (usually sexes) mirror each other?",
+   "shapes": [
+    "o,q*n",
+    "o,n,q"
+   ],
+   "goals": [
+    "distribution",
+    "age",
+    "sex",
+    "population",
+    "demographic",
+    "age structure",
+    "cohort",
+    "mirrored",
+    "two groups compared",
+    "pyramid"
+   ],
+   "max_series": 2,
+   "max_categories": 25,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "age-sex pyramid",
+    "age pyramid",
+    "back-to-back bar chart",
+    "mirrored bar chart",
+    "butterfly chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "qq",
+   "name": "Q-Q plot",
+   "family": "distribution",
+   "also": [
+    "correlation"
+   ],
+   "question": "Does a sample follow a theoretical distribution (usually normal), or the same distribution as another sample?",
+   "shapes": [
+    "q",
+    "q,q"
+   ],
+   "goals": [
+    "distribution",
+    "normality",
+    "residuals",
+    "diagnostic",
+    "quantiles",
+    "theoretical",
+    "fit",
+    "heavy tails",
+    "qq plot"
+   ],
+   "max_series": 3,
+   "max_categories": 0,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "quantile-quantile plot",
+    "QQ plot",
+    "normal probability plot",
+    "probability plot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "quadrant",
+   "name": "Quadrant chart",
+   "family": "correlation",
+   "also": [
+    "ranking"
+   ],
+   "question": "Which items fall into which of four groups defined by two criteria, such as high impact and low effort?",
+   "shapes": [
+    "q,q",
+    "n,q,q"
+   ],
+   "goals": [
+    "correlation",
+    "prioritise",
+    "priority",
+    "quadrant",
+    "effort",
+    "impact",
+    "matrix",
+    "positioning",
+    "strategy",
+    "two criteria",
+    "2x2"
+   ],
+   "max_series": 1,
+   "max_categories": 25,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "2x2 matrix",
+    "priority matrix",
+    "magic quadrant",
+    "effort-impact matrix",
+    "BCG matrix"
+   ],
+   "last_verified": "2026-09-18"
+  },
+  {
+   "slug": "radar",
+   "name": "Radar chart",
+   "family": "magnitude",
+   "also": [
+    "correlation"
+   ],
+   "question": "What is the profile of one or a few entities across five to ten variables on comparable scales?",
+   "shapes": [
+    "n,q+",
+    "n,q*n"
+   ],
+   "goals": [
+    "magnitude",
+    "profile",
+    "radar",
+    "spider",
+    "across dimensions",
+    "strengths and weaknesses",
+    "skills",
+    "attributes",
+    "score card",
+    "compare profiles",
+    "multi-dimensional"
+   ],
+   "max_series": 3,
+   "max_categories": 10,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "spider chart",
+    "web chart",
+    "star plot",
+    "polar chart",
+    "kiviat diagram"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "radial-bar",
+   "name": "Radial bar chart",
+   "family": "magnitude",
+   "also": [
+    "part-to-whole",
+    "change-over-time"
+   ],
+   "question": "How do many categories compare in size, drawn around a circle for compactness or cyclical order?",
+   "shapes": [
+    "n,q",
+    "o,q"
+   ],
+   "goals": [
+    "magnitude",
+    "circular",
+    "radial",
+    "around a circle",
+    "cyclical",
+    "months",
+    "hours",
+    "rose",
+    "polar",
+    "decorative",
+    "compact",
+    "many categories"
+   ],
+   "max_series": 1,
+   "max_categories": 40,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "circular bar chart",
+    "radial column chart",
+    "polar bar chart",
+    "Nightingale rose",
+    "coxcomb",
+    "circular barplot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "raincloud",
+   "name": "Raincloud plot",
+   "family": "distribution",
+   "also": [
+    "deviation"
+   ],
+   "question": "What is the shape, the summary and every raw value of a numeric variable in each group, all at once?",
+   "shapes": [
+    "n,q",
+    "o,q"
+   ],
+   "goals": [
+    "distribution",
+    "raw data",
+    "transparency",
+    "shape and summary",
+    "compare groups",
+    "scientific",
+    "replication",
+    "raincloud"
+   ],
+   "max_series": 0,
+   "max_categories": 8,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "image",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "rain cloud plot",
+    "half violin with points",
+    "cloud and rain plot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "range-band",
+   "name": "Range band chart",
+   "family": "change-over-time",
+   "also": [
+    "distribution",
+    "deviation"
+   ],
+   "question": "What envelope, range or uncertainty surrounds a value as it changes over time?",
+   "shapes": [
+    "time,q,q",
+    "time,q,q,q",
+    "time,q+"
+   ],
+   "goals": [
+    "range",
+    "band",
+    "uncertainty",
+    "confidence interval",
+    "forecast",
+    "fan chart",
+    "min and max",
+    "envelope",
+    "prediction interval",
+    "spread over time",
+    "high and low"
+   ],
+   "max_series": 3,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "band chart",
+    "ribbon chart",
+    "fan chart",
+    "error band",
+    "confidence band",
+    "min-max area",
+    "uncertainty band"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "ridgeline",
+   "name": "Ridgeline plot",
+   "family": "distribution",
+   "also": [
+    "change-over-time"
+   ],
+   "question": "How does the shape of a distribution shift across many ordered groups, such as months, years or dose levels?",
+   "shapes": [
+    "o,q",
+    "time,q",
+    "n,q"
+   ],
+   "goals": [
+    "distribution",
+    "shift",
+    "over time",
+    "many groups",
+    "ordered groups",
+    "shape",
+    "seasonality",
+    "ridgeline",
+    "joyplot"
+   ],
+   "max_series": 0,
+   "max_categories": 30,
+   "evidence": "low",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "joyplot",
+    "joy plot",
+    "ridge plot",
+    "stacked density plot"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "sankey",
+   "name": "Sankey diagram",
+   "family": "flow",
+   "also": [
+    "part-to-whole"
+   ],
+   "question": "How do quantities flow from sources to destinations, and where do they end up?",
+   "shapes": [
+    "flow",
+    "n,n,q"
+   ],
+   "goals": [
+    "flow",
+    "from",
+    "to",
+    "sources",
+    "destinations",
+    "where does it go",
+    "energy",
+    "budget",
+    "journey",
+    "funnel stages",
+    "conversion path",
+    "breakdown",
+    "allocation"
+   ],
+   "max_series": 0,
+   "max_categories": 20,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "image",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "sankey chart",
+    "flow diagram",
+    "river plot",
+    "energy flow diagram",
+    "budget flow"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "scatter",
+   "name": "Scatter plot",
+   "family": "correlation",
+   "also": [
+    "distribution",
+    "deviation"
+   ],
+   "question": "Is there a relationship between two numeric variables, and where are the clusters and outliers?",
+   "shapes": [
+    "q,q",
+    "q,q,n",
+    "q,q,text"
+   ],
+   "goals": [
+    "correlation",
+    "relationship",
+    "versus",
+    "against",
+    "x vs y",
+    "association",
+    "clusters",
+    "outliers",
+    "trend line",
+    "regression",
+    "two variables",
+    "scatter"
+   ],
+   "max_series": 4,
+   "max_categories": 0,
+   "evidence": "high",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "scatterplot",
+    "XY plot",
+    "scatter chart",
+    "scattergram",
+    "dot cloud"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "slope",
+   "name": "Slope chart",
+   "family": "change-over-time",
+   "also": [
+    "ranking",
+    "deviation"
+   ],
+   "question": "How did each entity's value or rank change between two points in time?",
+   "shapes": [
+    "n,q,q",
+    "o,q*n",
+    "time,q*n"
+   ],
+   "goals": [
+    "slope",
+    "before and after",
+    "two periods",
+    "then and now",
+    "change between",
+    "who rose",
+    "who fell",
+    "rank change",
+    "comparison of two years"
+   ],
+   "max_series": 15,
+   "max_categories": 2,
+   "evidence": "high",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "approx",
+    "vega-lite": "native",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "slopegraph",
+    "slope graph",
+    "before-after chart",
+    "two-period line chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "small-multiples",
+   "name": "Small multiples",
+   "family": "change-over-time",
+   "also": [
+    "magnitude",
+    "distribution",
+    "correlation"
+   ],
+   "question": "How does the same pattern differ across many categories, each shown in its own small panel?",
+   "shapes": [
+    "time,n,q",
+    "time,q*n",
+    "n,n,q",
+    "n,q*n"
+   ],
+   "goals": [
+    "small multiples",
+    "facet",
+    "per region",
+    "per category",
+    "one chart each",
+    "grid",
+    "compare shapes",
+    "many series",
+    "panel",
+    "trellis",
+    "by country",
+    "breakdown"
+   ],
+   "max_series": 30,
+   "max_categories": 30,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "approx",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "trellis chart",
+    "facet grid",
+    "panel chart",
+    "lattice plot",
+    "grid of charts",
+    "multiple lines"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "sparkline",
+   "name": "Sparkline",
+   "family": "change-over-time",
+   "also": [
+    "single-value",
+    "table"
+   ],
+   "question": "What is the recent shape of a trend, at a glance, next to the number it belongs to?",
+   "shapes": [
+    "time,q",
+    "o,q"
+   ],
+   "goals": [
+    "sparkline",
+    "inline",
+    "tiny",
+    "in a table",
+    "next to a number",
+    "KPI",
+    "recent trend",
+    "at a glance",
+    "last 30 days",
+    "compact",
+    "terminal"
+   ],
+   "max_series": 1,
+   "max_categories": 0,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "inline chart",
+    "word-sized graphic",
+    "mini line",
+    "trend line in a table",
+    "micro chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "splom",
+   "name": "Scatterplot matrix",
+   "family": "correlation",
+   "also": [
+    "distribution"
+   ],
+   "question": "Which pairs of several numeric variables are related, and what does each variable's distribution look like?",
+   "shapes": [
+    "q+",
+    "q+,n"
+   ],
+   "goals": [
+    "correlation",
+    "pairwise",
+    "several variables",
+    "which variables relate",
+    "exploratory",
+    "multivariate",
+    "pairs",
+    "splom"
+   ],
+   "max_series": 3,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "image",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "SPLOM",
+    "pairs plot",
+    "pair plot",
+    "scatter matrix",
+    "pairwise scatter"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "stacked-area",
+   "name": "Stacked area chart",
+   "family": "change-over-time",
+   "also": [
+    "part-to-whole"
+   ],
+   "question": "How does a total change over time, and how do its parts contribute?",
+   "shapes": [
+    "time,q*n",
+    "time,n,q"
+   ],
+   "goals": [
+    "stacked area",
+    "composition over time",
+    "parts of total",
+    "contribution",
+    "breakdown over time",
+    "share over time",
+    "segments",
+    "total and parts"
+   ],
+   "max_series": 4,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "stacked area graph",
+    "cumulative area chart",
+    "100% stacked area",
+    "layered area"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "stacked-bar-100",
+   "name": "100% stacked bar chart",
+   "family": "part-to-whole",
+   "also": [
+    "deviation",
+    "change-over-time"
+   ],
+   "question": "What share of each whole does every part take, compared across categories?",
+   "shapes": [
+    "n,q*n",
+    "o,q*n",
+    "time,q*n"
+   ],
+   "goals": [
+    "share",
+    "percentage",
+    "proportion",
+    "composition",
+    "part to whole",
+    "mix",
+    "relative",
+    "per cent",
+    "normalized",
+    "compare shares",
+    "split"
+   ],
+   "max_series": 4,
+   "max_categories": 12,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "percent stacked bar",
+    "normalized stacked bar",
+    "proportional stacked bar",
+    "100% stacked column"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "stacked-bar",
+   "name": "Stacked bar chart",
+   "family": "part-to-whole",
+   "also": [
+    "magnitude",
+    "change-over-time"
+   ],
+   "question": "How big is each total, and how does it split into a few parts?",
+   "shapes": [
+    "n,q*n",
+    "o,q*n",
+    "time,q*n"
+   ],
+   "goals": [
+    "part to whole",
+    "composition",
+    "breakdown",
+    "split",
+    "total",
+    "share",
+    "segments",
+    "by category",
+    "stacked",
+    "contribution",
+    "make up"
+   ],
+   "max_series": 4,
+   "max_categories": 12,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "stacked column chart",
+    "stacked bar",
+    "composition bar",
+    "segmented bar chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "stat-tile",
+   "name": "Stat tile",
+   "family": "single-value",
+   "also": [
+    "magnitude",
+    "change-over-time"
+   ],
+   "question": "What is the current value, and how has it changed?",
+   "shapes": [
+    "q",
+    "q,q",
+    "time,q"
+   ],
+   "goals": [
+    "single value",
+    "kpi",
+    "metric",
+    "big number",
+    "headline number",
+    "current value",
+    "latest",
+    "change since",
+    "delta",
+    "dashboard",
+    "tile",
+    "card",
+    "score"
+   ],
+   "max_series": 1,
+   "max_categories": 0,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "approx",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "none",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "KPI tile",
+    "big number",
+    "KPI card",
+    "metric card",
+    "number card",
+    "scorecard",
+    "indicator"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "step",
+   "name": "Step chart",
+   "family": "change-over-time",
+   "also": [
+    "magnitude"
+   ],
+   "question": "When did a level change, and what was it in between?",
+   "shapes": [
+    "time,q",
+    "time,q*n"
+   ],
+   "goals": [
+    "step",
+    "level change",
+    "interest rate",
+    "price change",
+    "inventory",
+    "status over time",
+    "holds until",
+    "discrete changes",
+    "thresholds",
+    "policy rate"
+   ],
+   "max_series": 4,
+   "max_categories": 0,
+   "evidence": "high",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "approx",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "native",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "step line",
+    "stair chart",
+    "staircase chart",
+    "piecewise constant line"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "streamgraph",
+   "name": "Streamgraph",
+   "family": "change-over-time",
+   "also": [
+    "part-to-whole"
+   ],
+   "question": "How do many components ebb and flow over time, as an overall picture rather than exact values?",
+   "shapes": [
+    "time,q*n",
+    "time,n,q"
+   ],
+   "goals": [
+    "streamgraph",
+    "ebb and flow",
+    "many categories over time",
+    "popularity over time",
+    "themes",
+    "genres",
+    "aesthetic",
+    "overview",
+    "volume of topics"
+   ],
+   "max_series": 20,
+   "max_categories": 0,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "image",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "stream graph",
+    "ThemeRiver",
+    "wiggle stacked area",
+    "flowing area chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "strip",
+   "name": "Strip plot",
+   "family": "distribution",
+   "also": [
+    "ranking",
+    "magnitude"
+   ],
+   "question": "What are all the values in each category, in the least space?",
+   "shapes": [
+    "n,q",
+    "o,q",
+    "q"
+   ],
+   "goals": [
+    "distribution",
+    "all values",
+    "per category",
+    "compact",
+    "jitter",
+    "small n",
+    "raw data",
+    "dots",
+    "strip"
+   ],
+   "max_series": 0,
+   "max_categories": 30,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "dot strip plot",
+    "jitter plot",
+    "barcode plot",
+    "rug plot",
+    "one-dimensional scatter"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "sunburst",
+   "name": "Sunburst chart",
+   "family": "hierarchy",
+   "also": [
+    "part-to-whole"
+   ],
+   "question": "How does a whole split into nested levels, and what path leads to each leaf?",
+   "shapes": [
+    "hier,q",
+    "n,n,q"
+   ],
+   "goals": [
+    "hierarchy",
+    "nested",
+    "levels",
+    "path",
+    "drill down",
+    "breakdown",
+    "multilevel",
+    "share",
+    "rings",
+    "categories and subcategories",
+    "sunburst"
+   ],
+   "max_series": 0,
+   "max_categories": 20,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "radial treemap",
+    "ring chart",
+    "multilevel pie",
+    "radial icicle",
+    "nested donut"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "table",
+   "name": "Table",
+   "family": "table",
+   "also": [
+    "magnitude",
+    "ranking"
+   ],
+   "question": "What are the exact values, across several measures per row, and where are the patterns?",
+   "shapes": [
+    "n,q+",
+    "n,text+",
+    "n,q,text",
+    "text"
+   ],
+   "goals": [
+    "table",
+    "exact values",
+    "look up",
+    "precise",
+    "several measures",
+    "many columns",
+    "list",
+    "reference",
+    "sortable",
+    "numbers",
+    "heat table",
+    "ranked list"
+   ],
+   "max_series": 0,
+   "max_categories": 50,
+   "evidence": "high",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "approx",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "none",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "data table",
+    "heat table",
+    "table with bars",
+    "ranked table",
+    "sortable table",
+    "table as visualization"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "tile-grid-map",
+   "name": "Tile grid map",
+   "family": "spatial",
+   "also": [
+    "magnitude"
+   ],
+   "question": "What is the value in each region, giving every region the same visual weight?",
+   "shapes": [
+    "geo,q",
+    "geo,o",
+    "geo,n"
+   ],
+   "goals": [
+    "spatial",
+    "map",
+    "by state",
+    "by region",
+    "election",
+    "equal weight",
+    "tiles",
+    "grid",
+    "small regions",
+    "every region visible",
+    "category by region"
+   ],
+   "max_series": 1,
+   "max_categories": 7,
+   "evidence": "medium",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "tile map",
+    "grid map",
+    "square tile map",
+    "equal-area tile cartogram",
+    "state tile map"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "timeline",
+   "name": "Timeline",
+   "family": "change-over-time",
+   "also": [
+    "magnitude"
+   ],
+   "question": "When did events happen, in what order, and how long did periods last?",
+   "shapes": [
+    "n,time",
+    "n,time,time",
+    "time,text"
+   ],
+   "goals": [
+    "timeline",
+    "chronology",
+    "history",
+    "events",
+    "milestones",
+    "when",
+    "sequence of events",
+    "eras",
+    "reigns",
+    "releases",
+    "duration",
+    "what happened when"
+   ],
+   "max_series": 0,
+   "max_categories": 30,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "event timeline",
+    "Priestley timeline",
+    "chronology",
+    "history chart",
+    "duration chart",
+    "milestones"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "tree",
+   "name": "Tree diagram",
+   "family": "hierarchy",
+   "also": [
+    "relationship"
+   ],
+   "question": "What is the structure of a hierarchy, who reports to whom, what contains what?",
+   "shapes": [
+    "hier"
+   ],
+   "goals": [
+    "hierarchy",
+    "structure",
+    "org chart",
+    "reports to",
+    "parent",
+    "children",
+    "taxonomy",
+    "outline",
+    "classification",
+    "tree",
+    "nested",
+    "levels"
+   ],
+   "max_series": 0,
+   "max_categories": 100,
+   "evidence": "low",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "tree chart",
+    "org chart",
+    "hierarchy diagram",
+    "node-link tree",
+    "tidy tree",
+    "family tree"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "treemap",
+   "name": "Treemap",
+   "family": "hierarchy",
+   "also": [
+    "part-to-whole",
+    "magnitude"
+   ],
+   "question": "How does a whole break into nested parts by size, and which parts dominate?",
+   "shapes": [
+    "hier,q",
+    "n,q",
+    "n,n,q"
+   ],
+   "goals": [
+    "hierarchy",
+    "nested",
+    "breakdown",
+    "share",
+    "composition",
+    "size",
+    "dominate",
+    "categories and subcategories",
+    "portfolio",
+    "disk usage",
+    "budget",
+    "tree map"
+   ],
+   "max_series": 0,
+   "max_categories": 30,
+   "evidence": "medium",
+   "popularity": "core",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "tree map",
+    "nested rectangles",
+    "squarified treemap",
+    "hierarchical area chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "venn",
+   "name": "Venn diagram",
+   "family": "part-to-whole",
+   "also": [
+    "relationship"
+   ],
+   "question": "Which sets overlap, and roughly how much do they share?",
+   "shapes": [
+    "n,q",
+    "n"
+   ],
+   "goals": [
+    "overlap",
+    "intersection",
+    "sets",
+    "both",
+    "either",
+    "shared",
+    "common",
+    "union",
+    "membership",
+    "venn",
+    "euler"
+   ],
+   "max_series": 3,
+   "max_categories": 3,
+   "evidence": "low",
+   "popularity": "niche",
+   "status": "stable",
+   "support": {
+    "mermaid": "native",
+    "vega-lite": "image",
+    "plotly": "image",
+    "chartjs": "none",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "Euler diagram",
+    "set diagram",
+    "overlapping circles",
+    "intersection diagram"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "violin",
+   "name": "Violin plot",
+   "family": "distribution",
+   "also": [
+    "deviation"
+   ],
+   "question": "What is the full shape of a numeric variable in each group, not just its median and spread?",
+   "shapes": [
+    "n,q",
+    "o,q"
+   ],
+   "goals": [
+    "distribution",
+    "shape",
+    "compare groups",
+    "bimodal",
+    "density per group",
+    "spread",
+    "skew",
+    "violin"
+   ],
+   "max_series": 0,
+   "max_categories": 12,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "violin chart",
+    "half violin",
+    "mirrored density"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "waffle",
+   "name": "Waffle chart",
+   "family": "part-to-whole",
+   "also": [
+    "magnitude"
+   ],
+   "question": "What share of the whole, in whole percent, does each part take?",
+   "shapes": [
+    "n,q"
+   ],
+   "goals": [
+    "share",
+    "percent",
+    "proportion",
+    "part to whole",
+    "out of 100",
+    "one in ten",
+    "general audience",
+    "units",
+    "count of",
+    "grid"
+   ],
+   "max_series": 0,
+   "max_categories": 4,
+   "evidence": "low",
+   "popularity": "rising",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "approx",
+    "plotly": "approx",
+    "chartjs": "approx",
+    "matplotlib": "approx"
+   },
+   "aliases": [
+    "gridplot",
+    "square pie",
+    "unit chart",
+    "dot matrix chart",
+    "10x10 grid"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "waterfall",
+   "name": "Waterfall chart",
+   "family": "deviation",
+   "also": [
+    "part-to-whole",
+    "flow",
+    "change-over-time"
+   ],
+   "question": "How do successive positive and negative contributions build from a starting total to an ending total?",
+   "shapes": [
+    "o,q",
+    "n,q",
+    "time,q"
+   ],
+   "goals": [
+    "deviation",
+    "bridge",
+    "walk",
+    "from start to end",
+    "contributions",
+    "breakdown of change",
+    "what drove the change",
+    "running total",
+    "cumulative",
+    "reconciliation",
+    "profit bridge",
+    "variance"
+   ],
+   "max_series": 1,
+   "max_categories": 12,
+   "evidence": "medium",
+   "popularity": "common",
+   "status": "stable",
+   "support": {
+    "mermaid": "image",
+    "vega-lite": "native",
+    "plotly": "native",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "bridge chart",
+    "cascade chart",
+    "flying bricks",
+    "walk chart",
+    "Mario chart"
+   ],
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "word-cloud",
+   "name": "Word cloud",
+   "family": "magnitude",
+   "also": [
+    "ranking"
+   ],
+   "question": "Which words or terms appear most often in a body of text?",
+   "shapes": [
+    "text",
+    "n,q"
+   ],
+   "goals": [
+    "magnitude",
+    "word cloud",
+    "frequent words",
+    "keywords",
+    "tags",
+    "text",
+    "most common terms",
+    "survey responses",
+    "themes",
+    "buzzwords"
+   ],
+   "max_series": 0,
+   "max_categories": 100,
+   "evidence": "low",
+   "popularity": "declining",
+   "status": "stable",
+   "support": {
+    "mermaid": "none",
+    "vega-lite": "approx",
+    "plotly": "image",
+    "chartjs": "approx",
+    "matplotlib": "native"
+   },
+   "aliases": [
+    "tag cloud",
+    "wordle",
+    "text cloud",
+    "keyword cloud"
+   ],
+   "last_verified": "2026-09-17"
+  }
+ ],
+ "targets": [
+  {
+   "slug": "chartjs",
+   "name": "Web, canvas (Chart.js)",
+   "kind": "web",
+   "renders_in": [
+    "any web page",
+    "React/Vue wrappers",
+    "QuickChart URL images",
+    "chartjs-node-canvas headless PNG"
+   ],
+   "version_checked": "Chart.js 4.5.1 (2025-10-13; no release for 11 months), chartjs-node-canvas 5.0.0, QuickChart Chart.js 4 via version=4",
+   "renderer": "none",
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "matplotlib",
+   "name": "Static image via Python (matplotlib and friends)",
+   "kind": "image",
+   "renders_in": [
+    "PNG/SVG/PDF files for Word",
+    "Google Docs",
+    "PowerPoint",
+    "Slack",
+    "email",
+    "LaTeX",
+    "any markdown as an image link"
+   ],
+   "version_checked": "matplotlib 3.11.2 (2026-09-11), seaborn 0.13.2 (2024, flat), plotnine 0.15.8, Altair 6.3.0 + vl-convert 1.9.0.post1, plotly 7.1 + kaleido 1.4.0, bokeh 3.10",
+   "renderer": "python",
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "mermaid",
+   "name": "Markdown (Mermaid)",
+   "kind": "markdown",
+   "renders_in": [
+    "GitHub",
+    "GitLab",
+    "Obsidian",
+    "VS Code",
+    "Notion",
+    "Azure DevOps Wiki",
+    "Docusaurus",
+    "MkDocs Material"
+   ],
+   "version_checked": "12.0.0 (2026-09-10); portable floor 11.13 (Obsidian 1.13)",
+   "renderer": "mmdc",
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "plotly",
+   "name": "Web, interactive (Plotly)",
+   "kind": "web",
+   "renders_in": [
+    "any web page via plotly.js",
+    "Jupyter and Dash via plotly.py",
+    "static PNG via kaleido 1.x (needs Chrome)"
+   ],
+   "version_checked": "plotly.js 4.1.1 (2026-09-14), plotly.py 7.1.0 (2026-09-15), kaleido 1.4.0",
+   "renderer": "none",
+   "last_verified": "2026-09-17"
+  },
+  {
+   "slug": "vega-lite",
+   "name": "Web and static images (Vega-Lite)",
+   "kind": "web",
+   "renders_in": [
+    "any web page via vega-embed",
+    "Obsidian (obsidian-vega plugin)",
+    "Jupyter (Altair)",
+    "static SVG/PNG/PDF via vl-convert",
+    "Kroki"
+   ],
+   "version_checked": "Vega-Lite 6.4.3 (2026-04), Vega 6.4.0, vega-embed 7.2.0, vl-convert-python 1.9.0.post1 (2.0.0rc7 in preview), Altair 6.3.0",
+   "renderer": "vl_convert",
+   "last_verified": "2026-09-17"
+  }
+ ],
+ "families": [
+  "deviation",
+  "correlation",
+  "ranking",
+  "distribution",
+  "change-over-time",
+  "magnitude",
+  "part-to-whole",
+  "spatial",
+  "flow",
+  "hierarchy",
+  "relationship",
+  "single-value",
+  "table"
+ ]
+}
