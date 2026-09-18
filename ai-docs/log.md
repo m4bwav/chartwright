@@ -120,3 +120,7 @@ Append-only. Newest at the bottom. One entry per working session.
 
 - Mark's direction: he will not test beyond Windows (maybe macOS), but wants others to try their platforms; the skill must say when a target is unproven in the user's environment and ask whether to continue and document it.
 - Built: `tested:` frontmatter on all 16 targets (four `untested`; office and web-page targets flagged as rendered but not opened in the destination program), shown in INDEX.md and `cw.py targets`; `cw.py tested <slug> --platform <OS> "<proof>"` records a result; the rule in references/build-and-verify.md and a pointer in SKILL.md; curate path D2; README "Tested where".
+
+## 2026-09-18: releases
+
+- GitHub Releases created for v0.5.0 to v0.8.0 from the root CHANGELOG sections (tags had been pushed without releases since 0.4.0). AGENTS.md now lists `gh release create` as part of the version step.
