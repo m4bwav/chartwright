@@ -6,6 +6,8 @@ renders_in: [any terminal, chat replies with no image support, commit messages, 
 version_checked: "Unicode block elements U+2581..U+2588 (no library); plotext 6.1.0 (2026-09) for full terminal plots"
 last_verified: 2026-09-18
 renderer: none
+tested:
+  - Windows 2026-09-18: sparklines and block bars printed with UTF-8 forced
 sources: [https://github.com/piccolomo/plotext, https://github.com/mkaz/termgraph, https://en.wikipedia.org/wiki/Block_Elements]
 ---
 

@@ -6,6 +6,8 @@ renders_in: [Google Docs]
 version_checked: "Google Drive API v3 HTML-to-Doc conversion; Docs API has no chart resource (checked 2026-09-18)"
 last_verified: 2026-09-18
 renderer: none
+tested:
+  - Windows 2026-09-18: a Doc was created from HTML with QuickChart images through the Drive connector; image rendering not confirmed visually
 sources: [https://developers.google.com/workspace/docs/api/reference/rest, https://developers.google.com/workspace/drive/api/guides/manage-uploads, https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/charts]
 ---
 

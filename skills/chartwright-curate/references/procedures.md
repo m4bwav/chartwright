@@ -33,6 +33,10 @@ Write an `R-` entry in `RESEARCH.md` next to the skill (date, question, sources 
 3. If the target can be built mechanically, add `build_<slug>` to `scripts/cw.py`, a branch in `cmd_render` when a headless renderer exists, an `HTML_<SLUG>` wrapper for web targets, and tests.
 4. `CW index`, `CHANGELOG.md` entry, a row in `kb/rules/choosing-a-target.md` and in `skills/chartwright/references/build-and-verify.md`.
 
+### D2. Record a platform test for a target
+
+When a user (or the chartwright skill, with the user's consent) has just proven or failed a target on a platform: `CW tested <slug> --platform <Windows|macOS|Linux|host> "<what was proven: versions, output opened where, or what failed>"`, then `CW index`. Log a `C-` entry with `because: user test on <platform>`. A failure goes into the target file's Limits section as well. `tested: untested` targets are the ones the project most wants reports on; the README invites them.
+
 ## E. Audit the knowledge base
 
 1. `CW --strict validate` (schema).

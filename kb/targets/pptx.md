@@ -6,6 +6,8 @@ renders_in: [PowerPoint, Keynote and Google Slides (imported .pptx), LibreOffice
 version_checked: "python-pptx 1.0.2"
 last_verified: 2026-09-18
 renderer: python
+tested:
+  - Windows 2026-09-18: python-pptx script rendered a 34 KB deck; not opened in PowerPoint
 sources: [https://python-pptx.readthedocs.io/en/latest/user/charts.html, https://python-pptx.readthedocs.io/en/latest/api/enum/XlChartType.html]
 ---
 

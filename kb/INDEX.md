@@ -96,19 +96,19 @@ deviation, correlation, ranking, distribution, change-over-time, magnitude, part
 
 ## Targets
 
-- **chartjs** (web): Web, canvas (Chart.js); renders in any web page, React/Vue wrappers, QuickChart URL images, chartjs-node-canvas headless PNG; renderer `none`
-- **d2** (markdown): D2 diagram (node-and-edge only); renders in d2 CLI, play.d2lang.com, Kroki, Obsidian (D2 plugin), VS Code (D2 extension); renderer `d2`
-- **docx** (office): Word document (PNG via python-docx); renders in Microsoft Word, LibreOffice Writer, Google Docs (imported .docx), Pages; renderer `python`
-- **echarts** (web): Web, interactive (Apache ECharts); renders in any web page, dashboards, Vue/React wrappers, server-side SVG via Node SSR; renderer `none`
-- **gdocs** (office): Google Docs (images via HTML import or Drive upload); renders in Google Docs; renderer `none`
-- **gsheets** (office): Google Sheets native chart (Sheets API EmbeddedChart); renders in Google Sheets, Google Docs and Slides (linked Sheets chart); renderer `none`
-- **matplotlib** (image): Static image via Python (matplotlib and friends); renders in PNG/SVG/PDF files for Word, Google Docs, PowerPoint, Slack, email, LaTeX, any markdown as an image link; renderer `python`
-- **mermaid** (markdown): Markdown (Mermaid); renders in GitHub, GitLab, Obsidian, VS Code, Notion, Azure DevOps Wiki, Docusaurus, MkDocs Material; renderer `mmdc`
-- **observable-plot** (web): Observable Plot (web, SVG marks); renders in any web page, Observable notebooks and Framework, React and Svelte apps, Node with jsdom; renderer `browser`
-- **plantuml** (markdown): PlantUML chart (@startchart); renders in PlantUML 1.2026.0+, Kroki, IntelliJ and VS Code PlantUML plugins, Confluence (PlantUML app), Asciidoctor Diagram; renderer `plantuml`
-- **plotly** (web): Web, interactive (Plotly); renders in any web page via plotly.js, Jupyter and Dash via plotly.py, static PNG via kaleido 1.x (needs Chrome); renderer `none`
-- **pptx** (office): PowerPoint native chart (python-pptx); renders in PowerPoint, Keynote and Google Slides (imported .pptx), LibreOffice Impress; renderer `python`
-- **quickchart** (image): Chart as a URL image (QuickChart); renders in any place that shows an image URL: chat messages, Slack, email, GitHub comments, Notion, wikis; renderer `none`
-- **terminal** (terminal): Terminal and plain chat (Unicode); renders in any terminal, chat replies with no image support, commit messages, log output, Slack code blocks; renderer `none`
-- **vega-lite** (web): Web and static images (Vega-Lite); renders in any web page via vega-embed, Obsidian (obsidian-vega plugin), Jupyter (Altair), static SVG/PNG/PDF via vl-convert, Kroki; renderer `vl_convert`
-- **xlsx** (office): Excel native chart (openpyxl); renders in Excel, LibreOffice Calc, Google Sheets (imported .xlsx); renderer `python`
+- **chartjs** (web): Web, canvas (Chart.js); renders in any web page, React/Vue wrappers, QuickChart URL images, chartjs-node-canvas headless PNG; renderer `none`; tested: Windows 2026-09-18
+- **d2** (markdown): D2 diagram (node-and-edge only); renders in d2 CLI, play.d2lang.com, Kroki, Obsidian (D2 plugin), VS Code (D2 extension); renderer `d2`; untested anywhere
+- **docx** (office): Word document (PNG via python-docx); renders in Microsoft Word, LibreOffice Writer, Google Docs (imported .docx), Pages; renderer `python`; tested: Windows 2026-09-18
+- **echarts** (web): Web, interactive (Apache ECharts); renders in any web page, dashboards, Vue/React wrappers, server-side SVG via Node SSR; renderer `none`; tested: Windows 2026-09-18
+- **gdocs** (office): Google Docs (images via HTML import or Drive upload); renders in Google Docs; renderer `none`; tested: Windows 2026-09-18
+- **gsheets** (office): Google Sheets native chart (Sheets API EmbeddedChart); renders in Google Sheets, Google Docs and Slides (linked Sheets chart); renderer `none`; untested anywhere
+- **matplotlib** (image): Static image via Python (matplotlib and friends); renders in PNG/SVG/PDF files for Word, Google Docs, PowerPoint, Slack, email, LaTeX, any markdown as an image link; renderer `python`; tested: Windows 2026-09-18
+- **mermaid** (markdown): Markdown (Mermaid); renders in GitHub, GitLab, Obsidian, VS Code, Notion, Azure DevOps Wiki, Docusaurus, MkDocs Material; renderer `mmdc`; tested: Windows 2026-09-18
+- **observable-plot** (web): Observable Plot (web, SVG marks); renders in any web page, Observable notebooks and Framework, React and Svelte apps, Node with jsdom; renderer `browser`; untested anywhere
+- **plantuml** (markdown): PlantUML chart (@startchart); renders in PlantUML 1.2026.0+, Kroki, IntelliJ and VS Code PlantUML plugins, Confluence (PlantUML app), Asciidoctor Diagram; renderer `plantuml`; untested anywhere
+- **plotly** (web): Web, interactive (Plotly); renders in any web page via plotly.js, Jupyter and Dash via plotly.py, static PNG via kaleido 1.x (needs Chrome); renderer `none`; tested: Windows 2026-09-18
+- **pptx** (office): PowerPoint native chart (python-pptx); renders in PowerPoint, Keynote and Google Slides (imported .pptx), LibreOffice Impress; renderer `python`; tested: Windows 2026-09-18
+- **quickchart** (image): Chart as a URL image (QuickChart); renders in any place that shows an image URL: chat messages, Slack, email, GitHub comments, Notion, wikis; renderer `none`; tested: Windows 2026-09-18
+- **terminal** (terminal): Terminal and plain chat (Unicode); renders in any terminal, chat replies with no image support, commit messages, log output, Slack code blocks; renderer `none`; tested: Windows 2026-09-18
+- **vega-lite** (web): Web and static images (Vega-Lite); renders in any web page via vega-embed, Obsidian (obsidian-vega plugin), Jupyter (Altair), static SVG/PNG/PDF via vl-convert, Kroki; renderer `vl_convert`; tested: Windows 2026-09-18
+- **xlsx** (office): Excel native chart (openpyxl); renders in Excel, LibreOffice Calc, Google Sheets (imported .xlsx); renderer `python`; tested: Windows 2026-09-18

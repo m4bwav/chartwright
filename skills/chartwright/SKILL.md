@@ -32,6 +32,8 @@ Data: a CSV, a table, numbers in prose (write them to a small CSV beside the out
 
 ## Step 3 to 5: target, build, verify
 
+Before building, check the target's `tested:` status against the user's platform; if untested there, say so and ask before continuing (rule in `references/build-and-verify.md`, section "Untested targets and platforms").
+
 Read [references/build-and-verify.md](references/build-and-verify.md) (target table, builder coverage per target, column roles for composed charts, styling via the `dataviz` skill, render commands, placement). In short: `CW build --chart <slug> --target <t> --data file.csv --x <col> --y <col> [--series <col>] [--title "<claim>"] --out <file>`, then `CW render ...`, look at the output, place it, save the source beside it. A build that fails to render is not done.
 
 ## Step 6: report and learn

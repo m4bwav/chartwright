@@ -48,6 +48,10 @@ python scripts/cw.py doctor                      # which renderers this machine 
 
 Renderers are optional: `pip install vl-convert-python` for Vega-Lite to PNG/SVG without a browser, `pip install matplotlib` for the Python target, Node plus `@mermaid-js/mermaid-cli` only to rasterise Mermaid (the markdown hosts render it themselves).
 
+## Tested where
+
+Each render target records where its build and render were actually proven (`tested:` in `kb/targets/<slug>.md`, summarised in `kb/INDEX.md`). The plugin was built on one Windows PC. Targets marked `untested`, or with no entry for your platform, are not broken, just unproven: the chartwright skill will tell you so and ask before continuing. If it works for you, let it record the result (`python scripts/cw.py tested <target> --platform <OS> "<what worked>"`) and send a pull request; failures are just as useful, recorded the same way.
+
 ## Install
 
 Claude Code: add the repo as a marketplace and install (`/plugin marketplace add m4bwav/chartwright` then `/plugin install chartwright@chartwright`), or clone it into a local directory marketplace. Elsewhere, copy `skills/*` into the agent's skill store and keep the plugin folder where the skills can find `scripts/` and `kb/` (two levels up from each SKILL.md). Optional renderers: `pip install vl-convert-python matplotlib python-pptx openpyxl`; Node plus `@mermaid-js/mermaid-cli` only to rasterise Mermaid.

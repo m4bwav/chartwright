@@ -6,6 +6,7 @@ renders_in: [any web page, Observable notebooks and Framework, React and Svelte 
 version_checked: "@observablehq/plot 0.6.17 (npm latest, checked 2026-09-18); UMD build needs d3 v7 as a global"
 last_verified: 2026-09-18
 renderer: browser
+tested: untested
 sources: [https://observablehq.com/plot/, https://registry.npmjs.org/@observablehq/plot/latest, https://github.com/observablehq/plot]
 ---
 

@@ -6,6 +6,8 @@ renders_in: [any web page, dashboards, Vue/React wrappers, server-side SVG via N
 version_checked: "ECharts 6.1.0 (2026-05-19); 6.0.0 2025-07-30"
 last_verified: 2026-09-18
 renderer: none
+tested:
+  - Windows 2026-09-18: option JSON built and page written; page not opened in a browser
 sources: [https://echarts.apache.org/en/option.html, https://echarts.apache.org/handbook/en/how-to/cross-platform/server/, https://github.com/apache/echarts/releases]
 ---
 

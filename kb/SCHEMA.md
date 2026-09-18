@@ -73,6 +73,7 @@ renders_in: [GitHub, GitLab, Obsidian, VS Code]
 version_checked: "11.x"
 last_verified: 2026-09-17
 renderer: mmdc                # what cw.py render calls, or none
+tested: untested              # or a list of "<platform> <date>: <what was proven>"; the chartwright skill warns the user when their platform is missing and offers to test and record (cw.py tested)
 sources: [...]
 ---
 ```

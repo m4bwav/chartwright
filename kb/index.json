@@ -4780,7 +4780,10 @@
    ],
    "version_checked": "Chart.js 4.5.1 (2025-10-13; no release for 11 months), chartjs-node-canvas 5.0.0, QuickChart Chart.js 4 via version=4",
    "renderer": "none",
-   "last_verified": "2026-09-17"
+   "last_verified": "2026-09-17",
+   "tested": [
+    "Windows 2026-09-18: JSON built and page written; page not opened in a browser"
+   ]
   },
   {
    "slug": "d2",
@@ -4795,7 +4798,8 @@
    ],
    "version_checked": "D2 shape list read 2026-09-18 (rectangle, cylinder, sql_table, class, cloud... no chart shape)",
    "renderer": "d2",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": "untested"
   },
   {
    "slug": "docx",
@@ -4809,7 +4813,10 @@
    ],
    "version_checked": "python-docx 1.2.0; no native chart API (issue 179 open since 2015); vl-convert-python 1.9 for the PNG",
    "renderer": "python",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": [
+    "Windows 2026-09-18: python-docx script rendered; word/media/image1.png present in the zip; not opened in Word"
+   ]
   },
   {
    "slug": "echarts",
@@ -4823,7 +4830,10 @@
    ],
    "version_checked": "ECharts 6.1.0 (2026-05-19); 6.0.0 2025-07-30",
    "renderer": "none",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": [
+    "Windows 2026-09-18: option JSON built and page written; page not opened in a browser"
+   ]
   },
   {
    "slug": "gdocs",
@@ -4834,7 +4844,10 @@
    ],
    "version_checked": "Google Drive API v3 HTML-to-Doc conversion; Docs API has no chart resource (checked 2026-09-18)",
    "renderer": "none",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": [
+    "Windows 2026-09-18: a Doc was created from HTML with QuickChart images through the Drive connector; image rendering not confirmed visually"
+   ]
   },
   {
    "slug": "gsheets",
@@ -4846,7 +4859,8 @@
    ],
    "version_checked": "Sheets API v4 ChartSpec: basicChart, pieChart, bubbleChart, candlestickChart, orgChart, histogramChart, waterfallChart, treemapChart, scorecardChart (checked 2026-09-18)",
    "renderer": "none",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": "untested"
   },
   {
    "slug": "matplotlib",
@@ -4863,7 +4877,10 @@
    ],
    "version_checked": "matplotlib 3.11.2 (2026-09-11), seaborn 0.13.2 (2024, flat), plotnine 0.15.8, Altair 6.3.0 + vl-convert 1.9.0.post1, plotly 7.1 + kaleido 1.4.0, bokeh 3.10",
    "renderer": "python",
-   "last_verified": "2026-09-17"
+   "last_verified": "2026-09-17",
+   "tested": [
+    "Windows 2026-09-18: script built and PNG rendered with matplotlib 3.11; inspected"
+   ]
   },
   {
    "slug": "mermaid",
@@ -4881,7 +4898,10 @@
    ],
    "version_checked": "12.0.0 (2026-09-10); portable floor 11.13 (Obsidian 1.13)",
    "renderer": "mmdc",
-   "last_verified": "2026-09-17"
+   "last_verified": "2026-09-17",
+   "tested": [
+    "Windows 2026-09-18: build and render to SVG/PNG through npx mermaid-cli; blocks placed in a real README"
+   ]
   },
   {
    "slug": "observable-plot",
@@ -4895,7 +4915,8 @@
    ],
    "version_checked": "@observablehq/plot 0.6.17 (npm latest, checked 2026-09-18); UMD build needs d3 v7 as a global",
    "renderer": "browser",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": "untested"
   },
   {
    "slug": "plantuml",
@@ -4910,7 +4931,8 @@
    ],
    "version_checked": "PlantUML 1.2026.0 (chart diagram introduced), checked 2026-09-18",
    "renderer": "plantuml",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": "untested"
   },
   {
    "slug": "plotly",
@@ -4923,7 +4945,10 @@
    ],
    "version_checked": "plotly.js 4.1.1 (2026-09-14), plotly.py 7.1.0 (2026-09-15), kaleido 1.4.0",
    "renderer": "none",
-   "last_verified": "2026-09-17"
+   "last_verified": "2026-09-17",
+   "tested": [
+    "Windows 2026-09-18: JSON built and page written; page not opened in a browser"
+   ]
   },
   {
    "slug": "pptx",
@@ -4936,7 +4961,10 @@
    ],
    "version_checked": "python-pptx 1.0.2",
    "renderer": "python",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": [
+    "Windows 2026-09-18: python-pptx script rendered a 34 KB deck; not opened in PowerPoint"
+   ]
   },
   {
    "slug": "quickchart",
@@ -4952,7 +4980,10 @@
    ],
    "version_checked": "quickchart.io hosted API, Chart.js 4 via version=4; typpo/quickchart AGPL-3.0 for self-hosting",
    "renderer": "none",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": [
+    "Windows 2026-09-18: URL built; live fetch returned image/png"
+   ]
   },
   {
    "slug": "terminal",
@@ -4967,7 +4998,10 @@
    ],
    "version_checked": "Unicode block elements U+2581..U+2588 (no library); plotext 6.1.0 (2026-09) for full terminal plots",
    "renderer": "none",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": [
+    "Windows 2026-09-18: sparklines and block bars printed with UTF-8 forced"
+   ]
   },
   {
    "slug": "vega-lite",
@@ -4982,7 +5016,10 @@
    ],
    "version_checked": "Vega-Lite 6.4.3 (2026-04), Vega 6.4.0, vega-embed 7.2.0, vl-convert-python 1.9.0.post1 (2.0.0rc7 in preview), Altair 6.3.0",
    "renderer": "vl_convert",
-   "last_verified": "2026-09-17"
+   "last_verified": "2026-09-17",
+   "tested": [
+    "Windows 2026-09-18: build and render to PNG/SVG through vl-convert 1.9; inspected"
+   ]
   },
   {
    "slug": "xlsx",
@@ -4995,7 +5032,10 @@
    ],
    "version_checked": "openpyxl 3.1.5",
    "renderer": "python",
-   "last_verified": "2026-09-18"
+   "last_verified": "2026-09-18",
+   "tested": [
+    "Windows 2026-09-18: openpyxl script rendered a workbook; not opened in Excel"
+   ]
   }
  ],
  "families": [

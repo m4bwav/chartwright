@@ -6,6 +6,8 @@ renders_in: [Microsoft Word, LibreOffice Writer, Google Docs (imported .docx), P
 version_checked: "python-docx 1.2.0; no native chart API (issue 179 open since 2015); vl-convert-python 1.9 for the PNG"
 last_verified: 2026-09-18
 renderer: python
+tested:
+  - Windows 2026-09-18: python-docx script rendered; word/media/image1.png present in the zip; not opened in Word
 sources: [https://python-docx.readthedocs.io/en/latest/, https://github.com/python-openxml/python-docx/issues/179]
 ---
 

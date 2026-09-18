@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260918-11 · 2026-09-18 · Untested-platform rule
+- because: user request (the plugin was only tested on one Windows PC; other users should be told what is unproven and asked whether to test and document it)
+- files: SKILL.md (Step 3 to 5 lead-in), references/build-and-verify.md (new section "Untested targets and platforms"), kb/targets/*.md (`tested:` frontmatter), kb/SCHEMA.md, scripts/cw.py (index and targets show the status; `cw.py tested` records a result), README.md ("Tested where")
+- The skill now checks the target's `tested:` list against the platform, warns in one line and asks before continuing; results are recorded so the next user on that platform is not asked again.
+
 ### C-20260918-10 · 2026-09-18 · Plotly and matplotlib compositions; wide-form dumbbell
 - because: HANDOFF next step 2 (the last builder gap this machine can close)
 - files: scripts/cw.py (_two_ends, build_plotly waterfall/dumbbell/bullet, build_matplotlib waterfall/dumbbell/bullet, _vl_composed dumbbell fold), kb/charts/{waterfall,dumbbell,bullet}.md (recipe lines; plotly support native for dumbbell and bullet), references/build-and-verify.md, tests/fixtures/dumbbell.csv, tests/test_cw.py

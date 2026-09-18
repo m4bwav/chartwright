@@ -6,6 +6,7 @@ renders_in: [Google Sheets, Google Docs and Slides (linked Sheets chart)]
 version_checked: "Sheets API v4 ChartSpec: basicChart, pieChart, bubbleChart, candlestickChart, orgChart, histogramChart, waterfallChart, treemapChart, scorecardChart (checked 2026-09-18)"
 last_verified: 2026-09-18
 renderer: none
+tested: untested
 sources: [https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/charts, https://developers.google.com/workspace/sheets/api/samples/charts]
 ---
 

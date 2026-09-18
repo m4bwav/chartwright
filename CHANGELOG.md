@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.8.0 (2026-09-18)
+
+- Every target now carries `tested:` (platform, date, what was proven, or `untested`), shown in `kb/INDEX.md` and `cw.py targets`. The chartwright skill compares it with the user's platform before building, says when a target is unproven there, and asks before continuing; a successful or failed test is recorded with the new `cw.py tested` command and a changelog entry. README section "Tested where" invites reports from other platforms.
+
 ## 0.7.0 (2026-09-18)
 
 - Composed recipes beyond Vega-Lite: Plotly and matplotlib now build waterfall, dumbbell and bullet; the dumbbell accepts wide form (`--y2`) in all three targets and long form (`--series` with two ends) as before. All rendered and inspected.

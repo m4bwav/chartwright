@@ -6,6 +6,8 @@ renders_in: [Excel, LibreOffice Calc, Google Sheets (imported .xlsx)]
 version_checked: "openpyxl 3.1.5"
 last_verified: 2026-09-18
 renderer: python
+tested:
+  - Windows 2026-09-18: openpyxl script rendered a workbook; not opened in Excel
 sources: [https://openpyxl.readthedocs.io/en/stable/charts/introduction.html]
 ---
 

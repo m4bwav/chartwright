@@ -6,6 +6,8 @@ renders_in: [PNG/SVG/PDF files for Word, Google Docs, PowerPoint, Slack, email, 
 version_checked: "matplotlib 3.11.2 (2026-09-11), seaborn 0.13.2 (2024, flat), plotnine 0.15.8, Altair 6.3.0 + vl-convert 1.9.0.post1, plotly 7.1 + kaleido 1.4.0, bokeh 3.10"
 last_verified: 2026-09-17
 renderer: python
+tested:
+  - Windows 2026-09-18: script built and PNG rendered with matplotlib 3.11; inspected
 sources: [https://matplotlib.org/stable/users/explain/figure/backends.html, https://matplotlib.org/stable/gallery/index.html, https://seaborn.pydata.org/, https://plotnine.org/, https://github.com/vega/vl-convert]
 ---
 

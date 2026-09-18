@@ -6,6 +6,8 @@ renders_in: [any web page via plotly.js, Jupyter and Dash via plotly.py, static 
 version_checked: "plotly.js 4.1.1 (2026-09-14), plotly.py 7.1.0 (2026-09-15), kaleido 1.4.0"
 last_verified: 2026-09-17
 renderer: none
+tested:
+  - Windows 2026-09-18: JSON built and page written; page not opened in a browser
 sources: [https://plotly.com/javascript/, https://github.com/plotly/plotly.py/blob/main/CHANGELOG.md, https://github.com/plotly/Kaleido/releases]
 ---
 

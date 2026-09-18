@@ -6,6 +6,8 @@ renders_in: [GitHub, GitLab, Obsidian, VS Code, Notion, Azure DevOps Wiki, Docus
 version_checked: "12.0.0 (2026-09-10); portable floor 11.13 (Obsidian 1.13)"
 last_verified: 2026-09-17
 renderer: mmdc
+tested:
+  - Windows 2026-09-18: build and render to SVG/PNG through npx mermaid-cli; blocks placed in a real README
 sources: [https://mermaid.js.org/syntax/xyChart.html, https://mermaid.js.org/syntax/pie.html, https://mermaid.js.org/syntax/sankey.html, https://mermaid.js.org/syntax/radar.html, https://mermaid.js.org/syntax/quadrantChart.html, https://mermaid.js.org/syntax/treemap.html, https://github.com/orgs/community/discussions/70672, https://obsidian.md/changelog/2026-05-28-desktop-v1.13.0/, https://docs.gitlab.com/releases/19/gitlab-19-0-released/]
 ---
 

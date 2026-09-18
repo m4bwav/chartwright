@@ -9,6 +9,11 @@ Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (ID
 - files: references/procedures.md (path C)
 - Grep the chart file for the note's key words first; an equivalent note means "say so and stop", not a duplicate dated line.
 
+### C-20260918-5 · 2026-09-18 · Path D2: record a platform test
+- because: user request (see chartwright C-20260918-11)
+- files: references/procedures.md (D2)
+- `cw.py tested` plus `cw.py index` and a changelog entry is the whole procedure; failures land in the target's Limits too.
+
 ### C-20260918-4 · 2026-09-18 · Added the cycle plot (seasonal subseries plot) to the knowledge base
 - because: user request ("add a chart type called 'cycle plot' ... family change-over-time"); R-20260918-1
 - files: kb/charts/cycle-plot.md (new), kb/charts/calendar-heatmap.md (Substitutes: prose mention became the `cycle-plot` slug), kb/INDEX.md and kb/index.json (regenerated)

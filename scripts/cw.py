@@ -184,7 +184,7 @@ def cmd_index(a):
     keys = ("slug", "name", "family", "also", "question", "shapes", "goals", "max_series", "max_categories",
             "evidence", "popularity", "status", "support", "aliases", "last_verified")
     rows = [{k: c.get(k) for k in keys} for c in ch.values()]
-    trows = [{k: t.get(k) for k in ("slug", "name", "kind", "renders_in", "version_checked", "renderer", "last_verified")}
+    trows = [{k: t.get(k) for k in ("slug", "name", "kind", "renders_in", "version_checked", "renderer", "last_verified", "tested")}
              for t in tg.values()]
     idx = {"generated": TODAY, "charts": rows, "targets": trows, "families": FAMILIES}
     (KB / "index.json").write_text(json.dumps(idx, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -203,7 +203,9 @@ def cmd_index(a):
                      f"{str(r.get('evidence') or '?')[:1]} | {r.get('popularity') or '?'} | {cells} |")
     lines += ["", "## Families", "", ", ".join(FAMILIES), "", "## Targets", ""]
     for t in trows:
-        lines.append(f"- **{t['slug']}** ({t.get('kind')}): {t.get('name')}; renders in {', '.join(t.get('renders_in') or [])}; renderer `{t.get('renderer')}`")
+        tested = t.get("tested")
+        tested_s = "untested anywhere" if tested in (None, "untested", []) else "tested: " + "; ".join(str(v).split(":")[0] for v in (tested if isinstance(tested, list) else [tested]))
+        lines.append(f"- **{t['slug']}** ({t.get('kind')}): {t.get('name')}; renders in {', '.join(t.get('renders_in') or [])}; renderer `{t.get('renderer')}`; {tested_s}")
     (KB / "INDEX.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"indexed {len(rows)} charts, {len(trows)} targets -> kb/index.json, kb/INDEX.md")
 
@@ -256,7 +258,7 @@ def cmd_validate(a):
             problem(f"{p}: popularity must be core|common|niche|rising|declining")
     for slug, t in tg.items():
         p = Path(t["_path"]).name
-        for k in ("name", "slug", "kind", "renderer", "last_verified"):
+        for k in ("name", "slug", "kind", "renderer", "last_verified", "tested"):
             if t.get(k) in (None, ""):
                 problem(f"{p}: missing frontmatter '{k}'")
         secs = split_sections(t["_body"])
@@ -1579,9 +1581,31 @@ def cmd_note(a):
     print(f"noted in {p.name}: {entry}")
 
 
+def cmd_tested(a):
+    """Record that a target was tested on a platform: appends to `tested:` in the target frontmatter and a dated note."""
+    p = TARGETS / f"{a.slug}.md"
+    if not p.exists():
+        print(f"no target '{a.slug}'")
+        return 1
+    text = p.read_text(encoding="utf-8")
+    entry = f"{a.platform} {TODAY}: {a.text.strip()}"
+    if re.search(r"^tested: untested\s*$", text, re.M):
+        text = re.sub(r"^tested: untested\s*$", f"tested:\n  - {entry}", text, count=1, flags=re.M)
+    elif re.search(r"^tested:\s*$", text, re.M):
+        text = re.sub(r"^tested:\s*$", f"tested:\n  - {entry}", text, count=1, flags=re.M)
+    else:
+        print(f"{p.name} has no tested: block; add one by hand")
+        return 1
+    text = text.rstrip("\n") + f"\n- {TODAY}: tested on {a.platform}: {a.text.strip()}\n"
+    p.write_text(text, encoding="utf-8")
+    print(f"recorded in {p.name}: {entry}; run cw.py index")
+
+
 def cmd_targets(a):
     for slug, t in targets().items():
-        print(f"{slug:12} {str(t.get('kind')):9} {t.get('name')}  [{t.get('renderer')}]")
+        tested = t.get("tested")
+        flag = "untested" if tested in (None, "untested", []) else f"tested x{len(tested) if isinstance(tested, list) else 1}"
+        print(f"{slug:16} {str(t.get('kind')):9} {flag:10} {t.get('name')}  [{t.get('renderer')}]")
 
 
 # ---------------------------------------------------------------- main
@@ -1623,6 +1647,7 @@ def main(argv=None):
     p = sp.add_parser("note"); p.add_argument("slug"); p.add_argument("text"); p.set_defaults(fn=cmd_note)
     sp.add_parser("doctor").set_defaults(fn=cmd_doctor)
     sp.add_parser("targets").set_defaults(fn=cmd_targets)
+    p = sp.add_parser("tested", help="record a platform test for a target"); p.add_argument("slug"); p.add_argument("--platform", required=True, help="Windows, macOS, Linux, or a host name"); p.add_argument("text"); p.set_defaults(fn=cmd_tested)
     a = ap.parse_args(_hoist_globals(argv if argv is not None else sys.argv[1:]))
     STRICT = a.strict
     try:

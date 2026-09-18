@@ -458,6 +458,21 @@ class NewTargetTests(unittest.TestCase):
         rc, out = run("build", "--chart", "dumbbell", "--target", "plotly", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales")
         self.assertEqual(rc, 1)
 
+    def test_tested_command_roundtrip(self):
+        target = ROOT / "kb" / "targets" / "plantuml.md"
+        original = target.read_text(encoding="utf-8")
+        self.assertIn("tested: untested", original)
+        try:
+            rc, out = run("tested", "plantuml", "--platform", "macOS", "rendered chart.svg with plantuml 1.2026.1 and opened it")
+            self.assertEqual(rc, 0, out)
+            text = target.read_text(encoding="utf-8")
+            self.assertRegex(text, r"tested:
+  - macOS \d{4}-\d{2}-\d{2}: rendered chart.svg")
+            self.assertIn("tested on macOS", text)
+            self.assertIsInstance(cw.targets()["plantuml"]["tested"], list)
+        finally:
+            target.write_text(original, encoding="utf-8")
+
     def test_global_flags_after_subcommand(self):
         buf = io.StringIO()
         with redirect_stdout(buf):

@@ -6,6 +6,8 @@ renders_in: [any web page via vega-embed, Obsidian (obsidian-vega plugin), Jupyt
 version_checked: "Vega-Lite 6.4.3 (2026-04), Vega 6.4.0, vega-embed 7.2.0, vl-convert-python 1.9.0.post1 (2.0.0rc7 in preview), Altair 6.3.0"
 last_verified: 2026-09-17
 renderer: vl_convert
+tested:
+  - Windows 2026-09-18: build and render to PNG/SVG through vl-convert 1.9; inspected
 sources: [https://vega.github.io/vega-lite/docs/, https://github.com/vega/vl-convert, https://altair-viz.github.io/, https://github.com/vega/vega-embed]
 ---
 

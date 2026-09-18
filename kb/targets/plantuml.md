@@ -6,6 +6,7 @@ renders_in: [PlantUML 1.2026.0+, Kroki, IntelliJ and VS Code PlantUML plugins, C
 version_checked: "PlantUML 1.2026.0 (chart diagram introduced), checked 2026-09-18"
 last_verified: 2026-09-18
 renderer: plantuml
+tested: untested
 sources: [https://plantuml.com/chart-diagram, https://kroki.io]
 ---
 

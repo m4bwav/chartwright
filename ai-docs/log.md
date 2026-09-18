@@ -115,3 +115,8 @@ Append-only. Newest at the bottom. One entry per working session.
 
 - Last builder gap the machine can close: waterfall (Plotly native trace; matplotlib floating bars), dumbbell (wide form via `--y2` in Vega-Lite, Plotly, matplotlib; long form kept) and bullet (Plotly overlay bars with a line marker; matplotlib barh plus `|` marker). All rendered and inspected. 44 tests pass.
 - End of the road for this handoff: what remains needs a live Sheets API session, a PlantUML install or a headless browser, none on this PC. Next real work should come from real chart requests, and the evergreen refresh on 2026-10-01.
+
+## 2026-09-18: 0.8.0, tested-where status and the ask-before-untested rule
+
+- Mark's direction: he will not test beyond Windows (maybe macOS), but wants others to try their platforms; the skill must say when a target is unproven in the user's environment and ask whether to continue and document it.
+- Built: `tested:` frontmatter on all 16 targets (four `untested`; office and web-page targets flagged as rendered but not opened in the destination program), shown in INDEX.md and `cw.py targets`; `cw.py tested <slug> --platform <OS> "<proof>"` records a result; the rule in references/build-and-verify.md and a pointer in SKILL.md; curate path D2; README "Tested where".

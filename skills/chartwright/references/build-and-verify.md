@@ -23,6 +23,16 @@ Read this when you are about to build. `CW` = `python "<plugin root>/scripts/cw.
 
 If the destination is not obvious from the request or the open file, ask in one line.
 
+## Untested targets and platforms (ask first)
+
+Every target file carries `tested:` (also summarised in `kb/INDEX.md`): the platforms and dates on which its build and render were actually proven, or `untested`. Before building for a target, compare it with the user's platform (`python -c "import platform; print(platform.system())"` if unknown):
+
+- If the target is `untested`, or has no entry for this platform, or the entry says the output was not opened in the destination program: say so in one line ("`plantuml` has not been tested anywhere yet" / "`pptx` has only been proven on Windows and the deck was never opened in PowerPoint") and ask whether to continue and, if it works, to record the result. Do not silently proceed and do not silently switch targets.
+- On a yes: build, render, have the user open the output where it will be read, then `CW tested <target> --platform <OS> "<what was proven, versions>"` followed by `CW index`, and log a `C-` entry in the chartwright-curate CHANGELOG (path D). If it failed, fix or note the gap in the target file's Limits, and record the failure the same way so the next person does not repeat it.
+- On a no: use the nearest tested target from the table above and say which.
+
+The plugin was built on one Windows PC; macOS and Linux entries are what other users contribute. Untested is a status, not a warning off.
+
 ## Build
 
 1. Builder first. `CW build --chart <slug> --target <target> --data file.csv --x <col> --y <col> [--series <col>] [--title "<the claim>"] --out <file> [--html] [--agg sum|mean|none] [--flag ...]`. Data goes from the file into the spec; duplicate x values are summed unless `--agg` says otherwise.

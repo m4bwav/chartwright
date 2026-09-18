@@ -6,6 +6,8 @@ renders_in: [any place that shows an image URL: chat messages, Slack, email, Git
 version_checked: "quickchart.io hosted API, Chart.js 4 via version=4; typpo/quickchart AGPL-3.0 for self-hosting"
 last_verified: 2026-09-18
 renderer: none
+tested:
+  - Windows 2026-09-18: URL built; live fetch returned image/png
 sources: [https://quickchart.io/documentation/, https://github.com/typpo/quickchart]
 ---
 

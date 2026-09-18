@@ -6,6 +6,8 @@ renders_in: [any web page, React/Vue wrappers, QuickChart URL images, chartjs-no
 version_checked: "Chart.js 4.5.1 (2025-10-13; no release for 11 months), chartjs-node-canvas 5.0.0, QuickChart Chart.js 4 via version=4"
 last_verified: 2026-09-17
 renderer: none
+tested:
+  - Windows 2026-09-18: JSON built and page written; page not opened in a browser
 sources: [https://www.chartjs.org/docs/latest/, https://www.chartjs.org/docs/latest/general/accessibility.html, https://quickchart.io/documentation/]
 ---
 
