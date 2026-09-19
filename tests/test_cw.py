@@ -62,7 +62,9 @@ class KnowledgeBaseTests(unittest.TestCase):
         idx = json.loads((cw.KB / "index.json").read_text(encoding="utf-8"))
         self.assertEqual(len(idx["charts"]), len(cw.charts()))
         text = (cw.KB / "INDEX.md").read_text(encoding="utf-8")
-        self.assertIn("| line |", text)
+        self.assertIn("| [line](charts/line.md) |", text)  # slugs link their files so the kb reads as a graph
+        self.assertIn("[mermaid](targets/mermaid.md)", text)
+        self.assertIn("(rules/selection.md)", text)
         # the index must stay far cheaper than the folder it summarises
         full = sum(len(p.read_text(encoding="utf-8")) for p in cw.CHARTS.glob("*.md"))
         self.assertLess(len(text) * 4, full, "INDEX.md is not compact enough")

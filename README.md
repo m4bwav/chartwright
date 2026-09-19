@@ -24,6 +24,8 @@ skills/                  the two skills with their evergreen files and evals
 ai-docs/                 research, decisions, log, handoff for any agent or human
 ```
 
+Entry points: [kb/INDEX.md](kb/INDEX.md) links every chart, target and rule (the knowledge base reads as a graph in Obsidian or on GitHub); [kb/SCHEMA.md](kb/SCHEMA.md); the skills [chartwright](skills/chartwright/SKILL.md) and [chartwright-curate](skills/chartwright-curate/SKILL.md); worked examples [sales-by-region](examples/sales-by-region.md), [eval-trigger](examples/eval-trigger.md) and a [quarterly report](examples/report/quarterly-summary.md); [ai-docs/INDEX.md](ai-docs/INDEX.md); the reasoned history in [CHANGELOG.md](CHANGELOG.md); agent rules in [AGENTS.md](AGENTS.md), which [CLAUDE.md](CLAUDE.md) points at.
+
 ## CLI
 
 ```

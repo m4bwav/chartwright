@@ -1,6 +1,6 @@
 {
   "name": "chartwright",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Evergreen chart and graph skills: an evidence-based knowledge base of chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, notes) and sixteen render targets (Markdown with Mermaid or PlantUML, web with Vega-Lite, ECharts, Plotly, Chart.js and Observable Plot, static PNG/SVG via Python, editable PowerPoint, Excel and Google Sheets charts, Word and Google Docs pictures, D2, QuickChart URLs, terminal sparklines), a deterministic chooser and builder CLI that takes data by file reference to save tokens, and a curation skill that researches novel chart requests and grows the knowledge base so the next request is cheaper.",
   "author": {
     "name": "Mark Rogers"

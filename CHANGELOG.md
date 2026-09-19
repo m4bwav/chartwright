@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.8.1 (2026-09-18)
+
+- `kb/INDEX.md` now links every chart slug to `charts/<slug>.md`, every target to `targets/<slug>.md`, and ends with a Rules section linking `kb/rules/*.md`; its header links `SCHEMA.md` and the plugin README. Nothing parses the table back (`cw.py` reads `index.json`), so agents read it as before, and the index stays about 1/26 the size of the charts folder. Reason: the knowledge base is read by people in Obsidian and on GitHub as well as by agents; without links its 99 entries were orphans in a graph view (the obsidian-notes lint reported 108 orphans in this repo, now 0). The README gained an entry-points paragraph for the same reason. `tests/test_cw.py` asserts the linked form.
+
 ## 0.8.0 (2026-09-18)
 
 - Every target now carries `tested:` (platform, date, what was proven, or `untested`), shown in `kb/INDEX.md` and `cw.py targets`. The chartwright skill compares it with the user's platform before building, says when a target is unproven there, and asks before continuing; a successful or failed test is recorded with the new `cw.py tested` command and a changelog entry. README section "Tested where" invites reports from other platforms.
