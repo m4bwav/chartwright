@@ -22,4 +22,4 @@ People read the knowledge base in Obsidian and on GitHub as well as agents; a li
 - A separate human-facing index beside the compact one: two files to keep in step, and the compact one is the one agents would still quote.
 - Wikilinks in the index: do not render on GitHub, and the repo's duplicate companion names (CHANGELOG.md in three folders) make them ambiguous.
 
-Related: [obsidian-notes decision on link form](../../../obsidian-notes/ai-docs/decisions/2026-09-18-relative-markdown-links-and-an-index-per-folder-wikilinks-on.md).
+Related: [the obsidian-notes decision on link form](https://github.com/m4bwav/obsidian-notes/blob/master/ai-docs/decisions/2026-09-18-relative-markdown-links-and-an-index-per-folder-wikilinks-on.md), [the research notes behind the knowledge base](../research/INDEX.md).
