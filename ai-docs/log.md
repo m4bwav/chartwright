@@ -126,3 +126,4 @@ Append-only. Newest at the bottom. One entry per working session.
 - GitHub Releases created for v0.5.0 to v0.8.0 from the root CHANGELOG sections (tags had been pushed without releases since 0.4.0). AGENTS.md now lists `gh release create` as part of the version step.
 ## [2026-09-18] add | decision: The generated kb index links every entry
 ## [2026-09-18] index | rebuilt (3 entries)
+## [2026-09-23] update | CLAUDE.md imports AGENTS.md with an @AGENTS.md line (Claude Code 2.1.277+ loads nothing from a prose pointer); .github/copilot-instructions.md kept as the Copilot pointer
