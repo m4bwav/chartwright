@@ -5,3 +5,4 @@ __pycache__/
 *.svg
 !kb/**/*.svg
 examples/out/
+evals/results/

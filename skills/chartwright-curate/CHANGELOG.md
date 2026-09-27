@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260926-1 · 2026-09-26 · Description rewritten to stand apart from chartwright
+- because: user request; the context-health selection check scored the two descriptions at TF-IDF cosine 0.77 (near-duplicate) and flagged both as over 1,024 characters; T-20260926-1; plugin 0.8.2
+- files: SKILL.md (frontmatter `description` only; body unchanged)
+- The first sentence now states the job ("Maintains chartwright's knowledge base: adds, corrects, researches and audits its entries"), and the text no longer lists chart types, so chart requests stop matching it. 1,303 to 829 characters. Coverage of the old triggers: add a chart type (kept); add or update a render target (kept; examples 'add ECharts as a target' and 'add PowerPoint native charts' dropped); note or correction on an entry (kept with 'add a note to the pie chart entry' and 'never suggest gauges to me'; 'note on the line chart entry' and 'note that pies are fine for two slices' dropped as the same intent); research a chart type or question the knowledge base cannot answer (kept with the raincloud example; 'is there a chart for showing two distributions before and after' dropped as the same intent); chooser found no match and chartwright hands over (kept); re-rank popularity and velocity (kept); audit for gaps, rot and unverified entries (kept; 'which chart entries are unverified' folded into it); 'add the horizon chart to the knowledge base' and "update the chart knowledge base" covered by "add a chart type ... to the knowledge base" and "Maintains ... knowledge base"; refresh phrases kept; "Not for" clause names chartwright and graphify.
+
 ### C-20260918-3 · 2026-09-18 · Procedure C: check for an existing note before appending
 - because: T-20260918-4 action-1 (the tester found the note already in HEAD and had no rule for that case)
 - files: references/procedures.md (path C)

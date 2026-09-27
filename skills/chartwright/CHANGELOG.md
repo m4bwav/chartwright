@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20260926-1 · 2026-09-26 · Description rewritten to stand apart from chartwright-curate
+- because: user request; the context-health selection check scored the two descriptions at TF-IDF cosine 0.77 (near-duplicate) and flagged both as over 1,024 characters; T-20260926-1; plugin 0.8.2
+- files: SKILL.md (frontmatter `description` only; body unchanged)
+- The first sentence now states the job ("Builds a chart or graph from data in the place it will be read"), then targets, then one "Use when" clause with the chart words, then one "Not for" clause. 1,523 to 970 characters. Kept: chart, graph, plot, visualize, histogram, heatmap, sankey, treemap, sparkline, dashboard, 'bar chart of sales by region', 'visualize this CSV', 'show this as a', 'make a figure', 'diagram of the numbers', which-chart questions, charts added to a report, README, slide or artifact, the refresh phrases, and the pointers to chartwright-curate, dataviz and graphify and to diagrams with no data. Dropped as redundant: 'pie of the budget' (covered by the chart words and the bar-chart example), 'what chart for survey answers' (covered by "asks which chart fits a question" and the drop-off example), 'put a chart in the README' (covered by "charts added to a ... README"), the word "visualization" (same stem as visualize), "document" and "dashboard" as destinations (report and artifact remain; dashboard stays as a chart word), and the knowledge-base detail (when-to-use, when-not, substitutes, caveats), which the body carries. 'a line graph with time as x and price as y' became 'line graph of price over time'.
+
 ### C-20260918-12 · 2026-09-18 · The index the skill reads first now links every entry
 - because: user request (the knowledge base is also read by a person in Obsidian and on GitHub; unlinked slugs left 99 entries as orphans in the graph); plugin 0.8.1
 - files: scripts/cw.py (`cmd_index`), kb/INDEX.md (regenerated), tests/test_cw.py, README.md

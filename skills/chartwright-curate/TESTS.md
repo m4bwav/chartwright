@@ -8,6 +8,14 @@ Entry shape: `### T-YYYYMMDD-n · date · harness · env · passed/total`, then 
 
 ## Runs
 
+### T-20260926-1 · 2026-09-26 · claude plugin eval 2.1.281 on a scratch copy of the plugin (default model, 1 run per case, no ablation) · DESKTOP (Windows 11, native) · 9/9
+- Suite: the root `evals/` folder (cw-trigger-1..3, cw-decoy-1..2, cu-trigger-1..2, cu-decoy-1..2), prompts copied from `skills/*/evals/evals.json`, graders `tool_used` on Skill with a regex on the skill name (max 0 for must-not).
+- cu-trigger-1 (horizon chart into the knowledge base), cu-trigger-2 (note on the pie chart entry) · trigger · pass · chartwright-curate called once, chartwright not.
+- cu-decoy-1 (pie chart of the budget for a slide deck) · trigger · pass · chartwright called, curate not.
+- cu-decoy-2 (knowledge graph of the codebase) · trigger · pass · neither skill called (graphify is not in the eval catalog).
+- Caveat: the eval runs with a throwaway config, so the catalog held this plugin and built-ins only, not the 40-odd user skills. It proves the two descriptions separate; it does not prove selection in the full catalog. Cost 1.11 USD, 58 s at concurrency 4.
+- led to: none (run after C-20260926-1)
+
 ### T-20260918-4 · 2026-09-18 · evergreen-tester from a neutral scratch folder (sonnet, 1 run per case), full suite · DESKTOP (Windows) · 6/6
 - trigger-1 (add the horizon chart) · trigger · pass · `Skill(chartwright:chartwright-curate)` was the first and only call.
 - trigger-2 (note on the pie entry) · trigger · pass · Skill call first; routing table path C shown in the loaded SKILL.md.

@@ -8,6 +8,14 @@ Entry shape: `### T-YYYYMMDD-n · date · harness · env · passed/total`, then 
 
 ## Runs
 
+### T-20260926-1 · 2026-09-26 · claude plugin eval 2.1.281 on a scratch copy of the plugin (default model, 1 run per case, no ablation) · DESKTOP (Windows 11, native) · 9/9
+- Suite: the root `evals/` folder (cw-trigger-1..3, cw-decoy-1..2, cu-trigger-1..2, cu-decoy-1..2), prompts copied from `skills/*/evals/evals.json`, graders `tool_used` on Skill with a regex on the skill name (max 0 for must-not).
+- cw-trigger-1, -2, -3 · trigger · pass · Skill chartwright called once each.
+- cw-decoy-1 (horizon chart into the knowledge base) · trigger · pass · chartwright-curate called, chartwright not.
+- cw-decoy-2 (sequence diagram) · trigger · pass · neither skill called.
+- Caveat: the eval runs with a throwaway config, so the catalog held this plugin and built-ins only, not the 40-odd user skills. It proves the two descriptions separate; it does not prove selection in the full catalog. Cost 1.11 USD, 58 s at concurrency 4.
+- led to: none (run after C-20260926-1)
+
 ### T-20260918-4 · 2026-09-18 · evergreen-tester from a neutral scratch folder (sonnet, 1 run per case), full suite · DESKTOP (Windows) · 7/7
 - trigger-1 (line graph from prices.csv) · trigger · pass · `Skill(chartwright:chartwright)` was tool call 1 of 1.
 - trigger-2 (add graphs to quarterly-summary.md) · trigger · pass · Skill call first, no file reads before it.

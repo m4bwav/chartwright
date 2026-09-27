@@ -127,3 +127,10 @@ Append-only. Newest at the bottom. One entry per working session.
 ## [2026-09-18] add | decision: The generated kb index links every entry
 ## [2026-09-18] index | rebuilt (3 entries)
 ## [2026-09-23] update | CLAUDE.md imports AGENTS.md with an @AGENTS.md line (Claude Code 2.1.277+ loads nothing from a prose pointer); .github/copilot-instructions.md kept as the Copilot pointer
+
+## 2026-09-26: 0.8.2, skill descriptions separated
+
+- Asked for: the context-health selection check scored chartwright and chartwright-curate at TF-IDF cosine 0.77 (near-duplicate) and both descriptions were over 1,024 characters. Fix without losing trigger coverage.
+- Done: both descriptions rewritten (970 and 829 characters). chartwright leads with building a chart and keeps the chart words; curate leads with maintaining the knowledge base and lists no chart types. Each ends with one "Not for" clause. Trigger coverage mapping in the two skill changelogs (C-20260926-1).
+- Verified: the check now scores the pair at 0.33 and neither is over the limit. 45 unit tests pass; `cw.py --strict validate` clean. `claude plugin eval` runs on native Windows: nine trigger and decoy cases, 9/9 (T-20260926-1). The cases now live in `evals/` at the plugin root.
+- Learned: `claude plugin eval` accepts prompt.md cases with `tool_used` graders (`tool: Skill`, `input_match` regex, `min: 0` and `max: 0` for a must-not); it runs in a throwaway config, so only the plugin under test and built-ins are in the catalog. The similarity check reads the installed copy under `~/.claude/plugins/cache/mark-local/chartwright/<version>`, so it only sees a rewrite after the plugin is updated.

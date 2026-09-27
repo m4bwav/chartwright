@@ -2,6 +2,11 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.8.2 (2026-09-26)
+
+- Both skill descriptions rewritten so a model can tell them apart. `chartwright` now opens with "Builds a chart or graph from data" and keeps the chart words; `chartwright-curate` opens with "Maintains chartwright's knowledge base" and drops chart-type lists. Each ends with one "Not for ..." clause naming the other. Lengths 970 and 829 characters (were 1,523 and 1,303), both under the Agent Skills limit of 1,024 that Copilot enforces. TF-IDF cosine between the two fell from 0.77 (near-duplicate) to 0.33 in the context-health selection check.
+- New `evals/` folder at the plugin root: nine trigger and decoy cases in the `claude plugin eval` format (prompt.md plus `tool_used` graders on the Skill tool). Run: `claude plugin eval . --ablation none --no-publish -j 4`. First run 9/9 on Windows 11.
+
 ## 0.8.1 (2026-09-18)
 
 - `kb/INDEX.md` now links every chart slug to `charts/<slug>.md`, every target to `targets/<slug>.md`, and ends with a Rules section linking `kb/rules/*.md`; its header links `SCHEMA.md` and the plugin README. Nothing parses the table back (`cw.py` reads `index.json`), so agents read it as before, and the index stays about 1/26 the size of the charts folder. Reason: the knowledge base is read by people in Obsidian and on GitHub as well as by agents; without links its 99 entries were orphans in a graph view (the obsidian-notes lint reported 108 orphans in this repo, now 0). The README gained an entry-points paragraph for the same reason. `tests/test_cw.py` asserts the linked form.
