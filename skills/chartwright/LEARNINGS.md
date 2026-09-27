@@ -16,6 +16,14 @@ Write an entry the moment a real signal happens: a user correction, the same err
 - Status: active · helpful 1 · harmful 0 · last_confirmed 2026-09-17
 -->
 
+### L-20260927-1 · 2026-09-27 · `pick --shape interval` found nothing; the shape from `cw data` found the timeline
+- Trigger: a personal site's "first release to 2026 rebuild per package" chart. `cw.py pick --shape interval` returned no picks; `cw.py data` guessed `n,time,time`, and the same question with that shape ranked `timeline` first (13.75), then `gantt`.
+- Hypothesis: `--shape` takes the knowledge base's shape strings only; an invented word silently matches nothing.
+- Rule: run `cw.py data` first and pass its `shape_guess` to `pick`, as Step 2 says; never invent a shape name. The render target for a site with a strict CSP and theme tokens was server-rendered HTML and CSS, which is not a `cw.py build` target yet: a candidate for chartwright-curate.
+- Evidence: markdavidrogers-web PR #14, `Pages/Shared/_KeptAlive.cshtml`.
+- Scope: skill (Step 2) and the build targets
+- Status: active · helpful 0 · harmful 0 · last_confirmed 2026-09-27
+
 ### L-20260918-1 · 2026-09-18 · A plugin installed mid-session is invisible to that session's Skill tool
 - Trigger: every eval run in the creating session got "Unknown skill: chartwright" although `claude plugin install` had succeeded; testers fell back to reading SKILL.md and running cw.py by hand.
 - Hypothesis: the skill registry is built at session start; subagents inherit it.
