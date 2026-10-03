@@ -16,7 +16,8 @@ Write an entry the moment a real signal happens: a user correction, the same err
 - Status: active · helpful 1 · harmful 0 · last_confirmed 2026-09-17
 -->
 
-### L-20260927-1 · 2026-09-27 · `pick --shape interval` found nothing; the shape from `cw data` found the timeline
+### L-003 · 2026-09-27 · `pick --shape interval` found nothing; the shape from `cw data` found the timeline
+- Former ID: date-style 20260927-1 (renumbered 2026-10-03, C-20261003-2)
 - Trigger: a personal site's "first release to 2026 rebuild per package" chart. `cw.py pick --shape interval` returned no picks; `cw.py data` guessed `n,time,time`, and the same question with that shape ranked `timeline` first (13.75), then `gantt`.
 - Hypothesis: `--shape` takes the knowledge base's shape strings only; an invented word silently matches nothing.
 - Rule: run `cw.py data` first and pass its `shape_guess` to `pick`, as Step 2 says; never invent a shape name. The render target for a site with a strict CSP and theme tokens was server-rendered HTML and CSS, which is not a `cw.py build` target yet: a candidate for chartwright-curate.
@@ -24,15 +25,18 @@ Write an entry the moment a real signal happens: a user correction, the same err
 - Scope: skill (Step 2) and the build targets
 - Status: active · helpful 0 · harmful 0 · last_confirmed 2026-09-27
 
-### L-20260918-1 · 2026-09-18 · A plugin installed mid-session is invisible to that session's Skill tool
+### L-001 · 2026-09-18 · A plugin installed mid-session is invisible to that session's Skill tool
+- Former ID: date-style 20260918-1 (renumbered 2026-10-03, C-20261003-2)
 - Trigger: every eval run in the creating session got "Unknown skill: chartwright" although `claude plugin install` had succeeded; testers fell back to reading SKILL.md and running cw.py by hand.
 - Hypothesis: the skill registry is built at session start; subagents inherit it.
 - Evidence: six tester runs on 2026-09-18, each with the Skill call failing and the skill absent from the available-skills list, while `claude plugin install` had reported success and the folder existed.
 - Rule: trigger evals run from a session started after the install; same-session trigger results are recorded as inconclusive.
 - Apply: after installing or renaming a skill, run evergreen-test from a fresh session; treat same-session trigger results as inconclusive, not failing.
 
-### L-20260918-3 · 2026-09-18 · A real README and a Word destination exposed CLI and reference gaps the fixtures never hit
+### L-002 · 2026-09-18 · A real README and a Word destination exposed CLI and reference gaps the fixtures never hit
+- Former ID: date-style 20260918-3 (renumbered 2026-10-03, C-20261003-2)
 - Trigger: two fresh-context runs on 2026-09-18 (another project's README; a .docx in a scratch folder), both passing on evidence but each hitting friction.
+- Hypothesis: fixtures written inside the repo match what the builder already handles, so only an outside document with its own layout, flags in a natural order and an unplanned destination exposes the gaps.
 - Evidence: `cw.py pick ... --json` failed (flag was global-only); `pick` scored beeswarm above bar because "each" matched "each country"; Mermaid bars autoscaled from 130, not 0; `render --target mermaid` left `.mmd.mmd` files; the references said "PNG path for documents" with no Word route, so the tester bridged to python-docx alone.
 - Rule: eval the skill on a real document in another folder after every builder or reference change; fixtures inside the repo only prove the happy path. The full-suite rerun (T-20260918-4) added one more: monthly dates got fortnightly Vega-Lite ticks, now fixed with a month tickCount.
 - Apply: fixed in C-20260918-8 (flags hoisted, GENERIC words, zero baseline, cleanup) and C-20260918-7 (`docx` target). Next real-document runs: a Google Sheet through the Sheets API and a PlantUML document.

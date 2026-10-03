@@ -8,6 +8,14 @@ Entry shape: `### T-YYYYMMDD-n · date · harness · env · passed/total`, then 
 
 ## Runs
 
+### T-20261003-1 · 2026-10-03 · claude plugin eval 2.1.281 on a scratch copy of the plugin (default model, 1 run per case, no ablation) · DESKTOP (Windows 11, native) · 5/5
+- Suite: root `evals/` cw-trigger-1..3 and cw-decoy-1..2, run after the refresh edit C-20261003-1 (one sentence in Step 3 to 5; description unchanged).
+- cw-trigger-1, -2, -3 · trigger · pass · Skill chartwright called once each.
+- cw-decoy-1 (horizon chart into the knowledge base) · trigger · pass · chartwright-curate called, chartwright not.
+- cw-decoy-2 (sequence diagram) · trigger · pass · neither skill called.
+- Action and outcome cases not rerun (the edit adds an optional pointer, no procedure change). `worth --against HEAD`: +44 tokens, 1 of 1 new sentences specific; verdict UNPROVEN (no baseline ever run for the value cases; outcome-1 has no gradable evidence). Untested elsewhere. Cost 0.53 USD, 18 s at concurrency 4.
+- led to: none
+
 ### T-20260926-1 · 2026-09-26 · claude plugin eval 2.1.281 on a scratch copy of the plugin (default model, 1 run per case, no ablation) · DESKTOP (Windows 11, native) · 9/9
 - Suite: the root `evals/` folder (cw-trigger-1..3, cw-decoy-1..2, cu-trigger-1..2, cu-decoy-1..2), prompts copied from `skills/*/evals/evals.json`, graders `tool_used` on Skill with a regex on the skill name (max 0 for must-not).
 - cw-trigger-1, -2, -3 · trigger · pass · Skill chartwright called once each.
@@ -30,7 +38,7 @@ Entry shape: `### T-YYYYMMDD-n · date · harness · env · passed/total`, then 
 - readme (action+outcome, another repo) · pass · Skill call first; cw.py data, pick, show, build, render in the trace; two Mermaid bar blocks placed after the `--size` table and at the end of Batch sizing in video-pipeline/README.md, both rendered to SVG through npx mmdc and inspected. Gaps found: `--json` trailing the subcommand failed; pick ranked beeswarm above bar; bars lacked `0 --> max`; render left `.mmd.mmd` files.
 - docx (action+outcome, Word destination) · pass · Skill call first, then the docx skill; cw.py build bar vega-lite, render PNG at 2x; sales-summary.docx 60,526 bytes with word/media/image1.png, one 6 in inline shape, caption and data table. Gap found: no Word route in the references.
 - Note: `claude -p` from this session was refused by the permission classifier, so both runs used the tester agent with the session's neutral working directory.
-- led to: C-20260918-7, C-20260918-8, L-20260918-3
+- led to: C-20260918-7, C-20260918-8, L-002 (was date-style 20260918-3)
 
 ### T-20260918-2 · 2026-09-18 · claude -p fresh sessions (sonnet, 1 run per case) · DESKTOP (Windows) · 2/2
 - trigger-1 · trigger · pass · trace shows `Skill{"skill":"chartwright:chartwright"}`; examples/eval-trigger.md holds the xychart block built by cw.py.
@@ -42,7 +50,7 @@ Entry shape: `### T-YYYYMMDD-n · date · harness · env · passed/total`, then 
 - decoy-1 · trigger · pass · chartwright was not invoked; the tester reached for chartwright-curate (also unregistered) and did the note via cw.py, then reverted.
 - action-1 · action · pass · `cw.py --json pick ...` and `cw.py build --chart bar --target mermaid ...` in the trace; examples/sales-by-region.md contains the xychart block; rendered via npx mmdc. Surfaced the duplicate-x aggregation bug (C-20260918-2).
 - outcome (trigger-1's run doubled as outcome) · pass · examples/prices/price-line.png rendered from cw.py build + render and viewed.
-- led to: L-20260918-1, C-20260918-2
+- led to: L-001 (was date-style 20260918-1), C-20260918-2
 
 ### T-20260917-1 · 2026-09-17 · not yet run · skill · 0/0
 - Suite scaffolded; no run recorded. Write the cases in `evals/evals.json` (at least two trigger prompts, two decoys, one action case with evidence, one outcome case), run the baseline without the skill, then run with it (`evergreen-test`).

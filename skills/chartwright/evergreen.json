@@ -13,9 +13,9 @@
   "source": null,
   "topic": "chart type selection evidence and the chart menus, syntax and versions of Mermaid, Vega-Lite, Plotly, Chart.js and matplotlib; how agents choose and build charts",
   "tier": "fast",
-  "interval_days": 14,
-  "last_checked": "2026-09-17",
-  "next_due": "2026-10-01",
+  "interval_days": 9.33,
+  "last_checked": "2026-10-03",
+  "next_due": "2026-10-13",
   "verify_at_use": false,
   "volatile_claims": [],
   "contradiction": null,
@@ -32,18 +32,24 @@
       "m": null,
       "interval_after": 14,
       "note": "created"
+    },
+    {
+      "date": "2026-10-03",
+      "m": 0.4,
+      "interval_after": 9.33,
+      "note": "Mermaid 12.1.0 (0.1); Flint standalone MCP compiler pointed to in SKILL.md (0.4); rest quiet; learning IDs renumbered; cost: searches 6 · fetches 1 · tool calls 24"
     }
   ],
   "counts": {
     "learnings": 1,
     "changes": 5,
-    "research": 0,
-    "tests": 3
+    "research": 1,
+    "tests": 4
   },
   "consolidate_every": 25,
   "tests": {
-    "last_run": "2026-09-26T20:35",
-    "harness": "claude plugin eval 2.1.281 (root evals/, trigger and decoy cases)",
+    "last_run": "2026-10-03T08:07",
+    "harness": "claude plugin eval 2.1.281 (root evals/ cw-* trigger and decoy cases, scratch copy)",
     "env": "DESKTOP",
     "cases": 5,
     "passed": 5,

@@ -4,6 +4,16 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261003-2 · 2026-10-03 · Learning IDs renumbered to the protocol's L-NNN form; Hypothesis added
+- because: evergreen lint on 2026-10-03 (a learning ID defined twice and one learning missing its Hypothesis); the protocol's ID pattern is `L-` plus three or more digits, so date-style IDs collapse to their date
+- files: LEARNINGS.md (Active: L-001, L-002, L-003, each with a Former ID line; Hypothesis added to L-002), TESTS.md (T-20260918-3, T-20260918-1 `led to:`), CHANGELOG.md (C-20260918-8 `because:`)
+- Date-style 20260918-1 became L-001, 20260918-3 became L-002, 20260927-1 became L-003. Old IDs in ai-docs/log.md are left as written (append-only log).
+
+### C-20261003-1 · 2026-10-03 · Point to Flint as an optional compiler after the type is picked
+- because: R-20261003-2
+- files: SKILL.md (Step 3 to 5: one sentence; Maintenance: next due), RESEARCH.md (Current understanding, Open questions, Search plan)
+- Flint is named as an option for users who already run its MCP server, with its target limits, and with type selection staying in Step 2. Nothing installed or delegated.
+
 ### C-20260926-1 · 2026-09-26 · Description rewritten to stand apart from chartwright-curate
 - because: user request; the context-health selection check scored the two descriptions at TF-IDF cosine 0.77 (near-duplicate) and flagged both as over 1,024 characters; T-20260926-1; plugin 0.8.2
 - files: SKILL.md (frontmatter `description` only; body unchanged)
@@ -30,7 +40,7 @@ Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (ID
 - A second numeric column was the missing role for targets and bounds; the four compositions were rendered and inspected (band y-axis no longer starts at zero; bump rank axis runs 1..n).
 
 ### C-20260918-8 · 2026-09-18 · Fixes from the README and Word fresh-session runs
-- because: T-20260918-3 (two evergreen-tester runs from a neutral directory), L-20260918-3
+- because: T-20260918-3 (two evergreen-tester runs from a neutral directory), L-002 (was date-style 20260918-3)
 - files: scripts/cw.py (_hoist_globals, build_mermaid y-axis range, build_vega_lite bar sort, GENERIC words and magnitude synonyms in pick, mermaid render cleanup), references/build-and-verify.md (Word row now points at the `docx` target), tests/test_cw.py
 - `cw.py pick ... --json` now works with the flag in either position; Mermaid bars carry `0 --> max`; the Vega-Lite bar is sorted by value; "how long does each take" picks bar, not beeswarm; the Word destination has a route instead of a bare "PNG path for documents".
 - Also: Vega-Lite temporal axes with first-of-month dates get `tickCount: month` and `%b %Y` labels (T-20260918-4 outcome-1 had to hand-edit fortnightly ticks).
