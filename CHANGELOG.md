@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.8.3 (2026-10-03)
+
+- Evergreen refresh of the chartwright skill (was due 2026-10-01). The skill now names Microsoft's Flint (`microsoft/flint-chart`, an MIT chart compiler and MCP server) as an optional backend for users who already run it, after chartwright picks the chart type; nothing is installed or delegated. Mermaid 12.1.0 noted in the research (no chart syntax change); every other library unchanged since 2026-09-17. Learning IDs in the skill renumbered to the protocol's `L-NNN` form. Details: `skills/chartwright/CHANGELOG.md` C-20261003-1 and -2, RESEARCH.md R-20261003-1 to -3. Trigger and decoy evals 5/5.
+
 ## 0.8.2 (2026-09-26)
 
 - Both skill descriptions rewritten so a model can tell them apart. `chartwright` now opens with "Builds a chart or graph from data" and keeps the chart words; `chartwright-curate` opens with "Maintains chartwright's knowledge base" and drops chart-type lists. Each ends with one "Not for ..." clause naming the other. Lengths 970 and 829 characters (were 1,523 and 1,303), both under the Agent Skills limit of 1,024 that Copilot enforces. TF-IDF cosine between the two fell from 0.77 (near-duplicate) to 0.33 in the context-health selection check.
