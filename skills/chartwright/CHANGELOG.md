@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261004-1 · 2026-10-04 · Pin the Mermaid CLI that npx runs; Privacy section and listing links for the Claude directory
+- because: user request (list chartwright in the Claude directory); the directory's checklist wants every package a launcher runs pinned to an exact version
+- files: scripts/cw.py (`MERMAID_CLI` constant, used by `render --target mermaid` and `doctor`), README.md (Privacy), .claude-plugin/plugin.json (documentationUrl, supportUrl, privacyPolicyUrl, version 0.8.4)
+- `npx --yes -p @mermaid-js/mermaid-cli mmdc` became `@mermaid-js/mermaid-cli@12.0.0`, so a render runs the same code every time; verified with a real render to SVG through npx on Windows and the 45 cw.py tests.
+
 ### C-20261003-2 · 2026-10-03 · Learning IDs renumbered to the protocol's L-NNN form; Hypothesis added
 - because: evergreen lint on 2026-10-03 (a learning ID defined twice and one learning missing its Hypothesis); the protocol's ID pattern is `L-` plus three or more digits, so date-style IDs collapse to their date
 - files: LEARNINGS.md (Active: L-001, L-002, L-003, each with a Former ID line; Hypothesis added to L-002), TESTS.md (T-20260918-3, T-20260918-1 `led to:`), CHANGELOG.md (C-20260918-8 `because:`)

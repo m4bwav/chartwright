@@ -26,6 +26,9 @@ from __future__ import annotations
 import argparse, csv, datetime as dt, json, re, shutil, subprocess, sys
 from pathlib import Path
 
+# npx runs exactly this version when mmdc is not installed (an unpinned launcher would run whatever npm serves that day).
+MERMAID_CLI = "@mermaid-js/mermaid-cli@12.0.0"
+
 ROOT = Path(__file__).resolve().parent.parent
 KB = ROOT / "kb"
 CHARTS = KB / "charts"
@@ -1386,9 +1389,9 @@ def cmd_render(a):
         if mmdc:
             cmd = [mmdc]
         elif npx:
-            cmd = [npx, "--yes", "-p", "@mermaid-js/mermaid-cli", "mmdc"]
+            cmd = [npx, "--yes", "-p", MERMAID_CLI, "mmdc"]
         else:
-            print("no mmdc and no npx: npm i -g @mermaid-js/mermaid-cli")
+            print(f"no mmdc and no npx: npm i -g {MERMAID_CLI}")
             return 1
         r = subprocess.run(cmd + ["-i", str(src), "-o", str(out), "-b", "white"], capture_output=True, text=True)
         if m and src.exists():
@@ -1454,7 +1457,7 @@ def cmd_doctor(a):
     if not info["vl_convert"]:
         info["advice"].append("pip install vl-convert-python  (Vega-Lite -> PNG/SVG without a browser)")
     if not info["mmdc"] and not info["npx"]:
-        info["advice"].append("install Node, then npm i -g @mermaid-js/mermaid-cli  (only needed to rasterize Mermaid)")
+        info["advice"].append(f"install Node, then npm i -g {MERMAID_CLI}  (only needed to rasterize Mermaid)")
     if not info["matplotlib"]:
         info["advice"].append("pip install matplotlib  (static charts; optional)")
     print(json.dumps(info, indent=1))

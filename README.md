@@ -58,6 +58,17 @@ Each render target records where its build and render were actually proven (`tes
 
 Claude Code: add the repo as a marketplace and install (`/plugin marketplace add m4bwav/chartwright` then `/plugin install chartwright@chartwright`), or clone it into a local directory marketplace. Elsewhere, copy `skills/*` into the agent's skill store and keep the plugin folder where the skills can find `scripts/` and `kb/` (two levels up from each SKILL.md). Optional renderers: `pip install vl-convert-python matplotlib python-pptx openpyxl`; Node plus `@mermaid-js/mermaid-cli` only to rasterise Mermaid.
 
+## Privacy
+
+chartwright keeps nothing and runs on your machine: the skills are instructions for the agent, and `scripts/cw.py` is a standard-library Python script that reads the data files you point it at. A few routes reach the network, and only when you choose them:
+
+- The QuickChart target encodes the chart, data included, into a quickchart.io URL. Anyone who opens the image fetches it from quickchart.io, so don't use this target for private data.
+- Rendering PlantUML without a local `plantuml` sends the diagram source to kroki.io to draw the image.
+- A web page target (Vega-Lite, ECharts, Plotly, Chart.js, Observable Plot) writes HTML that loads its charting library from cdn.jsdelivr.net or cdn.plot.ly when the page is opened. The data stays in the page.
+- Rendering Mermaid without `mmdc` installed has `npx` download `@mermaid-js/mermaid-cli@12.0.0` from npm and run it locally.
+
+Nothing else is sent anywhere. Whatever your AI app does with the conversation is covered by that app's own privacy policy.
+
 ## Versioning
 
 Semantic version in `.claude-plugin/plugin.json`; every change is logged in the skill `CHANGELOG.md` files and the plugin `CHANGELOG.md`. Tags on the repo match the plugin version.

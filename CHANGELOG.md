@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.8.4 (2026-10-04)
+
+- Ready for the Claude directory. `cw.py` pins the Mermaid CLI that `npx` runs when `mmdc` is not installed to `@mermaid-js/mermaid-cli@12.0.0` (it ran whatever npm served that day); rendered to SVG through the pinned path and the 45 tests pass on Windows. The README gains a Privacy section that lists every route that reaches the network (QuickChart URLs, kroki.io for PlantUML, CDN libraries in the web page targets, the npx download). plugin.json gains `documentationUrl` (the wiki), `supportUrl` and `privacyPolicyUrl` for the directory listing. kb/INDEX.md and index.json regenerated (date only). Details: `skills/chartwright/CHANGELOG.md` C-20261004-1.
+
 ## 0.8.3 (2026-10-03)
 
 - Evergreen refresh of the chartwright skill (was due 2026-10-01). The skill now names Microsoft's Flint (`microsoft/flint-chart`, an MIT chart compiler and MCP server) as an optional backend for users who already run it, after chartwright picks the chart type; nothing is installed or delegated. Mermaid 12.1.0 noted in the research (no chart syntax change); every other library unchanged since 2026-09-17. Learning IDs in the skill renumbered to the protocol's `L-NNN` form. Details: `skills/chartwright/CHANGELOG.md` C-20261003-1 and -2, RESEARCH.md R-20261003-1 to -3. Trigger and decoy evals 5/5.
