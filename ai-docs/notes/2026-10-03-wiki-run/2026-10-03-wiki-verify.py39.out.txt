@@ -1,0 +1,551 @@
+== installed ==
+clone: 34b1871 2026-10-03
+Python 3.9.25
+== home-terminal ==
+$ python scripts/cw.py build --chart line --target terminal --data prices.csv --x date --y price
+price by date
+▁▂▁▅█▆  100 -> 112 (min 100, max 115, 6 points, 2026-01-01 to 2026-06-01)
+== home-mermaid ==
+$ python scripts/cw.py build --chart bar --target mermaid --data regions.csv --x region --y sales
+```mermaid
+xychart-beta
+    title "sales by region"
+    x-axis ["North", "South", "East"]
+    y-axis "sales" 0 --> 250
+    bar [200, 225, 130]
+```
+== gs-doctor ==
+$ python scripts/cw.py doctor
+{
+ "python": "3.9.25",
+ "platform": "win32",
+ "plugin_root": "<work>",
+ "vl_convert": null,
+ "matplotlib": null,
+ "plotly": null,
+ "altair": null,
+ "pptx": null,
+ "openpyxl": null,
+ "mmdc": null,
+ "node": "D:\\Tools\\node\\node.EXE",
+ "npx": "D:\\Tools\\node\\npx.CMD",
+ "kb_charts": 83,
+ "kb_targets": 16,
+ "advice": [
+  "pip install vl-convert-python  (Vega-Lite -> PNG/SVG without a browser)",
+  "pip install matplotlib  (static charts; optional)"
+ ]
+}
+== gs-copy-route ==
+$ git -c advice.detachedHead=false clone -q --depth 1 --branch v0.8.4 https://github.com/m4bwav/chartwright.git chartwright-src
+$ mkdir -p project/.github
+$ cp -r chartwright-src/skills chartwright-src/kb chartwright-src/scripts project/.github/
+$ ls project/.github
+kb
+scripts
+skills
+$ ls project/.github/skills
+chartwright
+chartwright-curate
+$ python project/.github/scripts/cw.py --strict validate
+ok: 83 charts, 16 targets valid
+== gs-gh-skill ==
+$ mkdir -p project/.github
+$ gh skill install m4bwav/chartwright --all --dir project/.github/skills
+Using ref v0.8.4 (34b18715)
+
+! Skills are not verified by GitHub and may contain prompt injections, hidden instructions, or malicious scripts. Always review skill contents before use.
+
+✓ Installed chartwright (from m4bwav/chartwright@v0.8.4) in project/.github/skills
+✓ Installed chartwright-curate (from m4bwav/chartwright@v0.8.4) in project/.github/skills
+
+  chartwright/
+  ├── CHANGELOG.md
+  ├── LEARNINGS.md
+  ├── RESEARCH.md
+  ├── SKILL.md
+  ├── TESTS.md
+  ├── evals/
+  │   └── evals.json
+  ├── evergreen.json
+  └── references/
+      ├── build-and-verify.md
+      └── document-charts.md
+  chartwright-curate/
+  ├── CHANGELOG.md
+  ├── LEARNINGS.md
+  ├── RESEARCH.md
+  ├── SKILL.md
+  ├── TESTS.md
+  ├── evals/
+  │   └── evals.json
+  ├── evergreen.json
+  └── references/
+      └── procedures.md
+
+! Skills may contain prompt injections or malicious scripts.
+  Review installed content before use:
+
+    gh skill preview m4bwav/chartwright chartwright@34b18715e0d847f16580b1e03d66ce0f17f1b3d3
+    gh skill preview m4bwav/chartwright chartwright-curate@34b18715e0d847f16580b1e03d66ce0f17f1b3d3
+
+$ ls project/.github/skills/chartwright
+CHANGELOG.md
+LEARNINGS.md
+RESEARCH.md
+SKILL.md
+TESTS.md
+evals
+evergreen.json
+references
+$ ls project/.github
+skills
+== cmd-no-args ==
+$ python scripts/cw.py
+usage: cw.py [-h] [--strict] [--json]
+             {index,validate,list,show,pick,data,build,render,new-chart,new-target,note,doctor,targets,tested}
+             ...
+cw.py: error: the following arguments are required: cmd
+$ echo $?
+2
+== cmd-data ==
+$ python scripts/cw.py data prices.csv
+{
+ "file": "prices.csv",
+ "rows": 6,
+ "columns": [
+  {
+   "name": "date",
+   "kind": "time",
+   "non_empty": 6,
+   "first": "2026-01-01",
+   "last": "2026-06-01"
+  },
+  {
+   "name": "price",
+   "kind": "q",
+   "non_empty": 6,
+   "min": 100.0,
+   "max": 115.0
+  }
+ ],
+ "shape_guess": "time,q"
+}
+$ python scripts/cw.py data sales.csv
+{
+ "file": "sales.csv",
+ "rows": 6,
+ "columns": [
+  {
+   "name": "region",
+   "kind": "n",
+   "non_empty": 6,
+   "distinct": 3,
+   "sample": [
+    "East",
+    "North",
+    "South"
+   ]
+  },
+  {
+   "name": "product",
+   "kind": "n",
+   "non_empty": 6,
+   "distinct": 2,
+   "sample": [
+    "A",
+    "B"
+   ]
+  },
+  {
+   "name": "sales",
+   "kind": "q",
+   "non_empty": 6,
+   "min": 60.0,
+   "max": 130.0
+  }
+ ],
+ "shape_guess": "n,n,q"
+}
+== cmd-pick ==
+$ python scripts/cw.py pick --question "line graph, time on x, price on y" --shape time,q
+1. line (16.0): Line chart - How does a value change over time, and how do a few series compare as they change?
+   why: named in request; goals: line, over time, price, time; shape time,q
+2. step (8.25): Step chart - When did a level change, and what was it in between?
+   why: goals: over time, price, time; shape time,q
+3. ridgeline (7.75): Ridgeline plot - How does the shape of a distribution shift across many ordered groups, such as months, years or dose levels?
+   why: goals: line, over time, time; shape time,q
+== cmd-pick-json ==
+$ python scripts/cw.py pick --question "how to show signup drop-off" --top 1 --json
+{
+ "question": "how to show signup drop-off",
+ "goals": [
+  "stages",
+  "flow",
+  "how",
+  "signup",
+  "drop-off"
+ ],
+ "shape": null,
+ "picks": [
+  {
+   "slug": "alluvial",
+   "name": "Alluvial diagram",
+   "score": 6.5,
+   "why": [
+    "goals: flow, stages",
+    "family flow"
+   ],
+   "warnings": [],
+   "family": "flow",
+   "question": "How do groups redistribute across the categories of several ordered variables?"
+  }
+ ],
+ "next": "cw.py show <slug> --section when not substitutes; then cw.py build ...; palette and marks: the dataviz skill when present"
+}
+== cmd-pick-warn ==
+$ python scripts/cw.py pick --question "trend over time" --shape time,q*n --series 8 --target mermaid
+1. line (8.0): Line chart - How does a value change over time, and how do a few series compare as they change?
+   why: goals: over, over time, time, trend; shape time,q*n
+   warn: 8 series > cap 5: facet (small multiples) or fold to Other
+2. bump (7.0): Bump chart - How did the rank order of a set of entities change across several periods?
+   why: goals: over, over time, time; shape time,q*n
+   warn: mermaid: image only
+3. column (6.5): Column chart - How much was there in each period, and how do the totals compare period to period?
+   why: goals: over, over time, time; shape time,q*n
+   warn: 8 series > cap 3: facet (small multiples) or fold to Other
+== cmd-pick-none ==
+$ python scripts/cw.py pick --question "zzz"
+1. bar (1.0): Bar chart - How big is each category, and which is largest?
+2. column (1.0): Column chart - How much was there in each period, and how do the totals compare period to period?
+3. diverging-bar (1.0): Diverging bar chart - Which categories are above or below a reference (zero, target, average), and by how much?
+== cmd-show ==
+$ python scripts/cw.py show line --section when not substitutes
+# Line chart (line)
+family: change-over-time  shapes: ['time,q', 'time,q*n', 'o,q', 'o,q*n']  caps: series 5 / categories 0  evidence: high  popularity: core
+
+## When to use
+- A continuous measure sampled over ordered time (or another ordered axis): prices, temperatures, traffic, rates.
+- The point is the shape of change: trend, seasonality, inflection, crossing of two series.
+- Up to about five series that the reader must compare at the same moments; for more, grey them and highlight one, or use small multiples.
+- Many points (hundreds or thousands): a line stays legible where bars turn into a wall.
+- Excels at: showing slope and shape at a glance; the eye reads slope and crossing points quickly (Franconeri et al. 2021).
+
+## When not to use
+- Categories with no order (products, countries): a line implies continuity that does not exist; use a bar or dot plot.
+- Very few periods (2 to 4) and the message is the totals, not the shape: a column chart or a slope chart.
+- Discrete counts per period where the total matters (units sold per quarter): columns say "amount" better than a line.
+- More than about five series with similar values: the spaghetti hides everything; facet.
+- Two measures on different scales on one chart (dual axis): the crossing point is an artefact of axis choice; use two panels or index both to 100.
+- Irregular sampling with big gaps: connect-the-dots invents values; show points, or a step chart when the value holds until the next change.
+
+## Substitutes
+- Few periods, discrete totals: `column` (bar over time).
+- Two periods, many entities: `slope`.
+- Rank changes over time: `bump`.
+- Many series: `small-multiples` of lines; or `heatmap` with time on x and series on y.
+- Value holds between changes (prices, status): `step`.
+- Volume plus trend for one series: `area`; several stacked parts of a total over time: `stacked-area` (only when the total matters).
+- Distribution over time: `ridgeline` or box plots per period; uncertainty: `range-band` (fan chart).
+- Daily values over years: `calendar-heatmap`.
+
+== cmd-show-build ==
+$ python scripts/cw.py show pie --section build --target mermaid
+# Pie chart (pie)
+family: part-to-whole  shapes: ['n,q']  caps: series 0 / categories 5  evidence: medium  popularity: core
+
+## Build: mermaid
+```mermaid
+pie showData
+    title Traffic by device
+    "Mobile" : 58
+    "Desktop" : 34
+    "Tablet" : 8
+```
+
+`cw.py build --chart pie --target mermaid --data traffic.csv --x device --y visits`. Slices draw in input order, so sort the data descending first; `showData` prints values; colours come from the theme only.
+
+== cmd-show-missing ==
+$ python scripts/cw.py show piechart
+no chart or target 'piechart'
+$ echo $?
+0
+$ python scripts/cw.py --strict show piechart
+no chart or target 'piechart'
+$ echo $?
+1
+== cmd-list ==
+$ python scripts/cw.py list --family ranking
+bar                    magnitude          How big is each category, and which is largest?
+beeswarm               distribution       Where does every individual sit along one measure, and which ones stand out?
+boxplot                distribution       How do the median and spread of a numeric variable compare across groups?
+bump                   change-over-time   How did the rank order of a set of entities change across several periods?
+column                 change-over-time   How much was there in each period, and how do the totals compare period to period?
+diverging-bar          deviation          Which categories are above or below a reference (zero, target, average), and by how much?
+dot-plot               magnitude          What is each category's value, and how do a few values per category compare, when the baseline need not be zero?
+dumbbell               deviation          How far apart are two values per category, and which way did each move?
+funnel                 part-to-whole      How much drops out at each stage of a fixed sequence?
+grouped-bar            magnitude          How do two or three series compare within each category?
+lollipop               ranking            How do many categories rank, shown with less ink than bars?
+quadrant               correlation        Which items fall into which of four groups defined by two criteria, such as high impact and low effort?
+slope                  change-over-time   How did each entity's value or rank change between two points in time?
+strip                  distribution       What are all the values in each category, in the least space?
+table                  table              What are the exact values, across several measures per row, and where are the patterns?
+word-cloud             magnitude          Which words or terms appear most often in a body of text?
+$ python scripts/cw.py list --target terminal
+area                   change-over-time   How does the volume of one measure change over time?
+bar                    magnitude          How big is each category, and which is largest?
+column                 change-over-time   How much was there in each period, and how do the totals compare period to period?
+line                   change-over-time   How does a value change over time, and how do a few series compare as they change?
+small-multiples        change-over-time   How does the same pattern differ across many categories, each shown in its own small panel?
+sparkline              change-over-time   What is the recent shape of a trend, at a glance, next to the number it belongs to?
+stat-tile              single-value       What is the current value, and how has it changed?
+step                   change-over-time   When did a level change, and what was it in between?
+table                  table              What are the exact values, across several measures per row, and where are the patterns?
+$ python scripts/cw.py list | wc -l
+83
+== cmd-targets ==
+$ python scripts/cw.py targets
+chartjs          web       tested x1  Web, canvas (Chart.js)  [none]
+d2               markdown  untested   D2 diagram (node-and-edge only)  [d2]
+docx             office    tested x1  Word document (PNG via python-docx)  [python]
+echarts          web       tested x1  Web, interactive (Apache ECharts)  [none]
+gdocs            office    tested x1  Google Docs (images via HTML import or Drive upload)  [none]
+gsheets          office    untested   Google Sheets native chart (Sheets API EmbeddedChart)  [none]
+matplotlib       image     tested x1  Static image via Python (matplotlib and friends)  [python]
+mermaid          markdown  tested x1  Markdown (Mermaid)  [mmdc]
+observable-plot  web       untested   Observable Plot (web, SVG marks)  [browser]
+plantuml         markdown  untested   PlantUML chart (@startchart)  [plantuml]
+plotly           web       tested x1  Web, interactive (Plotly)  [none]
+pptx             office    tested x1  PowerPoint native chart (python-pptx)  [python]
+quickchart       image     tested x1  Chart as a URL image (QuickChart)  [none]
+terminal         terminal  tested x1  Terminal and plain chat (Unicode)  [none]
+vega-lite        web       tested x1  Web and static images (Vega-Lite)  [vl_convert]
+xlsx             office    tested x1  Excel native chart (openpyxl)  [python]
+== cmd-build-vl ==
+$ python scripts/cw.py build --chart grouped-bar --target vega-lite --data sales.csv --x region --y sales --series product --out chart.vl.json
+wrote chart.vl.json (885 chars)
+$ python scripts/cw.py render --target vega-lite --in chart.vl.json --out chart.svg
+vl_convert missing: pip install vl-convert-python
+$ python scripts/cw.py render --target vega-lite --in chart.vl.json --out chart.png
+vl_convert missing: pip install vl-convert-python
+$ python scripts/cw.py render --target vega-lite --in chart.vl.json --out chart.gif
+vl_convert missing: pip install vl-convert-python
+== cmd-build-html ==
+$ python scripts/cw.py build --chart grouped-bar --target vega-lite --data sales.csv --x region --y sales --series product --html --out chart.html
+wrote chart.html (1357 chars)
+$ head -c 300 chart.html
+<!doctype html><html><head><meta charset="utf-8"><title>sales by region</title>
+<script src="https://cdn.jsdelivr.net/npm/vega@6"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@6"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@7"></script>
+<style>body{font-family:s
+== cmd-build-agg ==
+$ python scripts/cw.py build --chart bar --target terminal --data sales.csv --x region --y sales
+note: duplicate region values aggregated by sum (6 rows -> 3 points)
+sales by region
+North  ███████████████████████████    200
+South  ██████████████████████████████ 225
+East   █████████████████              130
+$ python scripts/cw.py build --chart bar --target terminal --data sales.csv --x region --y sales 2>/dev/null
+sales by region
+North  ███████████████████████████    200
+South  ██████████████████████████████ 225
+East   █████████████████              130
+$ python scripts/cw.py build --chart bar --target terminal --data sales.csv --x region --y sales --agg mean
+note: duplicate region values aggregated by mean (6 rows -> 3 points)
+sales by region
+North  ███████████████████████████    100
+South  ██████████████████████████████ 112.5
+East   █████████████████              65
+== cmd-build-quickchart ==
+$ python scripts/cw.py build --chart bar --target quickchart --data regions.csv --x region --y sales
+![sales by region](https://quickchart.io/chart?version=4&w=800&h=400&c=%7B%22type%22%3A%22bar%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22North%22%2C%22South%22%2C%22East%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22sales%22%2C%22data%22%3A%5B200.0%2C225.0%2C130.0%5D%7D%5D%7D%2C%22options%22%3A%7B%22responsive%22%3Atrue%2C%22plugins%22%3A%7B%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22sales%20by%20region%22%7D%2C%22legend%22%3A%7B%22display%22%3Afalse%7D%7D%7D%7D)
+== cmd-build-errors ==
+$ python scripts/cw.py build --chart line --target mermaid --data nothere.csv --x date --y price
+note: [Errno 2] No such file or directory: 'nothere.csv'
+$ echo $?
+0
+$ python scripts/cw.py build --chart line --target mermaid --data prices.csv --x day --y price
+column 'day' not in ['date', 'price']
+$ echo $?
+0
+$ python scripts/cw.py --strict build --chart line --target mermaid --data prices.csv --x day --y price
+column 'day' not in ['date', 'price']
+$ echo $?
+1
+$ python scripts/cw.py build --chart line --target svg --data prices.csv --x date --y price
+unknown target 'svg' (mermaid, vega-lite, plotly, chartjs, matplotlib, terminal, echarts, pptx, xlsx, quickchart, plantuml, d2, observable-plot, gsheets, docx)
+$ python scripts/cw.py build --chart line --target gdocs --data prices.csv --x date --y price
+gdocs has no builder: build a quickchart URL or a vega-lite PNG and follow kb/targets/gdocs.md
+$ python scripts/cw.py build --chart heatmap --target mermaid --data prices.csv --x date --y price
+note: mermaid has no recipe for 'heatmap'; use an image target (cw.py show heatmap --section build)
+$ python scripts/cw.py build --chart linechart --target mermaid --data prices.csv --x date --y price
+note: mermaid has no recipe for 'linechart'; use an image target (cw.py show linechart --section build)
+$ python scripts/cw.py build --chart line --target mermaid --data prices.csv --x date --y price --html
+--html applies to vega-lite, plotly, chartjs, echarts, observable-plot
+== cmd-strict-front-or-back ==
+$ python scripts/cw.py build --chart line --target mermaid --data prices.csv --x day --y price --strict
+column 'day' not in ['date', 'price']
+$ echo $?
+1
+== cmd-render-errors ==
+$ python scripts/cw.py render --target vega-lite --in missing.vl.json --out chart.png
+vl_convert missing: pip install vl-convert-python
+$ echo $?
+0
+$ python scripts/cw.py render --target gdocs --in x --out y
+render targets: vega-lite, mermaid, matplotlib, pptx, xlsx, docx, plotly, chartjs, echarts, observable-plot, d2, plantuml
+== cmd-matplotlib ==
+$ python scripts/cw.py build --chart bar --target matplotlib --data regions.csv --x region --y sales --out chart.py --png chart.png
+wrote chart.py (408 chars)
+$ python scripts/cw.py render --target matplotlib --in chart.py --out chart.png
+Traceback (most recent call last):
+  File "<work>\chart.py", line 1, in <module>
+    import matplotlib
+ModuleNotFoundError: No module named 'matplotlib'
+== cmd-authoring ==
+$ python scripts/cw.py note pie "fine for two slices when the question is majority"
+noted in pie.md: - 2026-10-03: fine for two slices when the question is majority
+$ tail -2 kb/charts/pie.md
+- 2026-09-18: Sort slices largest first, starting at 12 o'clock.
+- 2026-10-03: fine for two slices when the question is majority
+$ python scripts/cw.py tested d2 --platform Linux "d2 0.7 rendered an SVG of a five-node network"
+recorded in d2.md: Linux 2026-10-03: d2 0.7 rendered an SVG of a five-node network; run cw.py index
+$ python scripts/cw.py new-chart horizon --name "Horizon chart" --family change-over-time --shapes time,q*n
+<work>\kb\charts\horizon.md exists (use --force)
+$ python scripts/cw.py new-chart spiral --name "Spiral plot" --family change-over-time --shapes time,q
+wrote <work>\kb\charts\spiral.md; fill the TODOs, then cw.py validate && cw.py index
+$ python scripts/cw.py --strict validate
+1 problem(s):
+  - spiral.md: contains TODO
+$ echo $?
+1
+$ python scripts/cw.py index
+indexed 84 charts, 16 targets -> kb/index.json, kb/INDEX.md
+== cmd-new-target ==
+$ python scripts/cw.py new-target svgsketch --name "Hand-drawn SVG" --kind image
+wrote <work>\kb\targets\svgsketch.md
+$ python scripts/cw.py validate | head -3
+84 problem(s):
+  - adjacency-matrix.md: no support entry for target 'svgsketch'
+  - alluvial.md: no support entry for target 'svgsketch'
+$ python scripts/cw.py validate | tail -1
+  - svgsketch.md: missing frontmatter 'tested'
+== pick-named ==
+$ python scripts/cw.py pick --question "a sankey of where visitors go"
+1. sankey (8.0): Sankey diagram - How do quantities flow from sources to destinations, and where do they end up?
+   why: named in request; goals: where
+2. bubble-map (2.25): Bubble map - How much of something is at each place?
+   why: goals: where
+3. choropleth (2.25): Choropleth map - How does a rate or ratio vary across regions?
+   why: goals: where
+== pick-shape-only ==
+$ python scripts/cw.py pick --shape n,q
+1. bar (4.0): Bar chart - How big is each category, and which is largest?
+   why: shape n,q
+2. column (4.0): Column chart - How much was there in each period, and how do the totals compare period to period?
+   why: shape n,q
+3. diverging-bar (4.0): Diverging bar chart - Which categories are above or below a reference (zero, target, average), and by how much?
+   why: shape n,q
+== data-kinds ==
+$ python scripts/cw.py data mixed.csv
+{
+ "file": "mixed.csv",
+ "rows": 3,
+ "columns": [
+  {
+   "name": "month",
+   "kind": "time",
+   "non_empty": 3,
+   "first": "03/01/2026",
+   "last": "2026-Q2"
+  },
+  {
+   "name": "units",
+   "kind": "q",
+   "non_empty": 3,
+   "min": 980.0,
+   "max": 1200.0
+  },
+  {
+   "name": "note",
+   "kind": "n",
+   "non_empty": 2,
+   "distinct": 2,
+   "sample": [
+    "late",
+    "ok"
+   ]
+  }
+ ],
+ "shape_guess": "time,q,n"
+}
+== recipe-markdown ==
+$ python scripts/cw.py build --chart bar --target mermaid --data regions.csv --x region --y sales --title "South leads on sales" >> report.md
+$ cat report.md
+# Quarterly report
+
+Sales rose in the South.
+```mermaid
+xychart-beta
+    title "South leads on sales"
+    x-axis ["North", "South", "East"]
+    y-axis "sales" 0 --> 250
+    bar [200, 225, 130]
+```
+== recipe-pptx ==
+$ python scripts/cw.py build --chart column --target pptx --data sales.csv --x region --y sales --series product --out chart.py --png deck.pptx
+wrote chart.py (993 chars)
+$ python scripts/cw.py render --target pptx --in chart.py --out deck.pptx
+Traceback (most recent call last):
+  File "<work>\chart.py", line 1, in <module>
+    from pptx import Presentation
+ModuleNotFoundError: No module named 'pptx'
+== recipe-docx ==
+$ python scripts/cw.py build --chart bar --target docx --data regions.csv --x region --y sales --title "South leads on sales" --out chart.py --png report.docx
+wrote chart.py (1001 chars)
+$ python scripts/cw.py render --target docx --in chart.py --out report.docx
+Traceback (most recent call last):
+  File "<work>\chart.py", line 2, in <module>
+    import vl_convert as vlc
+ModuleNotFoundError: No module named 'vl_convert'
+== recipe-xlsx ==
+$ python scripts/cw.py build --chart grouped-bar --target xlsx --data sales.csv --x region --y sales --series product --out chart.py --png book.xlsx
+wrote chart.py (747 chars)
+$ python scripts/cw.py render --target xlsx --in chart.py --out book.xlsx
+Traceback (most recent call last):
+  File "<work>\chart.py", line 1, in <module>
+    from openpyxl import Workbook
+ModuleNotFoundError: No module named 'openpyxl'
+== recipe-echarts-page ==
+$ python scripts/cw.py build --chart funnel --target echarts --data funnel.csv --x stage --y users --html --out funnel.html
+wrote funnel.html (966 chars)
+== recipe-dumbbell ==
+$ python scripts/cw.py build --chart dumbbell --target vega-lite --data cities.csv --x city --y before --y2 after --out dumbbell.vl.json
+wrote dumbbell.vl.json (1059 chars)
+$ python scripts/cw.py render --target vega-lite --in dumbbell.vl.json --out dumbbell.png
+vl_convert missing: pip install vl-convert-python
+== recipe-pick-json ==
+$ python scripts/cw.py pick --question "share of budget by department" --shape n,q --json | python -c "import json,sys; print(json.load(sys.stdin)['picks'][0]['slug'])"
+donut
+== recipe-loop ==
+$ sh loop.sh
+wrote bar.mermaid.txt (147 chars)
+wrote bar.terminal.txt (142 chars)
+wrote bar.quickchart.txt (481 chars)
+$ cat bar.terminal.txt
+sales by region
+North  ███████████████████████████    200
+South  ██████████████████████████████ 225
+East   █████████████████              130
+== dev-tests ==
+$ python -m unittest discover -s tests 2>&1 | tail -3
+Ran 45 tests in 0.716s
+
+OK (skipped=5)
+== dev-validate ==
+$ python scripts/cw.py --strict validate
+ok: 83 charts, 16 targets valid
+$ echo $?
+0
