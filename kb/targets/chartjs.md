@@ -34,7 +34,7 @@ Pick Chart.js when the host page already uses it, when a tiny bundle (about 70 k
 
 - `new Chart(canvas, config)`. Datasets share `labels`; time axes need the date adapter (`chartjs-adapter-date-fns`) and `scales.x.type = "time"`.
 - Stacking: `options.scales.x.stacked = true` and `y.stacked = true`. Horizontal: `options.indexAxis = "y"`.
-- Colours are not assigned automatically before 4.x's `plugins.colors`; pass `borderColor`/`backgroundColor` per dataset for a controlled palette.
+- Colours are not assigned automatically before 4.x's `plugins.colors`; set `borderColor`/`backgroundColor` per dataset for a controlled palette.
 - QuickChart: `https://quickchart.io/chart?version=4&c=<url-encoded config>` returns PNG (`&format=svg|webp|pdf`), which is 80 to 200 tokens for a chart in a chat message; self-host with Docker (AGPL-3.0).
 
 ## Limits

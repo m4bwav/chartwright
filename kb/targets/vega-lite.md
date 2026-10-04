@@ -46,7 +46,7 @@ The default target. One compact JSON spec renders interactively in a page (vega-
 - `"width": "container"` fills a div; static export needs a number.
 - Layers: `"layer": [{...}, {...}]` for rule + point (lollipop, dumbbell), band + line (range). `"facet"` / `"row"` / `"column"` for small multiples; `"repeat"` for the same chart over several fields.
 - Transforms: `filter`, `calculate`, `aggregate`, `bin`, `density`, `window` (rank, running sum), `fold`, `pivot`, `stack`, `regression`, `loess`.
-- Colour: `"scale": {"scheme": "tableau10" | "okabeito"... }`; sequential `blues`, `viridis`; diverging `redblue`. Vega has no `okabeito` scheme name; pass `"range": ["#E69F00", ...]`.
+- Colour: `"scale": {"scheme": "tableau10" | "okabeito"... }`; sequential `blues`, `viridis`; diverging `redblue`. Vega has no `okabeito` scheme name; give `"range": ["#E69F00", ...]`.
 - Accessibility: `"description"` on the spec becomes the SVG `aria-label`; add a text alternative in the page.
 
 ## Limits
