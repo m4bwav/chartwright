@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 0.8.5 (2026-10-05)
+
+- Copilot-ready: a root `plugin.json` (Agent Plugins 1.0 shape: `$schema`, at most 10 lowercase-hyphenated keywords, author URL) so GitHub Copilot CLI and the awesome-copilot marketplace find the plugin; the awesome-copilot intake gates look only at `.github/plugin/`, `.plugin/` or the root, never `.claude-plugin/`. Claude Code still reads `.claude-plugin/plugin.json`; keep both versions equal. Installed with Copilot CLI 1.0.92 and `vally lint` (0.17.0) passes. The release tag v0.8.5 is the ref awesome-copilot pins.
+
 ## 0.8.4 (2026-10-04)
 
 - Ready for the Claude directory. `cw.py` pins the Mermaid CLI that `npx` runs when `mmdc` is not installed to `@mermaid-js/mermaid-cli@12.0.0` (it ran whatever npm served that day); rendered to SVG through the pinned path and the 45 tests pass on Windows. The README gains a Privacy section that lists every route that reaches the network (QuickChart URLs, kroki.io for PlantUML, CDN libraries in the web page targets, the npx download). plugin.json gains `documentationUrl` (the wiki), `supportUrl` and `privacyPolicyUrl` for the directory listing. kb/INDEX.md and index.json regenerated (date only). Details: `skills/chartwright/CHANGELOG.md` C-20261004-1.
