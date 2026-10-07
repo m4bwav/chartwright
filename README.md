@@ -1,5 +1,7 @@
 # chartwright
 
+![An artisan's workshop wall covered in handcrafted wooden bar charts, pie charts and line graphs, carving tools on the bench](https://raw.githubusercontent.com/m4bwav/chartwright/master/.github/images/banner.jpg)
+
 Evergreen chart and graph skills for AI coding agents. A knowledge base of about 80 chart types (when to use, what each excels at, when not to, substitutes, perceptual evidence, accessibility, per-target build recipes, dated notes), sixteen render targets (Markdown via Mermaid and PlantUML; web via Vega-Lite, ECharts, Plotly, Chart.js and Observable Plot; static PNG/SVG via Python; editable PowerPoint, Excel and Google Sheets charts; Word and Google Docs via pictures; D2 for networks and trees; chart-as-URL images via QuickChart; terminal sparklines), a standard-library CLI that picks and builds charts from a CSV so the data never passes through the model, and a curation skill that researches novel requests and grows the base so the next request is cheaper.
 
 ## Skills
