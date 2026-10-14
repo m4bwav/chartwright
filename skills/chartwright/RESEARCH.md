@@ -2,22 +2,22 @@
 
 Findings that back [SKILL.md](SKILL.md). Changes they caused are logged in [CHANGELOG.md](CHANGELOG.md); procedural lessons live in [LEARNINGS.md](LEARNINGS.md); test runs and their evidence in [TESTS.md](TESTS.md); schedule and state in `evergreen.json`. Protocol: the evergreen plugin's `protocol/PROTOCOL.md`. Full research notes: `../../ai-docs/research/`.
 
-Topic: chart type selection evidence and the chart menus, syntax and versions of Mermaid, Vega-Lite, Plotly, Chart.js and matplotlib; how agents choose and build charts. Tier `fast`. Last refresh 2026-10-03; next due in `evergreen.json`.
+Topic: chart type selection evidence and the chart menus, syntax and versions of Mermaid, Vega-Lite, Plotly, Chart.js and matplotlib; how agents choose and build charts. Tier `fast`. Last refresh 2026-10-14; next due in `evergreen.json`.
 
 ## Current understanding
 
 - Chart selection: the message picks the family (FT Visual Vocabulary's nine, plus hierarchy, relationship, single-value, table); within a family, prefer position and length encodings over angle, area and colour (Cleveland and McGill 1984; Heer and Bostock 2010). Pies are fine up to about 5 slices for part-to-whole "majority" questions (Skau and Kosara 2016). Layout decides which comparison is easy; annotate the intended one (Franconeri et al. 2021). Settled.
 - Caps: about 5 lines, 3 grouped series, 4 stacked segments, 8 categorical hues; beyond, small multiples or a table. Practitioner consensus (Datawrapper, FT, dataviz skill). Settled.
-- Targets (2026-09-17, rechecked 2026-10-03): Mermaid 12.1.0 (2026-10-02; 12.0.0 on 2026-09-10 added treemap, venn, use case, agentflow and ELK default; 12.1 adds ELK feedback-edge routing, packet `bitOrder`, and error diagrams that print the real parse error); hosts lag (GitHub 11.16.1, Obsidian 11.13, GitLab 11), so the portable floor is 11.13 and `xychart-beta`. Vega-Lite 6.4.3 with vl-convert 1.9.0.post1 (2.0.0rc7 in preview) is the best headless image path. plotly.js 4.1.1 / plotly.py 7.1.0 (2026-08/09 majors; mapbox traces removed; kaleido 1.x needs Chrome). Chart.js 4.5.1, no release since 2025-10. ECharts 6.1.0 (2026-05) is the strongest candidate for a sixth target (chord, beeswarm native, SSR). matplotlib 3.11.2. Unchanged on 2026-10-03 except Mermaid. Moving.
-- Agent practice: generated Vega-Lite specs fail far less than generated code (VegaChat 2026, arXiv 2601.15385: 0% vs 30.6% visualization errors); antvis/mcp-server-chart (4.4k stars, 26 tools) and antvis/chart-visualization-skills are the most used agent chart tools but render remotely and cost 5 to 8k tokens of schema per session; Anthropic's bundled `dataviz` skill covers palette and marks, not type selection. Microsoft's Flint (microsoft/flint-chart, MIT, about 4.3k stars, 0.5.1 on 2026-08-14) is now a standalone library and MCP server: the agent writes a roughly 10-line semantic spec and a deterministic compiler emits Vega-Lite, ECharts, Chart.js, Plotly or native Excel charts with themes; it chooses no chart type from evidence and has no Markdown, image-file or PowerPoint target. A CLI plus skill is the token-efficient shape. Contested only in that MCP servers keep growing.
+- Targets (2026-09-17, rechecked 2026-10-14): Mermaid 12.2.0 (2026-10-13; 12.0.0 on 2026-09-10 added treemap, venn, use case, agentflow and ELK default; 12.1 adds ELK feedback-edge routing, packet `bitOrder`, and error diagrams that print the real parse error; 12.2 adds opt-in mindmap `colorBy: depth` and layout fixes, no chart change); mermaid-cli 12.0.0 is still the newest CLI, so the pin in cw.py is current; hosts lag (GitHub 11.16.1, Obsidian 11.13, GitLab 11.16.1), so the portable floor is 11.13 and `xychart-beta`. Vega-Lite 6.5.0 (2026-10-08: exponential moving average transform, tooltip field filter, facet and normalized-stack fixes) with vl-convert 1.9.0.post1 (2.0.0rc7 in preview) is the best headless image path. plotly.js 4.1.2 / plotly.py 7.1.0 (2026-08/09 majors; mapbox traces removed; kaleido 1.5.0 still needs Chrome and dropped Python 3.8). Chart.js 4.5.1, no release since 2025-10, though commits continue. ECharts 6.1.0 (2026-05) is the strongest candidate for a sixth target (chord, beeswarm native, SSR). matplotlib 3.11.2. Moving.
+- Agent practice: generated Vega-Lite specs fail far less than generated code (VegaChat 2026, arXiv 2601.15385: 0% vs 30.6% visualization errors); antvis/mcp-server-chart (4.4k stars, 26 tools) and antvis/chart-visualization-skills are the most used agent chart tools but render remotely and cost 5 to 8k tokens of schema per session; Anthropic's bundled `dataviz` skill covers palette and marks, not type selection. Microsoft's Flint (microsoft/flint-chart, MIT, about 4.3k stars, 0.5.1 on 2026-08-14) is now a standalone library and MCP server: the agent writes a roughly 10-line semantic spec and a deterministic compiler emits Vega-Lite, ECharts, Chart.js, Plotly or native Excel charts with themes; it chooses no chart type from evidence and has no Markdown, image-file or PowerPoint target. Vendors now ship their own servers too: ApexCharts' official `apexcharts-mcp` (in the MCP registry since 2026-10-07, about 2k npm downloads a week against about 4k for antvis and 1.9k for Flint) generates and validates ApexCharts configs only. A CLI plus skill is the token-efficient shape. Contested only in that MCP servers keep growing.
 - Token savings: read a compact index, pass data by file reference (a thousand inline rows costs 6 to 10k tokens), template plus parameters over code generation, validate specs mechanically before any retry. Settled.
 
 ## Open questions
 
-- Which Mermaid version GitHub and Obsidian run after 2026-10 (decides when named xychart series and treemap can be emitted by default). Still unknown on 2026-10-03: no public note of a GitHub upgrade; GitLab's last merge request moved it to 11.16.1.
-- Whether Chart.js 5 ships or the project stays flat (affects whether chartjs stays a first-class target). Still 4.5.1 (2025-10-13) on 2026-10-03, nearly a year without a release.
-- vl-convert 2.0 stable date (its `serve` mode could replace per-call rendering). Still 2.0.0rc7 (2026-09-14) on 2026-10-03.
-- Whether Flint grows a Markdown or image-file target, or publishes measured gains over direct Vega-Lite generation (arXiv 2607.20775); either would raise it from a pointer to a candidate backend.
+- Which Mermaid version GitHub and Obsidian run after 2026-10 (decides when named xychart series and treemap can be emitted by default). Still unknown on 2026-10-14: no public note of a GitHub upgrade, and Obsidian's 1.14.x changelogs (to 2026-09-29) do not mention Mermaid; GitLab's last merge request moved it to 11.16.1.
+- Whether Chart.js 5 ships or the project stays flat (affects whether chartjs stays a first-class target). Still 4.5.1 (2025-10-13) on 2026-10-14, a year without a release; commits still land (types fix 2026-10-03).
+- vl-convert 2.0 stable date (its `serve` mode could replace per-call rendering). Still 2.0.0rc7 (2026-09-14) on 2026-10-14.
+- Whether Flint grows a Markdown or image-file target, or publishes measured gains over direct Vega-Lite generation (arXiv 2607.20775); either would raise it from a pointer to a candidate backend. No release since 0.5.1 (2026-08-14) on 2026-10-14, though the repository is active.
 
 ## Search plan
 
@@ -26,11 +26,12 @@ Subject:
 - `mermaid release notes <month year>`, `mermaid.js.org/syntax/xyChart.html` (named series, legends), `site:github.com/orgs/community/discussions mermaid version`
 - `vega-lite release`, `vl-convert release`, `plotly.js release notes`, `chart.js release`, `apache echarts release`, `matplotlib release`
 - `"which chart" guide site:datawrapper.de <year>`, `"visual vocabulary" update`, `data visualization perception study <year>`
+- Vendor forums (announcements first, then known issues since `last_checked`): Mermaid GitHub Discussions https://github.com/mermaid-js/mermaid/discussions (gh api graphql, newest first); GitHub host changes https://github.com/orgs/community/discussions and https://github.blog/changelog/ (search "mermaid"); Obsidian https://obsidian.md/changelog/ and https://forum.obsidian.md; Plotly https://community.plotly.com (`/latest.json?order=created`; the announcements category slug moved, so filter titles for "release"); Chart.js https://github.com/chartjs/Chart.js/discussions; Vega https://github.com/vega/vega-lite/discussions; ECharts https://github.com/apache/echarts/discussions
 
 Tooling:
 
 - `path:SKILL.md chart OR visualization` on GitHub code search sorted by recently updated; `npx skills find chart`; skills.sh weekly installs for "chart", "dataviz", "visualization"
-- `https://registry.modelcontextprotocol.io/v0/servers?search=chart`; `antvis/mcp-server-chart` releases; `microsoft/flint-chart` releases; `quickchart` releases
+- `https://registry.modelcontextprotocol.io/v0/servers?search=chart` (sort by `publishedAt`; most rows are noise such as charter-boat sites); npm weekly downloads `https://api.npmjs.org/downloads/point/last-week/<pkg>` for `@antv/mcp-server-chart`, `flint-chart-mcp`, `apexcharts-mcp`; `antvis/mcp-server-chart` releases; `microsoft/flint-chart` releases; `quickchart` releases
 - `anthropics/claude-plugins-official` and `anthropics/skills` for chart or dataviz changes
 
 Practice:
@@ -48,6 +49,27 @@ Best sources: mermaid.js.org and the mermaid GitHub releases; vega.github.io and
 ## Findings log
 
 Newest first.
+
+### R-20261014-3 · 2026-10-14 · Quiet elsewhere; forum lines added to the search plan (subject, tooling, practice, testing tracks)
+- Summary: Registries on 2026-10-14: plotly.py 7.1.0, chart.js 4.5.1, echarts 6.1.0, @observablehq/plot 0.6.17, matplotlib 3.11.2, altair 6.3.0, python-pptx 1.0.2, vl-convert 1.9.0.post1 stable with 2.0.0rc7 newest, flint-chart 0.5.1, @antv/mcp-server-chart 0.11.10 on npm (no GitHub release since 0.9.10), @mermaid-js/mermaid-cli 12.0.0 (the cw.py pin). anthropics/skills: only claude-api skill commits since 2026-10-03, no chart or dataviz change. Forums: Mermaid Discussions have a 2026-09-25 Q&A on layout changes between 11.12 and 12.0 (the ELK default already recorded); Plotly forum, Chart.js Discussions and Obsidian changelogs had nothing new for charts. Practice: no new agent chart workflow beyond Flint and the vendor MCP servers. Testing: no chart benchmark newer than RealChart2Code (arXiv 2603.25804) and Chart2Code (ACL 2026), both known; testing: nothing new. The search plan had no vendor-forum lines; added with URLs.
+- Track: subject, tooling, practice, testing
+- Sources: https://registry.npmjs.org, https://pypi.org, https://github.com/mermaid-js/mermaid/discussions, https://community.plotly.com, https://obsidian.md/changelog/2026-09-29-desktop-v1.14.3/, https://github.com/anthropics/skills/commits, https://arxiv.org/abs/2603.25804
+- Magnitude: 0
+- Applied: C-20261014-1 (RESEARCH.md Search plan only)
+
+### R-20261014-2 · 2026-10-14 · ApexCharts ships an official MCP server (tooling track)
+- Summary: `apexcharts-mcp` (github.com/apexcharts/apexcharts-mcp, npm since 2026-04-28, 18 versions, 0.10.3 on 2026-10-14; hosted at mcp.apexcharts.com/mcp) entered the official MCP registry on 2026-10-07. It exposes ApexCharts knowledge and generates and validates configs for charts, grid, gantt, tree, sankey, stock and maps. About 2,051 npm downloads in the week to 2026-10-12, against 3,948 for @antv/mcp-server-chart and 1,851 for flint-chart-mcp. Single-library, no evidence-based type selection, ApexCharts is not a chartwright target. Note only; revisit if ApexCharts becomes a target.
+- Track: tooling
+- Sources: https://registry.modelcontextprotocol.io/v0/servers?search=apexcharts, https://apexcharts.com/docs/ai/mcp/apexcharts/, https://api.npmjs.org/downloads/point/last-week/apexcharts-mcp
+- Magnitude: 0.2
+- Applied: C-20261014-1 (RESEARCH.md Current understanding only)
+
+### R-20261014-1 · 2026-10-14 · Mermaid 12.2.0, Vega-Lite 6.5.0, plotly.js 4.1.2, kaleido 1.5.0 (subject track)
+- Summary: Mermaid 12.2.0 (2026-10-13): opt-in mindmap `colorBy: depth`, ELK label and edge fixes, swimlane fixes; no xychart or chart-type change. Vega-Lite 6.5.0 (2026-10-08): exponential moving average transform, tooltip field filtering, fixes for facet sort with aggregates, missing facet data and explicit axis formats on normalized stacks; additive, no spec break. plotly.js 4.1.2 (2026-10-05): ResizeObserver resizing, image-export type fixes, redraw on font load; cw.py still loads 4.1.1 from the CDN, which is fine. kaleido 1.5.0 (2026-10-06): drops Python 3.8 and orjson, still needs Chrome. Host floors and every SKILL.md claim unchanged; the knowledge base's `version_checked` lines (kb/targets/plotly.md, vega-lite.md, matplotlib.md) lag by a patch or minor and can be bumped on the next chartwright-curate pass.
+- Track: subject
+- Sources: https://github.com/mermaid-js/mermaid/releases/tag/mermaid%4012.2.0, https://github.com/vega/vega-lite/releases/tag/v6.5.0, https://github.com/plotly/plotly.js/releases/tag/v4.1.2, https://github.com/plotly/Kaleido/releases/tag/v1.5.0
+- Magnitude: 0.1
+- Applied: C-20261014-1 (RESEARCH.md Current understanding only)
 
 ### R-20261003-3 · 2026-10-03 · Quiet elsewhere (subject, tooling, practice, testing tracks)
 - Summary: Registries checked on 2026-10-03: vega-lite 6.4.3, plotly.js 4.1.1, plotly.py 7.1.0, kaleido 1.4.0, chart.js 4.5.1, echarts 6.1.0, @observablehq/plot 0.6.17, matplotlib 3.11.2, python-pptx 1.0.2, vl-convert 1.9.0.post1 stable with 2.0.0rc7 newest; all as on 2026-09-17. antvis/mcp-server-chart: no GitHub release since 0.9.10 (2026-02-25). anthropics/skills and claude-plugins-official: no chart or dataviz changes since 2026-09-17. Practice: nothing new beyond Flint (R-20261003-2). Testing: no chart benchmark newer than those already in the 2026-09-17 report (Chart2Code, RealChart2Code, PlotCraft); testing: nothing new.

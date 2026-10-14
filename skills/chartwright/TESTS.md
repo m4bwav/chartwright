@@ -8,6 +8,14 @@ Entry shape: `### T-YYYYMMDD-n · date · harness · env · passed/total`, then 
 
 ## Runs
 
+### T-20261014-1 · 2026-10-14 · claude plugin eval 2.1.281 on a scratch copy of the plugin (default model, 1 run per case, no ablation) · DESKTOP (Windows 11, native) · 5/5
+- Suite: root `evals/` cw-trigger-1..3 and cw-decoy-1..2, run after the refresh C-20261014-1 (SKILL.md: Maintenance due date only; description unchanged).
+- cw-trigger-1, -2, -3 · trigger · pass · Skill chartwright called once each.
+- cw-decoy-1 (horizon chart into the knowledge base) · trigger · pass · chartwright-curate called, chartwright not.
+- cw-decoy-2 (sequence diagram) · trigger · pass · neither skill called.
+- Four runs ended on the harness's 3-turn cap after the Skill call (expected for trigger cases); graders scored 1.00. `worth --against HEAD`: -11 tokens; verdict UNPROVEN as before (value cases never run against a baseline). Cost 0.55 USD, 18 s at concurrency 4.
+- led to: none
+
 ### T-20261003-1 · 2026-10-03 · claude plugin eval 2.1.281 on a scratch copy of the plugin (default model, 1 run per case, no ablation) · DESKTOP (Windows 11, native) · 5/5
 - Suite: root `evals/` cw-trigger-1..3 and cw-decoy-1..2, run after the refresh edit C-20261003-1 (one sentence in Step 3 to 5; description unchanged).
 - cw-trigger-1, -2, -3 · trigger · pass · Skill chartwright called once each.
