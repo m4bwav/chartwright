@@ -20,7 +20,7 @@ Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (ID
 - Grep the chart file for the note's key words first; an equivalent note means "say so and stop", not a duplicate dated line.
 
 ### C-20260918-5 · 2026-09-18 · Path D2: record a platform test
-- because: user request (see chartwright C-20260918-11)
+- because: user request (see chartwright:C-20260918-11)
 - files: references/procedures.md (D2)
 - `cw.py tested` plus `cw.py index` and a changelog entry is the whole procedure; failures land in the target's Limits too.
 
