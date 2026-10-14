@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261014-1 · 2026-10-14 · Refresh: versions rechecked, vendor-forum lines added to the search plan
+- because: R-20261014-1, R-20261014-2, R-20261014-3
+- files: RESEARCH.md (Current understanding: targets and agent practice; Open questions; Search plan: Subject forum line, Tooling registry and download lines; Findings log)
+- Mermaid 12.2.0, Vega-Lite 6.5.0, plotly.js 4.1.2 and kaleido 1.5.0 recorded, ApexCharts' official MCP server noted, and the vendor forums named with URLs as the refresh procedure requires. SKILL.md unchanged apart from its Maintenance due date.
+
 ### C-20261004-1 · 2026-10-04 · Pin the Mermaid CLI that npx runs; Privacy section and listing links for the Claude directory
 - because: user request (list chartwright in the Claude directory); the directory's checklist wants every package a launcher runs pinned to an exact version
 - files: scripts/cw.py (`MERMAID_CLI` constant, used by `render --target mermaid` and `doctor`), README.md (Privacy), .claude-plugin/plugin.json (documentationUrl, supportUrl, privacyPolicyUrl, version 0.8.4)
