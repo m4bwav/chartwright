@@ -3,7 +3,7 @@ name: Web, interactive (Plotly)
 slug: plotly
 kind: web
 renders_in: [any web page via plotly.js, Jupyter and Dash via plotly.py, static PNG via kaleido 1.x (needs Chrome)]
-version_checked: "plotly.js 4.1.1 (2026-09-14), plotly.py 7.1.0 (2026-09-15), kaleido 1.4.0"
+version_checked: "plotly.js 4.1.2 (2026-10-05), plotly.py 7.1.0 (2026-09-15), kaleido 1.5.0 (2026-10-06); versions re-checked 2026-10-14"
 last_verified: 2026-09-17
 renderer: none
 tested:
@@ -45,7 +45,7 @@ Pick Plotly when the page needs hover, zoom, 3D, financial or statistical traces
 
 ## Render
 
-- Page: `cw.py build ... --target plotly --html --out chart.html` (loads plotly.js 4.1.1 from cdn.plot.ly).
+- Page: `cw.py build ... --target plotly --html --out chart.html` (loads plotly.js 4.1.2 from cdn.plot.ly).
 - From a saved figure JSON: `cw.py render --target plotly --in fig.json --out chart.html`.
 - Image: `python -c "import plotly.io as pio, json; pio.write_image(json.load(open('fig.json')), 'chart.png', scale=2)"` after `pip install plotly kaleido` and a Chrome install.
 

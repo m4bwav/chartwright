@@ -1274,7 +1274,7 @@ HTML_VL = """<!doctype html><html><head><meta charset="utf-8"><title>{title}</ti
 <script>vegaEmbed('#vis', {spec}, {{actions: false}});</script></body></html>
 """
 HTML_PLOTLY = """<!doctype html><html><head><meta charset="utf-8"><title>{title}</title>
-<script src="https://cdn.plot.ly/plotly-4.1.1.min.js" charset="utf-8"></script></head>
+<script src="https://cdn.plot.ly/plotly-4.1.2.min.js" charset="utf-8"></script></head>
 <body><div id="chart" style="max-width:900px;height:420px"></div>
 <script>const fig = {spec}; Plotly.newPlot('chart', fig.data, fig.layout, {{responsive: true, displaylogo: false}});</script></body></html>
 """
