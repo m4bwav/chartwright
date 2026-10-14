@@ -3,7 +3,7 @@ name: Static image via Python (matplotlib and friends)
 slug: matplotlib
 kind: image
 renders_in: [PNG/SVG/PDF files for Word, Google Docs, PowerPoint, Slack, email, LaTeX, any markdown as an image link]
-version_checked: "matplotlib 3.11.2 (2026-09-11), seaborn 0.13.2 (2024, flat), plotnine 0.15.8, Altair 6.3.0 + vl-convert 1.9.0.post1, plotly 7.1 + kaleido 1.4.0, bokeh 3.10"
+version_checked: "matplotlib 3.11.2 (2026-09-11), seaborn 0.13.2 (2024, flat), plotnine 0.15.8, Altair 6.3.0 + vl-convert 1.9.0.post1, plotly 7.1 + kaleido 1.5.0, bokeh 3.10.1 (2026-10-13); versions re-checked 2026-10-14"
 last_verified: 2026-09-17
 renderer: python
 tested:

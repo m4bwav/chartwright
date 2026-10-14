@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261014-1 · 2026-10-14 · Target versions re-checked: plotly.js 4.1.2, Vega-Lite 6.5.0
+- because: 2026-10-14 catalog refresh follow-up (targets one release behind)
+- files: scripts/cw.py (plotly page template), kb/targets/plotly.md, kb/targets/vega-lite.md, kb/targets/matplotlib.md, kb/index.json, kb/INDEX.md
+- The plotly page now loads plotly.js 4.1.2 (2026-10-05). version_checked lines updated for plotly.js 4.1.2 and kaleido 1.5.0, Vega-Lite 6.5.0 and vega-embed 7.3.0, bokeh 3.10.1; matplotlib 3.11.2 and plotly.py 7.1.0 were already current. Patch and minor releases only, so last_verified is unchanged. validate --strict and index clean, unit tests OK.
+
 ### C-20260926-1 · 2026-09-26 · Description rewritten to stand apart from chartwright
 - because: user request; the context-health selection check scored the two descriptions at TF-IDF cosine 0.77 (near-duplicate) and flagged both as over 1,024 characters; T-20260926-1; plugin 0.8.2
 - files: SKILL.md (frontmatter `description` only; body unchanged)

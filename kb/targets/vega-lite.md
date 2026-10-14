@@ -3,7 +3,7 @@ name: Web and static images (Vega-Lite)
 slug: vega-lite
 kind: web
 renders_in: [any web page via vega-embed, Obsidian (obsidian-vega plugin), Jupyter (Altair), static SVG/PNG/PDF via vl-convert, Kroki]
-version_checked: "Vega-Lite 6.4.3 (2026-04), Vega 6.4.0, vega-embed 7.2.0, vl-convert-python 1.9.0.post1 (2.0.0rc7 in preview), Altair 6.3.0"
+version_checked: "Vega-Lite 6.5.0 (2026-10-08), Vega 6.4.0, vega-embed 7.3.0 (2026-09-23), vl-convert-python 1.9.0.post1 (2.0.0rc7 in preview), Altair 6.3.0"
 last_verified: 2026-09-17
 renderer: vl_convert
 tested:

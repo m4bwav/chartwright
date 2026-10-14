@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-03",
+ "generated": "2026-10-14",
  "charts": [
   {
    "slug": "adjacency-matrix",
@@ -4875,7 +4875,7 @@
     "LaTeX",
     "any markdown as an image link"
    ],
-   "version_checked": "matplotlib 3.11.2 (2026-09-11), seaborn 0.13.2 (2024, flat), plotnine 0.15.8, Altair 6.3.0 + vl-convert 1.9.0.post1, plotly 7.1 + kaleido 1.4.0, bokeh 3.10",
+   "version_checked": "matplotlib 3.11.2 (2026-09-11), seaborn 0.13.2 (2024, flat), plotnine 0.15.8, Altair 6.3.0 + vl-convert 1.9.0.post1, plotly 7.1 + kaleido 1.5.0, bokeh 3.10.1 (2026-10-13); versions re-checked 2026-10-14",
    "renderer": "python",
    "last_verified": "2026-09-17",
    "tested": [
@@ -4943,7 +4943,7 @@
     "Jupyter and Dash via plotly.py",
     "static PNG via kaleido 1.x (needs Chrome)"
    ],
-   "version_checked": "plotly.js 4.1.1 (2026-09-14), plotly.py 7.1.0 (2026-09-15), kaleido 1.4.0",
+   "version_checked": "plotly.js 4.1.2 (2026-10-05), plotly.py 7.1.0 (2026-09-15), kaleido 1.5.0 (2026-10-06); versions re-checked 2026-10-14",
    "renderer": "none",
    "last_verified": "2026-09-17",
    "tested": [
@@ -5014,7 +5014,7 @@
     "static SVG/PNG/PDF via vl-convert",
     "Kroki"
    ],
-   "version_checked": "Vega-Lite 6.4.3 (2026-04), Vega 6.4.0, vega-embed 7.2.0, vl-convert-python 1.9.0.post1 (2.0.0rc7 in preview), Altair 6.3.0",
+   "version_checked": "Vega-Lite 6.5.0 (2026-10-08), Vega 6.4.0, vega-embed 7.3.0 (2026-09-23), vl-convert-python 1.9.0.post1 (2.0.0rc7 in preview), Altair 6.3.0",
    "renderer": "vl_convert",
    "last_verified": "2026-09-17",
    "tested": [
