@@ -31,7 +31,7 @@ support:
   plantuml: approx
 added: 2026-09-17
 last_verified: 2026-09-17
-sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/dual-axis-charts, https://vega.github.io/vega-lite/examples/connected_scatterplot.html, https://ieeexplore.ieee.org/document/7192687]
+sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://www.datawrapper.de/blog/why-i-changed-my-mind-on-dual-axis-charts, https://vega.github.io/vega-lite/examples/connected_scatterplot.html, https://ieeexplore.ieee.org/document/7192687]
 ---
 
 # Connected scatterplot
@@ -40,7 +40,7 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 
 - Two measures of one entity over time where the relationship between them is the story (inflation versus unemployment, price versus volume, speed versus altitude).
 - The path has a clear direction with few reversals, so arrows and a handful of year labels make it followable.
-- A replacement for a dual-axis line chart: the crossing point of two axes is an artefact, the path of a connected scatter is not (Datawrapper dual-axis guidance).
+- A replacement for a dual-axis line chart: the crossing point of two axes is an artefact, the path of a connected scatter is not (Muth 2018, Datawrapper; Muth 2026 now accepts dual axes when absolute levels matter).
 - One to three entities at most, each a labelled path.
 - Excels at: showing loops, reversals and regime changes that two separate lines hide.
 

@@ -153,3 +153,13 @@ Append-only. Newest at the bottom. One entry per working session.
 - m 0.2, interval held at 9.33 days, next due 2026-10-23. RESEARCH.md R-20261014-1..3, CHANGELOG C-20261014-1, TESTS T-20261014-1 (cw-* trigger and decoy cases 5/5 with claude plugin eval 2.1.281 on a scratch copy).
 - Left for chartwright-curate: kb/targets plotly.md, vega-lite.md, matplotlib.md `version_checked` lines lag by a patch or minor; cw.py loads plotly.js 4.1.1 from the CDN (4.1.2 is a patch).
 - Learned: `evergreen.py checked` and `tested` rewrite evergreen.json with LF; this repo stores it CRLF, so convert back before committing or the diff covers the whole file.
+
+## 2026-10-17: evergreen refresh of chartwright-curate
+
+- Research by the evergreen-researcher agent (24 searches, 25 fetches) plus checks of Mermaid release bodies through gh and the Datawrapper post. m 0.5, interval 30 to 20 days, next due 2026-11-06; event flagged for VIS 2026 preprints (2026-11-14).
+- Corrected: Mermaid treemap needs 11.8, venn-beta 11.13, wardley 11.14, not 12.0 (kb/targets/mermaid.md, treemap.md, venn.md; the chartwright skill's RESEARCH.md said the same and was fixed too). Both are within the GitHub and Obsidian floor; not yet tested on those hosts.
+- Softened: dual-axis guidance (selection rule, line, grouped-bar, connected-scatter, evidence) after Muth 2026-07-23 reversed Datawrapper's 2018 warning and Datawrapper shipped the type.
+- Added: Lee et al. 2026 channel-effectiveness line in kb/rules/evidence.md (preprint, medium).
+- Search plan gained vendor-forum lines with URLs, the VIS programme page and blog index pages. Learning L-20261017-1: date a feature from release notes, not the docs page header.
+- Version 0.8.6 in both plugin.json files and the root CHANGELOG; no tag or GitHub Release made in this run (AGENTS.md asks for both).
+- Open: a `dual-axis` chart file (16 targets); arrow maps as a flow-map alias; read "Defaulting to Bar Charts" (VIS 2026) and consider a not-a-bar eval case for the chartwright skill; test treemap-beta and venn-beta rendering on GitHub.

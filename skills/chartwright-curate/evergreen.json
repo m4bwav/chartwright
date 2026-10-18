@@ -13,13 +13,19 @@
   "source": null,
   "topic": "sources for chart taxonomy, perception evidence, and library chart menus used to grow the chart knowledge base",
   "tier": "moderate",
-  "interval_days": 30,
-  "last_checked": "2026-09-17",
-  "next_due": "2026-10-17",
+  "interval_days": 20.0,
+  "last_checked": "2026-10-17",
+  "next_due": "2026-11-06",
   "verify_at_use": false,
   "volatile_claims": [],
   "contradiction": null,
-  "events": [],
+  "events": [
+    {
+      "date": "2026-11-14",
+      "label": "vis-2026-preprints",
+      "settle_days": 2.0
+    }
+  ],
   "streak": {
     "quiet": 0,
     "pinned_min": 0,
@@ -32,12 +38,18 @@
       "m": null,
       "interval_after": 30,
       "note": "created"
+    },
+    {
+      "date": "2026-10-17",
+      "m": 0.5,
+      "interval_after": 20.0,
+      "note": "Mermaid treemap/venn floors corrected (11.8/11.13), dual-axis guidance softened after Datawrapper reversal, VIS 2026 channel-effectiveness evidence; cost: searches 24 · fetches 26 · tool calls 70"
     }
   ],
   "counts": {
-    "learnings": 2,
-    "changes": 3,
-    "research": 1,
+    "learnings": 3,
+    "changes": 7,
+    "research": 6,
     "tests": 3
   },
   "consolidate_every": 25,

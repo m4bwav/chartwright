@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14",
+ "generated": "2026-10-17",
  "charts": [
   {
    "slug": "adjacency-matrix",
@@ -4485,7 +4485,7 @@
     "squarified treemap",
     "hierarchical area chart"
    ],
-   "last_verified": "2026-09-17"
+   "last_verified": "2026-10-17"
   },
   {
    "slug": "venn",
@@ -4541,7 +4541,7 @@
     "overlapping circles",
     "intersection diagram"
    ],
-   "last_verified": "2026-09-17"
+   "last_verified": "2026-10-17"
   },
   {
    "slug": "violin",
@@ -4896,9 +4896,9 @@
     "Docusaurus",
     "MkDocs Material"
    ],
-   "version_checked": "12.0.0 (2026-09-10); portable floor 11.13 (Obsidian 1.13)",
+   "version_checked": "12.2.0 (2026-10-13); portable floor 11.13 (Obsidian 1.13)",
    "renderer": "mmdc",
-   "last_verified": "2026-09-17",
+   "last_verified": "2026-10-17",
    "tested": [
     "Windows 2026-09-18: build and render to SVG/PNG through npx mermaid-cli; blocks placed in a real README"
    ]

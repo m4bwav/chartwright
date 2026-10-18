@@ -50,7 +50,7 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 - Very few periods (2 to 4) and the message is the totals, not the shape: a column chart or a slope chart.
 - Discrete counts per period where the total matters (units sold per quarter): columns say "amount" better than a line.
 - More than about five series with similar values: the spaghetti hides everything; facet.
-- Two measures on different scales on one chart (dual axis): the crossing point is an artefact of axis choice; use two panels or index both to 100.
+- Two measures on different scales on one chart (dual axis) when the question is about their crossing or correlation: the crossing point is an artefact of axis choice; use two panels or index both to 100. A dual axis with colour-keyed axes is acceptable when absolute levels matter (Muth 2026).
 - Irregular sampling with big gaps: connect-the-dots invents values; show points, or a step chart when the value holds until the next change.
 
 ## Substitutes

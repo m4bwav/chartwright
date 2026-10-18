@@ -6,6 +6,14 @@ Write an entry the moment a real signal happens: a user correction, the same err
 
 ## Active
 
+### L-20261017-1 · 2026-10-17 · Date a feature's arrival from release notes, not the docs page header
+- Trigger: the 2026-09-17 research and the knowledge base said Mermaid 12.0 added treemap and venn, because the syntax pages carried a 12.0 heading; the release bodies put treemap in 11.8.0 and venn-beta in 11.13.0, so for a month treemap and venn were routed to images on hosts that could draw them.
+- Hypothesis: docs pages are rewritten at each major (a theme or look note for the new version sits at the top), so the newest version named on the page is not the version that introduced the feature.
+- Evidence: R-20261017-1, C-20261017-1.
+- Rule: before writing "needs version X" in a target or chart file, find the release whose notes say the feature was added (`gh release view <tag> -R <repo>` and grep the body).
+- Scope: skill
+- Status: active · helpful 1 · harmful 0 · last_confirmed 2026-10-17
+
 <!-- Example (delete once you have a real entry):
 ### L-001 · 2026-09-17 · One-line lesson in plain words
 - Trigger: what happened, with dates or counts
