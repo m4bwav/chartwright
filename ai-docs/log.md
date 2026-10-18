@@ -163,3 +163,7 @@ Append-only. Newest at the bottom. One entry per working session.
 - Search plan gained vendor-forum lines with URLs, the VIS programme page and blog index pages. Learning L-20261017-1: date a feature from release notes, not the docs page header.
 - Version 0.8.6 in both plugin.json files and the root CHANGELOG; no tag or GitHub Release made in this run (AGENTS.md asks for both).
 - Open: a `dual-axis` chart file (16 targets); arrow maps as a flow-map alias; read "Defaulting to Bar Charts" (VIS 2026) and consider a not-a-bar eval case for the chartwright skill; test treemap-beta and venn-beta rendering on GitHub.
+
+## 2026-10-18: release 0.8.6
+
+- Tag v0.8.6 and GitHub Release https://github.com/m4bwav/chartwright/releases/tag/v0.8.6 at master 8275525, after the 45 tests passed locally (this repo has no CI or release workflow; the release was made with `gh release create`).
