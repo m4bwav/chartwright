@@ -6,7 +6,7 @@ Updated 2026-09-26 (v0.8.2: the two skill descriptions rewritten so they no long
 
 - Plugin `chartwright` 0.8.2 in the local plugin marketplace folder (installed in Claude Code from the `mark-local` marketplace), published at https://github.com/m4bwav/chartwright (public). Tags v0.1.0 to v0.8.2.
 - Knowledge base: 83 chart files (cycle plot added by the curate eval run), 16 targets (mermaid, vega-lite, plotly, chartjs, matplotlib, terminal, echarts, pptx, quickchart, xlsx, gdocs, plantuml, d2, observable-plot, gsheets, docx), rules; `python scripts/cw.py --strict validate` clean and 45 unit tests pass at handoff (docx render proven end to end because python-docx is installed here).
-- Skills are evergreen: `chartwright` due 2026-10-01 (fast), `chartwright-curate` due 2026-10-17 (moderate). Evals in `skills/*/evals/evals.json` (evergreen format; action and outcome cases) and `evals/` at the root (trigger and decoy cases for `claude plugin eval . --ablation none --no-publish -j 4`, which works on native Windows; about 1 USD a run); results in `skills/*/TESTS.md` (latest T-20260926-1, 9/9).
+- Skills are evergreen: `chartwright` due 2026-10-23 (fast), `chartwright-curate` due 2026-11-06 (moderate; refreshed 2026-10-17, open questions in its RESEARCH.md). Evals in `skills/*/evals/evals.json` (evergreen format; action and outcome cases) and `evals/` at the root (trigger and decoy cases for `claude plugin eval . --ablation none --no-publish -j 4`, which works on native Windows; about 1 USD a run); results in `skills/*/TESTS.md` (latest T-20260926-1, 9/9).
 
 ## Next steps (in order of value)
 

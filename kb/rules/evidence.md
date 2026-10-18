@@ -10,6 +10,7 @@ The studies and practitioner sources the selection rules rest on, with what each
 - **Franconeri, Padilla, Shah, Zacks and Hullman 2021**, "The Science of Visual Data Communication: What Works", Psychological Science in the Public Interest 22(3), https://journals.sagepub.com/doi/10.1177/15291006211051956. Review of the perception literature: viewers extract global statistics and shapes fast but compare subsets slowly, one pair at a time; the layout decides which comparison is easy; annotate and label directly; beware axis truncation, aspect ratio, colour scales, 3D; show uncertainty as distributions or quantile dot plots rather than error bars. Strong (review).
 - **Bateman et al. 2010**, "Useful Junk?", CHI. Embellished (Holmes-style) charts were recalled better after a delay with no loss of immediate accuracy. Tufte's data-ink ratio is a heuristic, not a law: remove ink that competes with data, keep embellishment that carries meaning. Medium.
 - **Correll and Gleicher 2014** (error bars considered harmful) and **Kay, Kola, Hullman and Munson 2016** (quantile dot plots): bare error bars are misread as hard limits; gradient bands, violins and quantile dot plots are read more accurately. Medium.
+- **Lee, Park, Chang and Seo 2026**, "Revisiting Channel Effectiveness", IEEE VIS 2026 preprint (https://arxiv.org/abs/2608.04435). Seven channels on four tasks: the ranking shifts by task; position wins mainly through its fixed anchor; area is poor for accuracy but best for pop-out. Refines Cleveland and McGill 1984, does not overturn it. Preprint, not yet replicated: medium.
 - **Cleveland 1993** banking to 45 degrees: choose the aspect ratio so typical line slopes are near 45 degrees. Medium; often ignored, still useful.
 
 ## Colour
@@ -23,7 +24,7 @@ The studies and practitioner sources the selection rules rest on, with what each
 ## Practitioner guidance (secondary, widely adopted)
 
 - **Financial Times Visual Vocabulary** (https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary): the nine families and the one-line caveat per chart; the taxonomy this knowledge base uses.
-- **Datawrapper blog**: "Which chart type should I use?" (Muth 2025), stacked column advice (2025-02), dual-axis warning, small multiples (2023-2024), log scales. Editorial, well-argued, current.
+- **Datawrapper blog**: "Which chart type should I use?" (Muth 2025), stacked column advice (2025-02), dual-axis charts (warned against in 2018, accepted with colour-keyed axes when absolute levels matter in "Why I changed my mind on dual-axis charts", Muth 2026-07-23), small multiples (2023-2024), log scales. Editorial, well-argued, current.
 - **From Data to Viz** (https://www.data-to-viz.com): decision tree from data shape to chart, with a caveat page per chart.
 - **Data Visualisation Catalogue** (https://datavizcatalogue.com): the widest list of chart names and functions.
 - **Storytelling with Data** (Knaflic): a deliberately small chart set (text, table, heat table, scatter, line, slope, bar variants, waterfall, square area) and the direct-labelling habit.

@@ -36,7 +36,7 @@ Position on a common scale beats length beats angle beats area beats colour (Cle
 
 ## 4. Things to refuse or redesign
 
-- Dual y-axes: two panels sharing x, index both to 100, or a connected scatter. If forced, colour-code the axes and label values.
+- Dual y-axes: for a trend or correlation question, two panels sharing x, index both to 100, or a connected scatter. A dual axis is acceptable when readers need the absolute levels of two measures on very different scales ("when one moved, what did the other do"); then colour-key each axis to its series and label values (Muth 2026, Datawrapper, which now ships the type).
 - 3D anything, exploded pies, bar-of-pie, gauges, word clouds: pick the substitute in the chart file.
 - Truncated bar axes: bars start at zero. Lines and dots may not, and the axis says so.
 - Log scale: only for multiplicative data, never under stacked or area charts, always announced.

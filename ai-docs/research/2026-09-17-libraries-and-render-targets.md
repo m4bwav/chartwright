@@ -238,5 +238,5 @@ Static export paths and pitfalls:
 - Whether Docusaurus PR #12454 (Mermaid 12) is merged/released.
 - Chart.js 5 timeline.
 - Vega-Lite ARIA doc URL (`/docs/aria.html` 404s; ARIA config is in Vega config `aria`/`description`, https://vega.github.io/vega/docs/config/).
-- Which Mermaid 11.x minor first shipped treemap-beta (docs now say 12.0.0).
+- Which Mermaid 11.x minor first shipped treemap-beta (docs now say 12.0.0). Answered 2026-10-17: 11.8.0 (release notes); venn-beta 11.13.0, wardley 11.14.0 (chartwright-curate R-20261017-1).
 - Token counts in §B/§F are estimates, not tokenizer-measured.

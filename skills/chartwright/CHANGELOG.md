@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261017-1 · 2026-10-17 · Mermaid treemap and venn version claim corrected
+- because: chartwright-curate R-20261017-1 (Mermaid release notes)
+- files: RESEARCH.md (Current understanding: targets; Open questions)
+- The targets line said 12.0.0 added treemap and venn; the release notes put treemap in 11.8.0, venn-beta in 11.13.0 and wardley in 11.14.0. The knowledge base was corrected in the same change (chartwright-curate C-20261017-1). SKILL.md unchanged.
+
 ### C-20261014-1 · 2026-10-14 · Refresh: versions rechecked, vendor-forum lines added to the search plan
 - because: R-20261014-1, R-20261014-2, R-20261014-3
 - files: RESEARCH.md (Current understanding: targets and agent practice; Open questions; Search plan: Subject forum line, Tooling registry and download lines; Findings log)

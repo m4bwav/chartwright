@@ -51,7 +51,7 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 - Many periods per category: this is a time series; use a `line` per category.
 - Parts of a total: bars beside each other do not sum visually; use a `stacked-bar`.
 - A truncated baseline: grouped bars are still bars and must start at zero.
-- Very different magnitudes between series (units against revenue): separate charts, never a dual axis.
+- Very different magnitudes between series (units against revenue): separate charts, or columns with a line on a colour-keyed second axis when absolute levels matter (Muth 2026); never two bar series on two axes.
 
 ## Substitutes
 

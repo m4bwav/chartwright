@@ -3,12 +3,12 @@ name: Markdown (Mermaid)
 slug: mermaid
 kind: markdown
 renders_in: [GitHub, GitLab, Obsidian, VS Code, Notion, Azure DevOps Wiki, Docusaurus, MkDocs Material]
-version_checked: "12.0.0 (2026-09-10); portable floor 11.13 (Obsidian 1.13)"
-last_verified: 2026-09-17
+version_checked: "12.2.0 (2026-10-13); portable floor 11.13 (Obsidian 1.13)"
+last_verified: 2026-10-17
 renderer: mmdc
 tested:
   - Windows 2026-09-18: build and render to SVG/PNG through npx mermaid-cli; blocks placed in a real README
-sources: [https://mermaid.js.org/syntax/xyChart.html, https://mermaid.js.org/syntax/pie.html, https://mermaid.js.org/syntax/sankey.html, https://mermaid.js.org/syntax/radar.html, https://mermaid.js.org/syntax/quadrantChart.html, https://mermaid.js.org/syntax/treemap.html, https://github.com/orgs/community/discussions/70672, https://obsidian.md/changelog/2026-05-28-desktop-v1.13.0/, https://docs.gitlab.com/releases/19/gitlab-19-0-released/]
+sources: [https://mermaid.js.org/syntax/xyChart.html, https://mermaid.js.org/syntax/pie.html, https://mermaid.js.org/syntax/sankey.html, https://mermaid.js.org/syntax/radar.html, https://mermaid.js.org/syntax/quadrantChart.html, https://mermaid.js.org/syntax/treemap.html, https://github.com/orgs/community/discussions/70672, https://obsidian.md/changelog/2026-05-28-desktop-v1.13.0/, https://docs.gitlab.com/releases/19/gitlab-19-0-released/, https://github.com/mermaid-js/mermaid/releases/tag/mermaid%4011.8.0, https://github.com/mermaid-js/mermaid/releases/tag/mermaid%4011.13.0, https://mermaid.js.org/syntax/venn.html]
 ---
 
 # Markdown (Mermaid)
@@ -27,9 +27,11 @@ The only chart syntax that renders inside a plain markdown file on GitHub, GitLa
 | sankey, alluvial | native | `sankey-beta`, CSV rows `source,target,value`; still marked experimental |
 | radar | native | `radar-beta` since 11.6 |
 | quadrant | native | `quadrantChart`, points normalised to 0..1 |
-| treemap | native (12.0) | `treemap-beta`; not on hosts below 12 |
+| treemap | native (11.8+) | `treemap-beta`, added in 11.8.0, so it is above the 11.13 floor (GitHub 11.16.1, Obsidian 11.13); not tested on those hosts |
 | gantt, timeline, gitgraph, mindmap, kanban | native | diagram types, stable in 11.x |
-| venn, wardley, use case, agentflow | native (12.0 only) | too new for GitHub/Obsidian as of 2026-09 |
+| venn | native (11.13+) | `venn-beta`, added in 11.13.0 (the docs say 11.12.3+); above the 11.13 floor; not tested on hosts |
+| wardley | native (11.14+) | above GitHub's 11.16.1, below Obsidian's 11.13 |
+| use case, agentflow | native (12.0 only) | too new for GitHub/Obsidian as of 2026-10 |
 
 ## Syntax essentials
 
@@ -67,3 +69,4 @@ xychart
 ## Notes
 
 - 2026-09-17: created from the 2026-09-17 library research (Mermaid 12.0.0 released 2026-09-10 with ELK default, treemap, venn, use case, agentflow). `cw.py build --target mermaid` emits `xychart-beta` and unnamed series for maximum host compatibility; add `--flag namedSeries` for `xychart` with named series and a legend when the host is 11.16+.
+- 2026-10-17: corrected the version table from the release notes: treemap arrived in 11.8.0, venn-beta in 11.13.0 and wardley in 11.14.0, not in 12.0; 12.0 added only use case and agentflow (chartwright-curate R-20261017-1).

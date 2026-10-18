@@ -4,6 +4,26 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261017-4 · 2026-10-17 · Refresh: search plan, open questions, Maintenance due date
+- because: R-20261017-5, R-20261017-4 and the refresh procedure (vendor-forum lines required in the plan)
+- files: RESEARCH.md (Current understanding; Open questions; Search plan: Subject and Tooling; Findings log), SKILL.md (Maintenance only)
+- The search plan names the vendor forums with URLs (Vega-Lite, Observable Plot, ECharts and Mermaid Discussions, Datawrapper blog and Academy, Flourish help center), the VIS programme page, the blog index pages and a working OpenAlex query; the MCP registry query moved to "visualization". Open questions: ECharts and pptx targets and the Datawrapper marimekko question resolved; dual-axis file, arrow maps and the VIS bar-bias paper added. SKILL.md body unchanged apart from its Maintenance due date.
+
+### C-20261017-3 · 2026-10-17 · Evidence set gains the VIS 2026 channel-effectiveness revision
+- because: R-20261017-3
+- files: kb/rules/evidence.md (Perception studies)
+- One line for Lee, Park, Chang and Seo 2026 (ranking shifts by task; position wins through its anchor; area best for pop-out), marked preprint and medium. The chart-type boundary paper (Han, McNutt and Isaacs 2026) went into RESEARCH.md Current understanding as the rule for alias against new file.
+
+### C-20261017-2 · 2026-10-17 · Dual-axis guidance softened after Datawrapper reversed its stance
+- because: R-20261017-2
+- files: kb/rules/selection.md (4. Things to refuse or redesign), kb/charts/line.md (When not to use), kb/charts/grouped-bar.md (When not to use), kb/charts/connected-scatter.md (sources; When to use), kb/rules/evidence.md (Practitioner guidance)
+- Two panels, indexing or a connected scatter stay the advice for trend and correlation questions; a dual axis with colour-keyed axes and labelled values is now acceptable when readers need the absolute levels of two measures on very different scales (Muth 2026). "Never a dual axis" became "never two bar series on two axes". The stale source URL in connected-scatter.md now points at the 2026 post. No new chart file yet (open question).
+
+### C-20261017-1 · 2026-10-17 · Mermaid treemap, venn and wardley floors corrected
+- because: R-20261017-1
+- files: kb/targets/mermaid.md (frontmatter version_checked, last_verified, sources; What it can draw; Notes), kb/charts/treemap.md (Build: mermaid; Notes), kb/charts/venn.md (Build: mermaid; Notes), kb/INDEX.md, kb/index.json
+- treemap needs Mermaid 11.8, venn-beta 11.13 and wardley 11.14, not 12.0, so treemap and venn are within the GitHub (11.16.1) and Obsidian (11.13) floor; not yet tested on those hosts. validate --strict and index clean, 45 unit tests OK.
+
 ### C-20261014-1 · 2026-10-14 · Target versions re-checked: plotly.js 4.1.2, Vega-Lite 6.5.0
 - because: 2026-10-14 catalog refresh follow-up (targets one release behind)
 - files: scripts/cw.py (plotly page template), kb/targets/plotly.md, kb/targets/vega-lite.md, kb/targets/matplotlib.md, kb/index.json, kb/INDEX.md

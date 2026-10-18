@@ -30,7 +30,7 @@ support:
   d2: none
   plantuml: none
 added: 2026-09-17
-last_verified: 2026-09-17
+last_verified: 2026-10-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/, https://github.com/konstantint/matplotlib-venn, https://ieeexplore.ieee.org/document/6876017, https://datavizcatalogue.com/methods/venn_diagram.html]
 ---
 
@@ -76,7 +76,7 @@ Caveat: a Venn diagram is a schematic, not a quantitative chart (FT: "generally 
 
 ### mermaid
 
-Mermaid 12.0 has a `venn` diagram (keyword and syntax new in 2026; GitHub and Obsidian were on 11.x as of 2026-09, so it will not render there yet). Hand-written from the Mermaid docs for the exact syntax of the host's version; on older hosts, embed an image. `native` only on 12.0 hosts.
+Mermaid has a `venn-beta` diagram since 11.13.0 (the docs say 11.12.3+). GitHub (11.16.1) and Obsidian (11.13) are at or above that as of 2026-10, so it should render there; not tested on either. Hand-written from https://mermaid.js.org/syntax/venn.html; on older hosts, embed an image.
 
 ### vega-lite
 
@@ -97,3 +97,4 @@ Hand-written: `pip install matplotlib-venn` then `from matplotlib_venn import ve
 ## Notes
 
 - 2026-09-17: written from the 2026-09-17 taxonomy research. `upset` is named as the substitute although it has no file yet in the first fan-out; add it when set-intersection requests appear.
+- 2026-10-17: Mermaid floor corrected from 12.0 to 11.13 (release notes; chartwright-curate R-20261017-1).

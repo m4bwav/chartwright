@@ -30,7 +30,7 @@ support:
   d2: none
   plantuml: none
 added: 2026-09-17
-last_verified: 2026-09-17
+last_verified: 2026-10-17
 sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://mermaid.js.org/syntax/treemap.html, https://plotly.com/javascript/treemaps/, https://vega.github.io/vega/examples/treemap/, https://github.com/laserson/squarify, https://www.semanticscholar.org/paper/55d3281f6b34c50df975b7261044689bf73ec610]
 ---
 
@@ -87,7 +87,7 @@ treemap-beta
         "Americas": 15
 ```
 
-Hand-written; `treemap-beta` needs Mermaid 12.0 (GitHub and Obsidian were on 11.x as of 2026-09), so use it only when the host version is known, and no negative values. Otherwise render an image with plotly or matplotlib and link it.
+Hand-written; `treemap-beta` needs Mermaid 11.8 or later (GitHub runs 11.16.1 and Obsidian 11.13 as of 2026-10, so both should draw it; not tested on either), and no negative values. Otherwise render an image with plotly or matplotlib and link it.
 
 ### vega-lite
 
@@ -120,3 +120,4 @@ Approximate: QuickChart `treemap` plugin type; write the Chart.js config by hand
 ## Notes
 
 - 2026-09-17: written from the 2026-09-17 taxonomy research.
+- 2026-10-17: Mermaid floor corrected from 12.0 to 11.8 (release notes; chartwright-curate R-20261017-1).
