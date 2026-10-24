@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261023-1 · 2026-10-23 · Refresh: Flint target list corrected; Obsidian Pele, Chart.js 4.6 and download figures recorded
+- because: R-20261023-1, R-20261023-2, R-20261023-3, R-20261023-4
+- files: SKILL.md (Step 3 to 5: Flint sentence), RESEARCH.md (Current understanding: targets and agent practice; Open questions; Search plan: Subject forum line, Testing; Findings log)
+- Flint 1.0 also returns PNG, SVG and Image-Charts URLs, so the "only" list in SKILL.md was widened while keeping its missing Mermaid, Markdown and PowerPoint targets. Obsidian 1.15 Catalyst's switch to Pele, Chart.js 4.6.1 and the antvis version correction (0.9.10) are recorded in RESEARCH.md; the portable Mermaid floor is unchanged until 1.15 is public.
+
 ### C-20261017-1 · 2026-10-17 · Mermaid treemap and venn version claim corrected
 - because: chartwright-curate R-20261017-1 (Mermaid release notes)
 - files: RESEARCH.md (Current understanding: targets; Open questions)

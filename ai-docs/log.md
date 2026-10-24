@@ -167,3 +167,7 @@ Append-only. Newest at the bottom. One entry per working session.
 ## 2026-10-18: release 0.8.6
 
 - Tag v0.8.6 and GitHub Release https://github.com/m4bwav/chartwright/releases/tag/v0.8.6 at master 8275525, after the 45 tests passed locally (this repo has no CI or release workflow; the release was made with `gh release create`).
+
+## 2026-10-23: chartwright refresh
+
+- Evergreen refresh of the chartwright skill (m 0.35). Obsidian 1.15.0 Catalyst replaces Mermaid with its own renderer Pele (Mermaid 12.1.0 syntax); the portable floor stays 11.13 until it ships publicly. Chart.js 4.6.1 released; Flint 1.0 adds PNG/SVG and Image-Charts (SKILL.md Flint sentence corrected); @antv/mcp-server-chart is 0.9.10 on npm, not 0.11.10. Open: test whether Pele renders headless in Node as a browserless Mermaid check.
