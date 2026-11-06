@@ -87,7 +87,7 @@ treemap-beta
         "Americas": 15
 ```
 
-Hand-written; `treemap-beta` needs Mermaid 11.8 or later (GitHub runs 11.16.1 and Obsidian 11.13 as of 2026-10, so both should draw it; not tested on either), and no negative values. Otherwise render an image with plotly or matplotlib and link it.
+Hand-written; `treemap-beta` needs Mermaid 11.8 or later (GitHub runs 11.16.1 and Obsidian before 1.15 runs 11.13, so both should draw it; not tested on either), and no negative values. Otherwise render an image with plotly or matplotlib and link it.
 
 ### vega-lite
 

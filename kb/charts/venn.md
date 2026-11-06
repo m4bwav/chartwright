@@ -76,7 +76,7 @@ Caveat: a Venn diagram is a schematic, not a quantitative chart (FT: "generally 
 
 ### mermaid
 
-Mermaid has a `venn-beta` diagram since 11.13.0 (the docs say 11.12.3+). GitHub (11.16.1) and Obsidian (11.13) are at or above that as of 2026-10, so it should render there; not tested on either. Hand-written from https://mermaid.js.org/syntax/venn.html; on older hosts, embed an image.
+Mermaid has a `venn-beta` diagram since 11.13.0 (the docs say 11.12.3+). GitHub (11.16.1) and Obsidian before 1.15 (11.13) are at or above that as of 2026-10, so it should render there; not tested on either. Hand-written from https://mermaid.js.org/syntax/venn.html; on older hosts, embed an image.
 
 ### vega-lite
 

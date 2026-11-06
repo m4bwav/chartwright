@@ -3,7 +3,7 @@ name: Markdown (Mermaid)
 slug: mermaid
 kind: markdown
 renders_in: [GitHub, GitLab, Obsidian, VS Code, Notion, Azure DevOps Wiki, Docusaurus, MkDocs Material]
-version_checked: "12.2.0 (2026-10-13); portable floor 11.13 (Obsidian 1.13)"
+version_checked: "12.2.0 (2026-10-13); portable floor 11.13 (Obsidian before 1.15)"
 last_verified: 2026-10-17
 renderer: mmdc
 tested:
@@ -27,11 +27,11 @@ The only chart syntax that renders inside a plain markdown file on GitHub, GitLa
 | sankey, alluvial | native | `sankey-beta`, CSV rows `source,target,value`; still marked experimental |
 | radar | native | `radar-beta` since 11.6 |
 | quadrant | native | `quadrantChart`, points normalised to 0..1 |
-| treemap | native (11.8+) | `treemap-beta`, added in 11.8.0, so it is above the 11.13 floor (GitHub 11.16.1, Obsidian 11.13); not tested on those hosts |
+| treemap | native (11.8+) | `treemap-beta`, added in 11.8.0, so it is above the 11.13 floor (GitHub 11.16.1, Obsidian before 1.15 on 11.13); not tested on those hosts |
 | gantt, timeline, gitgraph, mindmap, kanban | native | diagram types, stable in 11.x |
 | venn | native (11.13+) | `venn-beta`, added in 11.13.0 (the docs say 11.12.3+); above the 11.13 floor; not tested on hosts |
-| wardley | native (11.14+) | above GitHub's 11.16.1, below Obsidian's 11.13 |
-| use case, agentflow | native (12.0 only) | too new for GitHub/Obsidian as of 2026-10 |
+| wardley | native (11.14+) | within GitHub's 11.16.1, above the 11.13 of Obsidian before 1.15 |
+| use case, agentflow | native (12.0 only) | too new for GitHub as of 2026-11; Pele in Obsidian 1.15 claims every Mermaid 12.1.0 built-in type, untested |
 
 ## Syntax essentials
 
@@ -56,7 +56,7 @@ xychart
 ## Limits
 
 - No scatter, histogram, box plot, heatmap, area, stacked or grouped bars, dual axis, log scale, error bars, per-point colour.
-- Host version lag: GitHub ran 11.16.1 in 2026-08, Obsidian 11.13, GitLab 11 since 19.0 (2026-05), Azure DevOps a limited subset. Anything marked 12.0 or `-beta` newer than 11.13 may not render for the reader. When the host is unknown, stay on the 11.13 floor: xychart(-beta), pie, quadrant, sankey-beta, radar-beta, timeline, gantt, gitGraph, mindmap, kanban, packet, block, architecture.
+- Host version lag: GitHub ran 11.16.1 in 2026-08, Obsidian 11.13 before 1.15 (1.15, public 2026-11-02, draws with Pele instead, Mermaid 12.1.0 syntax, `xychart-beta` named series untested), GitLab 11 since 19.0 (2026-05), Azure DevOps a limited subset. Anything marked 12.0 or `-beta` newer than 11.13 may not render for the reader. When the host is unknown, stay on the 11.13 floor: xychart(-beta), pie, quadrant, sankey-beta, radar-beta, timeline, gantt, gitGraph, mindmap, kanban, packet, block, architecture.
 - Confluence has no native Mermaid (marketplace apps only). Word and Google Docs never render it: use an image.
 - Long category lists overflow: keep x categories under about 12 or switch to an image.
 
@@ -69,4 +69,5 @@ xychart
 ## Notes
 
 - 2026-09-17: created from the 2026-09-17 library research (Mermaid 12.0.0 released 2026-09-10 with ELK default, treemap, venn, use case, agentflow). `cw.py build --target mermaid` emits `xychart-beta` and unnamed series for maximum host compatibility; add `--flag namedSeries` for `xychart` with named series and a legend when the host is 11.16+.
+- 2026-11-06: Obsidian 1.15 is public and draws with Pele; floor kept at 11.13 until older installs age out (chartwright R-20261106-1).
 - 2026-10-17: corrected the version table from the release notes: treemap arrived in 11.8.0, venn-beta in 11.13.0 and wardley in 11.14.0, not in 12.0; 12.0 added only use case and agentflow (chartwright-curate R-20261017-1).

@@ -4,6 +4,10 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261106-1 · 2026-11-06 · Host lines: Obsidian 1.15 draws with Pele; floor stays 11.13
+- because: R-20261106-1
+- files: kb/targets/mermaid.md, kb/rules/choosing-a-target.md, kb/charts/treemap.md, kb/charts/venn.md, kb/index.json
+
 ### C-20261023-1 · 2026-10-23 · Refresh: Flint target list corrected; Obsidian Pele, Chart.js 4.6 and download figures recorded
 - because: R-20261023-1, R-20261023-2, R-20261023-3, R-20261023-4
 - files: SKILL.md (Step 3 to 5: Flint sentence), RESEARCH.md (Current understanding: targets and agent practice; Open questions; Search plan: Subject forum line, Testing; Findings log)

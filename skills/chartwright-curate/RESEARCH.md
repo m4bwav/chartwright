@@ -51,6 +51,11 @@ Best sources: the FT chart-doctor repo, datavizcatalogue.com, data-to-viz.com, d
 
 Newest first.
 
+### R-20261106-1 · 2026-11-06 · Quiet: no new chart type; fuller pass held for VIS
+- Summary: Datawrapper posts since 10-17 add no chart type; Mermaid 12.3 adds no chart type. Flourish, FT chart-doctor, eagereyes, OpenAlex and the VIS programme were not re-read: the 2026-11-14 vis-2026-preprints event holds the fuller pass. Tooling, practice, testing: nothing new in shared searches.
+- Track: subject. Sources: https://www.datawrapper.de/blog, https://github.com/mermaid-js/mermaid/releases
+- magnitude 0.1 · applied: none
+
 ### R-20261017-5 · 2026-10-17 · Quiet tracks and baselines
 - Summary: tooling: nothing new that does curation; the MCP registry's chart servers all generate charts (ApexCharts MCP 0.10.3, regiabi chart-mcp 0.6.47) and none chooses a type from evidence; Flourish's AI Assistant and Connector (2026-07-23) lets an agent pick a Flourish template, which makes Flourish's template list agent-facing. Practice: Data Formulator 0.8b1 (2026-08-15) and Draco 2 unchanged; the chart-choosing skills found are thin purpose-to-type maps without cited sources. Subject: FT chart-doctor, Data Visualisation Catalogue, From Data to Viz and eagereyes quiet; Datawrapper added keyboard navigation and reader font scaling (2026-10-14), an accessibility feature, no new type; Flourish posted a beeswarm guide (2026-09-14). Datawrapper marimekko: not native (open question resolved).
 - Track: subject, tooling, practice

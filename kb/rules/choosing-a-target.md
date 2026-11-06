@@ -20,7 +20,7 @@ Pick the smallest target the destination renders natively, then the cheapest to 
 
 1. Where will the reader see it? Ask if not obvious from the request or the file being edited (a `.md` in a repo means markdown; a `.html` or artifact means web; a `.docx`/`.pptx`/Google Doc means image or native).
 2. Is the chart type in that target's "What it can draw" table as `native`? If `approx`, decide whether the approximation loses the point (a grouped bar as overlapping Mermaid bars does). If `image` or `none`, move down the fallback column.
-3. Does the reader's host run a new enough version? Mermaid hosts lag (GitHub 11.16, Obsidian 11.13): stay on the 11.13 floor unless the host is known.
+3. Does the reader's host run a new enough version? Mermaid hosts lag (GitHub 11.16, Obsidian before 1.15 on 11.13): stay on the 11.13 floor unless the host is known.
 4. Keep the source: save the spec or script next to the rendered image (`chart.vl.json` beside `chart.png`) so the chart can be regenerated and so the data never has to pass through the model again.
 5. Data by reference: build with `cw.py build --data file.csv` rather than pasting rows into the spec; use `--flag dataByUrl` for Vega-Lite specs that will live next to their CSV.
 
