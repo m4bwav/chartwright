@@ -13,9 +13,9 @@
   "source": null,
   "topic": "chart type selection evidence and the chart menus, syntax and versions of Mermaid, Vega-Lite, Plotly, Chart.js and matplotlib; how agents choose and build charts",
   "tier": "fast",
-  "interval_days": 6.22,
-  "last_checked": "2026-10-30",
-  "next_due": "2026-11-06",
+  "interval_days": 4.15,
+  "last_checked": "2026-11-06",
+  "next_due": "2026-11-10",
   "verify_at_use": false,
   "volatile_claims": [],
   "contradiction": null,
@@ -56,12 +56,18 @@
       "m": 0.1,
       "interval_after": 6.22,
       "note": "plotly.js 4.2.0; quiet elsewhere; cost: searches 1 · fetches 0 · tool calls 4"
+    },
+    {
+      "date": "2026-11-06",
+      "m": 0.45,
+      "interval_after": 4.15,
+      "note": "Obsidian 1.15 public, Pele replaces Mermaid: host lines, floor kept; cost: searches 7 · fetches 8 · tool calls 24 (shared)"
     }
   ],
   "counts": {
     "learnings": 1,
     "changes": 6,
-    "research": 4,
+    "research": 5,
     "tests": 5
   },
   "consolidate_every": 25,

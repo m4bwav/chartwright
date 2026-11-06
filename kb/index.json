@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-18",
+ "generated": "2026-11-06",
  "charts": [
   {
    "slug": "adjacency-matrix",
@@ -4896,7 +4896,7 @@
     "Docusaurus",
     "MkDocs Material"
    ],
-   "version_checked": "12.2.0 (2026-10-13); portable floor 11.13 (Obsidian 1.13)",
+   "version_checked": "12.2.0 (2026-10-13); portable floor 11.13 (Obsidian before 1.15)",
    "renderer": "mmdc",
    "last_verified": "2026-10-17",
    "tested": [
