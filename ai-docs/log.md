@@ -171,3 +171,7 @@ Append-only. Newest at the bottom. One entry per working session.
 ## 2026-10-23: chartwright refresh
 
 - Evergreen refresh of the chartwright skill (m 0.35). Obsidian 1.15.0 Catalyst replaces Mermaid with its own renderer Pele (Mermaid 12.1.0 syntax); the portable floor stays 11.13 until it ships publicly. Chart.js 4.6.1 released; Flint 1.0 adds PNG/SVG and Image-Charts (SKILL.md Flint sentence corrected); @antv/mcp-server-chart is 0.9.10 on npm, not 0.11.10. Open: test whether Pele renders headless in Node as a browserless Mermaid check.
+
+## 2026-11-08
+
+- Obsidian 1.15 test passed (Mark, screenshots): in Reading view xychart-beta with named series and an own-line %% note draws with an Alpha/Beta legend and no comment text (block A); the plain `xychart` keyword with named series also draws (B); the unnamed control draws without a legend (C). The 11.13 portable floor stays, because GitHub also sets it; named series are confirmed on Obsidian 1.15. Test note: evergreen-upkeep/chartwright-obsidian-test.md.
