@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 1.0.0 (2026-11-09)
+
+- First stable release. No change in behaviour from 0.8.6; the skills, knowledge layout and CLI are now treated as stable, so breaking changes will need a 2.0.
+
 ## 0.8.6 (2026-10-17)
 
 - Knowledge corrections from the chartwright-curate refresh. Mermaid treemap (11.8), venn (11.13) and wardley (11.14) no longer claimed to need 12.0, so treemap and venn stay in Markdown on GitHub and Obsidian. Dual-axis guidance follows Datawrapper's 2026 reversal: still two panels or indexing for trend questions, a colour-keyed dual axis allowed when absolute levels matter. The evidence set gains the VIS 2026 channel-effectiveness revision (preprint). Details: `skills/chartwright-curate/CHANGELOG.md` C-20261017-1 to -4. Also carries the 2026-10-14 target version re-check (C-20261014-1), which had no version of its own.

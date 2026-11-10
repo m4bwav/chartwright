@@ -175,3 +175,5 @@ Append-only. Newest at the bottom. One entry per working session.
 ## 2026-11-08
 
 - Obsidian 1.15 test passed (Mark, screenshots): in Reading view xychart-beta with named series and an own-line %% note draws with an Alpha/Beta legend and no comment text (block A); the plain `xychart` keyword with named series also draws (B); the unnamed control draws without a legend (C). The 11.13 portable floor stays, because GitHub also sets it; named series are confirmed on Obsidian 1.15. Test note: evergreen-upkeep/chartwright-obsidian-test.md.
+
+## [2026-11-09] release | 1.0.0: first stable release at the owner's request; version bump and changelog only, no behaviour change; suites passed before tagging
