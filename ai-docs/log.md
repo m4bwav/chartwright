@@ -177,3 +177,7 @@ Append-only. Newest at the bottom. One entry per working session.
 - Obsidian 1.15 test passed (Mark, screenshots): in Reading view xychart-beta with named series and an own-line %% note draws with an Alpha/Beta legend and no comment text (block A); the plain `xychart` keyword with named series also draws (B); the unnamed control draws without a legend (C). The 11.13 portable floor stays, because GitHub also sets it; named series are confirmed on Obsidian 1.15. Test note: evergreen-upkeep/chartwright-obsidian-test.md.
 
 ## [2026-11-09] release | 1.0.0: first stable release at the owner's request; version bump and changelog only, no behaviour change; suites passed before tagging
+
+## 2026-11-11: Works with section
+
+Added a README "Works with" section and a wiki Works-with page covering everscout, askwright, tokenwright, taken from the real handoffs in both plugins' skills (askwright and tokenwright added where they fit). Part of a cross-plugin pass on Mark's request that each pairing be described from both sides.
