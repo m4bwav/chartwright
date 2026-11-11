@@ -56,6 +56,16 @@ Renderers are optional: `pip install vl-convert-python` for Vega-Lite to PNG/SVG
 
 Each render target records where its build and render were actually proven (`tested:` in `kb/targets/<slug>.md`, summarised in `kb/INDEX.md`). The plugin was built on one Windows PC. Targets marked `untested`, or with no entry for your platform, are not broken, just unproven: the chartwright skill will tell you so and ask before continuing. If it works for you, let it record the result (`python scripts/cw.py tested <target> --platform <OS> "<what worked>"`) and send a pull request; failures are just as useful, recorded the same way.
 
+## Works with
+
+Each of these plugins works on its own. Together:
+
+- **[everscout](https://github.com/m4bwav/everscout)**: everscout's `stats export --charts` hands its CSV to chartwright and links the charts from the report.
+- **[askwright](https://github.com/m4bwav/askwright)**: A decision that turns on numbers is easier with a chart in the question. chartwright renders a PNG or SVG, and askwright puts it beside the options.
+- **[tokenwright](https://github.com/m4bwav/tokenwright)**: tokenwright's `tw.py` measures where a session's tokens went. chartwright turns that into a chart, so the expensive turns are easy to see.
+
+More on each pairing, with an example flow: [Works with](https://github.com/m4bwav/chartwright/wiki/Works-with) on the wiki.
+
 ## Install
 
 Claude Code: add the repo as a marketplace and install (`/plugin marketplace add m4bwav/chartwright` then `/plugin install chartwright@chartwright`), or clone it into a local directory marketplace. Elsewhere, copy `skills/*` into the agent's skill store and keep the plugin folder where the skills can find `scripts/` and `kb/` (two levels up from each SKILL.md). Optional renderers: `pip install vl-convert-python matplotlib python-pptx openpyxl`; Node plus `@mermaid-js/mermaid-cli` only to rasterise Mermaid.
