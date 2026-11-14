@@ -63,6 +63,7 @@ Each of these plugins works on its own. Together:
 - **[everscout](https://github.com/m4bwav/everscout)**: everscout's `stats export --charts` hands its CSV to chartwright and links the charts from the report.
 - **[askwright](https://github.com/m4bwav/askwright)**: A decision that turns on numbers is easier with a chart in the question. chartwright renders a PNG or SVG, and askwright puts it beside the options.
 - **[tokenwright](https://github.com/m4bwav/tokenwright)**: tokenwright's `tw.py` measures where a session's tokens went. chartwright turns that into a chart, so the expensive turns are easy to see.
+- **[fractalwright](https://github.com/m4bwav/fractalwright)**: fractalwright's dimension measurements become log-log box-counting plots through chartwright.
 
 More on each pairing, with an example flow: [Works with](https://github.com/m4bwav/chartwright/wiki/Works-with) on the wiki.
 
