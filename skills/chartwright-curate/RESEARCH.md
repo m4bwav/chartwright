@@ -108,3 +108,6 @@ Newest first.
 - Sources: https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocabulary, https://datavizcatalogue.com, https://www.data-to-viz.com, https://www.datawrapper.de/blog/chart-types-guide, https://eagereyes.org/pie-charts, https://github.com/antvis/mcp-server-chart, https://github.com/microsoft/data-formulator
 - Magnitude: n/a (initial)
 - Applied: C-20260917-1
+
+### R-20261117-1 · 2026-11-17 · Book notes: preattentive, drill terms, ensemble histogram
+- Two books were read for chartwright. Kept: the preattentive test (response time flat as distractors grow) as the reason for a single highlight channel; the drill-down (same view, finer grain) versus drill-through (different detail view) distinction; the ensemble result drawn as a histogram with the actual value marked (a presentation suggestion drawn from the method, not stated by its author). The kb had none of the three. Book rules, unverified. Everything else in both books already matched the kb or was out of scope.

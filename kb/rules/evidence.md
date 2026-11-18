@@ -12,6 +12,7 @@ The studies and practitioner sources the selection rules rest on, with what each
 - **Correll and Gleicher 2014** (error bars considered harmful) and **Kay, Kola, Hullman and Munson 2016** (quantile dot plots): bare error bars are misread as hard limits; gradient bands, violins and quantile dot plots are read more accurately. Medium.
 - **Lee, Park, Chang and Seo 2026**, "Revisiting Channel Effectiveness", IEEE VIS 2026 preprint (https://arxiv.org/abs/2608.04435). Seven channels on four tasks: the ranking shifts by task; position wins mainly through its fixed anchor; area is poor for accuracy but best for pop-out. Refines Cleveland and McGill 1984, does not overturn it. Preprint, not yet replicated: medium.
 - **Cleveland 1993** banking to 45 degrees: choose the aspect ratio so typical line slopes are near 45 degrees. Medium; often ignored, still useful.
+- **Preattentive pop-out** (the book Exploratory Data Analysis, a book rule, unverified here): one visual feature that differs from its neighbours, such as colour, size or orientation, is found at a glance whatever the number of distractors, which is why one highlight channel per chart works and two compete.
 
 ## Colour
 
@@ -29,6 +30,7 @@ The studies and practitioner sources the selection rules rest on, with what each
 - **Data Visualisation Catalogue** (https://datavizcatalogue.com): the widest list of chart names and functions.
 - **Storytelling with Data** (Knaflic): a deliberately small chart set (text, table, heat table, scatter, line, slope, bar variants, waterfall, square area) and the direct-labelling habit.
 - **Chartability** (Fizz Studio) and WCAG: accessibility heuristics for charts (text alternative in the "type, what it shows, key finding" pattern; data table alternative; keyboard access).
+- **Dashboard interaction terms** (the same book, a book rule, unverified here): drill-down shows finer grain inside the same view; drill-through opens a different detail view. Name which one a request means before building it.
 
 ## How AI systems choose charts (2024-2026)
 

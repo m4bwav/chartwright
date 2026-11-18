@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 1.1.0 (2026-11-17)
+
+- Knowledge additions from book notes: preattentive pop-out behind the single-highlight rule, drill-down versus drill-through for dashboard requests, and the ensemble-versus-actual histogram pattern. Book rules, unverified. Details: `skills/chartwright-curate/CHANGELOG.md` C-20261117-1.
+
 ## 1.0.0 (2026-11-09)
 
 - First stable release. No change in behaviour from 0.8.6; the skills, knowledge layout and CLI are now treated as stable, so breaking changes will need a 2.0.

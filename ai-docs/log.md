@@ -183,3 +183,5 @@ Append-only. Newest at the bottom. One entry per working session.
 Added a README "Works with" section and a wiki Works-with page covering everscout, askwright, tokenwright, taken from the real handoffs in both plugins' skills (askwright and tokenwright added where they fit). Part of a cross-plugin pass on Mark's request that each pairing be described from both sides.
 
 ## [2026-11-14] update | README Works with: fractalwright (new public plugin), mirroring its own section
+
+## [2026-11-17] update | 1.1.0: three book rules in the kb (preattentive, drill terms, ensemble histogram), unverified
