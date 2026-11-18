@@ -41,6 +41,7 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 - One numeric variable and the question is its shape: centre, spread, skew, gaps, more than one peak.
 - Checking assumptions before summarising with a mean or a box plot (a bimodal variable has a meaningless mean).
 - Moderate to large n (about 30 upwards): with fewer values the bins are mostly noise; show the points instead.
+- Showing where one actual value falls among many simulated ones (a permutation or ensemble test): histogram of the simulated scores with the actual value as one marked line (Volic, Making Democracy Count, a book rule, unverified here).
 - Two or three groups overlaid with transparency, or faceted, when the reader must compare shapes.
 - Excels at: the default distribution chart every reader understands; counts are lengths on a common baseline, the encoding read most accurately (Cleveland and McGill 1984).
 

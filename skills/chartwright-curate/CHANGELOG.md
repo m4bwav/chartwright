@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261117-1 · 2026-11-17 · Three book rules added to the knowledge base, all unverified
+- because: R-20261117-1
+- files: kb/rules/evidence.md (Perception studies; Practitioner guidance), kb/charts/histogram.md (When to use)
+- One line on preattentive pop-out as the reason one highlight channel works, one on drill-down versus drill-through, one on showing an actual value against an ensemble as a histogram with one marked line. Sources: the book Exploratory Data Analysis (first two) and Volic's Making Democracy Count (third). Book rules, unverified: no check on our own tools agrees yet.
+
 ### C-20261017-4 · 2026-10-17 · Refresh: search plan, open questions, Maintenance due date
 - because: R-20261017-5, R-20261017-4 and the refresh procedure (vendor-forum lines required in the plan)
 - files: RESEARCH.md (Current understanding; Open questions; Search plan: Subject and Tooling; Findings log), SKILL.md (Maintenance only)
