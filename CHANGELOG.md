@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 1.3.0 (2026-11-19)
+
+- `cw.py lint` gains three warnings from Ware 2012 ch. 3-4: `low-contrast-mark` (point, line or text colour under 3:1 against the background with no stroke), `heavy-fill` (dark saturated area fills), `rainbow-scale`. Selection rules gain colour weight, highlight hull and level caps; document charts gain one mapping per document. Details: `skills/chartwright/CHANGELOG.md` C-20261119-2.
+
 ## 1.2.0 (2026-11-19)
 
 - New `cw.py lint SPEC.json`: integrity checks on a Vega-Lite spec from Tufte 2001 and Munzner 2014. Fails (exit 1 with `--strict`): lie factor outside 0.95-1.05 on bars or areas, dates on an ordinal axis, a squared size scale. Warnings: hue for ordered data, a ramp on categories, colour plus opacity on two fields, colour budget, red-green pair, greyscale collapse, heavy grid, 20 numbers or fewer, a lone short series, all-caps title, a tall time series. Selection rules, build defaults, document-chart rules and a failure-level line in Step 6 gained the same sources. Details: `skills/chartwright/CHANGELOG.md` C-20261119-1.

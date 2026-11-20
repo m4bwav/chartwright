@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261119-2 · 2026-11-19 · Ware 2012 colour checks in `lint` and rules
+- because: user request (books round 6, track 53)
+- files: scripts/cw.py (lint), tests/test_cw.py (test_ware_colour_checks), kb/rules/selection.md (section 4), references/build-and-verify.md (Verify lint line), references/document-charts.md (What not to do)
+- Three lint warnings: `low-contrast-mark` only for small marks (bars at 2.6:1 read fine, so they are left out), `heavy-fill` at HSV saturation over 0.85 and L* under 50 (reader-set), `rainbow-scale`. Selection gains light fills, 3:1 for marks, highlight outside the hull, level caps and the hue-cycling lightness scale; document charts gain one mapping per document.
+
 ### C-20261119-1 · 2026-11-19 · `cw.py lint` and book rules from Tufte 2001 and Munzner 2014
 - because: user request (books round 6, track 46); L-003
 - files: scripts/cw.py (lint), tests/test_cw.py (LintTests), kb/rules/selection.md (sections 1 to 4), references/build-and-verify.md (Build 7-8, Verify lint line), references/document-charts.md (What not to do), SKILL.md (Step 6)
