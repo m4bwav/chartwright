@@ -19,6 +19,7 @@ Commands
   new-chart SLUG --name N --family F [--shapes ...]
   new-target SLUG --name N --kind K
   note SLUG "text"              append a dated note to the chart (or target) file
+  lint SPEC.json                integrity checks on a Vega-Lite spec (--strict: exit 1 on a fail finding)
   doctor                        which renderers are available on this machine
   targets                       list render targets
 """
@@ -1618,6 +1619,144 @@ def cmd_targets(a):
         print(f"{slug:16} {str(t.get('kind')):9} {flag:10} {t.get('name')}  [{t.get('renderer')}]")
 
 
+# ---------------------------------------------------------------- lint
+_CATEGORICAL = {"category10", "category20", "category20b", "category20c", "tableau10", "tableau20", "accent", "dark2",
+                "paired", "pastel1", "pastel2", "set1", "set2", "set3", "observable10"}
+
+
+def _hex_rgb(c):
+    m = re.fullmatch(r"#?([0-9a-fA-F]{6}|[0-9a-fA-F]{3})", str(c).strip())
+    if not m:
+        return None
+    h = m.group(1)
+    if len(h) == 3:
+        h = "".join(ch * 2 for ch in h)
+    return tuple(int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
+
+
+def _lstar(rgb):
+    lin = [v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4 for v in rgb]
+    y = 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2]
+    return 116 * y ** (1 / 3) - 16 if y > 0.008856 else 903.3 * y
+
+
+def _hue(rgb):
+    mx, mn = max(rgb), min(rgb)
+    if mx - mn < 0.15:
+        return None
+    r, g, b = rgb
+    d = mx - mn
+    h = ((g - b) / d) % 6 if mx == r else (b - r) / d + 2 if mx == g else (r - g) / d + 4
+    return h * 60
+
+
+def lint_vega_lite(spec: dict) -> list[dict]:
+    """Integrity checks on a Vega-Lite spec (Tufte 2001 ch. 2, 5, 9; Munzner 2014 ch. 5, 6, 10).
+    fail = the chart misstates the data; warn = a style rule or a threshold the reader set, not the book."""
+    out = []
+
+    def add(level, code, msg):
+        out.append({"level": level, "code": code, "message": msg})
+
+    m = spec.get("mark")
+    mark = m.get("type") if isinstance(m, dict) else m
+    enc = spec.get("encoding") or {}
+    values = (spec.get("data") or {}).get("values") or []
+    cfg = spec.get("config") or {}
+    x, y, col = enc.get("x") or {}, enc.get("y") or {}, enc.get("color") or {}
+    # lie factor (Tufte ch. 2, p. 57): bar or area lengths that do not start at zero
+    for ax in (y, x):
+        f = ax.get("field")
+        sc = ax.get("scale") or {}
+        if mark in ("bar", "area") and ax.get("type") == "quantitative" and f and values and (sc.get("zero") is False or sc.get("domain")):
+            nums = [v for v in (_num(r.get(f)) for r in values) if v is not None and v > 0]
+            if len(nums) >= 2 and max(nums) > min(nums):
+                lo, hi = min(nums), max(nums)
+                dom = sc.get("domain")
+                d0 = _num(dom[0]) if isinstance(dom, list) and dom and _num(dom[0]) is not None else lo * 0.9
+                lf = (((hi - lo) / (lo - d0)) / ((hi - lo) / lo)) if lo - d0 > 0 else float("inf")
+                if not 0.95 <= lf <= 1.05:
+                    add("fail", "lie-factor", f"{mark} lengths on '{f}' do not start at zero: lie factor {lf:.2f} (keep 0.95-1.05; set scale.zero true)")
+    # uneven time (Tufte ch. 2): dates on an ordinal or nominal axis are drawn evenly spaced
+    for name, ax in (("x", x), ("y", y)):
+        f = ax.get("field")
+        if f and ax.get("type") in ("ordinal", "nominal") and values:
+            vals = [str(r.get(f, "")) for r in values]
+            if all(_is_time(v) for v in vals) and len(set(vals)) >= 3:
+                add("fail", "uneven-time", f"{name} '{f}' holds dates but is typed {ax.get('type')}: unequal gaps are drawn equal; use type temporal")
+    # area scale (Tufte ch. 2, pp. 69-71): Vega-Lite size is area already; squaring it again inflates
+    ssc = (enc.get("size") or {}).get("scale") or {}
+    if ssc.get("type") == "pow" and (ssc.get("exponent") or 1) >= 2:
+        add("fail", "area-scale", "size scale squares the value, so area grows with its square: drop the pow scale")
+    # expressiveness (Munzner ch. 5, p. 99; ch. 10, p. 224)
+    scheme = (col.get("scale") or {}).get("scheme")
+    scheme = scheme.get("name") if isinstance(scheme, dict) else scheme
+    if col.get("type") in ("ordinal", "quantitative") and str(scheme or "").lower() in _CATEGORICAL:
+        add("warn", "hue-for-order", f"ordered field '{col.get('field')}' on categorical scheme {scheme}: hue has no order; use a light-to-dark ramp")
+    if col.get("type") == "nominal" and scheme and str(scheme).lower() not in _CATEGORICAL:
+        add("warn", "false-order", f"category field '{col.get('field')}' on ramp {scheme}: categories get a qualitative palette")
+    # integral channels (Munzner sec. 5.5.4, 10.2.4): colour and opacity on two fields fuse
+    op = enc.get("opacity") or {}
+    if col.get("field") and op.get("field") and col.get("field") != op.get("field"):
+        add("warn", "integral-channels", f"'{col.get('field')}' on colour and '{op.get('field')}' on opacity fuse into one read; move one to position or a facet")
+    # colour budget (Munzner ch. 10, p. 226): background and default grey count too
+    rng = [c for c in ((col.get("scale") or {}).get("range") or []) if isinstance(c, str)]
+    n_cat = len({r.get(col["field"]) for r in values}) if col.get("field") and col.get("type") == "nominal" and values else len(rng)
+    if n_cat + 2 > 12:
+        add("warn", "colour-budget", f"{n_cat} hues plus background and grey exceed about 12 distinguishable colours: fold to Other or facet")
+    rgbs = [c for c in (_hex_rgb(c) for c in rng) if c]
+    if len(rgbs) >= 2:
+        h0, h1 = _hue(rgbs[0]), _hue(rgbs[1])
+        red = lambda h: h is not None and (h < 25 or h > 335)
+        green = lambda h: h is not None and 75 < h < 165
+        if (red(h0) and green(h1)) or (green(h0) and red(h1)):
+            add("warn", "red-green-pair", "the first two series differ as red against green, which colour-blind readers lose (Tufte ch. 9, p. 183): use blue against orange")
+        ls = sorted(_lstar(c) for c in rgbs)
+        close = [b - a for a, b in zip(ls, ls[1:]) if b - a < 10]
+        if close:
+            add("warn", "grey-collapse", f"range colours {min(close):.1f} L* apart merge in greyscale (Munzner ch. 6, p. 140; 10 L* is a reader-set threshold)")
+    # heavy grid (Tufte ch. 5, p. 112; ch. 9, p. 186)
+    acfg = cfg.get("axis") or {}
+    g = _hex_rgb(acfg["gridColor"]) if acfg.get("gridColor") else None
+    if acfg.get("grid") is not False and g and _lstar(g) < 80:
+        add("warn", "heavy-grid", f"gridColor {acfg['gridColor']} is darker than about #ccc: keep grids thin and light (reader-set threshold)")
+    sw = m.get("strokeWidth") if isinstance(m, dict) else None
+    if acfg.get("gridWidth") and acfg["gridWidth"] >= (sw or 2):
+        add("warn", "heavy-grid", "grid lines as thick as the data line: the data stroke stays heaviest")
+    # small data (Tufte ch. 1, p. 56)
+    nq = sum(1 for r in values for v in r.values() if _num(v) is not None)
+    if values and nq <= 20 and mark not in ("line", "area"):
+        add("warn", "small-data", f"{nq} numbers: a sorted table may read better unless the question is a trend or shape (reader-set threshold)")
+    # compared with what (Tufte ch. 2, pp. 74-75)
+    if mark == "line" and not col.get("field") and 0 < len(values) < 5:
+        add("warn", "no-comparison", f"one series of {len(values)} points: add an earlier period, a peer, a target or a note")
+    t = spec.get("title")
+    t = t.get("text") if isinstance(t, dict) else t
+    if isinstance(t, str) and len(re.sub(r"[^A-Za-z]", "", t)) > 3 and t.upper() == t:
+        add("warn", "all-caps", "all-caps title: use sentence case (Tufte ch. 9, p. 183)")
+    w, h = spec.get("width"), spec.get("height")
+    if isinstance(w, (int, float)) and isinstance(h, (int, float)) and x.get("type") == "temporal" and h > w:
+        add("warn", "tall-timeseries", "time series taller than wide: about 1.5 wide to 1 tall unless the data set the shape (Tufte ch. 9, p. 190)")
+    return out
+
+
+def cmd_lint(a):
+    try:
+        spec = json.loads(Path(a.spec).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as e:
+        print(f"cannot read {a.spec}: {e}")
+        return 2
+    found = lint_vega_lite(spec)
+    if a.json:
+        print(json.dumps({"spec": a.spec, "findings": found}, indent=1))
+    else:
+        for f in found:
+            print(f"{f['level']}: {f['code']}: {f['message']}")
+        if not found:
+            print("lint: no findings")
+    return 1 if any(f["level"] == "fail" for f in found) else 0
+
+
 # ---------------------------------------------------------------- main
 def _hoist_globals(argv):
     """Accept --json and --strict after the subcommand too (cw.py pick ... --json), by moving them to the front."""
@@ -1656,6 +1795,7 @@ def main(argv=None):
     p.add_argument("--kind", required=True, choices=["markdown", "web", "image", "office", "terminal"]); p.add_argument("--force", action="store_true"); p.set_defaults(fn=cmd_new_target)
     p = sp.add_parser("note"); p.add_argument("slug"); p.add_argument("text"); p.set_defaults(fn=cmd_note)
     sp.add_parser("doctor").set_defaults(fn=cmd_doctor)
+    p = sp.add_parser("lint", help="integrity checks on a Vega-Lite spec: lie factor, uneven time, colour"); p.add_argument("spec"); p.set_defaults(fn=cmd_lint)
     sp.add_parser("targets").set_defaults(fn=cmd_targets)
     p = sp.add_parser("tested", help="record a platform test for a target"); p.add_argument("slug"); p.add_argument("--platform", required=True, help="Windows, macOS, Linux, or a host name"); p.add_argument("text"); p.set_defaults(fn=cmd_tested)
     a = ap.parse_args(_hoist_globals(argv if argv is not None else sys.argv[1:]))

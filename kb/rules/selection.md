@@ -20,25 +20,31 @@ Write the headline the reader should take away. Its verb picks the family (Finan
 | X contains Y contains Z | hierarchy | treemap | depth matters more than size: sunburst or icicle; structure only: tree |
 | X is connected to Y | relationship | node-link network | dense graphs: adjacency matrix; hierarchy plus links: edge bundling |
 | The number is N | single-value | stat tile (value, delta, sparkline) | progress to a limit: bullet chart or meter; never a gauge for a serious audience |
-| Readers need exact values | table | sorted table with inline bars or heat colouring | never force a chart on a lookup task |
+| Readers need exact values, or look up one known item | table | sorted table with inline bars or heat colouring | never force a chart on a lookup task (Munzner 2014 ch. 3); about 20 numbers or fewer with no trend or shape question also reads better as a table (Tufte 2001 ch. 1) |
 
 ## 2. Prefer the encoding the eye reads best
 
 Position on a common scale beats length beats angle beats area beats colour (Cleveland and McGill 1984; Heer and Bostock 2010). So: dot and bar beat pie; bar beats treemap and bubble; heatmaps show pattern, not values. Reach for area or colour only when hierarchy, geography, extreme range, or density demands it.
+
+Expressiveness (Munzner 2014 ch. 5): ordered data goes on magnitude channels (position, length, area, lightness), categories on identity channels (hue, shape, region). Hue has no order, and a lightness ramp makes categories look ranked. Never put two fields on channels that fuse into one read, such as width and height of one mark or colour and opacity.
 
 ## 3. Caps that keep a chart honest
 
 - Lines on one chart: about 5 distinct series, or grey-plus-one-highlight for more. Above that, small multiples.
 - Grouped bars: 3 series. Stacked bars: 4 segments, with the segment readers must compare on the baseline.
 - Pie: 5 slices, one whole, big differences; label directly. Donut is a pie (same accuracy, Kosara 2016).
-- Categorical colours: 8, and only for identity. A 9th hue is never generated; fold to "Other" or facet.
+- Categorical colours: 8, and only for identity; the background, the default grey and "Other" count toward about 12 distinguishable colours (Munzner 2014 ch. 10). A 9th hue is never generated; fold to "Other" or facet.
 - Categories on an axis: about 12 in Mermaid, 30 in an image before switching to a table or a ranked subset.
 
 ## 4. Things to refuse or redesign
 
 - Dual y-axes: for a trend or correlation question, two panels sharing x, index both to 100, or a connected scatter. A dual axis is acceptable when readers need the absolute levels of two measures on very different scales ("when one moved, what did the other do"); then colour-key each axis to its series and label values (Muth 2026, Datawrapper, which now ships the type).
 - 3D anything, exploded pies, bar-of-pie, gauges, word clouds: pick the substitute in the chart file.
-- Truncated bar axes: bars start at zero. Lines and dots may not, and the axis says so.
+- Truncated bar axes: bars start at zero. Lines and dots may not, and the axis says so. The drawn change over the data change (Tufte's lie factor) stays within 0.95 to 1.05 (Tufte 2001 ch. 2).
+- Icons and bubbles scale by area, never by height or radius: a 1-D change drawn in 2-D inflates by the square.
+- Dates sit at their real spacing (a temporal axis, not ordinal). Money over many years is inflation-adjusted or labelled nominal.
+- A lone short series answers no "compared with what": add an earlier period, a peer, a target or a note (Tufte 2001 ch. 2).
+- A node-link network needs a question about structure; for lookups a sorted list carries more labels per area (Munzner 2014 ch. 6).
 - Log scale: only for multiplicative data, never under stacked or area charts, always announced.
 - Rainbow sequential palettes and colour-only encoding: sequential is one hue light to dark; diverging is two hues with a neutral midpoint that means something; every colour has a label or a shape twin.
 - Uncertainty as bare error bars when a band, quantile dots, or a distribution would be read more accurately.

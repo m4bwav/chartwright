@@ -38,7 +38,7 @@ Read [references/build-and-verify.md](references/build-and-verify.md) (target ta
 
 ## Step 6: report and learn
 
-Report in one to three lines: chart type and the rule that picked it, target, file or block written, render evidence. If the request needed research, a new type or target, or a correction, run `chartwright-curate` after delivering. A general chart preference ("never pies") goes to `LEARNINGS.md` now.
+Report in one to three lines: chart type and the rule that picked it, target, file or block written, render evidence. If the request needed research, a new type or target, or a correction, run `chartwright-curate` after delivering. A general chart preference ("never pies") goes to `LEARNINGS.md` now. When the user says a chart does not work, name the failed level before changing type: wrong question, wrong data or task shown, encoding, or speed (Munzner 2014 ch. 4); a new chart type cannot fix a wrong question.
 
 ## While working: capture learnings
 

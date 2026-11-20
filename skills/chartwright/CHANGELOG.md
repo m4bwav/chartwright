@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261119-1 · 2026-11-19 · `cw.py lint` and book rules from Tufte 2001 and Munzner 2014
+- because: user request (books round 6, track 46); L-003
+- files: scripts/cw.py (lint), tests/test_cw.py (LintTests), kb/rules/selection.md (sections 1 to 4), references/build-and-verify.md (Build 7-8, Verify lint line), references/document-charts.md (What not to do), SKILL.md (Step 6)
+- `lint` checks a Vega-Lite spec for lie factor, uneven time, area scale, hue for order, false order, integral channels, colour budget, red-green pair, greyscale collapse, heavy grid, small data, no comparison, all caps and tall time series. The 10 L* grey gap, the #ccc grid and the 20-number table line are thresholds the reader set, so they only warn. Selection gains expressiveness, lookup to table, area-scaled icons, real date spacing, deflated money, "compared with what" and the network rule; build gains Tufte defaults and Munzner latency classes.
+
 ### C-20261106-1 · 2026-11-06 · Host lines: Obsidian 1.15 draws with Pele; floor stays 11.13
 - because: R-20261106-1
 - files: kb/targets/mermaid.md, kb/rules/choosing-a-target.md, kb/charts/treemap.md, kb/charts/venn.md, kb/index.json

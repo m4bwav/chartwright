@@ -497,5 +497,59 @@ class NewTargetTests(unittest.TestCase):
         out = self.build("--chart", "line", "--target", "vega-lite", "--data", str(FIX / "prices.csv"), "--x", "date", "--y", "price")
         self.assertEqual(json.loads(out)["encoding"]["x"]["axis"], {"tickCount": "month", "format": "%b %Y"})
 
+
+class LintTests(unittest.TestCase):
+    def codes(self, spec):
+        return {f["code"] for f in cw.lint_vega_lite(spec)}
+
+    GOOD = {"mark": "bar", "data": {"values": [{"r": c, "v": v} for c, v in zip("abcdefghijklmnopqrstuvwxy", range(10, 35))]},
+            "encoding": {"x": {"field": "r", "type": "nominal"}, "y": {"field": "v", "type": "quantitative"}}}
+
+    def test_good_spec_is_quiet(self):
+        self.assertEqual(self.codes(self.GOOD), set())
+
+    def test_lie_factor_fails_on_truncated_bar(self):
+        spec = json.loads(json.dumps(self.GOOD))
+        spec["encoding"]["y"]["scale"] = {"domain": [9, 40]}
+        f = [x for x in cw.lint_vega_lite(spec) if x["code"] == "lie-factor"]
+        self.assertEqual(f[0]["level"], "fail")
+
+    def test_uneven_time_and_tall(self):
+        spec = {"mark": "line", "width": 200, "height": 400,
+                "data": {"values": [{"d": d, "v": i} for i, d in enumerate(["2000", "2005", "2006", "2007", "2020"])]},
+                "encoding": {"x": {"field": "d", "type": "ordinal"}, "y": {"field": "v", "type": "quantitative"}}}
+        self.assertIn("uneven-time", self.codes(spec))
+        spec["encoding"]["x"]["type"] = "temporal"
+        c = self.codes(spec)
+        self.assertNotIn("uneven-time", c)
+        self.assertIn("tall-timeseries", c)
+
+    def test_colour_checks(self):
+        spec = json.loads(json.dumps(self.GOOD))
+        spec["encoding"]["color"] = {"field": "v", "type": "quantitative", "scale": {"scheme": "category10"}}
+        self.assertIn("hue-for-order", self.codes(spec))
+        spec["encoding"]["color"] = {"field": "g", "type": "nominal", "scale": {"range": ["#d62728", "#2ca02c"]}}
+        self.assertIn("red-green-pair", self.codes(spec))
+        spec["encoding"]["color"]["scale"]["range"] = ["#1f77b4", "#ff7f0e"]
+        self.assertEqual(self.codes(spec), set())
+        spec["encoding"]["color"]["scale"]["range"] = ["#1f77b4", "#d62728"]  # L* about 47 vs 48
+        self.assertIn("grey-collapse", self.codes(spec))
+        spec["encoding"]["opacity"] = {"field": "r", "type": "nominal"}
+        self.assertIn("integral-channels", self.codes(spec))
+
+    def test_grid_small_data_and_cli(self):
+        spec = {"mark": "bar", "config": {"axis": {"gridColor": "#666"}},
+                "data": {"values": [{"r": "a", "v": 1}, {"r": "b", "v": 2}]},
+                "encoding": {"x": {"field": "r", "type": "nominal"}, "y": {"field": "v", "type": "quantitative"}}}
+        self.assertTrue({"heavy-grid", "small-data"} <= self.codes(spec))
+        spec["config"]["axis"]["gridColor"] = "#e5e5e5"
+        self.assertNotIn("heavy-grid", self.codes(spec))
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "s.json"
+            spec["encoding"]["y"]["scale"] = {"zero": False}
+            p.write_text(json.dumps(spec), encoding="utf-8")
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(cw.main(["--strict", "lint", str(p)]), 1)
+
 if __name__ == "__main__":
     unittest.main()

@@ -23,5 +23,6 @@ Read this when the request is "add charts to", "illustrate", "visualize this rep
 
 - No chart for a single number (write the number, or a stat tile if the host is a dashboard).
 - No dual-axis chart to combine two claims; two charts.
+- No comparison behind tabs, toggles or animation when the two views fit side by side; eyes beat memory (Munzner 2014 ch. 6). Inline charts and small multiples can be half the default size with identical scales (Tufte 2001 ch. 8).
 - No chart whose title is a variable name; the title is the claim.
 - No inline data pasted into specs when a CSV exists beside the document.
