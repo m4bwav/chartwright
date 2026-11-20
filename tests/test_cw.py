@@ -551,5 +551,25 @@ class LintTests(unittest.TestCase):
             with redirect_stdout(io.StringIO()):
                 self.assertEqual(cw.main(["--strict", "lint", str(p)]), 1)
 
+    def test_ware_colour_checks(self):
+        spec = {"mark": "point", "data": {"values": [{"a": i, "b": i, "g": "xy"[i % 2]} for i in range(30)]},
+                "encoding": {"x": {"field": "a", "type": "quantitative"}, "y": {"field": "b", "type": "quantitative"},
+                             "color": {"field": "g", "type": "nominal", "scale": {"range": ["#ffdd00", "#1f77b4"]}}}}
+        self.assertIn("low-contrast-mark", self.codes(spec))
+        spec["mark"] = {"type": "point", "stroke": "#333"}
+        self.assertNotIn("low-contrast-mark", self.codes(spec))
+        spec["mark"] = "point"
+        spec["encoding"]["color"]["scale"]["range"] = ["#b8860b", "#1f77b4"]
+        self.assertEqual(self.codes(spec), set())
+        bar = json.loads(json.dumps(self.GOOD))
+        bar["encoding"]["color"] = {"field": "g", "type": "nominal", "scale": {"range": ["#0000cc", "#ffbb78"]}}
+        self.assertIn("heavy-fill", self.codes(bar))
+        bar["encoding"]["color"]["scale"]["range"] = ["#aec7e8", "#ffbb78"]
+        self.assertNotIn("heavy-fill", self.codes(bar))
+        bar["encoding"]["color"] = {"field": "v", "type": "quantitative", "scale": {"scheme": "rainbow"}}
+        self.assertIn("rainbow-scale", self.codes(bar))
+        bar["encoding"]["color"]["scale"]["scheme"] = "viridis"
+        self.assertNotIn("rainbow-scale", self.codes(bar))
+
 if __name__ == "__main__":
     unittest.main()

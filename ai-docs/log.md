@@ -187,3 +187,5 @@ Added a README "Works with" section and a wiki Works-with page covering everscou
 ## [2026-11-17] update | 1.1.0: three book rules in the kb (preattentive, drill terms, ensemble histogram), unverified
 
 ## [2026-11-19] update | 1.2.0 (untagged): `cw.py lint` for Vega-Lite specs and Tufte/Munzner rules (books round 6 track 46)
+
+## [2026-11-19] update | 1.3.0 (untagged): Ware 2012 lint warnings (low-contrast-mark, heavy-fill, rainbow-scale) and colour rules (books round 6 track 53). Contrast check limited to small marks so default bar palettes stay quiet.

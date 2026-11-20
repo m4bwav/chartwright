@@ -46,6 +46,7 @@ Expressiveness (Munzner 2014 ch. 5): ordered data goes on magnitude channels (po
 - A lone short series answers no "compared with what": add an earlier period, a peer, a target or a note (Tufte 2001 ch. 2).
 - A node-link network needs a question about structure; for lookups a sorted list carries more labels per area (Munzner 2014 ch. 6).
 - Log scale: only for multiplicative data, never under stacked or area charts, always announced.
+- Colour weight and contrast (Ware 2012 ch. 3-4): large areas light and low-saturation, small marks saturated; points, lines and text at least 3:1 luminance contrast with their ground, with a contrasting outline where the ground varies (maps, images). A highlight colour lies outside the other series' colours (a saturated hue among greys, never grey among hues) and the rest is dimmed. Saturation alone carries about 3 levels, grey alone 2 to 4. Where readers must read values off a continuous key, a scale that cycles hue while lightness rises steadily (viridis) beats one hue; a raw spectrum only where the audience's convention demands it.
 - Rainbow sequential palettes and colour-only encoding: sequential is one hue light to dark; diverging is two hues with a neutral midpoint that means something; every colour has a label or a shape twin.
 - Uncertainty as bare error bars when a band, quantile dots, or a distribution would be read more accurately.
 

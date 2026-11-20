@@ -1650,6 +1650,23 @@ def _hue(rgb):
     return h * 60
 
 
+_SMALL_MARKS = {"point", "circle", "square", "line", "rule", "tick", "trail", "text"}
+_AREA_MARKS = {"bar", "area", "rect", "arc", "geoshape"}
+
+
+def _contrast(a, b):
+    def y(rgb):
+        lin = [v / 12.92 if v <= 0.04045 else ((v + 0.055) / 1.055) ** 2.4 for v in rgb]
+        return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2]
+    hi, lo = sorted((y(a), y(b)), reverse=True)
+    return (hi + 0.05) / (lo + 0.05)
+
+
+def _sat(rgb):
+    mx = max(rgb)
+    return 0 if mx == 0 else (mx - min(rgb)) / mx
+
+
 def lint_vega_lite(spec: dict) -> list[dict]:
     """Integrity checks on a Vega-Lite spec (Tufte 2001 ch. 2, 5, 9; Munzner 2014 ch. 5, 6, 10).
     fail = the chart misstates the data; warn = a style rule or a threshold the reader set, not the book."""
@@ -1715,6 +1732,18 @@ def lint_vega_lite(spec: dict) -> list[dict]:
         close = [b - a for a, b in zip(ls, ls[1:]) if b - a < 10]
         if close:
             add("warn", "grey-collapse", f"range colours {min(close):.1f} L* apart merge in greyscale (Munzner ch. 6, p. 140; 10 L* is a reader-set threshold)")
+    # Ware 2012 ch. 3-4: small marks need 3:1 luminance contrast with the ground (pp. 82, 123); large fills light
+    # and low-saturation (p. 125); the spectrum is not ordered (pp. 128-131)
+    bg = _hex_rgb(cfg.get("background") or "#ffffff")
+    stroked = isinstance(m, dict) and m.get("stroke")
+    if bg and mark in _SMALL_MARKS and not stroked:
+        low = [c for c, rgb in zip(rng, (_hex_rgb(c) for c in rng)) if rgb and _contrast(rgb, bg) < 3]
+        if low:
+            add("warn", "low-contrast-mark", f"{', '.join(low)} under 3:1 luminance contrast with the background (Ware 2012 p. 82): darken, or outline the marks in a contrasting stroke (p. 123)")
+    if mark in _AREA_MARKS and any(_sat(c) > 0.85 and _lstar(c) < 50 for c in rgbs):
+        add("warn", "heavy-fill", "large areas in dark saturated colour: use light low-saturation fills and keep saturation for small marks (Ware 2012 p. 125; thresholds reader-set)")
+    if str(scheme or "").lower() in ("rainbow", "sinebow", "turbo"):
+        add("warn", "rainbow-scale", f"scheme {scheme} is not ordered in lightness and bands into false steps (Ware 2012 pp. 128-131): use a lightness-monotonic scale such as viridis, unless the audience's convention demands a spectrum")
     # heavy grid (Tufte ch. 5, p. 112; ch. 9, p. 186)
     acfg = cfg.get("axis") or {}
     g = _hex_rgb(acfg["gridColor"]) if acfg.get("gridColor") else None
