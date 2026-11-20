@@ -16,6 +16,14 @@ Write an entry the moment a real signal happens: a user correction, the same err
 - Status: active · helpful 1 · harmful 0 · last_confirmed 2026-09-17
 -->
 
+### L-002 · 2026-09-18 · A real README and a Word destination exposed CLI and reference gaps the fixtures never hit
+- Former ID: date-style 20260918-3 (renumbered 2026-10-03, C-20261003-2)
+- Trigger: two fresh-context runs on 2026-09-18 (another project's README; a .docx in a scratch folder), both passing on evidence but each hitting friction.
+- Hypothesis: fixtures written inside the repo match what the builder already handles, so only an outside document with its own layout, flags in a natural order and an unplanned destination exposes the gaps.
+- Evidence: `cw.py pick ... --json` failed (flag was global-only); `pick` scored beeswarm above bar because "each" matched "each country"; Mermaid bars autoscaled from 130, not 0; `render --target mermaid` left `.mmd.mmd` files; the references said "PNG path for documents" with no Word route, so the tester bridged to python-docx alone.
+- Rule: eval the skill on a real document in another folder after every builder or reference change; fixtures inside the repo only prove the happy path. The full-suite rerun (T-20260918-4) added one more: monthly dates got fortnightly Vega-Lite ticks, now fixed with a month tickCount.
+- Apply: fixed in C-20260918-8 (flags hoisted, GENERIC words, zero baseline, cleanup) and C-20260918-7 (`docx` target). Next real-document runs: a Google Sheet through the Sheets API and a PlantUML document.
+
 ### L-003 · 2026-09-27 · `pick --shape interval` found nothing; the shape from `cw data` found the timeline
 - Former ID: date-style 20260927-1 (renumbered 2026-10-03, C-20261003-2)
 - Trigger: a personal site's "first release to 2026 rebuild per package" chart. `cw.py pick --shape interval` returned no picks; `cw.py data` guessed `n,time,time`, and the same question with that shape ranked `timeline` first (13.75), then `gantt`.
@@ -33,10 +41,7 @@ Write an entry the moment a real signal happens: a user correction, the same err
 - Rule: trigger evals run from a session started after the install; same-session trigger results are recorded as inconclusive.
 - Apply: after installing or renaming a skill, run evergreen-test from a fresh session; treat same-session trigger results as inconclusive, not failing.
 
-### L-002 · 2026-09-18 · A real README and a Word destination exposed CLI and reference gaps the fixtures never hit
-- Former ID: date-style 20260918-3 (renumbered 2026-10-03, C-20261003-2)
-- Trigger: two fresh-context runs on 2026-09-18 (another project's README; a .docx in a scratch folder), both passing on evidence but each hitting friction.
-- Hypothesis: fixtures written inside the repo match what the builder already handles, so only an outside document with its own layout, flags in a natural order and an unplanned destination exposes the gaps.
-- Evidence: `cw.py pick ... --json` failed (flag was global-only); `pick` scored beeswarm above bar because "each" matched "each country"; Mermaid bars autoscaled from 130, not 0; `render --target mermaid` left `.mmd.mmd` files; the references said "PNG path for documents" with no Word route, so the tester bridged to python-docx alone.
-- Rule: eval the skill on a real document in another folder after every builder or reference change; fixtures inside the repo only prove the happy path. The full-suite rerun (T-20260918-4) added one more: monthly dates got fortnightly Vega-Lite ticks, now fixed with a month tickCount.
-- Apply: fixed in C-20260918-8 (flags hoisted, GENERIC words, zero baseline, cleanup) and C-20260918-7 (`docx` target). Next real-document runs: a Google Sheet through the Sheets API and a PlantUML document.
+### L-003 · 2026-11-19 · `cw.py` returns a non-zero exit only with --strict
+- Trigger: a test expected `cw.main(["lint", spec])` to return 1 on a lie-factor fail and got 0.
+- Rule: `main` returns 0 unless `--strict` is given, for every subcommand; scripts and CI that gate on lint call `cw.py --strict lint spec.json`.
+- Apply: the build-and-verify Verify line and the test use `--strict`.

@@ -185,3 +185,5 @@ Added a README "Works with" section and a wiki Works-with page covering everscou
 ## [2026-11-14] update | README Works with: fractalwright (new public plugin), mirroring its own section
 
 ## [2026-11-17] update | 1.1.0: three book rules in the kb (preattentive, drill terms, ensemble histogram), unverified
+
+## [2026-11-19] update | 1.2.0 (untagged): `cw.py lint` for Vega-Lite specs and Tufte/Munzner rules (books round 6 track 46)
