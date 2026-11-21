@@ -1,0 +1,113 @@
+{
+ "title": {
+  "text": "Sales rose in spring",
+  "subtitle": "Band: 90% interval. Source: test data, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "month": "2025-01-01",
+    "sales": 100,
+    "lo": 95,
+    "hi": 105
+   },
+   {
+    "month": "2025-02-01",
+    "sales": 107,
+    "lo": 102,
+    "hi": 112
+   },
+   {
+    "month": "2025-03-01",
+    "sales": 114,
+    "lo": 109,
+    "hi": 119
+   },
+   {
+    "month": "2025-04-01",
+    "sales": 121,
+    "lo": 116,
+    "hi": 126
+   },
+   {
+    "month": "2025-05-01",
+    "sales": 128,
+    "lo": 123,
+    "hi": 133
+   },
+   {
+    "month": "2025-06-01",
+    "sales": 135,
+    "lo": 130,
+    "hi": 140
+   },
+   {
+    "month": "2025-07-01",
+    "sales": 142,
+    "lo": 137,
+    "hi": 147
+   },
+   {
+    "month": "2025-08-01",
+    "sales": 149,
+    "lo": 144,
+    "hi": 154
+   },
+   {
+    "month": "2025-09-01",
+    "sales": 156,
+    "lo": 151,
+    "hi": 161
+   },
+   {
+    "month": "2025-10-01",
+    "sales": 163,
+    "lo": 158,
+    "hi": 168
+   },
+   {
+    "month": "2025-11-01",
+    "sales": 170,
+    "lo": 165,
+    "hi": 175
+   },
+   {
+    "month": "2025-12-01",
+    "sales": 177,
+    "lo": 172,
+    "hi": 182
+   }
+  ]
+ },
+ "layer": [
+  {
+   "mark": "area",
+   "encoding": {
+    "x": {
+     "field": "month",
+     "type": "temporal"
+    },
+    "y": {
+     "field": "lo",
+     "type": "quantitative"
+    },
+    "y2": {
+     "field": "hi"
+    }
+   }
+  },
+  {
+   "mark": "line",
+   "encoding": {
+    "x": {
+     "field": "month",
+     "type": "temporal"
+    },
+    "y": {
+     "field": "sales",
+     "type": "quantitative"
+    }
+   }
+  }
+ ]
+}

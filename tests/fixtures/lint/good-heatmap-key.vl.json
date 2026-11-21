@@ -1,0 +1,150 @@
+{
+ "mark": "rect",
+ "title": {
+  "text": "Sales rose in spring",
+  "subtitle": "Source: test data, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "day": 1,
+    "hour": 1,
+    "visits": 4
+   },
+   {
+    "day": 1,
+    "hour": 2,
+    "visits": 5
+   },
+   {
+    "day": 1,
+    "hour": 3,
+    "visits": 6
+   },
+   {
+    "day": 1,
+    "hour": 4,
+    "visits": 7
+   },
+   {
+    "day": 1,
+    "hour": 5,
+    "visits": 8
+   },
+   {
+    "day": 2,
+    "hour": 1,
+    "visits": 7
+   },
+   {
+    "day": 2,
+    "hour": 2,
+    "visits": 8
+   },
+   {
+    "day": 2,
+    "hour": 3,
+    "visits": 9
+   },
+   {
+    "day": 2,
+    "hour": 4,
+    "visits": 10
+   },
+   {
+    "day": 2,
+    "hour": 5,
+    "visits": 11
+   },
+   {
+    "day": 3,
+    "hour": 1,
+    "visits": 10
+   },
+   {
+    "day": 3,
+    "hour": 2,
+    "visits": 11
+   },
+   {
+    "day": 3,
+    "hour": 3,
+    "visits": 12
+   },
+   {
+    "day": 3,
+    "hour": 4,
+    "visits": 13
+   },
+   {
+    "day": 3,
+    "hour": 5,
+    "visits": 14
+   },
+   {
+    "day": 4,
+    "hour": 1,
+    "visits": 13
+   },
+   {
+    "day": 4,
+    "hour": 2,
+    "visits": 14
+   },
+   {
+    "day": 4,
+    "hour": 3,
+    "visits": 15
+   },
+   {
+    "day": 4,
+    "hour": 4,
+    "visits": 16
+   },
+   {
+    "day": 4,
+    "hour": 5,
+    "visits": 17
+   },
+   {
+    "day": 5,
+    "hour": 1,
+    "visits": 16
+   },
+   {
+    "day": 5,
+    "hour": 2,
+    "visits": 17
+   },
+   {
+    "day": 5,
+    "hour": 3,
+    "visits": 18
+   },
+   {
+    "day": 5,
+    "hour": 4,
+    "visits": 19
+   },
+   {
+    "day": 5,
+    "hour": 5,
+    "visits": 20
+   }
+  ]
+ },
+ "encoding": {
+  "x": {
+   "field": "day",
+   "type": "ordinal"
+  },
+  "y": {
+   "field": "hour",
+   "type": "ordinal"
+  },
+  "color": {
+   "field": "visits",
+   "type": "quantitative"
+  }
+ }
+}

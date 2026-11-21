@@ -4,6 +4,11 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
+### C-20261121-1 · 2026-11-21 · Round 7 book rules (Few 2006, Knaflic 2015, Cairo 2019, Abbott 2024, Dale 2016): ten lint warnings, a dashboard lint mode, a data report
+- because: user request (book batch round 7, track 58)
+- files: scripts/cw.py (lint_round7, lint_dashboard, lint --dashboard and several specs, data_checks), tests/test_cw.py (Round7Tests), tests/fixtures/lint (9 bad, 6 good), tests/fixtures/dirty.csv, references/build-and-verify.md (Build 1, Verify lint line, Hand-written D3), SKILL.md (Step 2), kb/rules/selection.md (meaningless zero, Few's dual-axis exception not adopted)
+- All new checks are warnings. They stayed quiet on every existing fixture, but the thresholds are the readers' or authors' rules of thumb. `CW data` adds a `warnings` list; with `--strict` it exits 1 on bad dates or duplicate keys.
+
 ### C-20261120-1 · 2026-11-20 · Book rules from Cairo 2013, Knaflic et al. 2024 and Engebretsen and Kennedy 2020: nine lint warnings, two pick cautions, three build flags
 - because: user request (book batch 2026-11-20); R-20261120-1
 - files: scripts/cw.py (lint_book_rules, pick_cautions, build --source/--forecast-from/--highlight-latest, column sort, small-multiples bars), tests/test_cw.py (five tests), tests/fixtures/lint/ (10 good, 9 bad specs), kb/rules/selection.md (sections 1, 2, 4, 6), kb/charts/choropleth.md (Accessibility, Build), references/build-and-verify.md (Build 6 and 8, Verify lint line and makeover check), SKILL.md (Step 3 to 5 build line), RESEARCH.md

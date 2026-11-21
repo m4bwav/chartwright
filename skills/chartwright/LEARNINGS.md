@@ -45,3 +45,13 @@ Write an entry the moment a real signal happens: a user correction, the same err
 - Trigger: a test expected `cw.main(["lint", spec])` to return 1 on a lie-factor fail and got 0.
 - Rule: `main` returns 0 unless `--strict` is given, for every subcommand; scripts and CI that gate on lint call `cw.py --strict lint spec.json`.
 - Apply: the build-and-verify Verify line and the test use `--strict`.
+
+### L-004 · 2026-11-21 · `adjacent-contrast` fires on the recommended blue and orange pair
+- Trigger: Abbott's 3:1 rule between touching segments flags #1f77b4 against #ff7f0e (about 1.9:1), the pair other checks recommend.
+- Rule: the fix is a 1-2 px white stroke between segments, not a new palette; the check stays a warning and fires only when the colour field exists in the data (a real stack).
+- Apply: `lint_round7`, test_adjacent_contrast_needs_a_real_stack.
+
+### L-005 · 2026-11-21 · Four-digit numbers pass `_is_time`
+- Trigger: `CW data` called a users column (12000, 3100, 1450) mixed text, because 3100 and 1450 match the year pattern.
+- Rule: in data checks, a value counts as a number whenever it parses, and a column is a date column only when every value is a date or the non-dates are not numbers.
+- Apply: `data_checks`.

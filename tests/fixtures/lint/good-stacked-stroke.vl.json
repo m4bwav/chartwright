@@ -1,0 +1,159 @@
+{
+ "mark": {
+  "type": "bar",
+  "stroke": "#ffffff"
+ },
+ "title": {
+  "text": "Sales rose in spring",
+  "subtitle": "Source: test data, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "region": "a",
+    "kind": "online",
+    "sales": 10
+   },
+   {
+    "region": "a",
+    "kind": "store",
+    "sales": 11
+   },
+   {
+    "region": "b",
+    "kind": "online",
+    "sales": 11
+   },
+   {
+    "region": "b",
+    "kind": "store",
+    "sales": 12
+   },
+   {
+    "region": "c",
+    "kind": "online",
+    "sales": 12
+   },
+   {
+    "region": "c",
+    "kind": "store",
+    "sales": 13
+   },
+   {
+    "region": "d",
+    "kind": "online",
+    "sales": 13
+   },
+   {
+    "region": "d",
+    "kind": "store",
+    "sales": 14
+   },
+   {
+    "region": "e",
+    "kind": "online",
+    "sales": 14
+   },
+   {
+    "region": "e",
+    "kind": "store",
+    "sales": 15
+   },
+   {
+    "region": "f",
+    "kind": "online",
+    "sales": 15
+   },
+   {
+    "region": "f",
+    "kind": "store",
+    "sales": 16
+   },
+   {
+    "region": "g",
+    "kind": "online",
+    "sales": 16
+   },
+   {
+    "region": "g",
+    "kind": "store",
+    "sales": 17
+   },
+   {
+    "region": "h",
+    "kind": "online",
+    "sales": 17
+   },
+   {
+    "region": "h",
+    "kind": "store",
+    "sales": 18
+   },
+   {
+    "region": "i",
+    "kind": "online",
+    "sales": 18
+   },
+   {
+    "region": "i",
+    "kind": "store",
+    "sales": 19
+   },
+   {
+    "region": "j",
+    "kind": "online",
+    "sales": 19
+   },
+   {
+    "region": "j",
+    "kind": "store",
+    "sales": 20
+   },
+   {
+    "region": "k",
+    "kind": "online",
+    "sales": 20
+   },
+   {
+    "region": "k",
+    "kind": "store",
+    "sales": 21
+   },
+   {
+    "region": "l",
+    "kind": "online",
+    "sales": 21
+   },
+   {
+    "region": "l",
+    "kind": "store",
+    "sales": 22
+   }
+  ]
+ },
+ "encoding": {
+  "x": {
+   "field": "region",
+   "type": "nominal",
+   "sort": "-y"
+  },
+  "y": {
+   "field": "sales",
+   "type": "quantitative"
+  },
+  "color": {
+   "field": "kind",
+   "type": "nominal",
+   "scale": {
+    "domain": [
+     "online",
+     "store"
+    ],
+    "range": [
+     "#1f77b4",
+     "#ff7f0e"
+    ]
+   }
+  }
+ }
+}

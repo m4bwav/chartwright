@@ -38,8 +38,9 @@ Expressiveness (Munzner 2014 ch. 5): ordered data goes on magnitude channels (po
 
 ## 4. Things to refuse or redesign
 
-- Dual y-axes: for a trend or correlation question, two panels sharing x, index both to 100, or a connected scatter. A dual axis is acceptable when readers need the absolute levels of two measures on very different scales ("when one moved, what did the other do"); then colour-key each axis to its series and label values (Muth 2026, Datawrapper, which now ships the type).
+- Dual y-axes: for a trend or correlation question, two panels sharing x, index both to 100, or a connected scatter. A dual axis is acceptable when readers need the absolute levels of two measures on very different scales ("when one moved, what did the other do"); then colour-key each axis to its series and label values (Muth 2026, Datawrapper, which now ships the type). Few 2006 (p. 117) also allows a bar plus line combo on two scales to save space; not adopted: two aligned panels show the same thing without the fake crossing (Cairo 2019 ch. 2). `cw.py lint` warns `secondary-axis`.
 - 3D anything, exploded pies, bar-of-pie, gauges, word clouds: pick the substitute in the chart file.
+- Meaningless zero: when zero is not a possible value (temperature in C or F, life expectancy, an index), bars mislead either way; draw a line or dots with a near-data baseline (Cairo 2019 ch. 2; lint `meaningless-zero`).
 - Truncated bar axes: bars start at zero. Lines and dots may not, and the axis says so. The drawn change over the data change (Tufte's lie factor) stays within 0.95 to 1.05 (Tufte 2001 ch. 2).
 - Icons and bubbles scale by area, never by height or radius: a 1-D change drawn in 2-D inflates by the square.
 - Dates sit at their real spacing (a temporal axis, not ordinal). Money over many years is inflation-adjusted or labelled nominal.
