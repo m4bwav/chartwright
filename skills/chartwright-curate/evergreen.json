@@ -13,22 +13,16 @@
   "source": null,
   "topic": "sources for chart taxonomy, perception evidence, and library chart menus used to grow the chart knowledge base",
   "tier": "moderate",
-  "interval_days": 20.0,
-  "last_checked": "2026-11-06",
-  "next_due": "2026-11-16",
+  "interval_days": 14,
+  "last_checked": "2026-11-20",
+  "next_due": "2026-12-02",
   "verify_at_use": false,
   "volatile_claims": [],
   "contradiction": null,
-  "events": [
-    {
-      "date": "2026-11-14",
-      "label": "vis-2026-preprints",
-      "settle_days": 2.0
-    }
-  ],
+  "events": [],
   "streak": {
     "quiet": 0,
-    "pinned_min": 0,
+    "pinned_min": 1,
     "pinned_max": 0,
     "vau_quiet": 0
   },
@@ -50,12 +44,18 @@
       "m": 0.1,
       "interval_after": 20.0,
       "note": "quiet, VIS pass held for 11-14; cost shared with chartwright"
+    },
+    {
+      "date": "2026-11-20",
+      "m": 0.3,
+      "interval_after": 14,
+      "note": "arXiv 2608.29550 second source for bar-chart default; not-a-bar eval case still owed; post-VIS pass owed; cost: shared with chartwright"
     }
   ],
   "counts": {
     "learnings": 3,
     "changes": 7,
-    "research": 7,
+    "research": 8,
     "tests": 3
   },
   "consolidate_every": 25,

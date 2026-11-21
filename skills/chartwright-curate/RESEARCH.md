@@ -49,6 +49,10 @@ Best sources: the FT chart-doctor repo, datavizcatalogue.com, data-to-viz.com, d
 
 ## Findings log
 
+### R-20261120-1 · 2026-11-20 · Second source that agents default to bar charts and choropleths
+- Practice: arXiv 2608.29550 (Zeng et al., 78-participant study) reports vibe-coding agents "defaulted to basic choropleth maps and bar charts" and were blind to visualization principles. Not the VIS paper "Defaulting to Bar Charts" (no preprint found under that title). Supports the pending "not a bar" eval case for chartwright (R-20261017-4). Source: https://arxiv.org/abs/2608.29550. Magnitude 0.3. applied: none yet; the eval case stays owed in chartwright's evals/evals.json.
+- Subject: Mermaid 12.3 and examples 2.1 add no chart type; the fuller post-VIS pass (Datawrapper, Flourish, FT chart-doctor, VIS 2026 programme) is still owed. Tooling: nothing new. Testing: nothing new.
+
 Newest first.
 
 ### R-20261106-1 · 2026-11-06 · Quiet: no new chart type; fuller pass held for VIS
