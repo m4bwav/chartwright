@@ -189,3 +189,5 @@ Added a README "Works with" section and a wiki Works-with page covering everscou
 ## [2026-11-19] update | 1.2.0 (untagged): `cw.py lint` for Vega-Lite specs and Tufte/Munzner rules (books round 6 track 46)
 
 ## [2026-11-19] update | 1.3.0 (untagged): Ware 2012 lint warnings (low-contrast-mark, heavy-fill, rainbow-scale) and colour rules (books round 6 track 53). Contrast check limited to small marks so default bar palettes stay quiet.
+
+## [2026-11-20] update | 1.4.0: book-rule lint warnings (9), pick cautions (2), build --source/--forecast-from/--highlight-latest from Cairo, Knaflic et al. and Engebretsen and Kennedy. Fixture set tests/fixtures/lint: 9/9 bad specs trip only their own code, 0 warnings on 10 good specs; 24 builder outputs gain only source-in-image. Builder fixes found by the new lint: column sort, small-multiples bars.

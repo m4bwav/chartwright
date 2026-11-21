@@ -1,0 +1,83 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": {
+  "text": "North leads revenue",
+  "subtitle": "Source: Example Bureau, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "region": "North",
+    "revenue": 900,
+    "year": 2025
+   },
+   {
+    "region": "South",
+    "revenue": 860,
+    "year": 2025
+   },
+   {
+    "region": "East",
+    "revenue": 820,
+    "year": 2025
+   },
+   {
+    "region": "West",
+    "revenue": 780,
+    "year": 2025
+   },
+   {
+    "region": "Central",
+    "revenue": 740,
+    "year": 2025
+   },
+   {
+    "region": "Coast",
+    "revenue": 700,
+    "year": 2025
+   },
+   {
+    "region": "Hills",
+    "revenue": 660,
+    "year": 2025
+   },
+   {
+    "region": "Valley",
+    "revenue": 620,
+    "year": 2025
+   },
+   {
+    "region": "Plains",
+    "revenue": 580,
+    "year": 2025
+   },
+   {
+    "region": "Lakes",
+    "revenue": 540,
+    "year": 2025
+   },
+   {
+    "region": "Delta",
+    "revenue": 500,
+    "year": 2025
+   },
+   {
+    "region": "Ridge",
+    "revenue": 460,
+    "year": 2025
+   }
+  ]
+ },
+ "mark": "bar",
+ "encoding": {
+  "y": {
+   "field": "region",
+   "type": "nominal",
+   "sort": "-x"
+  },
+  "x": {
+   "field": "revenue",
+   "type": "quantitative"
+  }
+ }
+}

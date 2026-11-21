@@ -1,0 +1,80 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": {
+  "text": "Most staff agree",
+  "subtitle": "Source: Example Bureau, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "answer": "Strongly disagree",
+    "share": 3,
+    "year": 2025
+   },
+   {
+    "answer": "Disagree",
+    "share": 7,
+    "year": 2025
+   },
+   {
+    "answer": "Neutral",
+    "share": 15,
+    "year": 2025
+   },
+   {
+    "answer": "Agree",
+    "share": 40,
+    "year": 2025
+   },
+   {
+    "answer": "Strongly agree",
+    "share": 25,
+    "year": 2025
+   },
+   {
+    "answer": "Somewhat agree",
+    "share": 4,
+    "year": 2025
+   },
+   {
+    "answer": "Somewhat disagree",
+    "share": 2,
+    "year": 2025
+   },
+   {
+    "answer": "Never",
+    "share": 1,
+    "year": 2025
+   },
+   {
+    "answer": "Always",
+    "share": 1,
+    "year": 2025
+   },
+   {
+    "answer": "Often",
+    "share": 1,
+    "year": 2025
+   },
+   {
+    "answer": "Rarely",
+    "share": 1,
+    "year": 2025
+   }
+  ]
+ },
+ "mark": "bar",
+ "encoding": {
+  "x": {
+   "field": "answer",
+   "type": "nominal",
+   "axis": {
+    "labelAngle": 0
+   }
+  },
+  "y": {
+   "field": "share",
+   "type": "quantitative"
+  }
+ }
+}

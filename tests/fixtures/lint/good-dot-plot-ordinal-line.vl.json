@@ -1,0 +1,83 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": {
+  "text": "Scores rise with each grade",
+  "subtitle": "Source: Example Bureau, 2026"
+ },
+ "width": 600,
+ "height": 320,
+ "data": {
+  "values": [
+   {
+    "grade": "K",
+    "score": 50,
+    "pupils": 20
+   },
+   {
+    "grade": "1st",
+    "score": 53,
+    "pupils": 21
+   },
+   {
+    "grade": "2nd",
+    "score": 56,
+    "pupils": 22
+   },
+   {
+    "grade": "3rd",
+    "score": 59,
+    "pupils": 23
+   },
+   {
+    "grade": "4th",
+    "score": 62,
+    "pupils": 24
+   },
+   {
+    "grade": "5th",
+    "score": 65,
+    "pupils": 25
+   },
+   {
+    "grade": "6th",
+    "score": 68,
+    "pupils": 26
+   },
+   {
+    "grade": "7th",
+    "score": 71,
+    "pupils": 27
+   },
+   {
+    "grade": "8th",
+    "score": 74,
+    "pupils": 28
+   },
+   {
+    "grade": "9th",
+    "score": 77,
+    "pupils": 29
+   },
+   {
+    "grade": "10th",
+    "score": 80,
+    "pupils": 30
+   }
+  ]
+ },
+ "mark": "line",
+ "encoding": {
+  "x": {
+   "field": "grade",
+   "type": "ordinal",
+   "sort": null
+  },
+  "y": {
+   "field": "score",
+   "type": "quantitative",
+   "scale": {
+    "zero": false
+   }
+  }
+ }
+}

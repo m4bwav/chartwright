@@ -1,0 +1,84 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": {
+  "text": "Demand keeps climbing into 2026",
+  "subtitle": "Source: Example Bureau, 2026"
+ },
+ "width": 600,
+ "height": 320,
+ "data": {
+  "values": [
+   {
+    "month": "2025-01-01",
+    "demand": 40,
+    "phase": "actual"
+   },
+   {
+    "month": "2025-02-01",
+    "demand": 41,
+    "phase": "actual"
+   },
+   {
+    "month": "2025-03-01",
+    "demand": 42,
+    "phase": "actual"
+   },
+   {
+    "month": "2025-04-01",
+    "demand": 43,
+    "phase": "actual"
+   },
+   {
+    "month": "2025-05-01",
+    "demand": 44,
+    "phase": "actual"
+   },
+   {
+    "month": "2025-06-01",
+    "demand": 45,
+    "phase": "actual"
+   },
+   {
+    "month": "2025-07-01",
+    "demand": 46,
+    "phase": "actual"
+   },
+   {
+    "month": "2025-08-01",
+    "demand": 47,
+    "phase": "actual"
+   },
+   {
+    "month": "2025-09-01",
+    "demand": 48,
+    "phase": "actual"
+   },
+   {
+    "month": "2025-10-01",
+    "demand": 49,
+    "phase": "forecast"
+   },
+   {
+    "month": "2025-11-01",
+    "demand": 50,
+    "phase": "forecast"
+   },
+   {
+    "month": "2025-12-01",
+    "demand": 51,
+    "phase": "forecast"
+   }
+  ]
+ },
+ "mark": "line",
+ "encoding": {
+  "x": {
+   "field": "month",
+   "type": "temporal"
+  },
+  "y": {
+   "field": "demand",
+   "type": "quantitative"
+  }
+ }
+}

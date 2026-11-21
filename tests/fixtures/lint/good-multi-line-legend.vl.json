@@ -1,0 +1,148 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": {
+  "text": "East overtook West in June",
+  "subtitle": "Source: Example Bureau, 2026"
+ },
+ "width": 600,
+ "height": 320,
+ "data": {
+  "values": [
+   {
+    "month": "2025-01-01",
+    "region": "East",
+    "sales": 50
+   },
+   {
+    "month": "2025-01-01",
+    "region": "West",
+    "sales": 50
+   },
+   {
+    "month": "2025-02-01",
+    "region": "East",
+    "sales": 52
+   },
+   {
+    "month": "2025-02-01",
+    "region": "West",
+    "sales": 51
+   },
+   {
+    "month": "2025-03-01",
+    "region": "East",
+    "sales": 54
+   },
+   {
+    "month": "2025-03-01",
+    "region": "West",
+    "sales": 52
+   },
+   {
+    "month": "2025-04-01",
+    "region": "East",
+    "sales": 56
+   },
+   {
+    "month": "2025-04-01",
+    "region": "West",
+    "sales": 53
+   },
+   {
+    "month": "2025-05-01",
+    "region": "East",
+    "sales": 58
+   },
+   {
+    "month": "2025-05-01",
+    "region": "West",
+    "sales": 54
+   },
+   {
+    "month": "2025-06-01",
+    "region": "East",
+    "sales": 60
+   },
+   {
+    "month": "2025-06-01",
+    "region": "West",
+    "sales": 55
+   },
+   {
+    "month": "2025-07-01",
+    "region": "East",
+    "sales": 62
+   },
+   {
+    "month": "2025-07-01",
+    "region": "West",
+    "sales": 56
+   },
+   {
+    "month": "2025-08-01",
+    "region": "East",
+    "sales": 64
+   },
+   {
+    "month": "2025-08-01",
+    "region": "West",
+    "sales": 57
+   },
+   {
+    "month": "2025-09-01",
+    "region": "East",
+    "sales": 66
+   },
+   {
+    "month": "2025-09-01",
+    "region": "West",
+    "sales": 58
+   },
+   {
+    "month": "2025-10-01",
+    "region": "East",
+    "sales": 68
+   },
+   {
+    "month": "2025-10-01",
+    "region": "West",
+    "sales": 59
+   },
+   {
+    "month": "2025-11-01",
+    "region": "East",
+    "sales": 70
+   },
+   {
+    "month": "2025-11-01",
+    "region": "West",
+    "sales": 60
+   },
+   {
+    "month": "2025-12-01",
+    "region": "East",
+    "sales": 72
+   },
+   {
+    "month": "2025-12-01",
+    "region": "West",
+    "sales": 61
+   }
+  ]
+ },
+ "mark": "line",
+ "encoding": {
+  "x": {
+   "field": "month",
+   "type": "temporal"
+  },
+  "y": {
+   "field": "sales",
+   "type": "quantitative"
+  },
+  "color": {
+   "field": "region",
+   "type": "nominal"
+  }
+ }
+}

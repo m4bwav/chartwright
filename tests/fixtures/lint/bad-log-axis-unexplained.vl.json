@@ -1,0 +1,129 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": {
+  "text": "Richer countries live longer",
+  "subtitle": "Source: Example Bureau, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "gdp": 500,
+    "life": 55
+   },
+   {
+    "gdp": 1000,
+    "life": 56
+   },
+   {
+    "gdp": 2000,
+    "life": 57
+   },
+   {
+    "gdp": 4000,
+    "life": 58
+   },
+   {
+    "gdp": 8000,
+    "life": 59
+   },
+   {
+    "gdp": 16000,
+    "life": 60
+   },
+   {
+    "gdp": 32000,
+    "life": 61
+   },
+   {
+    "gdp": 64000,
+    "life": 62
+   },
+   {
+    "gdp": 128000,
+    "life": 63
+   },
+   {
+    "gdp": 256000,
+    "life": 64
+   },
+   {
+    "gdp": 512000,
+    "life": 65
+   },
+   {
+    "gdp": 1024000,
+    "life": 66
+   },
+   {
+    "gdp": 2048000,
+    "life": 67
+   },
+   {
+    "gdp": 4096000,
+    "life": 68
+   },
+   {
+    "gdp": 8192000,
+    "life": 69
+   },
+   {
+    "gdp": 16384000,
+    "life": 70
+   },
+   {
+    "gdp": 32768000,
+    "life": 71
+   },
+   {
+    "gdp": 65536000,
+    "life": 72
+   },
+   {
+    "gdp": 131072000,
+    "life": 73
+   },
+   {
+    "gdp": 262144000,
+    "life": 74
+   },
+   {
+    "gdp": 524288000,
+    "life": 75
+   },
+   {
+    "gdp": 1048576000,
+    "life": 76
+   },
+   {
+    "gdp": 2097152000,
+    "life": 77
+   },
+   {
+    "gdp": 4194304000,
+    "life": 78
+   },
+   {
+    "gdp": 8388608000,
+    "life": 79
+   }
+  ]
+ },
+ "mark": "point",
+ "encoding": {
+  "x": {
+   "field": "gdp",
+   "type": "quantitative",
+   "scale": {
+    "type": "log"
+   },
+   "title": "GDP per person"
+  },
+  "y": {
+   "field": "life",
+   "type": "quantitative",
+   "scale": {
+    "zero": false
+   }
+  }
+ }
+}

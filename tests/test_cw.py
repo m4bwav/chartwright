@@ -502,8 +502,9 @@ class LintTests(unittest.TestCase):
     def codes(self, spec):
         return {f["code"] for f in cw.lint_vega_lite(spec)}
 
-    GOOD = {"mark": "bar", "data": {"values": [{"r": c, "v": v} for c, v in zip("abcdefghijklmnopqrstuvwxy", range(10, 35))]},
-            "encoding": {"x": {"field": "r", "type": "nominal"}, "y": {"field": "v", "type": "quantitative"}}}
+    SRC = {"text": "t", "subtitle": "Source: test"}  # since 1.4.0 a clean spec carries its source and sorts its bars
+    GOOD = {"mark": "bar", "title": SRC, "data": {"values": [{"r": c, "v": v} for c, v in zip("abcdefghijklmnopqrstuvwxy", range(10, 35))]},
+            "encoding": {"x": {"field": "r", "type": "nominal", "sort": "-y"}, "y": {"field": "v", "type": "quantitative"}}}
 
     def test_good_spec_is_quiet(self):
         self.assertEqual(self.codes(self.GOOD), set())
@@ -552,7 +553,7 @@ class LintTests(unittest.TestCase):
                 self.assertEqual(cw.main(["--strict", "lint", str(p)]), 1)
 
     def test_ware_colour_checks(self):
-        spec = {"mark": "point", "data": {"values": [{"a": i, "b": i, "g": "xy"[i % 2]} for i in range(30)]},
+        spec = {"mark": "point", "title": self.SRC, "data": {"values": [{"a": i, "b": i, "g": "xy"[i % 2]} for i in range(30)]},
                 "encoding": {"x": {"field": "a", "type": "quantitative"}, "y": {"field": "b", "type": "quantitative"},
                              "color": {"field": "g", "type": "nominal", "scale": {"range": ["#ffdd00", "#1f77b4"]}}}}
         self.assertIn("low-contrast-mark", self.codes(spec))
@@ -570,6 +571,67 @@ class LintTests(unittest.TestCase):
         self.assertIn("rainbow-scale", self.codes(bar))
         bar["encoding"]["color"]["scale"]["scheme"] = "viridis"
         self.assertNotIn("rainbow-scale", self.codes(bar))
+
+    def test_book_lints_on_fixtures(self):
+        """Each bad fixture trips its own lint and only it; every good fixture lints clean (Build 2026-11-20)."""
+        folder = FIX / "lint"
+        bad = sorted(folder.glob("bad-*.vl.json"))
+        self.assertGreaterEqual(len(bad), 9)
+        for f in bad:
+            code = f.name[len("bad-"):-len(".vl.json")]
+            self.assertEqual(self.codes(json.loads(f.read_text(encoding="utf-8"))), {code}, f.name)
+        for f in sorted(folder.glob("good-*.vl.json")):
+            self.assertEqual(self.codes(json.loads(f.read_text(encoding="utf-8"))), set(), f.name)
+
+    def test_book_lint_edges(self):
+        line = {"mark": "line", "title": self.SRC, "data": {"values": [{"q": q, "v": i} for i, q in enumerate(["Q1", "Q2", "Q3", "Q4", "Q1", "Q2"])]},
+                "encoding": {"x": {"field": "q", "type": "nominal"}, "y": {"field": "v", "type": "quantitative"}}}
+        self.assertNotIn("line-over-categories", self.codes(line))  # quarters are ordered
+        plan = json.loads(json.dumps(self.GOOD))
+        for r in plan["data"]["values"]:
+            r["plan"] = "Pro"
+        self.assertNotIn("forecast-as-actual", self.codes(plan))  # a 'plan' column is not a forecast
+        cfg = json.loads(json.dumps(self.GOOD))
+        cfg["config"] = {"axisX": {"labelAngle": 90}}
+        self.assertIn("angled-tick-labels", self.codes(cfg))
+        off = json.loads(json.dumps(self.GOOD))
+        off["encoding"]["color"] = {"field": "k", "type": "nominal", "legend": None}
+        for r in off["data"]["values"]:
+            r["k"] = "one"
+        self.assertNotIn("legend-single-series", self.codes(off))
+
+    def test_pick_cautions(self):
+        self.assertTrue(any(w.startswith("precision-on-area") for w in cw.pick_cautions("choropleth", "spatial", "which county has the highest rate")))
+        self.assertTrue(any(w.startswith("map-not-needed") for w in cw.pick_cautions("choropleth", "spatial", "sales by product category")))
+        self.assertEqual(cw.pick_cautions("choropleth", "spatial", "geographic pattern of rainfall across counties"), [])
+        self.assertEqual(cw.pick_cautions("bar", "magnitude", "compare sales by region"), [])
+        rc, out = run("--json", "pick", "--question", "bubble chart: how much more do the big firms earn")
+        bub = [p for p in json.loads(out)["picks"] if p["slug"] == "bubble"]
+        self.assertTrue(bub and any("precision-on-area" in w for w in bub[0]["warnings"]))
+
+    def test_build_source_forecast_highlight(self):
+        with tempfile.TemporaryDirectory() as d:
+            out = Path(d) / "f.vl.json"
+            rc, _ = run("build", "--chart", "line", "--target", "vega-lite", "--data", str(FIX / "prices.csv"), "--x", "date", "--y", "price",
+                        "--source", "Example Bureau, 2026", "--forecast-from", "2026-05-01", "--highlight-latest", "--out", str(out))
+            self.assertEqual(rc, 0)
+            spec = json.loads(out.read_text(encoding="utf-8"))
+            self.assertEqual(spec["title"]["subtitle"], "Source: Example Bureau, 2026")
+            vals = spec["data"]["values"]
+            self.assertEqual(sum(1 for r in vals if r["phase"] == "forecast" and r["date"] == "2026-04-01"), 1)  # join point repeated
+            self.assertIn("strokeDash", spec["layer"][0]["encoding"])
+            self.assertEqual(len(spec["layer"][1]["data"]["values"]), 1)
+            self.assertEqual(self.codes(spec) & {"forecast-as-actual", "source-in-image"}, set())
+            rc, _ = run("build", "--chart", "bar", "--target", "vega-lite", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales",
+                        "--forecast-from", "x", "--out", str(out))
+            self.assertEqual(rc, 1)  # forecast is for lines only
+
+    def test_small_multiples_nominal_x_gets_bars(self):
+        rc, out = run("build", "--chart", "small-multiples", "--target", "vega-lite", "--data", str(FIX / "sales.csv"), "--x", "region", "--y", "sales", "--series", "product")
+        spec = json.loads(out)
+        self.assertEqual(spec["spec"]["mark"], "bar")
+        self.assertNotIn("line-over-categories", self.codes(spec))
+
 
 if __name__ == "__main__":
     unittest.main()
