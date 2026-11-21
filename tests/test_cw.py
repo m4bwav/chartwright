@@ -633,5 +633,60 @@ class LintTests(unittest.TestCase):
         self.assertNotIn("line-over-categories", self.codes(spec))
 
 
+class Round7Tests(unittest.TestCase):
+    """Few 2006, Knaflic 2015, Cairo 2019, Abbott 2024, Dale 2016 (round 7, 2026-11-21)."""
+
+    def codes(self, spec):
+        return {f["code"] for f in cw.lint_vega_lite(spec)}
+
+    def hl(self, rng):
+        rows = [{"m": f"2025-{i:02d}-01", "t": t, "v": i + j} for i in range(1, 13) for j, t in enumerate("ABCDE")]
+        return {"mark": "line", "title": LintTests.SRC, "data": {"values": rows},
+                "encoding": {"x": {"field": "m", "type": "temporal"}, "y": {"field": "v", "type": "quantitative"},
+                             "color": {"field": "t", "type": "nominal", "scale": {"domain": list("ABCDE"), "range": rng}}}}
+
+    def test_highlight_too_much(self):
+        self.assertIn("highlight-too-much", self.codes(self.hl(["#767676", "#d62728", "#1f77b4", "#ff7f0e", "#767676"])))
+        self.assertNotIn("highlight-too-much", self.codes(self.hl(["#767676", "#767676", "#1f77b4", "#767676", "#767676"])))
+
+    def test_adjacent_contrast_needs_a_real_stack(self):
+        spec = json.loads((FIX / "lint" / "bad-adjacent-contrast.vl.json").read_text(encoding="utf-8"))
+        spec["encoding"]["color"]["field"] = "absent"
+        self.assertNotIn("adjacent-contrast", self.codes(spec))
+
+    def test_axis_label_contrast(self):
+        spec = json.loads(json.dumps(LintTests.GOOD))
+        spec["config"] = {"axis": {"labelColor": "#aaaaaa"}}
+        self.assertIn("text-contrast", self.codes(spec))
+        spec["config"]["axis"]["labelColor"] = "#555555"
+        self.assertNotIn("text-contrast", self.codes(spec))
+
+    def test_dashboard_cross_checks(self):
+        a = json.loads((FIX / "lint" / "good-stacked-stroke.vl.json").read_text(encoding="utf-8"))
+        b = json.loads(json.dumps(a))
+        b["encoding"]["color"]["scale"]["range"] = ["#ff7f0e", "#1f77b4"]
+        b["mark"] = "area"
+        codes = {f["code"] for f in cw.lint_dashboard([("a", {"vconcat": [a, b]})])}
+        self.assertEqual(codes, {"colour-drift", "colour-collision", "mixed-media"})
+        self.assertEqual(cw.lint_dashboard([("a", a), ("b", json.loads(json.dumps(a)))]), [])
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "board.vl.json"
+            p.write_text(json.dumps({"vconcat": [a, b]}), encoding="utf-8")
+            rc, out = run("lint", "--dashboard", str(p))
+            self.assertEqual(rc, 0)
+            self.assertIn("colour-drift", out)
+            self.assertIn("mixed-media", out)
+
+    def test_data_checks(self):
+        rc, out = run("data", str(FIX / "dirty.csv"))
+        w = {x["code"]: x for x in json.loads(out)["warnings"]}
+        self.assertEqual(set(w), {"bad-dates", "mixed-types", "blank-strings", "duplicate-keys", "fallback-value"})
+        self.assertIn("rows 6", w["bad-dates"]["message"])
+        self.assertEqual(rc, 1)  # --strict: bad dates and duplicate keys stop the build
+        for f in ("sales.csv", "prices.csv", "waterfall.csv"):
+            rc, out = run("data", str(FIX / f))
+            self.assertEqual((rc, json.loads(out)["warnings"]), (0, []), f)
+
+
 if __name__ == "__main__":
     unittest.main()

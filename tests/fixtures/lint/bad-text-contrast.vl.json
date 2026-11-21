@@ -1,0 +1,93 @@
+{
+ "title": {
+  "text": "Sales rose in spring",
+  "subtitle": "Source: test data, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "month": "2025-01-01",
+    "sales": 100
+   },
+   {
+    "month": "2025-02-01",
+    "sales": 107
+   },
+   {
+    "month": "2025-03-01",
+    "sales": 114
+   },
+   {
+    "month": "2025-04-01",
+    "sales": 121
+   },
+   {
+    "month": "2025-05-01",
+    "sales": 128
+   },
+   {
+    "month": "2025-06-01",
+    "sales": 135
+   },
+   {
+    "month": "2025-07-01",
+    "sales": 142
+   },
+   {
+    "month": "2025-08-01",
+    "sales": 149
+   },
+   {
+    "month": "2025-09-01",
+    "sales": 156
+   },
+   {
+    "month": "2025-10-01",
+    "sales": 163
+   },
+   {
+    "month": "2025-11-01",
+    "sales": 170
+   },
+   {
+    "month": "2025-12-01",
+    "sales": 177
+   }
+  ]
+ },
+ "layer": [
+  {
+   "mark": "line",
+   "encoding": {
+    "x": {
+     "field": "month",
+     "type": "temporal"
+    },
+    "y": {
+     "field": "sales",
+     "type": "quantitative"
+    }
+   }
+  },
+  {
+   "mark": {
+    "type": "text",
+    "color": "#999999",
+    "dy": -8
+   },
+   "encoding": {
+    "x": {
+     "field": "month",
+     "type": "temporal"
+    },
+    "y": {
+     "field": "sales",
+     "type": "quantitative"
+    },
+    "text": {
+     "field": "sales"
+    }
+   }
+  }
+ ]
+}

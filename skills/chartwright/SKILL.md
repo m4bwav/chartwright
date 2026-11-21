@@ -24,7 +24,7 @@ Data: a CSV, a table, numbers in prose (write them to a small CSV beside the out
 ## Step 2: pick
 
 1. Read `kb/INDEX.md` once per session. Never read the whole `kb/charts/` folder.
-2. `CW data file.csv` for column kinds and a shape guess.
+2. `CW data file.csv` for column kinds, a shape guess and `warnings` (blank strings, mixed types, bad dates, duplicate keys, fallback values such as a run of zeros). Fix them in a cleaning script saved beside the chart, addressing rows by key, never by position (Dale 2016 ch. 9).
 3. `CW pick --question "<user's words>" --shape <shape> [--series N] [--categories N] [--target <t>] --json`: top three with reasons and warnings.
 4. `CW show <slug> --section when not substitutes` for the top pick (and the runner-up when close). A matching "when not" means take the substitute.
 5. Judgment rules: `kb/rules/selection.md` (message first, position over area over colour, series caps, no dual axes, no 3D). A user-named misuse is built as asked with a one-line note, unless it would mislead (truncated bar axis, 15-slice pie): say so first.

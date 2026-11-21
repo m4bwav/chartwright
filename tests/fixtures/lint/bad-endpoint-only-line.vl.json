@@ -1,0 +1,45 @@
+{
+ "mark": "line",
+ "title": {
+  "text": "Sales rose in spring",
+  "subtitle": "Source: test data, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "month": "2025-01-01",
+    "team": "A",
+    "sales": 100
+   },
+   {
+    "month": "2025-01-01",
+    "team": "B",
+    "sales": 130
+   },
+   {
+    "month": "2025-12-01",
+    "team": "A",
+    "sales": 180
+   },
+   {
+    "month": "2025-12-01",
+    "team": "B",
+    "sales": 210
+   }
+  ]
+ },
+ "encoding": {
+  "x": {
+   "field": "month",
+   "type": "temporal"
+  },
+  "y": {
+   "field": "sales",
+   "type": "quantitative"
+  },
+  "color": {
+   "field": "team",
+   "type": "nominal"
+  }
+ }
+}

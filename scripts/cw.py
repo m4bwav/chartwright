@@ -500,7 +500,59 @@ def cmd_data(a):
             kind, extra = "n", {"distinct": len(distinct), "sample": distinct[:8]}
         prof["columns"].append({"name": c, "kind": kind, "non_empty": len(vals), **extra})
     prof["shape_guess"] = ",".join(c["kind"] for c in prof["columns"])
+    prof["warnings"] = data_checks(cols, rows)
     print(json.dumps(prof, indent=1))
+    return 1 if STRICT and any(w["code"] in ("bad-dates", "duplicate-keys") for w in prof["warnings"]) else 0
+
+
+def data_checks(cols, rows) -> list[dict]:
+    """Pre-chart data report (Dale 2016 ch. 3, 9; Cairo 2019 ch. 3). Row numbers count the header as row 1."""
+    out = []
+    kinds = {}
+    for c in cols:
+        raw = [r.get(c) for r in rows]
+        blank = sum(1 for v in raw if v is not None and v != "" and not str(v).strip())
+        empty = sum(1 for v in raw if v in (None, ""))
+        if blank:
+            out.append({"code": "blank-strings", "column": c, "message": f"{blank} cells in '{c}' hold only spaces: treat them as missing, not as a value"})
+        vals = [(i + 2, str(v).strip()) for i, v in enumerate(raw) if v not in (None, "") and str(v).strip()]
+        if not vals:
+            continue
+        t = [n for n, v in vals if _is_time(v)]
+        q = [n for n, v in vals if _num(v) is not None]
+        if len(t) == len(vals):
+            kinds[c] = "time"
+        elif len(t) >= 0.8 * len(vals) and len(q) < len(vals):
+            bad = [n for n, v in vals if not _is_time(v)]
+            out.append({"code": "bad-dates", "column": c, "message": f"{len(bad)} values in date column '{c}' do not parse as dates (rows {', '.join(map(str, bad[:5]))}): fix them before charting"})
+            kinds[c] = "time"
+        elif q and len(q) < len(vals):
+            if len(q) >= 0.5 * len(vals):
+                bad = [n for n, v in vals if _num(v) is None]
+                out.append({"code": "mixed-types", "column": c, "message": f"'{c}' is mostly numbers but {len(bad)} values are text (rows {', '.join(map(str, bad[:5]))}): a builder reads it as categories"})
+            kinds[c] = "n"
+        elif q:
+            kinds[c] = "q"
+            nums = [_num(v) for _, v in vals]
+            mode = max(set(nums), key=nums.count)
+            share = nums.count(mode) / len(nums)
+            if len(nums) >= 10 and share >= 0.3 and (mode == 0 or (mode != 0 and abs(mode) in (1, 9, 99, 999, 9999, 100, 1000))):
+                out.append({"code": "fallback-value", "column": c, "message": f"{share:.0%} of '{c}' is exactly {mode:g}: check it is a real value and not a default for missing data (Cairo 2019 ch. 3; 30% is reader-set)"})
+        else:
+            kinds[c] = "n"
+        if empty and kinds.get(c) in ("q", "time"):
+            out.append({"code": "missing", "column": c, "message": f"{empty} empty cells in '{c}': decide whether a chart shows them as gaps or drops them, and say so"})
+    keys = [c for c in cols if kinds.get(c) in ("time", "n")]
+    if keys and len(keys) < len(cols):
+        seen, dup = {}, []
+        for i, r in enumerate(rows):
+            k = tuple(str(r.get(c, "")).strip() for c in keys)
+            if k in seen:
+                dup.append(i + 2)
+            seen.setdefault(k, i + 2)
+        if dup:
+            out.append({"code": "duplicate-keys", "column": ",".join(keys), "message": f"{len(dup)} rows repeat the same {', '.join(keys)} (rows {', '.join(map(str, dup[:5]))}): cw.py build sums them, which double-counts true duplicates; dedupe by key first or pass --agg"})
+    return out
 
 
 # ---------------------------------------------------------------- build
@@ -1854,7 +1906,7 @@ def lint_vega_lite(spec: dict) -> list[dict]:
     w, h = spec.get("width"), spec.get("height")
     if isinstance(w, (int, float)) and isinstance(h, (int, float)) and x.get("type") == "temporal" and h > w:
         add("warn", "tall-timeseries", "time series taller than wide: about 1.5 wide to 1 tall unless the data set the shape (Tufte ch. 9, p. 190)")
-    return out + lint_book_rules(spec)
+    return out + lint_book_rules(spec) + lint_round7(spec)
 
 
 # Book rules (Cairo 2013; Knaflic, Cisneros and Velez 2024; Engebretsen and Kennedy 2020). All warnings:
@@ -2027,18 +2079,148 @@ def lint_book_rules(spec: dict) -> list[dict]:
     return out
 
 
-def cmd_lint(a):
+# Round 7 book rules (Few 2006; Knaflic 2015; Cairo 2019; Abbott 2024). All warnings: the thresholds are the
+# readers' or the authors' rules of thumb, so none fails a build.
+_NO_ZERO = {"temp", "temperature", "celsius", "fahrenheit", "expectancy", "ph", "iq", "elevation"}
+_COVERAGE = re.compile(r"\d+ ?%|\binterval|\bci\b|percentile|quantile|\bmin\b|\bmax\b|range|standard (deviation|error)|\bsd\b|\bse\b|spread", re.I)
+
+
+def _days(v):
+    m = re.fullmatch(r"(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?([T ].*)?", str(v).strip())
+    if not m:
+        return None
     try:
-        spec = json.loads(Path(a.spec).read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as e:
-        print(f"cannot read {a.spec}: {e}")
-        return 2
-    found = lint_vega_lite(spec)
+        return dt.date(int(m.group(1)), int(m.group(2) or 1), int(m.group(3) or 1)).toordinal()
+    except ValueError:
+        return None
+
+
+def lint_round7(spec: dict) -> list[dict]:
+    out = []
+
+    def add(code, msg):
+        if not any(f["code"] == code for f in out):
+            out.append({"level": "warn", "code": code, "message": msg})
+
+    rows = _all_values(spec)
+    seen = _visible_text(spec, rows)
+    cfg = spec.get("config") or {}
+    bg = _hex_rgb(cfg.get("background") or "#ffffff") or (1, 1, 1)
+    if any(k in spec for k in ("mark", "layer")) and not spec.get("title"):
+        add("missing-chart-title", "no chart title: give every chart a title that states its point (Knaflic 2015 ch. 5)")
+    if ((spec.get("resolve") or {}).get("scale") or {}).get("y") == "independent":
+        add("secondary-axis", "two y scales in one panel: where the lines cross is set by the scales, not the data (Cairo 2019 ch. 2); use two aligned panels or index both to 100 (Few 2006 p. 117 allows a bar plus line combo; chartwright keeps the ban)")
+    for mark, mdict, enc in _units(spec):
+        x, y, col = enc.get("x") or {}, enc.get("y") or {}, enc.get("color") or {}
+        # meaningless-zero (Cairo 2019 ch. 2): a bar claims zero means something
+        if mark in ("bar", "area"):
+            for ax in (x, y):
+                if ax.get("type") == "quantitative" and _name_tokens(ax.get("field")) & _NO_ZERO:
+                    add("meaningless-zero", f"'{ax['field']}' has no meaningful zero, so bar lengths say nothing: draw a line or dots with a near-data baseline (Cairo 2019 ch. 2)")
+        # time-axis gaps (Abbott 2024 9.1.1; Knaflic 2015 ch. 2; Cairo 2019 ch. 4)
+        if mark in ("line", "area", "trail") and x.get("type") == "temporal" and x.get("field") and rows:
+            sf = col.get("field")
+            groups = {}
+            for r in rows:
+                groups.setdefault(r.get(sf) if sf else None, []).append(_days(r.get(x["field"])))
+            for pts in groups.values():
+                pts = sorted({p for p in pts if p is not None})
+                if len(pts) == 2:
+                    add("endpoint-only-line", "a time line with only its two ends: everything between is hidden (Cairo 2019 ch. 4); plot every period, or make it a labelled two-date slope chart")
+                gaps = [b - a for a, b in zip(pts, pts[1:])]
+                if len(gaps) >= 3:
+                    med = sorted(gaps)[len(gaps) // 2]
+                    if med and max(gaps) > 1.5 * med + 3:
+                        add("uneven-time-intervals", f"a gap of {max(gaps)} days among {med}-day steps: the line runs straight over missing periods; add the empty periods (null breaks the line) or mark the gap (Abbott 2024 9.1.1; 1.5x is reader-set)")
+        # band-no-coverage (Cairo 2019 ch. 5): readers misread what a band covers
+        if (mark in ("errorband", "errorbar") or (mark == "area" and enc.get("y2"))) and not _COVERAGE.search(seen):
+            add("band-no-coverage", "a band or error bar with no coverage stated: say what it spans (95% interval, min to max, 1 SD) in the subtitle or legend (Cairo 2019 ch. 5)")
+        # heatmap-no-key (Knaflic 2015 ch. 2)
+        if mark == "rect" and col.get("type") in ("quantitative", "ordinal") and "legend" in col and col["legend"] is None:
+            add("heatmap-no-key", "a heatmap with its colour key hidden: readers cannot tell low from high; keep the legend or label the cells (Knaflic 2015 ch. 2)")
+        rng = [c for c in ((col.get("scale") or {}).get("range") or []) if isinstance(c, str)]
+        rgbs = [c for c in (_hex_rgb(c) for c in rng) if c]
+        # highlight-too-much (Few 2006 p. 100; Knaflic 2015 ch. 4): grey context with too many accents
+        if any(_sat(c) < 0.1 for c in rgbs) and sum(1 for c in rgbs if _sat(c) >= 0.25) > 2:
+            add("highlight-too-much", "grey context with more than two accent colours: when everything is highlighted nothing is; keep one or two (Few 2006 p. 100; the cap of two is reader-set)")
+        # adjacent-contrast (Abbott 2024 4.4.2; WCAG 1.4.11): touching segments need 3:1 or a separating stroke
+        stacked = (mark == "bar" and col.get("field") and any(col["field"] in r for r in rows) and not enc.get("xOffset") and not enc.get("yOffset")) or mark == "arc"
+        if stacked and len(rgbs) >= 2 and not mdict.get("stroke"):
+            low = [f"{a}/{b}" for a, b, p, q in zip(rng, rng[1:], rgbs, rgbs[1:]) if _contrast(p, q) < 3]
+            if low:
+                add("adjacent-contrast", f"touching segments {', '.join(low[:3])} under 3:1 against each other: add a 1-2 px white stroke between them (Abbott 2024 4.4.2; WCAG 1.4.11)")
+        # text-contrast (WCAG 1.4.3; Abbott 2024 4.4.2): labels need 4.5:1, not the 3:1 of marks
+        if mark == "text":
+            c = _hex_rgb(mdict.get("color") or "")
+            if c and _contrast(c, bg) < 4.5:
+                add("text-contrast", f"label colour {mdict.get('color')} under 4.5:1 against the background (WCAG 1.4.3; Abbott 2024 4.4.2)")
+    for k in ("labelColor", "titleColor"):
+        c = _hex_rgb((cfg.get("axis") or {}).get(k) or "")
+        if c and _contrast(c, bg) < 4.5:
+            add("text-contrast", f"axis {k} {cfg['axis'][k]} under 4.5:1 against the background (WCAG 1.4.3; Abbott 2024 4.4.2)")
+    return out
+
+
+def _panels(spec):
+    for k in ("vconcat", "hconcat", "concat"):
+        for sub in spec.get(k) or []:
+            if isinstance(sub, dict):
+                yield from _panels(sub)
+    if any(k in spec for k in ("mark", "layer", "spec")):
+        yield spec
+
+
+def lint_dashboard(specs: list) -> list[dict]:
+    """Checks across a dashboard's panels or a document's charts (Few 2006 pp. 51, 142; Knaflic 2015 ch. 4)."""
+    out, by_value, by_colour, marks = [], {}, {}, {}
+    for name, spec in specs:
+        for i, p in enumerate(_panels(spec)):
+            where = f"{name}#{i}"
+            for mark, _, enc in _units(p):
+                sc = (enc.get("color") or {}).get("scale") or {}
+                dom, rng = sc.get("domain"), sc.get("range")
+                if isinstance(dom, list) and isinstance(rng, list):
+                    for v, c in zip(dom, rng):
+                        by_value.setdefault(str(v), {}).setdefault(str(c).lower(), where)
+                        by_colour.setdefault(str(c).lower(), {}).setdefault(str(v), where)
+                shape = tuple(sorted((k, e.get("field"), e.get("type")) for k, e in enc.items() if k in ("x", "y") and isinstance(e, dict)))
+                if mark != "text":
+                    marks.setdefault(shape, {}).setdefault(mark, where)
+    for v, cols in by_value.items():
+        if len(cols) > 1:
+            out.append({"level": "warn", "code": "colour-drift", "message": f"'{v}' is drawn in {', '.join(cols)} across panels ({', '.join(cols.values())}): one category, one colour everywhere (Knaflic 2015 ch. 4)"})
+    for c, vals in by_colour.items():
+        if len(vals) > 1:
+            out.append({"level": "warn", "code": "colour-collision", "message": f"{c} stands for {', '.join(vals)} in different panels: a colour that means one thing here and another there misleads (Few 2006 p. 142)"})
+    for shape, ms in marks.items():
+        if shape and len(ms) > 1:
+            out.append({"level": "warn", "code": "mixed-media", "message": f"panels showing the same fields use {', '.join(ms)}: switching chart type for variety forces a new reading per panel (Few 2006 p. 51)"})
+    return out
+
+
+def cmd_lint(a):
+    specs = []
+    for path in a.spec:
+        try:
+            specs.append((path, json.loads(Path(path).read_text(encoding="utf-8"))))
+        except (OSError, json.JSONDecodeError) as e:
+            print(f"cannot read {path}: {e}")
+            return 2
+    board = a.dashboard or len(specs) > 1
+    found = []
+    for path, spec in specs:
+        panels = list(_panels(spec)) if board else [spec]
+        for i, p in enumerate(panels):
+            where = f"{path}#{i}" if len(panels) > 1 else path
+            found += [dict(f, spec=where) for f in lint_vega_lite(p)]
+    if board:
+        found += lint_dashboard(specs)
     if a.json:
-        print(json.dumps({"spec": a.spec, "findings": found}, indent=1))
+        print(json.dumps({"spec": a.spec if board else a.spec[0], "findings": found}, indent=1))
     else:
         for f in found:
-            print(f"{f['level']}: {f['code']}: {f['message']}")
+            where = f"{f['spec']}: " if board and f.get("spec") else ""
+            print(f"{where}{f['level']}: {f['code']}: {f['message']}")
         if not found:
             print("lint: no findings")
     return 1 if any(f["level"] == "fail" for f in found) else 0
@@ -2085,7 +2267,7 @@ def main(argv=None):
     p.add_argument("--kind", required=True, choices=["markdown", "web", "image", "office", "terminal"]); p.add_argument("--force", action="store_true"); p.set_defaults(fn=cmd_new_target)
     p = sp.add_parser("note"); p.add_argument("slug"); p.add_argument("text"); p.set_defaults(fn=cmd_note)
     sp.add_parser("doctor").set_defaults(fn=cmd_doctor)
-    p = sp.add_parser("lint", help="integrity checks on a Vega-Lite spec: lie factor, uneven time, colour"); p.add_argument("spec"); p.set_defaults(fn=cmd_lint)
+    p = sp.add_parser("lint", help="integrity checks on Vega-Lite specs: lie factor, uneven time, colour; several specs or --dashboard adds cross-panel checks"); p.add_argument("spec", nargs="+"); p.add_argument("--dashboard", action="store_true", help="lint each concat panel and check colours and chart types across panels"); p.set_defaults(fn=cmd_lint)
     sp.add_parser("targets").set_defaults(fn=cmd_targets)
     p = sp.add_parser("tested", help="record a platform test for a target"); p.add_argument("slug"); p.add_argument("--platform", required=True, help="Windows, macOS, Linux, or a host name"); p.add_argument("text"); p.set_defaults(fn=cmd_tested)
     a = ap.parse_args(_hoist_globals(argv if argv is not None else sys.argv[1:]))

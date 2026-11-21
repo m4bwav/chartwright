@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 1.5.0 (2026-11-21)
+
+- `cw.py lint` gains ten warnings from round 7 books (Few 2006, Knaflic 2015, Cairo 2019, Abbott 2024): `missing-chart-title`, `secondary-axis`, `meaningless-zero`, `endpoint-only-line`, `uneven-time-intervals`, `band-no-coverage`, `heatmap-no-key`, `highlight-too-much`, `adjacent-contrast`, `text-contrast`. Several specs or `--dashboard` lint each panel and add `colour-drift`, `colour-collision` and `mixed-media`. `cw.py data` reports blank strings, mixed types, bad dates, duplicate keys and fallback values (Dale 2016; `--strict` exits 1 on bad dates or duplicates). Hand-written D3 notes in build-and-verify. The no-dual-axes rule stays despite Few. Details: `skills/chartwright/CHANGELOG.md` C-20261121-1.
+
 ## 1.4.0 (2026-11-20)
 
 - `cw.py lint` gains nine book-rule warnings: `not-normalized`, `line-over-categories`, `forecast-as-actual`, `legend-single-series`, `angled-tick-labels`, `unsorted-bars`, `source-in-image`, `log-axis-unexplained`, `caveat-in-tooltip-only`. `cw.py pick` warns `precision-on-area` and `map-not-needed`. `cw.py build` (Vega-Lite, docx) gains `--source`, `--forecast-from` and `--highlight-latest`. Selection rules, choropleth guidance and the verify step (a makeover checklist, accessibility as a bundle) gain the same sources: Cairo 2013, Knaflic, Cisneros and Velez 2024, Engebretsen and Kennedy 2020. Details: `skills/chartwright/CHANGELOG.md` C-20261120-1.

@@ -1,0 +1,109 @@
+{
+ "mark": "point",
+ "title": {
+  "text": "Sales rose in spring",
+  "subtitle": "Source: test data, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "city": "a",
+    "temperature": 20
+   },
+   {
+    "city": "b",
+    "temperature": 21
+   },
+   {
+    "city": "c",
+    "temperature": 22
+   },
+   {
+    "city": "d",
+    "temperature": 23
+   },
+   {
+    "city": "e",
+    "temperature": 24
+   },
+   {
+    "city": "f",
+    "temperature": 25
+   },
+   {
+    "city": "g",
+    "temperature": 26
+   },
+   {
+    "city": "h",
+    "temperature": 27
+   },
+   {
+    "city": "i",
+    "temperature": 28
+   },
+   {
+    "city": "j",
+    "temperature": 29
+   },
+   {
+    "city": "k",
+    "temperature": 30
+   },
+   {
+    "city": "l",
+    "temperature": 31
+   },
+   {
+    "city": "m",
+    "temperature": 32
+   },
+   {
+    "city": "n",
+    "temperature": 33
+   },
+   {
+    "city": "o",
+    "temperature": 34
+   },
+   {
+    "city": "p",
+    "temperature": 35
+   },
+   {
+    "city": "q",
+    "temperature": 36
+   },
+   {
+    "city": "r",
+    "temperature": 37
+   },
+   {
+    "city": "s",
+    "temperature": 38
+   },
+   {
+    "city": "t",
+    "temperature": 39
+   },
+   {
+    "city": "u",
+    "temperature": 40
+   }
+  ]
+ },
+ "encoding": {
+  "y": {
+   "field": "city",
+   "type": "nominal",
+   "sort": "-x"
+  },
+  "x": {
+   "field": "temperature",
+   "type": "quantitative",
+   "scale": {
+    "zero": false
+   }
+  }
+ }
+}
