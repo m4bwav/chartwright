@@ -2,6 +2,10 @@
 
 Semantic versions of the chartwright plugin. Per-skill and knowledge changes are logged in `skills/*/CHANGELOG.md`.
 
+## 1.4.0 (2026-11-20)
+
+- `cw.py lint` gains nine book-rule warnings: `not-normalized`, `line-over-categories`, `forecast-as-actual`, `legend-single-series`, `angled-tick-labels`, `unsorted-bars`, `source-in-image`, `log-axis-unexplained`, `caveat-in-tooltip-only`. `cw.py pick` warns `precision-on-area` and `map-not-needed`. `cw.py build` (Vega-Lite, docx) gains `--source`, `--forecast-from` and `--highlight-latest`. Selection rules, choropleth guidance and the verify step (a makeover checklist, accessibility as a bundle) gain the same sources: Cairo 2013, Knaflic, Cisneros and Velez 2024, Engebretsen and Kennedy 2020. Details: `skills/chartwright/CHANGELOG.md` C-20261120-1.
+
 ## 1.3.0 (2026-11-19)
 
 - `cw.py lint` gains three warnings from Ware 2012 ch. 3-4: `low-contrast-mark` (point, line or text colour under 3:1 against the background with no stroke), `heavy-fill` (dark saturated area fills), `rainbow-scale`. Selection rules gain colour weight, highlight hull and level caps; document charts gain one mapping per document. Details: `skills/chartwright/CHANGELOG.md` C-20261119-2.

@@ -363,6 +363,25 @@ def _tokens(s: str) -> list[str]:
     return [w for w in re.findall(r"[a-z0-9\-]+", s.lower()) if w not in STOP]
 
 
+_AREA_PICKS = {"bubble", "bubble-map", "treemap", "choropleth", "heatmap", "circle-packing", "cartogram", "dot-density-map"}
+_PRECISION_Q = re.compile(r"how much (more|less|bigger|smaller|larger|higher|lower)|\bcompar\w*|\brank\w*|\bversus\b|\bvs\b|"
+                          r"\b(bigger|larger|smaller|higher|lower|more|less) than\b|\bexact\w*|\bwhich \w+ (has|have|is|are) (the )?(most|least|highest|lowest)", re.I)
+_GEO_Q = re.compile(r"\b(where|maps?|geograph\w*|region\w*|countr\w*|states?|cit(y|ies)|count(y|ies)|provinc\w*|district\w*|world\w*|"
+                    r"global\w*|location\w*|near\w*|spatial\w*|neighbo\w*|continent\w*|postcodes?|zip|latitude|longitude|places?|"
+                    r"areas?|nationwide|national|europe\w*|asia\w*|africa\w*|americ\w*|us|uk|eu)\b", re.I)
+
+
+def pick_cautions(slug, family, question) -> list[str]:
+    """Book cautions on a pick (Cairo 2013 ch. 2, 6): area and colour serve pattern, position serves 'how much more';
+    a map earns its place only when location is part of the finding."""
+    out = []
+    if slug in _AREA_PICKS and _PRECISION_Q.search(question or ""):
+        out.append("precision-on-area: the question asks how much or which ranks, which area and shade answer poorly; use a sorted bar or dot plot (a small locator map at most) (Cairo 2013 ch. 2, 6)")
+    if family == "spatial" and question and not _GEO_Q.search(question):
+        out.append("map-not-needed: nothing in the question is about where; a sorted bar or dot plot reads faster (Cairo 2013 ch. 2)")
+    return out
+
+
 def cmd_pick(a):
     ch = charts()
     q = a.question or ""
@@ -422,6 +441,7 @@ def cmd_pick(a):
             elif lvl == "approx":
                 score -= 0.5
                 warn.append(f"{a.target}: approximate")
+        warn += pick_cautions(slug, fam, q)
         score += {"high": 0.5, "medium": 0.25}.get(c.get("evidence"), 0)
         score += {"core": 0.5, "common": 0.25, "rising": 0.25, "declining": -0.5}.get(c.get("popularity"), 0)
         if score > 0:
@@ -659,8 +679,11 @@ def _vl_composed(chart, rows, x, y, series, base):
             xe["scale"] = {"type": "utc"}
         base.pop("width"); base.pop("height")
         base["facet"] = {"field": series, "type": "nominal", "columns": 3, "title": None}
-        base["spec"] = {"mark": {"type": "line", "point": len(rows) <= 60}, "width": 180, "height": 120,
-                        "encoding": {"x": xe, "y": {**q, "scale": {"zero": False}}}}
+        if xk == "nominal" and all(_ORDERED_LABEL.match(str(r[x])) for r in rows):
+            xe["type"] = "ordinal"  # Q1, 18-24, Jan: ordered labels may be joined by a line
+        cats = xe["type"] == "nominal"  # unordered categories get bars, never a joining line (Knaflic et al. 2024 ch. 2)
+        base["spec"] = {"mark": "bar" if cats else {"type": "line", "point": len(rows) <= 60}, "width": 180, "height": 120,
+                        "encoding": {"x": xe, "y": q if cats else {**q, "scale": {"zero": False}}}}
     return base
 
 
@@ -681,7 +704,11 @@ def build_vega_lite(chart, rows, x, y, series, title, data_path):
         if chart == "dumbbell" and not series and not _Y2:
             raise ValueError(f"{chart} needs --series (column roles in cw.py _vl_composed)")
         spec.pop("encoding"); spec.pop("mark")
-        return json.dumps(_vl_composed(chart, rows, x, y, series, spec), indent=1, ensure_ascii=False) + "\n"
+        return json.dumps(_vl_source(_vl_composed(chart, rows, x, y, series, spec)), indent=1, ensure_ascii=False) + "\n"
+    if (_FORECAST_FROM or _HIGHLIGHT) and chart not in ("line", "multi-line", "step"):
+        raise ValueError("--forecast-from and --highlight-latest apply to line, multi-line and step")
+    if (_FORECAST_FROM or _HIGHLIGHT) and a_flag("dataByUrl"):
+        raise ValueError("--forecast-from and --highlight-latest need inline data (drop --flag dataByUrl)")
     if chart in ("pie", "donut"):
         spec["mark"] = {"type": "arc", "innerRadius": 60} if chart == "donut" else "arc"
         spec["encoding"] = {"theta": {"field": y, "type": "quantitative"}, "color": {"field": x, "type": "nominal"}}
@@ -696,7 +723,8 @@ def build_vega_lite(chart, rows, x, y, series, title, data_path):
     else:
         horizontal = chart in ("bar", "lollipop", "dot") and xk == "nominal" and len(rows) > 6
         xe = {"field": x, "type": xk}
-        if chart == "bar" and xk == "nominal" and not series:
+        ordered = all(_ORDERED_LABEL.match(str(r[x])) for r in rows)
+        if (chart == "bar" or (chart == "column" and not ordered)) and xk == "nominal" and not series:
             xe["sort"] = "-x" if horizontal else "-y"  # the bar is the ranking chart (kb/charts/bar.md): sort by value
         if xk == "temporal":
             xe["scale"] = {"type": "utc"}  # ISO dates parse as UTC; a local scale shifts them by a day
@@ -728,7 +756,64 @@ def build_vega_lite(chart, rows, x, y, series, title, data_path):
             vk, v2 = ("x", "x2") if horizontal else ("y", "y2")
             spec["layer"] = [{"mark": "rule", "encoding": {**enc, v2: {"datum": 0}}},
                              {"mark": {"type": "point", "filled": True, "size": 80}, "encoding": enc}]
-    return json.dumps(spec, indent=1, ensure_ascii=False) + "\n"
+    if _FORECAST_FROM:
+        _vl_forecast(spec, rows, x, series)
+    if _HIGHLIGHT:
+        _vl_highlight_latest(spec, rows, x, y, series)
+    return json.dumps(_vl_source(spec), indent=1, ensure_ascii=False) + "\n"
+
+
+_SOURCE = _FORECAST_FROM = None
+_HIGHLIGHT = False
+
+
+def _x_after(v, cut) -> bool:
+    a, b = _num(v), _num(cut)
+    return a >= b if a is not None and b is not None else str(v) >= str(cut)
+
+
+def _vl_source(spec):
+    """--source: 'Source: X' as subtitle, inside the image (Engebretsen and Kennedy 2020 ch. 11)."""
+    if _SOURCE:
+        t = spec.get("title")
+        t = t if isinstance(t, dict) else {"text": t or ""}
+        t["subtitle"] = _SOURCE if re.match(r"(?i)source", _SOURCE) else f"Source: {_SOURCE}"
+        spec["title"] = t
+    return spec
+
+
+def _vl_forecast(spec, rows, x, series):
+    """--forecast-from: rows at or after the cut are forecast, drawn dashed; the last actual point is repeated so the
+    two segments join (Knaflic et al. 2024 ch. 7)."""
+    ph = "phase" if all("phase" not in r for r in rows) else "_phase"
+    out, last = [], {}
+    for r in rows:
+        r = dict(r, **{ph: "forecast" if _x_after(r[x], _FORECAST_FROM) else "actual"})
+        out.append(r)
+        if r[ph] == "actual":
+            k = r.get(series) if series else None
+            if k not in last or _x_after(r[x], last[k][x]):
+                last[k] = r
+    out += [dict(r, **{ph: "forecast"}) for r in last.values()]
+    spec["data"] = {"values": out}
+    spec["encoding"]["strokeDash"] = {"field": ph, "type": "nominal", "title": None,
+                                      "scale": {"domain": ["actual", "forecast"], "range": [[1, 0], [5, 4]]}}
+
+
+def _vl_highlight_latest(spec, rows, x, y, series):
+    """--highlight-latest: a dot and value label on the newest point of each series only (Knaflic et al. 2024 ch. 15)."""
+    last = {}
+    for r in rows:
+        k = r.get(series) if series else None
+        if k not in last or _x_after(r[x], last[k][x]):
+            last[k] = r
+    m = spec.pop("mark")
+    base = {"mark": {**m, "point": False} if isinstance(m, dict) else m, "encoding": spec.pop("encoding")}
+    pos = {k: v for k, v in base["encoding"].items() if k in ("x", "y", "color")}
+    pts = {"values": list(last.values())}
+    spec["layer"] = [base, {"data": pts, "mark": {"type": "point", "filled": True, "size": 70}, "encoding": pos},
+                     {"data": pts, "mark": {"type": "text", "align": "left", "dx": 7},
+                      "encoding": {**pos, "text": {"field": y, "type": "quantitative"}}}]
 
 
 def _two_ends(rows, x, y, series):
@@ -1288,9 +1373,12 @@ HTML_WRAPPERS = {"vega-lite": HTML_VL, "plotly": HTML_PLOTLY, "chartjs": HTML_CH
 
 
 def cmd_build(a):
-    global _AGG, _Y2
+    global _AGG, _Y2, _SOURCE, _FORECAST_FROM, _HIGHLIGHT
     _AGG = a.agg
     _Y2 = a.y2
+    _SOURCE, _FORECAST_FROM, _HIGHLIGHT = a.source, a.forecast_from, a.highlight_latest
+    if (a.source or a.forecast_from or a.highlight_latest) and a.target not in ("vega-lite", "docx"):
+        print("note: --source, --forecast-from and --highlight-latest apply to vega-lite and docx; add them by hand for other targets")
     _FLAGS.clear()
     _FLAGS.update(a.flag or [])
     cols, rows = read_csv(a.data)
@@ -1754,7 +1842,7 @@ def lint_vega_lite(spec: dict) -> list[dict]:
         add("warn", "heavy-grid", "grid lines as thick as the data line: the data stroke stays heaviest")
     # small data (Tufte ch. 1, p. 56)
     nq = sum(1 for r in values for v in r.values() if _num(v) is not None)
-    if values and nq <= 20 and mark not in ("line", "area"):
+    if values and nq <= 20 and not any(u[0] in ("line", "area") for u in _units(spec)):
         add("warn", "small-data", f"{nq} numbers: a sorted table may read better unless the question is a trend or shape (reader-set threshold)")
     # compared with what (Tufte ch. 2, pp. 74-75)
     if mark == "line" and not col.get("field") and 0 < len(values) < 5:
@@ -1766,6 +1854,176 @@ def lint_vega_lite(spec: dict) -> list[dict]:
     w, h = spec.get("width"), spec.get("height")
     if isinstance(w, (int, float)) and isinstance(h, (int, float)) and x.get("type") == "temporal" and h > w:
         add("warn", "tall-timeseries", "time series taller than wide: about 1.5 wide to 1 tall unless the data set the shape (Tufte ch. 9, p. 190)")
+    return out + lint_book_rules(spec)
+
+
+# Book rules (Cairo 2013; Knaflic, Cisneros and Velez 2024; Engebretsen and Kennedy 2020). All warnings:
+# practitioner and small-sample sources, so nothing here fails a build.
+_RATE = {"per", "rate", "rates", "pct", "percent", "percentage", "share", "capita", "density", "ratio", "proportion",
+         "avg", "average", "mean", "median", "index", "normalized", "prevalence", "incidence", "pc"}
+_COUNTS = {"count", "counts", "cases", "deaths", "crimes", "crime", "incidents", "accidents", "people", "persons", "residents",
+           "users", "visitors", "number", "n", "num", "total", "arrests", "births", "patients", "students", "customers",
+           "households", "infections", "fatalities", "victims", "homicides", "complaints"}
+_PLACES = {"country", "countries", "state", "states", "region", "regions", "city", "cities", "county", "counties", "province",
+           "provinces", "district", "districts", "nation", "nations", "territory", "borough", "municipality", "zip", "postcode",
+           "school", "schools", "hospital", "hospitals", "neighborhood", "neighbourhood", "ward", "location", "place", "group",
+           "groups", "department", "continent", "area", "metro"}
+_FORECAST_NAME = {"forecast", "forecasted", "projected", "projection", "predicted", "prediction"}
+_ORDERED_LABEL = re.compile(r"^\s*([<>]?\s*\d|q[1-4]\b|h[12]\b|(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)|(mon|tue|wed|thu|fri|sat|sun)"
+                            r"|(strongly|somewhat|very|low|medium|high|neutral|never|rarely|sometimes|often|always|poor|fair|good"
+                            r"|excellent|small|large|none|agree|disagree|under|over))", re.I)
+_CAVEAT = re.compile(r"\b(notes?|caveats?|estimated?|estimates|incomplete|uncertain|uncertainty|provisional|preliminary|partial"
+                     r"|revised|unreliable|missing)\b", re.I)
+
+
+def _name_tokens(name) -> set:
+    s = re.sub(r"([a-z])([A-Z])", r"\1 \2", str(name or ""))
+    return set(re.findall(r"[a-z]+|%", s.lower()))
+
+
+def _units(spec, parent_enc=None):
+    """Every view in a spec (top level, layers, facet or repeat inner spec) as (mark type, mark dict, merged encoding)."""
+    enc = {**(parent_enc or {}), **(spec.get("encoding") or {})}
+    m = spec.get("mark")
+    if m is not None:
+        yield (m.get("type") if isinstance(m, dict) else m), (m if isinstance(m, dict) else {}), enc
+    for sub in spec.get("layer") or []:
+        if isinstance(sub, dict):
+            yield from _units(sub, enc)
+    if isinstance(spec.get("spec"), dict):
+        yield from _units(spec["spec"], enc)
+
+
+def _all_values(spec) -> list:
+    rows = list((spec.get("data") or {}).get("values") or [])
+    for sub in (spec.get("layer") or []) + ([spec["spec"]] if isinstance(spec.get("spec"), dict) else []):
+        if isinstance(sub, dict):
+            rows += _all_values(sub)
+    return [r for r in rows if isinstance(r, dict)]
+
+
+def _visible_text(spec, rows) -> str:
+    """Text a reader sees in the rendered image: titles, subtitles, axis and legend titles, text marks."""
+    bits = []
+
+    def title_bits(t):
+        if isinstance(t, dict):
+            for k in ("text", "subtitle"):
+                title_bits(t.get(k))
+        elif isinstance(t, list):
+            bits.extend(str(x) for x in t)
+        elif t:
+            bits.append(str(t))
+
+    def walk(s):
+        title_bits(s.get("title"))
+        for ch in (s.get("encoding") or {}).values():
+            if not isinstance(ch, dict):
+                continue
+            for k in ("axis", "legend", "header"):
+                if isinstance(ch.get(k), dict):
+                    title_bits(ch[k].get("title"))
+            if "title" in ch:
+                title_bits(ch.get("title"))
+            elif ch.get("field"):
+                bits.append(str(ch["field"]))  # the default axis or legend title is the field name
+        m = s.get("mark")
+        tm = m.get("type") if isinstance(m, dict) else m
+        if tm == "text":
+            if isinstance(m, dict) and m.get("text"):
+                title_bits(m["text"])
+            te = (s.get("encoding") or {}).get("text") or {}
+            for k in ("value", "datum"):
+                if te.get(k):
+                    title_bits(te[k])
+            if te.get("field"):
+                bits.extend(str(r.get(te["field"], "")) for r in rows)
+        for sub in (s.get("layer") or []) + ([s["spec"]] if isinstance(s.get("spec"), dict) else []):
+            if isinstance(sub, dict):
+                walk(sub)
+    walk(spec)
+    return " ".join(bits)
+
+
+def lint_book_rules(spec: dict) -> list[dict]:
+    out = []
+
+    def add(code, msg):
+        if not any(f["code"] == code for f in out):
+            out.append({"level": "warn", "code": code, "message": msg})
+
+    rows = _all_values(spec)
+    units = list(_units(spec))
+    seen = _visible_text(spec, rows)
+    raw = json.dumps(spec)
+    cfg = spec.get("config") or {}
+    for mark, mdict, enc in units:
+        x, y = enc.get("x") or {}, enc.get("y") or {}
+        # line-over-categories (Knaflic et al. 2024 ch. 2): a line joins things that have no order
+        if mark in ("line", "trail") and x.get("type") == "nominal" and x.get("field") and not x.get("timeUnit"):
+            labels = {str(r.get(x["field"], "")) for r in rows}
+            if labels and not all(_is_time(v) or _num(v) is not None or _ORDERED_LABEL.match(v) for v in labels):
+                add("line-over-categories", f"line joins the categories of '{x['field']}', which have no order: use bars or a dot plot, a dumbbell for two dates, a slope chart for change (Knaflic et al. 2024 ch. 2)")
+        # unsorted-bars (Knaflic et al. 2024 ch. 5): categories in alphabetical order hide the ranking
+        if mark == "bar" and not enc.get("xOffset") and not enc.get("yOffset"):
+            for cat, val in ((x, y), (y, x)):
+                if cat.get("type") == "nominal" and val.get("type") == "quantitative" and cat.get("field") and "sort" not in cat:
+                    colour = (enc.get("color") or {}).get("field")
+                    labels = list(dict.fromkeys(str(r.get(cat["field"], "")) for r in rows))
+                    if (not colour or colour == cat["field"]) and len(labels) > 5 and not all(_ORDERED_LABEL.match(v) or _is_time(v) for v in labels):
+                        add("unsorted-bars", f"{len(labels)} categories of '{cat['field']}' in default (alphabetical) order: sort by the value the message is about, e.g. \"sort\": \"-{'y' if cat is x else 'x'}\" (Knaflic et al. 2024 ch. 5; the 5-category threshold is reader-set)")
+        # not-normalized (Cairo 2013 ch. 2): raw counts compared across places or groups of unequal size
+        quant = [c for c in (x, y, enc.get("color") or {}) if c.get("type") == "quantitative" and c.get("field")]
+        place = any(_name_tokens(c.get("field")) & _PLACES for c in (x, y, enc.get("color") or {}) if c.get("type") == "nominal") or mark == "geoshape"
+        if mark in ("bar", "geoshape", "circle", "point") and place:
+            for c in quant:
+                t = _name_tokens(c.get("field"))
+                tt = _name_tokens(c.get("title") or (c.get("axis") or {}).get("title") or "")
+                if t & _COUNTS and not (t | tt) & _RATE and "%" not in str(c.get("title") or ""):
+                    add("not-normalized", f"'{c['field']}' looks like a raw count compared across places or groups of unequal size: divide by population (per 100,000, per capita, share) and say per what in the axis title (Cairo 2013 ch. 2; name-based heuristic)")
+        # legend-single-series (Knaflic et al. 2024 ch. 4)
+        for ch in ("color", "fill", "stroke", "shape"):
+            c = enc.get(ch) or {}
+            if c.get("field") and c.get("type") in ("nominal", "ordinal") and not ("legend" in c and c["legend"] is None) and rows:
+                if len({str(r.get(c["field"])) for r in rows if c["field"] in r}) == 1:
+                    add("legend-single-series", f"a legend for one series ('{c['field']}'): drop it and name the series in the title or axis title (Knaflic et al. 2024 ch. 4)")
+        # angled-tick-labels (Knaflic et al. 2024 ch. 4, 11)
+        ang = (x.get("axis") or {}).get("labelAngle") if isinstance(x.get("axis"), dict) else None
+        for k in ("axisX", "axis"):
+            if ang is None and isinstance(cfg.get(k), dict):
+                ang = cfg[k].get("labelAngle")
+        if isinstance(ang, (int, float)) and ang % 180 != 0:
+            add("angled-tick-labels", f"x labels at {ang} degrees are slow to read: shorten them, use a two-level date axis (months, then the year once), or swap to horizontal bars (Knaflic et al. 2024 ch. 4, 11)")
+        # log-axis-unexplained (Tonnessen 2020 in Engebretsen and Kennedy 2020 ch. 12; n = 18)
+        for c in (x, y, enc.get("color") or {}):
+            if (c.get("scale") or {}).get("type") == "log" and not re.search(r"\blog|doubl|tenfold|ten-fold|\btimes\b|×|x ?10|orders? of magnitude|multipl", seen, re.I):
+                add("log-axis-unexplained", f"log scale on '{c.get('field')}' with no words saying so: general readers misread log axes; avoid it for them, or put 'log scale, each gridline is 10 times the last' in the axis title or subtitle (Engebretsen and Kennedy 2020 ch. 12)")
+        # caveat-in-tooltip-only (Engebretsen and Kennedy 2020 ch. 5, 12): notes behind hover go unread
+        tip = enc.get("tooltip")
+        tips = [t for t in (tip if isinstance(tip, list) else [tip]) if isinstance(t, dict)]
+        if tips:
+            used = {c.get("field") for k, c in enc.items() if k != "tooltip" and isinstance(c, dict)}
+            words = [str(t.get("title") or "") + " " + str(t.get("field") or "") for t in tips]
+            words += [str(r.get(t["field"], "")) for t in tips if t.get("field") and t["field"] not in used for r in rows]
+            if _CAVEAT.search(" ".join(words)) and not _CAVEAT.search(seen):
+                add("caveat-in-tooltip-only", "a caveat (note, estimate, provisional, incomplete) appears only in the tooltip: put it in the subtitle or a caption line, since hover text is rarely read and never travels with an image (Engebretsen and Kennedy 2020 ch. 5, 12)")
+    # forecast-as-actual (Knaflic et al. 2024 ch. 7): projections drawn like observations
+    fc = None
+    for r in rows:
+        for k, v in r.items():
+            if _name_tokens(k) & _FORECAST_NAME:
+                fc = k
+            elif isinstance(v, str) and re.search(r"\b(forecasts?|projected|projections?|predicted|predictions?|estimated?)\b", v, re.I):
+                if len({str(q.get(k)) for q in rows}) >= 2:
+                    fc = k
+        if fc:
+            break
+    if fc and units and any(mk in ("line", "area", "trail", "bar", "point") for mk, _, _ in units) and "strokeDash" not in raw \
+            and not any((e.get("opacity") or {}).get("field") or (e.get("opacity") or {}).get("condition") for _, _, e in units):
+        add("forecast-as-actual", f"'{fc}' marks forecast values but nothing draws them differently: dash the forecast line (strokeDash), lighten or hollow its marks, and label it 'forecast' (Knaflic et al. 2024 ch. 7; cw.py build --forecast-from)")
+    # source-in-image (Engebretsen and Kennedy 2020 ch. 11): charts travel without their page
+    if units and not re.search(r"\bsource|\bdata:|\bdata from|©|\bcredit", seen, re.I):
+        add("source-in-image", "no source line in the image: add 'Source: X, year' as subtitle or footer (cw.py build --source), since charts are shared without their page (Engebretsen and Kennedy 2020 ch. 11)")
     return out
 
 
@@ -1815,6 +2073,9 @@ def main(argv=None):
     p.add_argument("--out"); p.add_argument("--png", help="matplotlib/pptx/xlsx/docx: the file the generated script writes (chart.png, chart.pptx, chart.xlsx, chart.docx)")
     p.add_argument("--html", action="store_true", help="wrap a web spec in a standalone page")
     p.add_argument("--flag", nargs="*", help="showData, dataByUrl, container, namedSeries")
+    p.add_argument("--source", help="vega-lite/docx: 'Source: X, year' subtitle inside the image")
+    p.add_argument("--forecast-from", help="vega-lite line/multi-line/step: x value where the forecast starts (dashed from there)")
+    p.add_argument("--highlight-latest", action="store_true", help="vega-lite line/multi-line/step: dot and label on the newest point only")
     p.add_argument("--agg", default="sum", choices=["sum", "mean", "none"], help="how duplicate x values within a series combine (default sum)"); p.set_defaults(fn=cmd_build)
     p = sp.add_parser("render"); p.add_argument("--target", required=True); p.add_argument("--in", dest="infile", required=True); p.add_argument("--out", required=True)
     p.add_argument("--scale", type=float, default=2.0); p.set_defaults(fn=cmd_render)

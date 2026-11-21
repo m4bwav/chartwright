@@ -4,7 +4,12 @@ Every change to [SKILL.md](SKILL.md) and its companions, newest first, each with
 
 Entry shape: `### C-YYYYMMDD-n · date · one-line summary`, then `because:` (IDs or "user request"), `files:` (file and section), and a sentence on what changed. Cite section headings, not line numbers.
 
-### C-20261119-2 · 2026-11-19 · Ware 2012 colour checks in `lint` and rules
+### C-20261120-1 · 2026-11-20 · Book rules from Cairo 2013, Knaflic et al. 2024 and Engebretsen and Kennedy 2020: nine lint warnings, two pick cautions, three build flags
+- because: user request (book batch 2026-11-20); R-20261120-1
+- files: scripts/cw.py (lint_book_rules, pick_cautions, build --source/--forecast-from/--highlight-latest, column sort, small-multiples bars), tests/test_cw.py (five tests), tests/fixtures/lint/ (10 good, 9 bad specs), kb/rules/selection.md (sections 1, 2, 4, 6), kb/charts/choropleth.md (Accessibility, Build), references/build-and-verify.md (Build 6 and 8, Verify lint line and makeover check), SKILL.md (Step 3 to 5 build line), RESEARCH.md
+- Lint warnings `not-normalized`, `line-over-categories`, `forecast-as-actual`, `legend-single-series`, `angled-tick-labels`, `unsorted-bars`, `source-in-image`, `log-axis-unexplained`, `caveat-in-tooltip-only`; pick cautions `precision-on-area` and `map-not-needed`. All warnings (book rules, unverified). The builder now sorts nominal column charts whose labels have no order, and small multiples over unordered categories draw bars, because the new lint caught the builder's own line-over-categories output. `small-data` now sees line marks inside layers.
+
+· 2026-11-19 · Ware 2012 colour checks in `lint` and rules
 - because: user request (books round 6, track 53)
 - files: scripts/cw.py (lint), tests/test_cw.py (test_ware_colour_checks), kb/rules/selection.md (section 4), references/build-and-verify.md (Verify lint line), references/document-charts.md (What not to do)
 - Three lint warnings: `low-contrast-mark` only for small marks (bars at 2.6:1 read fine, so they are left out), `heavy-fill` at HSV saturation over 0.85 and L* under 50 (reader-set), `rainbow-scale`. Selection gains light fills, 3:1 for marks, highlight outside the hull, level caps and the hue-cycling lightness scale; document charts gain one mapping per document.

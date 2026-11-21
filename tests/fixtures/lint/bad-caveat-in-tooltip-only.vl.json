@@ -1,0 +1,107 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": {
+  "text": "Ohio grew fastest",
+  "subtitle": "Source: Example Bureau, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "region": "North",
+    "growth": 12.0,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "South",
+    "growth": 11.5,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "East",
+    "growth": 11.0,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "West",
+    "growth": 10.5,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "Central",
+    "growth": 10.0,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "Coast",
+    "growth": 9.5,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "Hills",
+    "growth": 9.0,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "Valley",
+    "growth": 8.5,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "Plains",
+    "growth": 8.0,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "Lakes",
+    "growth": 7.5,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "Delta",
+    "growth": 7.0,
+    "status": "provisional estimate",
+    "year": 2025
+   },
+   {
+    "region": "Ridge",
+    "growth": 6.5,
+    "status": "provisional estimate",
+    "year": 2025
+   }
+  ]
+ },
+ "mark": "bar",
+ "encoding": {
+  "y": {
+   "field": "region",
+   "type": "nominal",
+   "sort": "-x"
+  },
+  "x": {
+   "field": "growth",
+   "type": "quantitative"
+  },
+  "tooltip": [
+   {
+    "field": "region"
+   },
+   {
+    "field": "growth"
+   },
+   {
+    "field": "status",
+    "title": "Note"
+   }
+  ]
+ }
+}

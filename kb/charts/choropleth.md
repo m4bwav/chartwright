@@ -75,6 +75,7 @@ sources: [https://github.com/Financial-Times/chart-doctor/tree/main/visual-vocab
 - Colour is the only encoding, so add labels for the regions that matter (top, bottom, the one the text discusses) and a legend with the actual values at each break.
 - Text alternative: "Choropleth map of <measure> by <region type>; highest in <A> at <value>, lowest in <B>; <pattern>." Offer the sorted table.
 - Region borders in a thin neutral stroke so adjacent similar regions stay distinguishable; 3:1 contrast between adjacent classes where possible.
+- World maps use an equal-area projection (`equalEarth`), never Mercator, which inflates high latitudes. Regions with no data get their own neutral swatch and a "No data" legend entry; never drop them (Engebretsen and Kennedy 2020 ch. 24).
 
 ## Build
 
@@ -91,7 +92,7 @@ Not supported by `cw.py build`; every recipe is hand-written. All targets need a
  "encoding": {"color": {"field": "rate", "type": "quantitative", "scale": {"scheme": "blues"}, "bin": {"maxbins": 6}}}}
 ```
 
-`lookup` joins the CSV to the geometry; `bin` gives classes (drop it for a continuous ramp); `"type": "quantile"` in the scale gives quantile classes. Projections: `albersUsa`, `mercator`, `equalEarth`. Render with `cw.py render --target vega-lite --in map.vl.json --out map.png`.
+`lookup` joins the CSV to the geometry; `bin` gives classes (drop it for a continuous ramp); `"type": "quantile"` in the scale gives quantile classes. Projections: `albersUsa` (US), `equalEarth` (world); avoid `mercator` for choropleths. Render with `cw.py render --target vega-lite --in map.vl.json --out map.png`.
 
 ### plotly
 

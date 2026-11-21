@@ -1,0 +1,83 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": {
+  "text": "Utah has the lowest rate",
+  "subtitle": "Source: Example Bureau, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "state": "Ohio",
+    "cases": 3000,
+    "year": 2025
+   },
+   {
+    "state": "Texas",
+    "cases": 3300,
+    "year": 2025
+   },
+   {
+    "state": "Utah",
+    "cases": 3600,
+    "year": 2025
+   },
+   {
+    "state": "Maine",
+    "cases": 3900,
+    "year": 2025
+   },
+   {
+    "state": "Iowa",
+    "cases": 4200,
+    "year": 2025
+   },
+   {
+    "state": "Idaho",
+    "cases": 4500,
+    "year": 2025
+   },
+   {
+    "state": "Kansas",
+    "cases": 4800,
+    "year": 2025
+   },
+   {
+    "state": "Oregon",
+    "cases": 5100,
+    "year": 2025
+   },
+   {
+    "state": "Nevada",
+    "cases": 5400,
+    "year": 2025
+   },
+   {
+    "state": "Alaska",
+    "cases": 5700,
+    "year": 2025
+   },
+   {
+    "state": "Hawaii",
+    "cases": 6000,
+    "year": 2025
+   },
+   {
+    "state": "Vermont",
+    "cases": 6300,
+    "year": 2025
+   }
+  ]
+ },
+ "mark": "bar",
+ "encoding": {
+  "y": {
+   "field": "state",
+   "type": "nominal",
+   "sort": "x"
+  },
+  "x": {
+   "field": "cases",
+   "type": "quantitative"
+  }
+ }
+}

@@ -1,0 +1,80 @@
+{
+ "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+ "title": {
+  "text": "Most buyers are 25 to 44",
+  "subtitle": "Source: Example Bureau, 2026"
+ },
+ "data": {
+  "values": [
+   {
+    "age": "18-24",
+    "buyers": 10,
+    "year": 2025
+   },
+   {
+    "age": "25-34",
+    "buyers": 30,
+    "year": 2025
+   },
+   {
+    "age": "35-44",
+    "buyers": 28,
+    "year": 2025
+   },
+   {
+    "age": "45-54",
+    "buyers": 15,
+    "year": 2025
+   },
+   {
+    "age": "55-64",
+    "buyers": 9,
+    "year": 2025
+   },
+   {
+    "age": "65+",
+    "buyers": 5,
+    "year": 2025
+   },
+   {
+    "age": "75+",
+    "buyers": 3,
+    "year": 2025
+   },
+   {
+    "age": "85+",
+    "buyers": 2,
+    "year": 2025
+   },
+   {
+    "age": "90+",
+    "buyers": 1,
+    "year": 2025
+   },
+   {
+    "age": "95+",
+    "buyers": 1,
+    "year": 2025
+   },
+   {
+    "age": "99+",
+    "buyers": 1,
+    "year": 2025
+   }
+  ]
+ },
+ "mark": "bar",
+ "encoding": {
+  "x": {
+   "field": "age",
+   "type": "nominal",
+   "axis": {
+    "labelAngle": 0
+   }
+  },
+  "y": {
+   "field": "buyers",
+   "type": "quantitative"
+  }
+ }
+}
